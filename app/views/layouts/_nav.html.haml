@@ -1,23 +1,18 @@
 %nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
-  %a.navbar-brand
-    = link_to 'BDAdb', root_path, title: 'BDAdb home page'
+  .navbar-brand= link_to 'BDAdb', root_path, title: 'BDAdb home page'
   %button.navbar-toggler{"aria-controls" => "navbarsExample03", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExample03", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarsExample03.collapse.navbar-collapse.justify-content-end
     %ul.navbar-nav
       - if user_signed_in?
         %li.nav-item.active
-          .nav-link
-            = link_to 'Edit profile', edit_user_registration_path
-            %span.sr-only (current)
+          .nav-link= link_to 'Edit profile', edit_user_registration_path
+          %span.sr-only (current)
         %li.nav-item
-          .nav-link
-            = link_to 'Sign Out', destroy_user_session_path, method: :delete
+          .nav-link= link_to 'Sign Out', destroy_user_session_path, method: :delete
       - else
         %li.nav-item.active
-          .nav-link
-            = link_to 'Sign In', new_user_session_path
-            %span.sr-only (current)
+          .nav-link= link_to 'Sign In', new_user_session_path
+          %span.sr-only (current)
         %li.nav-item.active
-          .nav-link{:href => "#"}
-            = link_to 'Sign Up', new_user_registration_path
+          .nav-link= link_to 'Sign Up', new_user_registration_path
