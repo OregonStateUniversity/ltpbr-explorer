@@ -7,8 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bootstrap-sass'
-gem 'bootswatch-rails'
+gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'haml'
@@ -24,6 +23,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 2.13'
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.7.0'
   gem 'selenium-webdriver'
 end
