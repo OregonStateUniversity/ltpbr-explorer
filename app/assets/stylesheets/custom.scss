@@ -2,6 +2,7 @@
 // Variables & Mixins
 
 $green: #30A64A;
+$danger-red: #CA242D;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -28,13 +29,6 @@ input[type="checkbox"] {
   box-shadow: none !important;
 }
 
-.confirm-btn {
-  width: 200px;
-  color: white;
-  background-color: $green;
-  font-weight: 400;
-}
-
 .form-checkbox {
   width: 25px;
   float: left;
@@ -42,4 +36,18 @@ input[type="checkbox"] {
 
 .remember-me {
   margin-bottom: 10px;
+}
+
+.confirm-btn {
+  width: 200px;
+  color: white;
+  background-color: $green;
+  font-weight: 400;
+}
+
+.danger-btn {
+  width: 200px;
+  color: white;
+  background-color: $danger-red;
+  font-weight: 400;
 }
