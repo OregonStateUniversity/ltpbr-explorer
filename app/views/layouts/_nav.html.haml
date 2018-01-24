@@ -6,7 +6,7 @@
     %ul.navbar-nav
       - if user_signed_in?
         %li.nav-item.active
-          .nav-link= link_to 'Edit profile', edit_user_registration_path
+          .nav-link= link_to current_user.username, edit_user_registration_path
           %span.sr-only (current)
         %li.nav-item
           .nav-link= link_to 'Sign Out', destroy_user_session_path, method: :delete
