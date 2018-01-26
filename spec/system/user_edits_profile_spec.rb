@@ -24,4 +24,16 @@ RSpec.describe 'User edits profile', :type => :feature do
       expect(user.username).to match('new_username')
     end
 
+    it 'saves user with updated affiliation' do
+      sign_in_as(user)
+      visit edit_user_registration_path
+      fill_in('Affiliation', with: 'new_affiliation')
+      fill_in('Current password', with: user.password)
+      click_button('Update')
+      expect(page).to have_selector '.notice', text: 'Your account has been updated successfully.'
+      user.reload
+      expect(user.affiliation).to match('new_affiliation')
+    end
+  end
+
 end
