@@ -20,8 +20,7 @@ RSpec.describe 'User edits profile', :type => :feature do
       fill_in('Current password', with: user.password)
       click_button('Update')
       expect(page).to have_selector '.notice', text: 'Your account has been updated successfully.'
-      user.reload
-      expect(user.username).to match('new_username')
+      expect(page).to have_selector '.nav-link', text: 'new_username'
     end
 
     it 'saves user with updated affiliation' do
@@ -31,8 +30,8 @@ RSpec.describe 'User edits profile', :type => :feature do
       fill_in('Current password', with: user.password)
       click_button('Update')
       expect(page).to have_selector '.notice', text: 'Your account has been updated successfully.'
-      user.reload
-      expect(user.affiliation).to match('new_affiliation')
+      visit edit_user_registration_path
+      expect(page).to have_field('Affiliation', with: 'new_affiliation')
     end
   end
 
