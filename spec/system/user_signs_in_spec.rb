@@ -13,6 +13,6 @@ RSpec.describe 'user signs in', :type => :feature do
 
   it 'allows a valid user to sign in' do
     sign_in_as(user)
-    expect(page).to have_selector '.alert', text: 'Signed in successfully.'
+    expect(page).to have_selector '.notice', text: 'Signed in successfully.'
   end
 end
