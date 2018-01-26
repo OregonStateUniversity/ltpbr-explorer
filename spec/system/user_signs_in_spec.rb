@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'user signs in', :type => :feature do
+RSpec.describe 'User signs in', :type => :feature do
 
   def sign_in_as(user)
     visit new_user_session_path
@@ -11,8 +11,11 @@ RSpec.describe 'user signs in', :type => :feature do
 
   let(:user) { create(:user) }
 
-  it 'allows a valid user to sign in' do
-    sign_in_as(user)
-    expect(page).to have_selector '.notice', text: 'Signed in successfully.'
+  context 'with valid credentials' do
+    it 'sees a success message' do
+      sign_in_as(user)
+      expect(page).to have_selector '.notice', text: 'Signed in successfully.'
+    end
   end
+
 end
