@@ -6,13 +6,15 @@
       %hr/
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         = f.label :login, 'Username'
-        = f.text_field :login, autofocus: true, autocomplete: "off"
+        = f.text_field :login, autofocus: true, autocomplete: 'off'
+        = f.label :affiliation
+        = f.text_field :affiliation, autocomplete: 'off'
         = f.label :password
-        = f.password_field :password, autocomplete: "off"
+        = f.password_field :password, autocomplete: 'off'
         - if devise_mapping.rememberable?
           .remember-me
             = f.check_box :remember_me, class: 'form-checkbox'
             = f.label :remember_me
         .actions
-          = f.submit "Sign In", class: 'btn confirm-btn'
-      = render "devise/shared/links"
+          = f.submit 'Sign In', class: 'btn confirm-btn'
+      = render 'devise/shared/links'
