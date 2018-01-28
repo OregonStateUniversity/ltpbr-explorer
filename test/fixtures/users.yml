@@ -1,0 +1,4 @@
+fake:
+  email: 'example@example.com'
+  username: 'username'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
