@@ -1,21 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe 'User edits profile', :type => :feature do
-
-  def sign_in_as(user)
-    visit new_user_session_path
-    fill_in('Username', with: user.username)
-    fill_in('Affiliation', with: user.affiliation)
-    fill_in('Password', with: user.password)
-    click_button('Sign In')
-  end
+RSpec.describe 'User edits profile' do
+  include Devise::Test::IntegrationHelpers
 
   let(:user) { create(:user) }
 
+  before do
+    driven_by :rack_test
+    sign_in user
+    visit edit_user_registration_path
+  end
+
   context 'with valid credentials' do
     it 'saves user with updated username' do
-      sign_in_as(user)
-      visit edit_user_registration_path
       fill_in('Username', with: 'new_username')
       fill_in('Current password', with: user.password)
       click_button('Update')
@@ -24,8 +21,6 @@ RSpec.describe 'User edits profile', :type => :feature do
     end
 
     it 'saves user with updated affiliation' do
-      sign_in_as(user)
-      visit edit_user_registration_path
       fill_in('Affiliation', with: 'new_affiliation')
       fill_in('Current password', with: user.password)
       click_button('Update')
