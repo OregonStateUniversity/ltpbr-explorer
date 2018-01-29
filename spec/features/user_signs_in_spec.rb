@@ -2,12 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'User signs in', type: :feature do
 
-  def sign_in_as(user)
-    fill_in('Username', with: user.username)
-    fill_in('Password', with: user.password)
-    click_button('Sign In')
-  end
-
   before do
     visit new_user_session_path
   end
