@@ -12,7 +12,7 @@
         = f.label :email
         = f.email_field :email, autocomplete: 'email'
         = f.label :affiliation
-        = f.email_field :affiliation, autocomplete: 'off'
+        = f.text_field :affiliation, autocomplete: 'off'
         = f.label :password
         - if @minimum_password_length
           %em

@@ -10,6 +10,7 @@ end
 gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'figaro'
 gem 'haml'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.5'
