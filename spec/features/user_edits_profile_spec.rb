@@ -29,4 +29,20 @@ RSpec.describe 'User edits profile', type: :feature do
     end
   end
 
+  context 'with invalid credentials' do
+    it 'fails and prompts for valid password' do
+      fill_in('Username', with: 'new_username')
+      fill_in('Current password', with: 'invalid_password')
+      click_button('Update')
+      expect(page).to have_selector '.alert', text: 'Current password is invalid'
+    end
+  end
+
+  context 'with blank password' do
+    it 'fails and prompts for a password' do
+      fill_in('Username', with: 'new_username')
+      click_button('Update')
+      expect(page).to have_selector '.alert', text: 'Current password can\'t be blank'
+    end
+  end
 end
