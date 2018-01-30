@@ -8,4 +8,5 @@
     = f.email_field :username, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
   .actions
     = f.submit "Resend confirmation instructions"
+%hr/
 = render "devise/shared/links"
