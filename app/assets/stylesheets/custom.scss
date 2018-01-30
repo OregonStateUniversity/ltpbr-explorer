@@ -82,8 +82,10 @@ input[type="checkbox"] {
 // Flash messages
 
 .alert {
-  list-style: none;
   text-align: left;
+  li {
+    list-style: none;
+  }
 }
 
 .alert-error {
