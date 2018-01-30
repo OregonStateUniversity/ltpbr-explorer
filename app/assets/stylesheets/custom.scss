@@ -96,15 +96,33 @@ input[type="checkbox"] {
  }
 
 .alert-alert {
+  padding: 0;
+  margin: 15px;
   background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
+  ul {
+    margin-top: 12px;
+  }
+  .close {
+    margin-top: 10px;
+    margin-right: 15px;
+  }
  }
 
 .alert-success {
+  padding: 0;
+  margin: 15px;
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;
+  ul {
+    margin-top: 12px;
+  }
+  .close {
+    margin-top: 10px;
+    margin-right: 15px;
+  }
  }
 
 .alert-notice {
