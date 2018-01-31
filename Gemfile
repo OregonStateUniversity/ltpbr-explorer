@@ -7,6 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'activerecord-postgis-adapter'
 gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
