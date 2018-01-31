@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'User creates bda project' do
+  include Devise::Test::IntegrationHelpers
+
   context 'when logged in' do
     let(:user) { create(:user) }
 
