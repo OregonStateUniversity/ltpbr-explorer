@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126193825) do
+ActiveRecord::Schema.define(version: 20180131173343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
+
+  create_table "projects", force: :cascade do |t|
+    t.string "affiliation"
+    t.string "stream_name"
+    t.string "implementation_date"
+    t.text "narrative"
+    t.integer "area"
+    t.boolean "maintenance"
+    t.string "primary_contact"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spatial_ref_sys", primary_key: "srid", id: :integer, default: nil, force: :cascade do |t|
+    t.string "auth_name", limit: 256
+    t.integer "auth_srid"
+    t.string "srtext", limit: 2048
+    t.string "proj4text", limit: 2048
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
