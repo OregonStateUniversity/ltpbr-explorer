@@ -18,7 +18,7 @@ RSpec.feature 'User creates bda project' do
       fill_in('Narrative', with: 'Example Project Narrative')
       fill_in('Area', with: 1000)
       check('Maintenance?')
-      fill_in('Contact Name', with: 'Example Contact Name')
+      fill_in('Primary contact', with: 'Example Contact Name')
       click_on('Create project')
       expect(page).to have_content('Project was successfully created.')
     end
