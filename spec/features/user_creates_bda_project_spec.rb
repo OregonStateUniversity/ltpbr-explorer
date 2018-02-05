@@ -8,10 +8,10 @@ RSpec.feature 'User creates bda project' do
 
     before do
       sign_in(user)
+      visit new_project_path
     end
 
     scenario 'providing valid project attributes' do
-      visit new_project_path
       fill_in('Affiliation', with: 'Example Affiliation')
       fill_in('Stream name', with: 'Example Stream Name')
       fill_in('Implementation date', with: Date.today)
@@ -21,6 +21,15 @@ RSpec.feature 'User creates bda project' do
       fill_in('Primary contact', with: 'Example Contact Name')
       click_on('Create project')
       expect(page).to have_content('Project was successfully created.')
+    end
+
+    scenario 'providing invalid project attributes' do
+      fill_in('Affiliation', with: '')
+      fill_in('Stream name', with: '')
+      fill_in('Implementation date', with: '')
+      fill_in('Primary contact', with: '')
+      click_on('Create project')
+      expect(page).to have_content('errors')
     end
   end
 end
