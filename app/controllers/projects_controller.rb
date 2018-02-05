@@ -44,6 +44,6 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:affiliation, :stream_name, :implementation_date,
-      :narrative, :area, :maintenance, :primary_contact)
+      :narrative, :area, :maintenance, :primary_contact, :lonlat)
   end
 end
