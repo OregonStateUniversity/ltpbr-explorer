@@ -6,13 +6,16 @@ default: &default
 development:
   <<: *default
   database: bdadb_development
+  schema_search_path: public, postgis
 
 test:
   <<: *default
   database: bdadb_test
+  schema_search_path: public, postgis
 
 production:
   <<: *default
   database: bdadb_production
+  schema_search_path: public, postgis
   username: bdadb
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
