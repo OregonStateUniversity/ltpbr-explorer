@@ -1,10 +1,11 @@
 - provide(:title, @project.stream_name)
 .container
-  .row
-    %p= @project.affiliation
-    %p= @project.stream_name
-    %p= @project.implementation_date
-    %p= @project.narrative
-    %p= @project.area
-    %p= @project.maintenance
-    %p= @project.primary_contact
+  %h1 Project on #{ @project.stream_name }
+  %hr/
+  %p Affiliation: #{ @project.affiliation }
+  %p Implementation date: #{ @project.implementation_date.to_formatted_s(:long) }
+  - if @project.narrative.presence
+    %p Narrative: #{ @project.narrative }
+  %p Area(m): #{ @project.area }
+  %p Ongoing maintenance: #{ @project.maintenance }
+  %p Primary Contact: #{ @project.primary_contact }

@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index; end
 
@@ -13,7 +14,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to projects_path
+      redirect_to @project
       flash[:success] = 'Project was successfully created.'
     else
       render :new
