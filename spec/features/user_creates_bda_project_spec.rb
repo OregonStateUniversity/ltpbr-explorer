@@ -24,12 +24,15 @@ RSpec.feature 'User creates bda project' do
     end
 
     scenario 'providing invalid project attributes' do
-      fill_in('Affiliation', with: '')
-      fill_in('Stream name', with: '')
-      fill_in('Implementation date', with: '')
-      fill_in('Primary contact', with: '')
       click_on('Create project')
-      expect(page).to have_content('errors')
+      expect(page).to have_selector '.alert', text: 'The form contains 5 errors.'
+      page.find('#error_explanation').tap do |error_explanations|
+        expect(error_explanations).to have_content("Affiliation can't be blank")
+        expect(error_explanations).to have_content("Stream name can't be blank")
+        expect(error_explanations).to have_content("Implementation date can't be blank")
+        expect(error_explanations).to have_content("Area is not a number")
+        expect(error_explanations).to have_content("Primary contact can't be blank")
+      end
     end
   end
 end
