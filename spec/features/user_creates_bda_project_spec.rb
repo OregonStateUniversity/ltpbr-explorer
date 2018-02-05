@@ -19,12 +19,12 @@ RSpec.feature 'User creates bda project' do
       fill_in('Area', with: 1000)
       check('Maintenance?')
       fill_in('Primary contact', with: 'Example Contact Name')
-      click_on('Create project')
+      click_on('Create Project')
       expect(page).to have_content('Project was successfully created.')
     end
 
     scenario 'providing invalid project attributes' do
-      click_on('Create project')
+      click_on('Create Project')
       expect(page).to have_selector '.alert', text: 'The form contains 5 errors.'
       page.find('#error_explanation').tap do |error_explanations|
         expect(error_explanations).to have_content("Affiliation can't be blank")
