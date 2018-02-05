@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.assign_lonlat(@project.longitude, @project.latitude)
     if @project.save
       redirect_to @project
       flash[:success] = 'Project was successfully created.'
@@ -44,6 +45,6 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:affiliation, :stream_name, :implementation_date,
-      :narrative, :area, :maintenance, :primary_contact, :lonlat)
+      :narrative, :area, :maintenance, :primary_contact, :longitude, :latitude)
   end
 end
