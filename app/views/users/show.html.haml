@@ -1,2 +1,10 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+%h1= current_user.username
+%hr/
+%p= current_user.affiliation
+%p= current_user.email
+%hr/
+%h2 Projects
+%ul
+  - current_user.projects.each do |project|
+    %li
+      %p= link_to project.stream_name
