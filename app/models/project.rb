@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
   attr_accessor :longitude, :latitude
 
+  belongs_to :author, class_name: 'User'
+
   before_save :assign_lonlat, on: :create
 
   validates :affiliation, :stream_name, :implementation_date, :primary_contact,
