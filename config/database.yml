@@ -7,6 +7,7 @@ development:
   <<: *default
   database: bdadb_development
   schema_search_path: public, postgis
+  url: <%= ENV.fetch("DATABASE_URL", "").gsub(/postgres/, 'postgis') %>
 
 test:
   <<: *default
@@ -19,3 +20,4 @@ production:
   schema_search_path: public, postgis
   username: bdadb
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  url: <%= ENV.fetch("DATABASE_URL", "").gsub(/postgres/, 'postgis') %>
