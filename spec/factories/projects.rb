@@ -7,5 +7,6 @@ FactoryBot.define do
     area 1
     maintenance false
     primary_contact "MyString"
+    author factory: :user
   end
 end

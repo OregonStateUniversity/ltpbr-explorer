@@ -15,6 +15,8 @@ RSpec.feature 'User creates bda project' do
       fill_in('Affiliation', with: 'Example Affiliation')
       fill_in('Stream name', with: 'Example Stream Name')
       fill_in('Implementation date', with: Date.today)
+      fill_in('Latitude', with: 45.0000)
+      fill_in('Longitude', with: 45.0000)
       fill_in('Narrative', with: 'Example Project Narrative')
       fill_in('Area', with: 1000)
       check('Maintenance?')
