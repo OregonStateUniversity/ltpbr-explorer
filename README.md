@@ -11,4 +11,6 @@ This is a Rails application. After cloning the repository, you can:
 * Run the tests with `rake` or `rspec`.
 * Run the server in _development_ with `rails server`.
 
+Requires PostgreSQL with the PostGIS extension available for enabling.
+
 &copy; 2017 Nathan Struhs, Yong Bakos. All rights reserved.
