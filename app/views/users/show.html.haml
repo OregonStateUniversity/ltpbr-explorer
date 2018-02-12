@@ -7,4 +7,4 @@
 %ul
   - current_user.projects.each do |project|
     %li
-      %p= link_to project.stream_name
+      %p= link_to project.stream_name, project
