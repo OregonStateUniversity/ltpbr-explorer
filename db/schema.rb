@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212184453) do
+ActiveRecord::Schema.define(version: 20180212190126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
 
   create_table "projects", force: :cascade do |t|
-    t.string "affiliation"
-    t.string "stream_name"
-    t.date "implementation_date"
+    t.string "affiliation", null: false
+    t.string "stream_name", null: false
+    t.date "implementation_date", null: false
     t.text "narrative"
     t.integer "area"
     t.boolean "maintenance"
-    t.string "primary_contact"
+    t.string "primary_contact", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
