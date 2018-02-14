@@ -5,6 +5,8 @@
   #nav.collapse.navbar-collapse.justify-content-end
     %ul.navbar-nav
       - if user_signed_in?
+        %li
+          %button.btn.btn-outline-primary.my-2.my-sm-0.new-project-btn= link_to 'New Project', new_project_path
         %li.nav-item.dropdown
           %a#dropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"}
             = current_user.username

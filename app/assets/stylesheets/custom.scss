@@ -16,6 +16,18 @@ nav {
   margin-bottom: 15px;
 }
 
+.navbar-nav > li {
+  margin-left: 20px;
+}
+
+.new-project-btn:hover {
+  color: white;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 // Forms
 
 input, textarea, select {
