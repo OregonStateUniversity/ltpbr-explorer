@@ -10,6 +10,9 @@ class Project < ApplicationRecord
 
   validates_numericality_of :area, only_integer: true, greater_than: 0
 
+  has_attached_file :photo, styles: { default: '400x400#' }
+  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
+
   private
 
   def assign_lonlat

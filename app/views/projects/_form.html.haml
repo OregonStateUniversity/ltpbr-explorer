@@ -18,5 +18,7 @@
   = f.check_box :maintenance
   = f.label :primary_contact
   = f.text_field :primary_contact, autocomplete: 'off'
+  = f.label :photo
+  = f.file_field :photo, class: 'custom-file-control'
   .actions
     = f.submit class: 'btn confirm-btn'

@@ -11,4 +11,4 @@
   %p Longitude: #{ @project.lonlat.x }
   %p Ongoing maintenance: #{ @project.maintenance }
   %p Primary Contact: #{ @project.primary_contact }
-
+  = image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}"
