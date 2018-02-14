@@ -13,4 +13,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to validate_numericality_of(:area).only_integer.is_greater_than(0) }
   end
 
+  describe 'associations' do
+    it { is_expected.to belong_to(:author).class_name('User') }
+  end
 end
