@@ -7,5 +7,8 @@
   - if @project.narrative.presence
     %p Narrative: #{ @project.narrative }
   %p Area(m): #{ @project.area }
+  %p Latitude: #{ @project.lonlat.y }
+  %p Longitude: #{ @project.lonlat.x }
   %p Ongoing maintenance: #{ @project.maintenance }
   %p Primary Contact: #{ @project.primary_contact }
+
