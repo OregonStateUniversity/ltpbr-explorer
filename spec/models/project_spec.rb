@@ -16,4 +16,15 @@ RSpec.describe Project, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:author).class_name('User') }
   end
+
+  describe 'project#assign_lonlat' do
+    it 'should compose lonlat from longitude and latitude' do
+      subject.longitude = 99.9
+      subject.latitude = 88.8
+      subject.run_callbacks :save
+      expect(subject.lonlat.x).to be(99.9)
+      expect(subject.lonlat.y).to be(88.8)
+    end
+  end
+
 end
