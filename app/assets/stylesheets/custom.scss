@@ -20,10 +20,17 @@ body {
 
 nav {
   margin-bottom: 15px;
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .navbar-nav > li {
   margin-left: 20px;
+  text-decoration: none;
+  :hover {
+    color: white;
+  }
 }
 
 .new-project-btn:hover {
@@ -32,6 +39,18 @@ nav {
     color: white;
     text-decoration: none;
   }
+}
+
+.logo {
+  text-decoration: none !important;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+#logo-highlight {
+  color: white;
+  font-size: 28px;
+  margin-left: -6px;
 }
 
 // Forms

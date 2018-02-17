@@ -1,5 +1,7 @@
 %nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
-  .navbar-brand= link_to 'BDAdb', root_path, title: 'BDAdb home page'
+  = link_to root_path, :class => 'logo', title: 'BDAdb home' do
+    BDA
+    %span#logo-highlight db
   %button.navbar-toggler{"aria-controls" => "nav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#nav", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #nav.collapse.navbar-collapse.justify-content-end
