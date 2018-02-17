@@ -13,3 +13,7 @@
   %p Primary Contact: #{ @project.primary_contact }
   - if @project.photo.file?
     = image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}"
+  %hr/
+  .btn-group
+    = link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary', title: "Edit #{@project}"
+    = link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-secondary', title: "Delete #{@project}"

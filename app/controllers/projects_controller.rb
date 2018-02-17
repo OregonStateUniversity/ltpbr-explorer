@@ -10,7 +10,10 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
-  def edit; end
+  def edit
+    @project.longitude = @project.lonlat.x
+    @project.latitude = @project.lonlat.y
+  end
 
   def create
     @project = Project.new(project_params)
@@ -35,7 +38,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to projects_path
+    redirect_to current_user
     flash[:success] = 'Project was successfully destroyed.'
   end
 
