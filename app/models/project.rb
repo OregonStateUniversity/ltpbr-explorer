@@ -13,6 +13,10 @@ class Project < ApplicationRecord
   has_attached_file :photo, styles: { default: '400x400#' }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
+  def title
+    "Project on #{stream_name}"
+  end
+
   def byline
     if affiliation.present?
       "Implemented on #{implementation_date.to_formatted_s(:long)} in affiliation with #{affiliation}"

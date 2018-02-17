@@ -1,6 +1,6 @@
 - provide(:title, @project.stream_name)
 .container
-  %h1 Project on #{ @project.stream_name }
+  %h1= @project.title
   %p.text-secondary.font-italic= @project.byline
   %hr/
   - if @project.narrative.presence
