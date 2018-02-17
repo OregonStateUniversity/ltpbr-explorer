@@ -21,6 +21,10 @@ class Project < ApplicationRecord
     end
   end
 
+  def coordinates
+    "Coordinates: ( #{lonlat.y}, #{lonlat.x} )"
+  end
+
   private
 
   def assign_lonlat
