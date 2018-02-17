@@ -1,12 +1,18 @@
-- provide(:title, "My Projects")
+- provide(:title, "#{current_user.username.possessive} Projects")
 .container
-  %h2= current_user.username.possessive
-  %hr/
-  %p= current_user.affiliation
-  %p= current_user.email
-  %hr/
-  %h3 Projects
-  %ul
-    - current_user.projects.each do |project|
-      %li
-        %p= link_to project.stream_name, project
+  - if current_user.projects.empty?
+    .jumbotron
+      %h1.display-3 Hi, #{current_user.username}
+      %p.lead Welcome to BDAdb
+      %hr.my-4/
+      %p To get started create a new project.
+      %p.lead
+        = link_to 'New Project', new_project_path, class: 'btn btn-primary btn-lg'
+
+  - else
+    %h2 #{ current_user.username.possessive } Projects
+    %hr/
+    %ul
+      - current_user.projects.each do |project|
+        %li
+          %p= link_to project.stream_name, project
