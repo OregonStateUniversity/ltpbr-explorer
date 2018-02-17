@@ -13,6 +13,14 @@ class Project < ApplicationRecord
   has_attached_file :photo, styles: { default: '400x400#' }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
+  def byline
+    if affiliation.present?
+      "Implemented on #{implementation_date.to_formatted_s(:long)} in affiliation with #{affiliation}"
+    else
+      "Implemented on #{implementation_date.to_formatted_s(:long)}"
+    end
+  end
+
   private
 
   def assign_lonlat

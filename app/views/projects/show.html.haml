@@ -1,9 +1,8 @@
 - provide(:title, @project.stream_name)
 .container
   %h1 Project on #{ @project.stream_name }
+  %p.text-secondary.font-italic= @project.byline
   %hr/
-  %p Affiliation: #{ @project.affiliation }
-  %p Implementation date: #{ @project.implementation_date.to_formatted_s(:long) }
   - if @project.narrative.presence
     %p Narrative: #{ @project.narrative }
   %p Area(m): #{ @project.area }
