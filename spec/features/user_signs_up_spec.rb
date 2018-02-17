@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User signs in', type: :feature do
+RSpec.describe 'User signs up', type: :feature do
 
   before { visit new_user_registration_path }
 

@@ -17,7 +17,8 @@ gem 'haml'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem "paperclip", "~> 5.2.1"
+gem 'paperclip', "~> 5.2.1"
+gem 'possessive'
 gem 'pg', '0.20.0'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
