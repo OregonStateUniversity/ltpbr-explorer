@@ -9,6 +9,7 @@
   %p Area(m): #{ @project.area }
   %p Latitude: #{ @project.lonlat.y }
   %p Longitude: #{ @project.lonlat.x }
-  %p Ongoing maintenance: #{ @project.maintenance }
+  - if @project.maintenance
+    %p Requires ongoing maintenance
   %p Primary Contact: #{ @project.primary_contact }
   = image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}"
