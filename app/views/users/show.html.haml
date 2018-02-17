@@ -1,10 +1,12 @@
-%h1= current_user.username
-%hr/
-%p= current_user.affiliation
-%p= current_user.email
-%hr/
-%h2 Projects
-%ul
-  - current_user.projects.each do |project|
-    %li
-      %p= link_to project.stream_name, project
+- provide(:title, "My Projects")
+.container
+  %h2= current_user.username.possessive
+  %hr/
+  %p= current_user.affiliation
+  %p= current_user.email
+  %hr/
+  %h3 Projects
+  %ul
+    - current_user.projects.each do |project|
+      %li
+        %p= link_to project.stream_name, project
