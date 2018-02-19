@@ -12,7 +12,7 @@
   %p Primary Contact: #{ @project.primary_contact }
   - if @project.photo.file?
     = image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}"
-  #map
+  #map{ 'data-latitude' => "#{@project.lonlat.y}", 'data-longitude' => "#{@project.lonlat.x}" }
   %hr/
   .btn-group
     = link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary', title: "Edit #{@project}"

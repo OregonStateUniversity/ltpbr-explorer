@@ -15,5 +15,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require jquery-readyselector
 //= require maps
 //= require_tree .
