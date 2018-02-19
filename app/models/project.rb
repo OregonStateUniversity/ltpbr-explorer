@@ -9,6 +9,8 @@ class Project < ApplicationRecord
             :longitude, :latitude, presence: true
 
   validates_numericality_of :area, only_integer: true, greater_than: 0
+  validates_numericality_of :latitude, greater_than: -90, less_than: 90
+  validates_numericality_of :longitude, greater_than: -180, less_than: 180
 
   has_attached_file :photo, styles: { default: '400x400#' }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
@@ -27,10 +29,14 @@ class Project < ApplicationRecord
 
   private
 
+  def round_string(str, precision)
+    return str.to_f.round(precision).to_s
+  end
+
   def assign_lonlat
     if @longitude.present? && @latitude.present?
       mfactory = RGeo::ActiveRecord::SpatialFactoryStore.instance.factory(:geo_type => 'point')
-      self.lonlat = mfactory.point(longitude.round(6), latitude.round(6))
+      self.lonlat = mfactory.point(round_string(longitude,6), round_string(latitude,6))
     else
       throw(:abort)
     end
