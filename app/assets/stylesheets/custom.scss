@@ -183,6 +183,13 @@ input[type="checkbox"] {
  // Map
 
  #map {
-  width: 600px;
-  height: 600px;
+  min-width: 400px;
+  min-height: 400px;
+  margin: auto;
+ }
+
+ @media (max-width: 960px) {
+  #map {
+    margin-top: 15px;
+  }
  }

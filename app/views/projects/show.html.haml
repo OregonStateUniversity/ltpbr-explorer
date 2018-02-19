@@ -3,15 +3,18 @@
   %h1= @project.title
   %p.text-secondary.font-italic= @project.byline
   %hr/
-  - if @project.narrative.presence
-    %p Narrative: #{ @project.narrative }
-  %p Area(m): #{ @project.area }
-  - if @project.maintenance
-    %p Requires ongoing maintenance
-  %p Primary Contact: #{ @project.primary_contact }
-  - if @project.photo.file?
-    = image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}"
-  #map{ 'data-latitude' => "#{@project.lonlat.y}", 'data-longitude' => "#{@project.lonlat.x}" }
+  .row
+    .col-lg
+      - if @project.narrative.presence
+        %p Narrative: #{ @project.narrative }
+      %p Area(m): #{ @project.area }
+      - if @project.maintenance
+        %p Requires ongoing maintenance
+      %p Primary Contact: #{ @project.primary_contact }
+      - if @project.photo.file?
+        = image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}"
+    .col-lg
+      #map{ 'data-latitude' => "#{@project.lonlat.y}", 'data-longitude' => "#{@project.lonlat.x}" }
   %hr/
   .btn-group
     = link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary', title: "Edit #{@project}"
