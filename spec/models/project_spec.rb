@@ -27,6 +27,13 @@ RSpec.describe Project, type: :model do
       expect(subject.lonlat.x).to be(99.9)
       expect(subject.lonlat.y).to be(88.8)
     end
-  end
 
+    it 'should round values to a precision of 6' do
+      subject.longitude = 99.1234567
+      subject.latitude = 88.1234561
+      subject.run_callbacks :save
+      expect(subject.lonlat.x).to be(99.123457)
+      expect(subject.lonlat.y).to be(88.123456)
+    end
+  end
 end
