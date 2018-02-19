@@ -53,6 +53,12 @@ nav {
   margin-left: -6px;
 }
 
+.dropdown-item {
+  :hover {
+    color: black !important;
+  }
+}
+
 // Forms
 
 input, textarea, select {
