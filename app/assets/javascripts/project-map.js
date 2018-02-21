@@ -13,8 +13,3 @@ $(".projects.show").ready(function() {
   }).addTo(leaflet_map);
   var marker = L.marker([latitude, longitude]).addTo(leaflet_map);
 });
-
-$(".static.home").ready(function() {
-  var projects = gon.projects;
-  alert(JSON.stringify(projects));
-});

@@ -178,18 +178,23 @@ input[type="checkbox"] {
     margin-top: 10px;
     margin-right: 15px;
   }
- }
+}
 
  // Map
 
- #map {
+#map {
   min-width: 400px;
   min-height: 400px;
   margin: auto;
- }
+}
 
  @media (max-width: 960px) {
   #map {
     margin-top: 15px;
   }
+ }
+
+ #master-map {
+  width: 100%;
+  min-height: 600px;
  }

@@ -16,5 +16,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery-readyselector
-//= require maps
+//= require master-map
+//= require project-map
 //= require_tree .
