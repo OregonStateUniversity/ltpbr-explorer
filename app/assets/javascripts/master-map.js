@@ -7,12 +7,14 @@ $(document).on('turbolinks:load', function() {
     var zoom = 10;
     var max_zoom = 17;
     var leaflet_map = L.map("master-map").setView([projects[0].latitude, projects[0].longitude], zoom);
+
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic3RydWhzbiIsImEiOiJjamRydHJva3YyZ3huMnhvNDNxYTQ0bzg0In0.2tYsJnemg4TMn-1GnAmc1Q', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: max_zoom,
       id: 'mapbox.outdoors',
       accessToken: 'pk.eyJ1Ijoic3RydWhzbiIsImEiOiJjamRydHJva3YyZ3huMnhvNDNxYTQ0bzg0In0.2tYsJnemg4TMn-1GnAmc1Q'
     }).addTo(leaflet_map);
+
     for (var i = 0; i < projects.length; i++ ) {
       var marker = L.marker([projects[i].latitude, projects[i].longitude]).addTo(leaflet_map);
       marker.bindPopup("<b>Project on "
