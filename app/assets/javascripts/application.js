@@ -17,5 +17,6 @@
 //= require bootstrap-sprockets
 //= require jquery-readyselector
 //= require master-map
+//= require master-map-scroll
 //= require project-map
 //= require_tree .
