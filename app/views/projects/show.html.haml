@@ -15,7 +15,8 @@
         = image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}"
     .col-lg
       #map{ 'data-latitude' => "#{@project.lonlat.y}", 'data-longitude' => "#{@project.lonlat.x}" }
-  %hr/
-  .btn-group
-    = link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary', title: "Edit #{@project}"
-    = link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-secondary', title: "Delete #{@project}"
+  - if user_signed_in?  && @project.author_id == current_user.id
+    %hr/
+    .btn-group
+      = link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary', title: "Edit #{@project}"
+      = link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-secondary', title: "Delete #{@project}"
