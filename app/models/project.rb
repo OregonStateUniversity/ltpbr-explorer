@@ -12,7 +12,7 @@ class Project < ApplicationRecord
   validates_numericality_of :latitude, greater_than: -90, less_than: 90
   validates_numericality_of :longitude, greater_than: -180, less_than: 180
 
-  has_attached_file :photo, styles: { default: '400x400#' }
+  has_attached_file :photo, styles: { default: '700x400>', convert_options: { default: '-quality 75 -strip'} }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
   def title
