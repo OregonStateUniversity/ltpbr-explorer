@@ -119,6 +119,15 @@ input[type="checkbox"] {
   }
 }
 
+.btn-question {
+  background-color: white;
+  margin-bottom: 8px;
+  padding: 0;
+  img {
+    height: 17px;
+  }
+}
+
 // Flash messages
 
 .alert {

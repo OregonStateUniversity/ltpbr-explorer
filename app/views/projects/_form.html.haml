@@ -11,6 +11,8 @@
   = f.label :longitude
   = f.text_field :longitude, autocomplete: 'off', placeholder: 'e.g. -121.769211'
   = f.label :narrative
+  %div{class: 'btn btn-question', id: 'narrative-help'}
+    = image_tag 'question.png'
   = f.text_area :narrative, autocomplete: 'off'
   = f.label :area, 'Area (meters)'
   = f.text_field :area, autocomplete: 'off'
@@ -22,3 +24,17 @@
   = f.file_field :photo, class: 'custom-file-control'
   .actions
     = f.submit class: 'btn confirm-btn'
+
+#narrative-model.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title Narrative
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        The narrative describes the project objectives and elements of BDA construction and design.
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+
+
