@@ -11,8 +11,8 @@ RSpec.describe Project, type: :model do
     it { is_expected.to validate_presence_of(:longitude) }
     it { is_expected.to validate_presence_of(:latitude) }
     it { is_expected.to validate_numericality_of(:area).only_integer.is_greater_than(0) }
-    it { is_expected.to validate_numericality_of(:latitude).is_greater_than(-90).is_less_than(90) }
-    it { is_expected.to validate_numericality_of(:longitude).is_greater_than(-180).is_less_than(180) }
+    it { is_expected.to validate_numericality_of(:latitude).is_greater_than(-90).is_less_than(90).with_message('must be in decimal notation') }
+    it { is_expected.to validate_numericality_of(:longitude).is_greater_than(-180).is_less_than(180).with_message('must be in decimal notation') }
   end
 
   describe 'associations' do

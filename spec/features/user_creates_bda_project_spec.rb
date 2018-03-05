@@ -18,7 +18,7 @@ RSpec.feature 'User creates bda project' do
       fill_in('Latitude', with: 45.0000)
       fill_in('Longitude', with: 45.0000)
       fill_in('Narrative', with: 'Example Project Narrative')
-      fill_in('Area', with: 1000)
+      fill_in('Treatment length', with: 1000)
       check('Maintenance?')
       fill_in('Primary contact', with: 'Example Contact Name')
       click_on('Create Project')
@@ -33,10 +33,10 @@ RSpec.feature 'User creates bda project' do
         expect(error_explanations).to have_content("Stream name can't be blank")
         expect(error_explanations).to have_content("Implementation date can't be blank")
         expect(error_explanations).to have_content("Latitude can't be blank")
-        expect(error_explanations).to have_content('Latitude is not a number')
+        expect(error_explanations).to have_content('Latitude must be in decimal notation')
         expect(error_explanations).to have_content("Longitude can't be blank")
-        expect(error_explanations).to have_content('Longitude is not a number')
-        expect(error_explanations).to have_content("Area is not a number")
+        expect(error_explanations).to have_content('Longitude must be in decimal notation')
+        expect(error_explanations).to have_content("Treatment length is not a number")
         expect(error_explanations).to have_content("Primary contact can't be blank")
       end
     end
