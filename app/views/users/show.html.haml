@@ -6,9 +6,7 @@
       %p.lead Welcome to BDAdb
       %hr.my-4/
       %p To get started create a new project.
-      %p.lead
-        = link_to 'New Project', new_project_path, class: 'btn btn-primary btn-lg'
-
+      %p.lead= link_to 'New Project', new_project_path, class: 'btn btn-primary btn-lg'
   - else
     %h2 #{ current_user.username.possessive } Projects
     %hr/
