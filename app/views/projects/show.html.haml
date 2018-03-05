@@ -9,7 +9,7 @@
         %p Narrative: #{ @project.narrative }
       %p Area(m): #{ @project.area }
       - if @project.maintenance
-        %p Requires ongoing maintenance
+        %p Requires adaptive management
       %p Primary Contact: #{ @project.primary_contact }
       - if @project.photo.file?
         = image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}", class: 'img-fluid project-photo'
