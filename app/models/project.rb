@@ -9,8 +9,8 @@ class Project < ApplicationRecord
             :longitude, :latitude, presence: true
 
   validates_numericality_of :area, only_integer: true, greater_than: 0
-  validates_numericality_of :latitude, greater_than: -90, less_than: 90
-  validates_numericality_of :longitude, greater_than: -180, less_than: 180
+  validates_numericality_of :latitude, greater_than: -90, less_than: 90, message: 'must be in decimal notation'
+  validates_numericality_of :longitude, greater_than: -180, less_than: 180, message: 'must be in decimal notation'
 
   has_attached_file :photo, styles: { default: '700x400>', convert_options: { default: '-quality 75 -strip'} }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
