@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show]
+  before_action :require_owner, only: [:edit, :update, :destroy]
 
   def index; end
 
@@ -51,5 +52,12 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:affiliation, :stream_name, :implementation_date,
       :narrative, :area, :maintenance, :primary_contact, :longitude, :latitude, :photo)
+  end
+
+  def require_owner
+    unless @project.author_id == current_user.id
+      redirect_to root_path
+      flash[:alert] = 'Restricted action, must own project.'
+    end
   end
 end
