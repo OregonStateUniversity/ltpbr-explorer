@@ -24,6 +24,7 @@ gem 'pg', '0.20.0'
 gem 'puma', '~> 3.7'
 gem 'rabl-rails'
 gem 'rails', '~> 5.1.4'
+gem "recaptcha", require: "recaptcha/rails"
 gem 'sass-rails', '~> 5.0'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'turbolinks', '~> 5'

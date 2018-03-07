@@ -21,6 +21,9 @@
         = f.label :password_confirmation
         = f.password_field :password_confirmation, autocomplete: 'off'
         .actions
+          #recaptcha
+            = flash[:recaptcha_error]
+            = recaptcha_tags
           = f.submit 'Sign up', class: 'btn confirm-btn'
       %hr/
       = render 'devise/shared/links'
