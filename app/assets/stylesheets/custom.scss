@@ -21,6 +21,13 @@ footer {
   text-align: center;
 }
 
+a {
+  color: $green;
+  &:hover {
+    color: lighten($green, 20%);
+  }
+}
+
 // Nav
 
 nav {
