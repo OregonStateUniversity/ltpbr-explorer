@@ -16,6 +16,11 @@ body {
   margin-bottom: 25px;
 }
 
+footer {
+  padding: 15px;
+  text-align: center;
+}
+
 // Nav
 
 nav {
@@ -193,7 +198,23 @@ input[type="checkbox"] {
   }
 }
 
- // Map
+// Home screen
+
+.home .container-fluid {
+  margin-top: -15px;
+}
+
+.home p.h3 {
+  font-weight: normal;
+}
+
+.home img.beaver-dam {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+// Map
 
 #map {
   min-width: 400px;
@@ -203,7 +224,7 @@ input[type="checkbox"] {
 
 #master-map-container {
   width: 100%;
-  height: 600px;
+  height: 700px;
   position: relative;
 }
 

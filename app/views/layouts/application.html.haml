@@ -9,7 +9,9 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
+  %body{ class: controller.action_name }
     = render 'layouts/nav'
     = render 'layouts/messages'
     = yield
+    %footer
+      &copy; 2018 Nathan Struhs &amp; Yong Bakos. All rights reserved. Source available on <a href="https://github.com/osu-cascades/beaver-dam-analogues">GitHub</a>.

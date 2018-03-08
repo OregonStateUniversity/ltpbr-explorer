@@ -1,15 +1,13 @@
 - provide(:title, 'Home')
 .container-fluid
   .row
-    .col-md-8.bordered
-      = image_tag('hero.jpg', class: 'img-fluid img-responsive', alt: 'BDA in central Oregon')
-    .col.md-4.bordered.text-center
-      %h1 BDAdb
-      %p Beaver Dam Analogues (BDAs) are one low cost, "cheap and cheerful" technique used in beaver-assisted restoration to mimic natural beaver dams, promote beaver to work in particular areas, and accelerate recovery of incised channels.
-      %button{class: 'btn btn-outline-primary btn-view-map'} View Map
-  .row
     #master-map-container
       #master-map
       %div{class: 'btn btn-primary btn-map-go-back'}
         Go Back
         = image_tag 'up-arrow.png'
+  .row.mt-2.mb-4
+    %h1.display-3.m-auto Beaver Dam Analogue Database
+    %p.h3.px-5.text-center Beaver Dam Analogues (BDAs) are one low cost, "cheap and cheerful" technique used in beaver-assisted restoration to mimic natural beaver dams, promote beaver to work in particular areas, and accelerate recovery of incised channels.
+  .row
+    = image_tag('hero.jpg', class: 'img-fluid img-responsive beaver-dam', alt: 'BDA in central Oregon')
