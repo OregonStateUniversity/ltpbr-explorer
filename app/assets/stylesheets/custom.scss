@@ -28,6 +28,25 @@ a {
   }
 }
 
+.btn-primary {
+  background-color: $green;
+  border-color: $green;
+  &:hover {
+    background-color: lighten($green, 20%);
+    border-color: lighten($green, 20%);
+  }
+}
+
+.btn-outline-primary {
+  border-color: $green;
+  color: $green;
+  &:hover {
+    background-color: $green;
+    border-color: $green;
+    color: white;
+  }
+}
+
 // Nav
 
 nav {
@@ -240,12 +259,12 @@ input[type="checkbox"] {
   height: 100%;
 }
 
-.btn-map-go-back {
+.btn-map-learn-more {
   margin-top: 15px;
   margin-right: 15px;
   position: absolute;
   z-index: 1000;
-  top: 0;
+  bottom: 25px;
   right: 0;
   img {
     height: 25px;
