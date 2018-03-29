@@ -90,6 +90,37 @@ nav {
   }
 }
 
+// Home Layout
+
+.banner {
+  img {
+    width: 100%;
+  }
+}
+
+.center-text {
+  text-align: center;
+  h1 {
+    margin: auto;
+  }
+}
+
+.col-lg-4 {
+  img {
+    height: 270px;
+    width: 360px;
+  }
+}
+
+.row-sm {
+  height: 100px;
+}
+
+.row-md {
+  padding-top: 40px;
+  height: 200px;
+}
+
 // Forms
 
 input, textarea, select {
