@@ -12,6 +12,8 @@ class Project < ApplicationRecord
   validates_numericality_of :latitude, greater_than: -90, less_than: 90, message: 'must be in decimal notation'
   validates_numericality_of :longitude, greater_than: -180, less_than: 180, message: 'must be in decimal notation'
 
+  validates_format_of :implementation_date, :with => /\d{4}\-\d{2}\-\d{2}/, :message => 'must be in the following format: yyyy-mm-dd'
+
   has_attached_file :photo, styles: { default: '700x400>', convert_options: { default: '-quality 75 -strip'} }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
