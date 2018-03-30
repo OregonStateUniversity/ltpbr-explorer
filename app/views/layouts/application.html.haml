@@ -13,6 +13,4 @@
     = render 'layouts/nav'
     = render 'layouts/messages'
     = yield
-    %footer
-      %hr
-      &copy; 2018 Nathan Struhs &amp; Yong Bakos. All rights reserved. Source available on <a href="https://github.com/osu-cascades/beaver-dam-analogues">GitHub</a>.
+    = render 'layouts/footer' unless @disable_footer

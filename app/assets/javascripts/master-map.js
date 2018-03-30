@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  $(".static.home").ready(function() {
+  $(".static.projects_map").ready(function() {
     var projects = gon.projects.projects;
     var map_id = $('#master-map');
     var latitude = map_id.data('latitude');
