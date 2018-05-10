@@ -1,29 +1,101 @@
 = form_for(@project, html: {multipart: true}) do |f|
   = form_errors_for(@project)
   = f.label :affiliation
+  %div{class: 'btn btn-question', id: 'affiliation-help'}
+    = image_tag 'question.png'
   = f.text_field :affiliation, autofocus: true, autocomplete: 'off'
   = f.label :stream_name, 'Stream name'
   = f.text_field :stream_name, autocomplete: 'off'
   = f.label :implementation_date
+  %div{class: 'btn btn-question', id: 'implementation-date-help'}
+    = image_tag 'question.png'
   = f.date_field :implementation_date, autocomplete: 'off', placeholder: 'yyyy-mm-dd'
   = f.label :latitude
+  %div{class: 'btn btn-question', id: 'latitude-help'}
+    = image_tag 'question.png'
   = f.text_field :latitude, autocomplete: 'off', placeholder: 'e.g. 44.103436'
   = f.label :longitude
+  %div{class: 'btn btn-question', id: 'longitude-help'}
+    = image_tag 'question.png'
   = f.text_field :longitude, autocomplete: 'off', placeholder: 'e.g. -121.769211'
   = f.label :narrative
   %div{class: 'btn btn-question', id: 'narrative-help'}
     = image_tag 'question.png'
   = f.text_area :narrative, autocomplete: 'off'
   = f.label :area, 'Treatment length (meters)'
+  %div{class: 'btn btn-question', id: 'treatment-length-help'}
+    = image_tag 'question.png'
   = f.text_field :area, autocomplete: 'off'
   = f.label :maintenance, 'Will this project requires adaptive management?'
   = f.check_box :maintenance
   = f.label :primary_contact
+  %div{class: 'btn btn-question', id: 'primary-contact-help'}
+    = image_tag 'question.png'
   = f.text_field :primary_contact, autocomplete: 'off'
   = f.label :photo
   = f.file_field :photo, class: 'custom-file-control'
   .actions
     = f.submit class: 'btn confirm-btn'
+
+#affiliation-model.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title Affiliation
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        Primary organization involved with project design and implementation.
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+
+#implementation-date-model.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title Implementation date
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        Approximate date of initial BDA structure installation.
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+
+#latitude-model.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title Latitude
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        Approximate project LATITUDE in decimal degrees (e.g., 44.23454).
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+
+#longitude-model.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title Longitude
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        Approximate project LONGITUDE in decimal degrees (e.g., -122.3456).
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+
+#treatment-length-model.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title Treatment length
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        Approximate length of stream being treated with BDA structures in meters.
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
 
 #narrative-model.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog{:role => "document"}
@@ -37,4 +109,14 @@
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
 
-
+#primary-contact-model.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title Primary Contact
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        Primary contact for project manager or coordinator.
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
