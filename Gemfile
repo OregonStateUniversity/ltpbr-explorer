@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'paperclip', "~> 5.2.1"
 gem 'possessive'
-gem 'pg', '1.0.0'
+gem 'pg', '0.20.0'
 gem 'puma', '~> 3.7'
 gem 'rabl-rails'
 gem 'rails', '~> 5.1.4'
