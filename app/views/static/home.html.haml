@@ -16,17 +16,14 @@
       %h2 About BDAs
       = image_tag 'about-bdas.jpg'
       %p What are BDAs and how are they being used in stream and wetland restoration.
-      %p
-        = link_to 'Learn More', about_path, class: 'btn btn-primary'
+      %p= link_to 'Learn More', about_path, class: 'btn btn-primary'
     .col-lg-4
       %h2 Projects
       = image_tag 'projects-map.jpg'
       %p View existing BDA restoration projects throughout Oregon.
-      %p
-        = link_to 'View Map', projects_map_path, class: 'btn btn-primary'
+      %p= link_to 'View Map', projects_map_path, class: 'btn btn-primary'
     .col-lg-4
       %h2 Sign Up
       = image_tag 'sign-in.jpg'
       %p Register for an account to add and edit your BDA restoration project
-      %p
-        = link_to 'Sign Up', root_path, class: 'btn btn-primary'
+      %p= link_to 'Sign Up', new_user_session_path, class: 'btn btn-primary'
