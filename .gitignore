@@ -29,3 +29,5 @@
 .swp
 
 /public/system
+
+.ruby-gemset
