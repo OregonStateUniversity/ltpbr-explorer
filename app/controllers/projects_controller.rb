@@ -18,8 +18,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.author_id = current_user.id
-    current_user.projects << @project
+    @project.author = current_user
     if @project.save
       redirect_to @project
       flash[:success] = 'Project was successfully created.'
