@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :login
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   has_many :projects, foreign_key: 'author_id'
 
@@ -22,4 +23,5 @@ class User < ApplicationRecord
       end
     end
   end
+
 end

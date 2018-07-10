@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+
   attr_accessor :longitude, :latitude
 
   belongs_to :author, class_name: 'User'
