@@ -19,6 +19,21 @@ RSpec.describe Project, type: :model do
     it { is_expected.to belong_to(:author).class_name('User') }
   end
 
+  it 'has a title consisting of its stream name' do
+    expect(project.title).to eq 'Project on Example Stream Name'
+  end
+
+  describe 'byline' do
+    it 'consists of a date' do
+      expect(project.byline).to match /Implemented on #{Date.today.to_formatted_s(:long)}/
+    end
+    context 'with an affiliation' do
+      it 'consists of a date and affiliation' do
+        expect(project.byline).to eq "Implemented on #{Date.today.to_formatted_s(:long)} in affiliation with Example Affiliation"
+      end
+    end
+  end
+
   describe 'project#assign_lonlat' do
     it 'should compose lonlat from longitude and latitude' do
       subject.longitude = 99.9
