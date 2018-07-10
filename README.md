@@ -1,8 +1,11 @@
-# Beaver Dam Analogues (BDAs)
+# Beaver Dam Analogue (BDA) Explorer
 
 Beaver Dam Analogues (BDAs) are one low cost, 'cheap and cheerful' technique
 used in beaver-assisted restoration to mimic natural beaver dams, promote beaver
 to work in particular areas, and accelerate recovery of incised channels.
+
+This application enables users to add BDA their projects to a map, and browse
+other BDA projects.
 
 ## Development
 
