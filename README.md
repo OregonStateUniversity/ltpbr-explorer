@@ -20,4 +20,7 @@ Requires PostgreSQL with the PostGIS extension available for enabling. You
 [may](https://github.com/rgeo/activerecord-postgis-adapter/issues/190) also need
 to install _geos_, via `brew install geos`.
 
+Uses the [mapbox](https://www.mapbox.com) API, which requires a public token,
+which is hard-coded in some of the js files.
+
 &copy; 2017 Nathan Struhs, Yong Bakos. All rights reserved.
