@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  subject(:project) { build(:project) }
+  let(:project) { build(:project) }
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:affiliation) }
@@ -20,7 +20,9 @@ RSpec.describe Project, type: :model do
   end
 
   it 'has a title consisting of its stream name' do
-    expect(project.title).to eq 'Project on Example Stream Name'
+    stream_name = 'Example Stream Name'
+    project.stream_name = stream_name
+    expect(project.title).to eq "Project on #{stream_name}"
   end
 
   describe 'byline' do
@@ -34,21 +36,21 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe 'project#assign_lonlat' do
-    it 'should compose lonlat from longitude and latitude' do
-      subject.longitude = 99.9
-      subject.latitude = 88.8
-      subject.run_callbacks :save
-      expect(subject.lonlat.x).to be(99.9)
-      expect(subject.lonlat.y).to be(88.8)
+  describe 'generating lonlat before saving' do
+    it 'matches the latitude and longitude' do
+      project.latitude = 88.8
+      project.longitude = 99.9
+      project.run_callbacks :save
+      expect(project.lonlat.x).to be(99.9)
+      expect(project.lonlat.y).to be(88.8)
     end
 
-    it 'should round values to a precision of 6' do
-      subject.longitude = 99.1234567
-      subject.latitude = 88.1234561
-      subject.run_callbacks :save
-      expect(subject.lonlat.x).to be(99.123457)
-      expect(subject.lonlat.y).to be(88.123456)
+    it 'rounds values to a precision of 6' do
+      project.latitude = 88.1234561
+      project.longitude = 99.1234567
+      project.run_callbacks :save
+      expect(project.lonlat.x).to be(99.123457)
+      expect(project.lonlat.y).to be(88.123456)
     end
   end
 end
