@@ -16,8 +16,5 @@ test:
 
 production:
   <<: *default
-  database: bdadb_production
   schema_search_path: public, postgis
-  username: bdadb
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
   url: <%= ENV.fetch("DATABASE_URL", "").gsub(/postgres/, 'postgis') %>
