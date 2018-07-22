@@ -33,7 +33,7 @@ RSpec.feature 'User creates BDA project' do
       expect(error_explanations).to have_content("Implementation date can't be blank")
       expect(error_explanations).to have_content("Implementation date must be in the following format: yyyy-mm-dd")
       expect(error_explanations).to have_content("Latitude can't be blank")
-      expect(error_explanations).to have_content('Latitude must be in decimal notation')
+      expect(error_explanations).to have_content("Latitude must be in decimal notation")
       expect(error_explanations).to have_content("Longitude can't be blank")
       expect(error_explanations).to have_content('Longitude must be in decimal notation')
       expect(error_explanations).to have_content("Treatment length is not a number")
