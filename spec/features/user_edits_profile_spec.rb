@@ -11,26 +11,28 @@ RSpec.describe 'User edits profile', type: :feature do
   end
 
   context 'with valid credentials' do
-    it 'saves user with updated username' do
-      fill_in('Username', with: 'new_username')
+    it 'updates username' do
+      new_username = 'fake'
+      fill_in('Username', with: new_username)
       fill_in('Current password', with: user.password)
       click_button('Update')
       expect(page).to have_selector '.alert', text: 'Your account has been updated successfully.'
-      expect(page).to have_selector '.nav-link', text: 'new_username'
+      expect(page).to have_selector '.nav-link', text: new_username
     end
 
-    it 'saves user with updated affiliation' do
-      fill_in('Affiliation', with: 'new_affiliation')
+    it 'updates affiliation' do
+      new_affiliation = 'FAKE'
+      fill_in('Affiliation', with: new_affiliation)
       fill_in('Current password', with: user.password)
       click_button('Update')
       expect(page).to have_selector '.alert', text: 'Your account has been updated successfully.'
       visit edit_user_registration_path
-      expect(page).to have_field('Affiliation', with: 'new_affiliation')
+      expect(page).to have_field('Affiliation', with: new_affiliation)
     end
   end
 
   context 'with invalid credentials' do
-    it 'fails and prompts for valid password' do
+    it 'fails' do
       fill_in('Username', with: 'new_username')
       fill_in('Current password', with: 'invalid_password')
       click_button('Update')
@@ -39,7 +41,7 @@ RSpec.describe 'User edits profile', type: :feature do
   end
 
   context 'with blank password' do
-    it 'fails and prompts for a password' do
+    it 'fails' do
       fill_in('Username', with: 'new_username')
       click_button('Update')
       expect(page).to have_selector '.alert', text: 'Current password can\'t be blank'
