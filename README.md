@@ -13,6 +13,7 @@ This is a Rails application. After cloning the repository, you can:
 
 * Install dependencies with `bundle install`.
 * Set up the database with `rails db:setup`.
+* Copy _config/application.yml.example_ to _config/application.yml_, and enter a valid [reCAPTCHA](https://www.google.com/recaptcha) key and secret.
 * Run the tests with `rake` or `rspec`.
 * Run the server in _development_ with `rails server`.
 
