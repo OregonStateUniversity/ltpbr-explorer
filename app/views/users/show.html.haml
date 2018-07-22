@@ -3,7 +3,7 @@
   - if current_user.projects.empty?
     .jumbotron
       %h1.display-3 Hi, #{current_user.username}
-      %p.lead Welcome to BDAdb
+      %p.lead Welcome to BDA Explorer
       %hr.my-4/
       %p To get started create a new project.
       %p.lead= link_to 'New Project', new_project_path, class: 'btn btn-primary btn-lg'

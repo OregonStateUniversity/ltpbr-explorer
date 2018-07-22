@@ -66,7 +66,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "beaver-dam-analogues_#{Rails.env}"
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'https://bdadb-staging.herokuapp.com/'}
+  config.action_mailer.default_url_options = { host: 'https://bda-explorer.herokuapp.com/'}
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address:              'smtp.sendgrid.net',
