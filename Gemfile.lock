@@ -339,7 +339,7 @@ DEPENDENCIES
   possessive
   puma (~> 3.7)
   rabl-rails
-  rails (~> 5.1.5)
+  rails (~> 5.1.6)
   recaptcha
   rspec-rails (~> 3.7.0)
   sass-rails (~> 5.0)

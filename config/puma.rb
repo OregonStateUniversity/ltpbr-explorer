@@ -1,5 +1,5 @@
-workers Integer(ENV.fetch('WEB_CONCURRENCY', 2))
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+workers ENV.fetch('WEB_CONCURRENCY') { 2 }
+threads_count = ENV.fetch('RAILS_MAX_THREADS') { 5 }
 threads threads_count, threads_count
 rackup      DefaultRackup
 port        ENV.fetch('PORT') { 3000 }
