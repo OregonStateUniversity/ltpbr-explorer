@@ -19,7 +19,6 @@ RSpec.feature 'User creates BDA project' do
     fill_in('Number of structures', with: 2)
     fill_in('Narrative', with: 'Example Project Narrative')
     fill_in('Treatment length', with: 1000)
-    check('Will this project require adaptive management?')
     fill_in('Primary contact', with: 'Example Contact Name')
     click_on('Create Project')
     expect(page).to have_content('Project was successfully created.')

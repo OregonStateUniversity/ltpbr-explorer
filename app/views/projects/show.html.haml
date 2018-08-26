@@ -9,14 +9,12 @@
         %p Narrative: #{ @project.narrative }
       %p Area(m): #{ @project.area }
       %p Number of Structures: #{ @project.number_of_structures }
-      - if @project.maintenance
-        %p Requires adaptive management
       %p Primary Contact: #{ @project.primary_contact }
       - if @project.photo.file?
         = image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}", class: 'img-fluid project-photo'
     .col-lg
       #map{ 'data-latitude' => "#{@project.lonlat.y}", 'data-longitude' => "#{@project.lonlat.x}" }
-  - if user_signed_in?  && @project.author_id == current_user.id
+  - if user_signed_in? && @project.author_id == current_user.id
     %hr/
     .btn-group
       = link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary', title: "Edit #{@project}"
