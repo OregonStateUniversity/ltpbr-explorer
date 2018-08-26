@@ -18,6 +18,9 @@
   %div{class: 'btn btn-question', id: 'longitude-help'}
     = image_tag 'question.png'
   = f.text_field :longitude, autocomplete: 'off', placeholder: 'e.g. -121.769211'
+  = f.label :number_of_structures
+  %div{class: 'btn btn-question', id: 'number-of-structures-help'}= image_tag 'question.png'
+  = f.text_field :number_of_structures, autocomplete: 'off', placeholder: 'estimate'
   = f.label :narrative
   %div{class: 'btn btn-question', id: 'narrative-help'}
     = image_tag 'question.png'
@@ -82,6 +85,18 @@
           %span{"aria-hidden" => "true"} ×
       .modal-body
         Approximate project LONGITUDE in decimal degrees (e.g., -122.3456).
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+
+#number-of-structures-model.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title Number of Structures
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        Approximate number of BDA structures currently installed or that will be installed in the future.
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
 

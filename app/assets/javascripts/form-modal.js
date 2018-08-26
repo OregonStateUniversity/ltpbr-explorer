@@ -15,6 +15,10 @@ $(document).on('turbolinks:load', function() {
     $('#longitude-model').modal();
   });
 
+  $('#number-of-structures-help').on('click', function() {
+    $('#number-of-structures-model').modal();
+  });
+
   $('#treatment-length-help').on('click', function() {
     $('#treatment-length-model').modal();
   });
