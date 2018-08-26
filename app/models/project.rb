@@ -12,6 +12,7 @@ class Project < ApplicationRecord
   validates_numericality_of :area, only_integer: true, greater_than: 0
   validates_numericality_of :latitude, greater_than: -90, less_than: 90, message: 'must be in decimal notation'
   validates_numericality_of :longitude, greater_than: -180, less_than: 180, message: 'must be in decimal notation'
+  validates_numericality_of :number_of_structures, only_integer: true, greater_than: 0
 
   validates_format_of :implementation_date, :with => /\d{4}\-\d{2}\-\d{2}/, :message => 'must be in the following format: yyyy-mm-dd'
 

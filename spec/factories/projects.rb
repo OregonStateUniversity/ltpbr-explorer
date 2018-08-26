@@ -9,6 +9,7 @@ FactoryBot.define do
     primary_contact { "Example Contact" }
     latitude { 1.0 }
     longitude { 1.0 }
+    number_of_structures { 1 }
     author factory: :user
   end
 end
