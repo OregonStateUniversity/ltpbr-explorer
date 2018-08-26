@@ -1,4 +1,4 @@
-# From 5.1.4 -> 5.1.5
+# From 5.1.4 -> 5.1.5 -> 5.1.6
 
 # Make `form_with` generate non-remote forms.
 Rails.application.config.action_view.form_with_generates_remote_forms = true
