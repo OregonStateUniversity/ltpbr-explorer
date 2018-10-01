@@ -10,6 +10,8 @@
       %p Area(m): #{ @project.area }
       %p Number of Structures: #{ @project.number_of_structures }
       %p Primary Contact: #{ @project.primary_contact }
+      - if @project.structure_description.presence
+        %p Structure Design Elements: #{ @project.structure_description }
       - if @project.photo.file?
         = image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}", class: 'img-fluid project-photo'
     .col-lg

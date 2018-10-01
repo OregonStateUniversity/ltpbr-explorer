@@ -30,4 +30,8 @@ $(document).on('turbolinks:load', function() {
   $('#primary-contact-help').on('click', function() {
     $('#primary-contact-model').modal();
   });
+
+  $('#structure-description-help').on('click', function() {
+    $('#structure-description-model').modal();
+  });
 });

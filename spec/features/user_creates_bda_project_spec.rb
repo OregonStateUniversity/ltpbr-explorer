@@ -18,6 +18,7 @@ RSpec.feature 'User creates BDA project' do
     fill_in('Longitude', with: 45.0000)
     fill_in('Number of structures', with: 2)
     fill_in('Narrative', with: 'Example Project Narrative')
+    fill_in('Structure Design Elements', with: 'Example structure design elements')
     fill_in('Treatment length', with: 1000)
     fill_in('Primary contact', with: 'Example Contact Name')
     click_on('Create Project')

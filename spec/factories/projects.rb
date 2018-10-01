@@ -4,6 +4,7 @@ FactoryBot.define do
     stream_name { "Example Stream Name" }
     implementation_date { Date.today }
     narrative { "Example Narrative" }
+    structure_description { "Example project description with design elements"}
     area { 1 }
     primary_contact { "Example Contact" }
     latitude { 1.0 }
