@@ -1,7 +1,9 @@
 class StaticController < ApplicationController
-  def home; end
+  def home;
+  end
 
-  def about; end
+  def about;
+  end
 
   def projects_map
     @disable_footer = true

@@ -1,0 +1,40 @@
+<% provide(:title, "#{current_user.username.possessive} Projects") %>
+<div class="container pt-5" >
+  <% if current_user.projects.empty? %>
+  <div class="jumbotron">
+    <h1 class="display-3">Hi, #{current_user.username}</h1>
+    <p class="lead">Welcome to BDA Explorer</p>
+    <hr class="my-4"/>
+    <p>To get started create a new project.</p>
+    <p class="lead">
+      <%= link_to 'New Project', new_project_path, class: 'btn btn-primary btn-lg' %>
+    </p>
+  </div>
+  <% else %>
+  <h2> <%= current_user.username.possessive %> Projects</h2>
+  <hr/>
+  <% current_user.projects.each do |project| %>
+  <div class="media">
+    <%= image_tag project.photo.url(:default), class: 'align-self-center mr-3 rounded-circle', size: width=100 %>
+    <div class="media-body">
+      <div class="row">
+        <div class="col-6">
+          <h2><%= link_to project.stream_name, project, class: 'text-dark' %></h2>
+          <p><%= link_to project.affiliation %></p>
+        </div>
+        <div class="col-5">
+          <h5>Stream Name</h5>
+          <p>Basin</p>
+        </div>
+        <div class="col-1">
+          <%= link_to 'view', project, class: 'badge badge-pill badge-success' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <hr/>
+  <% end %>
+  <% end %>
+</div>
