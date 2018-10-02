@@ -1,20 +1,21 @@
 <%= form_for(@project, html: {multipart: true}) do |f| %>
-  
+    
   <%= form_errors_for(@project) %>
-  
-  <!-- PROJECT AFFILIATION -->
-  <%= f.label :project_name %>
+
+  <!-- PROJECT NAME -->
+  <label for="project_name">Project Name</label>
   <div class="btn btn-question" id="project_name-help">
     <%= image_tag 'question.png' %>
   </div>
-  <%= f.text_field :project_name, autofocus: true, autocomplete: 'off' %>
+  <%= f.text_field :project_name, autofocus: true, autocomplete: 'off', class: 'form-control' %>
+
 
   <!-- PROJECT AFFILIATION -->
-  <%= f.label :affiliation %>
+  <label for="affiliation">Project Affiliation</label>
   <div class="btn btn-question" id="affiliation-help">
     <%= image_tag 'question.png' %>
   </div>
-  <%= f.text_field :affiliation, autofocus: true, autocomplete: 'off' %>
+  <%= f.text_field :affiliation, autofocus: true, autocomplete: 'off', placeholder: 'e.g. NOAA Fisheries', class: 'form-control' %>
   
   <!-- STREAM NAME -->
   <%= f.label :stream_name, 'Stream name' %>
@@ -96,7 +97,7 @@
         </button>
       </div>
       <div class='modal-body'>
-        Just a simple name for the project. i.g. "Bear Creek Surface Flow Enhancement", or "Bridge Creek Riparian Uplift"
+        <p>Just a simple name for the project e.g:</p> <p>"Bear Creek Surface Flow Enhancement", or</p> "Bridge Creek Riparian Uplift"
       </div>
       <div class='modal-footer'>
         <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
