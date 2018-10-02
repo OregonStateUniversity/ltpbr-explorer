@@ -1,0 +1,380 @@
+<%= form_for(@project, html: {multipart: true}) do |f| %>
+    
+  <%= form_errors_for(@project) %>
+<div class="row">
+  <div class="col">
+    <!-- PROJECT NAME -->
+    <label for="project_name">Project Name</label>
+    <div class="btn btn-question" id="project_name-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.text_field :project_name, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Bridge Creek Incision Recovery', class: 'form-control' %>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md">
+    <!-- PRIMARY CONTACT -->
+    <label for="primary_contact">Primary Contact Name</label>
+    <div class="btn btn-question" id="primary_contact-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.text_field :primary_contact, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Jane Doe', class: 'form-control' %>
+  </div>
+
+  <div class="col-md">
+    <!-- PROJECT AFFILIATION -->
+    <label for="affiliation">Project Affiliation</label>
+    <div class="btn btn-question" id="affiliation-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.text_field :affiliation, autofocus: true, autocomplete: 'off', placeholder: 'e.g. NOAA Fisheries', class: 'form-control' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md">
+    <!-- STREAM NAME -->
+    <label for="stream_name">Stream Name</label>
+    <div class="btn btn-question" id="stream_name-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.text_field :stream_name, autofocus: true, autocomplete: 'off', placeholder: 'Bear Creek', class: 'form-control' %>
+  </div>
+
+  <div class="col-md">
+    <!-- WATERSHED -->
+    <label for="watershed">Project Watershed</label>
+    <div class="btn btn-question" id="watershed-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.text_field :watershed, autofocus: true, autocomplete: 'off', placeholder: 'e.g. John Day', class: 'form-control' %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md">
+    <!-- LATITUDE -->
+    <label for="latitude">Latitude</label>
+    <div class="btn btn-question" id="latitude-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.text_field :latitude, autocomplete: 'off', placeholder: 'e.g. 44.103436', class: 'form-control' %>
+  </div>
+  <div class="col-md">
+    <!-- LONGITUDE -->
+    <label for="latitude">Longitude</label>
+    <div class="btn btn-question" id="longitude-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.text_field :longitude, autocomplete: 'off', placeholder: 'e.g. -121.769211', class: 'form-control' %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md">
+    <!-- STRUCTURES -->
+    <label for="number_of_structures">Total BDA Structures</label>
+    <div class="btn btn-question" id="number_of_structures-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.text_field :number_of_structures, autocomplete: 'off', placeholder: 'e.g. 50', class: 'form-control' %>
+  </div>
+  <div class="col-md">
+    <!-- TREATMENT LENGTH -->
+    <label for="treatment_length">Treatment Length (meters)</label>
+    <div class="btn btn-question" id="treatment_length-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.text_field :area, autocomplete: 'off', placeholder: 'e.g. 500', class: 'form-control' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md">
+    <!-- IMPLEMENTATION DATE -->
+    <label for="implementation_date">Implementation Date</label>
+    <div class="btn btn-question" id="implementation_date-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.date_field :implementation_date, autocomplete: 'off', placeholder: 'yyyy-mm-dd', class: 'form-control' %>
+  </div>
+  <div class="col-md">
+    <!-- PROJECT IMAGE -->
+    <label for="photo">Project Photo</label>
+    <div class="btn btn-question" id="photo-help">
+      <%= image_tag 'question.png' %>
+    </div>
+    <%= f.file_field :photo, class: 'custom-file-control form-control' %>
+  </div>
+</div>
+
+
+  
+  <!-- NARRATIVE -->
+<label for="narrative">Project Restoration Goals</label>
+  <div class="btn btn-question" id="narrative-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.text_area :narrative, autocomplete: 'off', placeholder: 'Restoration goals for the project. e.g. Expansion of riparian vegetation.', class: 'form-control', rows: 5 %>
+  
+  <!-- STRUCTURE CONSTRUCTION -->
+<label for="structure_description">Structure Construction Elements</label>
+ <div class="btn btn-question" id="structure_description-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.text_area :structure_description, autocomplete: 'off', placeholder: 'Briefly describe BDA design and/or construction elements.', rows: 5 %>
+  
+  
+  <div class="actions">
+    <%= f.submit class: 'btn confirm-btn' %>
+  </div>
+
+<% end %>
+
+<!-- MODAL INFORMATION -->
+<div aria-hidden='true' class='modal fade' id='project_name-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Project Name</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        <p>Just a simple name for the project e.g:</p> <p>"Bear Creek Surface Flow Enhancement", or</p> "Bridge Creek Riparian Uplift"
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL INFORMATION -->
+<div aria-hidden='true' class='modal fade' id='photo-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Project Photo</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Upload a representative picture of the project area, channel, or structures. 
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div aria-hidden='true' class='modal fade' id='stream_name-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Stream Name</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Name of the project stream. e.g. Bridge Creek.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div aria-hidden='true' class='modal fade' id='watershed-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Watershed Name</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Project watershed or sub-watershed. e.g. "John Day"
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div aria-hidden='true' class='modal fade' id='affiliation-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Affiliation</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Primary organization involved with project design and implementation.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div aria-hidden='true' class='modal fade' id='implementation_date-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Implementation date</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Approximate date of initial BDA structure installation.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='latitude-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Latitude</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Approximate project LATITUDE in decimal degrees (e.g., 44.23454).
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='longitude-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Longitude</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Approximate project LONGITUDE in decimal degrees (e.g., -122.3456).
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='number_of_structures-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Number of Structures</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Approximate number of BDA structures currently installed or that will be installed in the future.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='treatment_length-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Treatment length</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Approximate length of stream being treated with BDA structures in meters.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='narrative-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Narrative</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Briefly describe restoration goals for the project which may include increased fish habitat, riparian expansion, channel aggradation, etc.....
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='primary_contact-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Primary Contact</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Primary contact name for project manager or coordinator. e.g. John Doe
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div aria-hidden='true' class='modal fade' id='structure_description-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Structure Design Elements</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Briefly describe BDA structure design and/or construction elements. e.g., Structures were generally built at a low elevation of 0.25 m. Majority of the structures utilized two post rows and juniper and sagebrush as fill material.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

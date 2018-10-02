@@ -1,37 +1,53 @@
 $(document).on('turbolinks:load', function() {
-  $('#affiliation-help').on('click', function() {
-    $('#affiliation-model').modal();
+  $('#project_name-help').on('click', function() {
+    $('#project_name-modal').modal();
   });
 
-  $('#implementation-date-help').on('click', function() {
-    $('#implementation-date-model').modal();
+  $('#photo-help').on('click', function() {
+    $('#photo-modal').modal();
+  });
+
+  $('#stream_name-help').on('click', function() {
+    $('#stream_name-modal').modal();
+  });
+
+  $('#watershed-help').on('click', function() {
+    $('#watershed-modal').modal();
+  });
+
+  $('#affiliation-help').on('click', function() {
+    $('#affiliation-modal').modal();
+  });
+
+  $('#implementation_date-help').on('click', function() {
+    $('#implementation_date-modal').modal();
   });
 
   $('#latitude-help').on('click', function() {
-    $('#latitude-model').modal();
+    $('#latitude-modal').modal();
   });
 
   $('#longitude-help').on('click', function() {
-    $('#longitude-model').modal();
+    $('#longitude-modal').modal();
   });
 
-  $('#number-of-structures-help').on('click', function() {
-    $('#number-of-structures-model').modal();
+  $('#number_of_structures-help').on('click', function() {
+    $('#number_of_structures-modal').modal();
   });
 
-  $('#treatment-length-help').on('click', function() {
-    $('#treatment-length-model').modal();
+  $('#treatment_length-help').on('click', function() {
+    $('#treatment_length-modal').modal();
   });
 
   $('#narrative-help').on('click', function() {
-    $('#narrative-model').modal();
+    $('#narrative-modal').modal();
   });
 
-  $('#primary-contact-help').on('click', function() {
-    $('#primary-contact-model').modal();
+  $('#primary_contact-help').on('click', function() {
+    $('#primary_contact-modal').modal();
   });
 
-  $('#structure-description-help').on('click', function() {
-    $('#structure-description-model').modal();
+  $('#structure_description-help').on('click', function() {
+    $('#structure_description-modal').modal();
   });
 });
