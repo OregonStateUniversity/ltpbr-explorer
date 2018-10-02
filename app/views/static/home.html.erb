@@ -1,0 +1,93 @@
+<% provide(:title, 'Home') %>
+<div class="banner">
+  <%= image_tag 'parrish_banner.jpg' %>
+</div>
+<div class="jumbotron jumbotron-fluid text-muted">
+  <div class="container text-sm-center">
+    <h3 class="display-3">OR BDA EXPLORER</h3>
+    <p class="lead pb-2">A source of information on the use of Beaver Dam Analogs for restoration of stream and riparian areas in Oregon</p>
+  </div>
+</div>
+<!-- CARDS -->
+<div class="container">
+  <div class="row">
+    <div class="card-deck">
+      <!-- ABOUT -->
+      <div class="col-md-4">
+        <div class="card mb-4 shadow">
+          <%= image_tag 'home_about.jpg', class: "card-img-top" %>
+          <div class="card-body">
+            <h4 class="text-muted">About</h4>
+            <p class="card-text text-muted">Learn more about the BDA Explorer site</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <%= link_to 'About', about_path, class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- PROJECTS -->
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <%= image_tag 'home_projects.jpg', class: "card-img-top" %>
+          <div class="card-body">
+            <h4 class="text-muted">Projects</h4>
+            <p class="card-text text-muted">Explore existing BDA projects in OR</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <%= link_to 'Projects', projects_map_path, class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ABOUT -->
+      <div class="col-md-4">
+        <div class="card mb-4 shadow">
+          <%= image_tag 'home_signup.jpg', class: "card-img-top" %>
+          <div class="card-body">
+            <h4 class="text-muted">Account</h4>
+            <p class="card-text text-muted">Sign up or login to add your projects</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <%= link_to 'Sign Up', new_user_session_path, class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- LOGOS -->
+<div class="container">
+  <hr>
+  <p class="lead text-muted text-center">Project supported by:</p>
+  <div class="row">
+    <div class="col">
+      <a href="https://www.eco-logical-research.com/">
+        <%= image_tag 'logo_ELR.png', class: "mx-auto d-block", height: 100 %>
+      </a>
+      <p class="text-sm-center text-muted">Eco Logical Research</p>
+    </div>
+    <div class="col">
+      <a href="https://www.oregon.gov/oweb/Pages/index.aspx">
+        <%= image_tag 'logo_OWEB.png', class: "mx-auto d-block", height: 100 %>
+      </a>
+      <p class="text-sm-center text-muted">OWEB</p>
+    </div>
+    <div class="col">
+      <a href="https://osucascades.edu/">
+        <%= image_tag 'logo_OSU.png', class: "mx-auto d-block", height: 100 %>
+      </a>
+      <p class="text-sm-center text-muted">OSU Cascades</p>
+    </div>
+    <div class="col">
+      <a href="http://www.oregonwatersheds.org/">
+        <%= image_tag 'logo_WC.png', class: "mx-auto d-block", height: 100 %>
+      </a>
+      <p class="text-sm-center text-muted">OR NWC</p>
+    </div>
+    <div class="col">
+      <a href="http://www.anabranchsolutions.com/">
+        <%= image_tag 'logo_AS.png', class: "mx-auto d-block", height: 100 %>
+      </a>
+      <p class="text-sm-center text-muted">Anabranch Solutions</p>
+    </div>
+  </div>
+</div>
