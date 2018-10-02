@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:affiliation, :stream_name, :implementation_date,
       :narrative, :area, :primary_contact, :longitude, :latitude, :number_of_structures, :photo,
-      :structure_description)
+      :structure_description, :project_name)
   end
 
   def require_owner

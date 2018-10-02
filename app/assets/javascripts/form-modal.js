@@ -1,4 +1,8 @@
 $(document).on('turbolinks:load', function() {
+  $('#project_name-help').on('click', function() {
+    $('#project_name-model').modal();
+  });
+
   $('#affiliation-help').on('click', function() {
     $('#affiliation-model').modal();
   });
