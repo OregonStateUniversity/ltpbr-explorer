@@ -1,0 +1,243 @@
+<%= form_for(@project, html: {multipart: true}) do |f| %>
+  
+  <%= form_errors_for(@project) %>
+  
+  <!-- PROJECT AFFILIATION -->
+  <%= f.label :affiliation %>
+  <div class="btn btn-question" id="affiliation-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.text_field :affiliation, autofocus: true, autocomplete: 'off' %>
+  
+  <!-- STREAM NAME -->
+  <%= f.label :stream_name, 'Stream name' %>
+  <%= f.text_field :stream_name, autocomplete: 'off' %>
+  
+  <!-- IMPLEMENTATION DATE -->
+  <%= f.label :implementation_date %>
+  <div class="btn btn-question" id="implementation-date-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.date_field :implementation_date, autocomplete: 'off', placeholder: 'yyyy-mm-dd' %>
+  
+  <!-- LATITUDE -->
+  <%= f.label :latitude %>
+  <div class="btn btn-question" id="latitude-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.text_field :latitude, autocomplete: 'off', placeholder: 'e.g. 44.103436' %>
+  
+  <!-- LONGITUDE -->
+  <%= f.label :longitude %>
+  <div class="btn btn-question" id="longitude-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.text_field :longitude, autocomplete: 'off', placeholder: 'e.g. -121.769211' %>
+  
+  <!-- STRUCTURES -->
+  <%= f.label :number_of_structures %>
+  <div class="btn btn-question" id="number-of-structures-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.text_field :number_of_structures, autocomplete: 'off', placeholder: 'estimate' %>
+  
+  <!-- NARRATIVE -->
+  <%= f.label :narrative %>
+  <div class="btn btn-question" id="narrative-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.text_area :narrative, autocomplete: 'off' %>
+  
+  <!-- STRUCTURE CONSTRUCTION -->
+  <%= f.label :structure_description, 'Structure Design Elements' %>
+  <div class="btn btn-question" id="structure-description-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.text_area :structure_description, autocomplete: 'off' %>
+  
+  <!-- TREATMENT LENGTH -->
+  <%= f.label :area, 'Treatment length (meters)' %>
+  <div class="btn btn-question" id="treatment-length-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.text_field :area, autocomplete: 'off' %>
+  
+  <!-- PROJECT CONTACT -->
+  <%= f.label :primary_contact %>
+  <div class="btn btn-question" id="primary-contact-help">
+    <%= image_tag 'question.png' %>
+  </div>
+  <%= f.text_field :primary_contact, autocomplete: 'off' %>
+  
+  <!-- PROJECT IMAGE -->
+  <%= f.label :photo %>
+  <%= f.file_field :photo, class: 'custom-file-control' %>
+  <div class="actions">
+    <%= f.submit class: 'btn confirm-btn' %>
+  </div>
+
+<% end %>
+
+<!-- MODAL INFORMATION -->
+<div aria-hidden='true' class='modal fade' id='affiliation-model' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Affiliation</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Primary organization involved with project design and implementation.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='implementation-date-model' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Implementation date</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Approximate date of initial BDA structure installation.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='latitude-model' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Latitude</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Approximate project LATITUDE in decimal degrees (e.g., 44.23454).
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='longitude-model' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Longitude</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Approximate project LONGITUDE in decimal degrees (e.g., -122.3456).
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='number-of-structures-model' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Number of Structures</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Approximate number of BDA structures currently installed or that will be installed in the future.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='treatment-length-model' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Treatment length</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Approximate length of stream being treated with BDA structures in meters.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='narrative-model' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Narrative</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        The narrative describes the project objectives and elements of BDA construction and design.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='primary-contact-model' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Primary Contact</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Primary contact for project manager or coordinator.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='structure-description-model' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Structure Design Elements</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        What did you build? Specify a little about the materials and design.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
