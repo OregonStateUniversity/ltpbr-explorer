@@ -1,0 +1,49 @@
+<% provide(:title, 'Edit Profile') %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h2>
+        Edit <%= resource_name.to_s.humanize %>
+        <hr/>
+      </h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.label :username %>
+        <%= f.text_field :username, autofocus: true, autocomplete: 'off' %>
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: 'email' %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+          </div>
+        <% end %>
+        <%= f.label :affiliation %>
+        <%= f.text_field :affiliation, autocomplete: 'off' %>
+        <%= f.label :password %>
+        <i>( leave blank if you don't want to change it )</i>
+        <%= f.password_field :password, autocomplete: 'off' %>
+        <%= f.label :password_confirmation %>
+        <% if @minimum_password_length %>
+          <em>
+            (
+            <%= @minimum_password_length %>
+            characters minimum )
+          </em>
+        <% end %>
+        <%= f.password_field :password_confirmation, autocomplete: 'off' %>
+        <%= f.label :current_password %>
+        <%= f.password_field :current_password, autocomplete: 'off' %>
+        <div class="actions">
+          <%= f.submit 'Update', class: 'btn confirm-btn' %>
+        </div>
+      <% end %>
+      <hr/>
+      <h3>Cancel my account</h3>
+      <p>
+        Unhappy? <%= button_to 'Cancel my account', registration_path(resource_name), class: 'btn btn-outline-danger btn-width-md', data: { confirm: 'Are you sure?' }, method: :delete  %>
+      </p>
+    </div>
+  </div>
+</div>
+
