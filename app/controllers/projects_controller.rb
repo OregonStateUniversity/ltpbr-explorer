@@ -3,7 +3,9 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :require_owner, only: [:edit, :update, :destroy]
 
-  def index; end
+  def index;
+    @projects = Project.all
+  end
 
   def show; end
 

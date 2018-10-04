@@ -4,7 +4,7 @@ class StaticController < ApplicationController
   def about; end
 
   def projects_map
-    @disable_footer = true
+    @disable_footer = false
     @projects = Project.all
     gon.rabl 'app/views/static/home.rabl', as: 'projects'
   end
