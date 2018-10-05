@@ -40,14 +40,14 @@
 
   <div class="form-group">
     <h5>Project Goals and Objectives</h5>
-    <p><%= @project.narrative %></p>
+    <p class="form-control"><%= @project.narrative %></p>
   </div>
   <div class="form-group">
     <h5>Structure Construction Elements</h5>
-    <p><%= @project.structure_description %></p>
+    <p class="form-control"><%= @project.structure_description %></p>
   </div>
 
-  <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="map" class="rounded"></div>
+  <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="map" class="rounded border border-secondary"></div>
 
   <% if user_signed_in? && @project.author_id == current_user.id %>
     <hr/>
