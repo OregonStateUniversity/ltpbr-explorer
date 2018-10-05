@@ -13,7 +13,7 @@
     </div>
   
   <% else %>
-    <h2 class="display-3"><%= current_user.username.possessive %> Projects</h2>
+    <h2><%= current_user.username.possessive %> Projects</h2>
     <% current_user.projects.each do |project| %>
     <hr>
     <div class="row">
@@ -21,12 +21,12 @@
         <%= image_tag project.photo.url(:default), alt: "Project on #{project.stream_name}", class: 'rounded', width: 100 %>
       </div>
       <div class="col-sm-6">
-        <h3><%= link_to project.project_name, project %></h3>
-        <h5><%= link_to project.affiliation, project %></h5>
+        <h3><%= link_to project.project_name, project, class: "text-dark" %></h3>
+        <h5><%= link_to project.affiliation, project, class: "text-secondary" %></h5>
       </div>
       <div class="col-sm-3">
-        <h5 ><%= link_to project.watershed, project %></h5>
-        <h5><%= link_to project.stream_name, project %></h5>
+        <h5 ><%= link_to project.watershed, project, class: "text-dark" %></h5>
+        <h5><%= link_to project.stream_name, project, class: "text-secondary" %></h5>
       </div>
     </div>
     <% end %>
