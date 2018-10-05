@@ -1,8 +1,5 @@
 <% provide(:title, @project.stream_name) %>
 <div class="container pt-5">
-
- 
-
   <h4 class="display-4"><%= @project.project_name %></h4>
   <p class="lead"><%= @project.affiliation %></p>
   <hr/>
@@ -42,16 +39,15 @@
   </div>
 
   <div class="form-group">
-            <h5>Project Goals and Objectives</h5>
-            <p><%= @project.narrative %></p>
-        </div>
-        <div class="form-group">
-            <h5>Structure Construction Elements</h5>
-            <p><%= @project.structure_description %></p>
-        </div>
+    <h5>Project Goals and Objectives</h5>
+    <p><%= @project.narrative %></p>
+  </div>
+  <div class="form-group">
+    <h5>Structure Construction Elements</h5>
+    <p><%= @project.structure_description %></p>
+  </div>
 
-
-    <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="map" class="rounded"></div>
+  <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="map" class="rounded"></div>
 
   <% if user_signed_in? && @project.author_id == current_user.id %>
     <hr/>
@@ -60,5 +56,4 @@
       <%= link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-secondary', title: "Delete #{@project}" %>
     </div>
   <% end %>
-
 </div>
