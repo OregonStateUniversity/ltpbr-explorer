@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col">
     <!-- PROJECT NAME -->
-    <label for="project_name">Project Name</label>
+    <%= f.label :project_name, 'Project Name' %>
     <div class="btn btn-question" id="project_name-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md">
     <!-- PRIMARY CONTACT -->
-    <label for="primary_contact">Primary Contact Name</label>
+    <%= f.label :primary_contact, 'Primary Contact Name' %>
     <div class="btn btn-question" id="primary_contact-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -22,7 +22,7 @@
   </div>
   <div class="col-md">
     <!-- PROJECT AFFILIATION -->
-    <label for="affiliation">Project Affiliation</label>
+    <%= f.label :affiliation, 'Project Affiliation' %>
     <div class="btn btn-question" id="affiliation-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -32,7 +32,7 @@
 <div class="row">
   <div class="col-md">
     <!-- STREAM NAME -->
-    <label for="stream_name">Stream Name</label>
+    <%= f.label :stream_name, 'Stream Name' %>
     <div class="btn btn-question" id="stream_name-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -40,7 +40,7 @@
   </div>
   <div class="col-md">
     <!-- WATERSHED -->
-    <label for="watershed">Project Watershed</label>
+    <%= f.label :watershed, 'Project Watershed' %>
     <div class="btn btn-question" id="watershed-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -50,7 +50,7 @@
 <div class="row">
   <div class="col-md">
     <!-- LATITUDE -->
-    <label for="latitude">Latitude</label>
+    <%= f.label :latitude %>
     <div class="btn btn-question" id="latitude-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -58,7 +58,7 @@
   </div>
   <div class="col-md">
     <!-- LONGITUDE -->
-    <label for="latitude">Longitude</label>
+    <%= f.label :longitude %>
     <div class="btn btn-question" id="longitude-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -68,7 +68,7 @@
 <div class="row">
   <div class="col-md">
     <!-- STRUCTURES -->
-    <label for="number_of_structures">Total BDA Structures</label>
+    <%= f.label :number_of_structures, 'Total BDA Structures' %>
     <div class="btn btn-question" id="number_of_structures-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -76,7 +76,7 @@
   </div>
   <div class="col-md">
     <!-- TREATMENT LENGTH -->
-    <label for="treatment_length">Treatment Length (meters)</label>
+    <%= f.label :area, 'Treatment Length (meters)' %>
     <div class="btn btn-question" id="treatment_length-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -86,7 +86,7 @@
 <div class="row">
   <div class="col-md">
     <!-- IMPLEMENTATION DATE -->
-    <label for="implementation_date">Implementation Date</label>
+    <%= f.label :implementation_date, 'Implementation Date' %>
     <div class="btn btn-question" id="implementation_date-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -94,7 +94,7 @@
   </div>
   <div class="col-md">
     <!-- PROJECT IMAGE -->
-    <label for="photo">Project Photo</label>
+    <%= f.label :photo, 'Project Photo' %>
     <div class="btn btn-question" id="photo-help">
       <%= image_tag 'question.png' %>
     </div>
@@ -102,14 +102,14 @@
   </div>
 </div>
 <!-- NARRATIVE -->
-<label for="narrative">Project Restoration Goals</label>
+<%= f.label :narrative, 'Project Restoration Goals' %>
 <div class="btn btn-question" id="narrative-help">
   <%= image_tag 'question.png' %>
 </div>
 <%= f.text_area :narrative, autocomplete: 'off', placeholder: 'Restoration goals for the project. e.g. Expansion of riparian vegetation.', class: 'form-control', rows: 5 %>
 
 <!-- STRUCTURE CONSTRUCTION -->
-<label for="structure_description">Structure Construction Elements</label>
+<%= f.label :structure_description, 'Structure Construction Elements' %>
 <div class="btn btn-question" id="structure_description-help">
   <%= image_tag 'question.png' %>
 </div>
