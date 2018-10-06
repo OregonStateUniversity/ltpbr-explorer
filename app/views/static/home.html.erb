@@ -59,35 +59,19 @@
   <hr>
   <p class="lead text-muted text-center">Project supported by:</p>
   <div class="row">
-    <div class="col">
-      <a href="https://www.eco-logical-research.com/">
-        <%= image_tag 'logo_ELR.png', class: "mx-auto d-block", height: 100 %>
-      </a>
-      <p class="text-sm-center text-muted">Eco Logical Research</p>
-    </div>
-    <div class="col">
-      <a href="https://www.oregon.gov/oweb/Pages/index.aspx">
-        <%= image_tag 'logo_OWEB.png', class: "mx-auto d-block", height: 100 %>
-      </a>
-      <p class="text-sm-center text-muted">OWEB</p>
-    </div>
-    <div class="col">
-      <a href="https://osucascades.edu/">
-        <%= image_tag 'logo_OSU.png', class: "mx-auto d-block", height: 100 %>
-      </a>
-      <p class="text-sm-center text-muted">OSU Cascades</p>
-    </div>
-    <div class="col">
-      <a href="http://www.oregonwatersheds.org/">
-        <%= image_tag 'logo_WC.png', class: "mx-auto d-block", height: 100 %>
-      </a>
-      <p class="text-sm-center text-muted">OR NWC</p>
-    </div>
-    <div class="col">
-      <a href="http://www.anabranchsolutions.com/">
-        <%= image_tag 'logo_AS.png', class: "mx-auto d-block", height: 100 %>
-      </a>
-      <p class="text-sm-center text-muted">Anabranch Solutions</p>
-    </div>
+    <% [
+        { name: 'Eco Logical Research', url: 'https://www.eco-logical-research.com', logo_filename: 'logo_ELR.png' },
+        { name: 'OWEB', url: 'https://www.oregon.gov/oweb/Pages/index.aspx', logo_filename: 'logo_OWEB.png' },
+        { name: 'OSU Cascades', url: 'https://osucascades.edu', logo_filename: 'logo_OSU.png' },
+        { name: 'OR NWC', url: 'http://www.oregonwatersheds.org', logo_filename: 'logo_WC.png' },
+        { name: 'Anabranch Solutions', url: 'http://www.anabranchsolutions.com', logo_filename: 'logo_AS.png' }
+      ].each do |supporter| %>
+      <div class="col">
+        <a href="<%= supporter[:url] %>">
+          <%= image_tag supporter[:logo_filename], class: "mx-auto d-block", height: 100 %>
+        </a>
+        <p class="text-sm-center text-muted"><%= supporter[:name] %></p>
+      </div>
+    <% end %>
   </div>
 </div>
