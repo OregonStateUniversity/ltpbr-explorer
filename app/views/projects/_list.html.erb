@@ -5,7 +5,7 @@
       <%= image_tag project.photo.url(:default), alt: "Project on #{project.stream_name}", class: 'rounded', width: 100 %>
     </div>
     <div class="col-sm-7">
-      <h3><%= link_to project.project_name, project, class: "text-dark" %></h3>
+      <h3><%= link_to project.name, project, class: "text-dark" %></h3>
       <h5><%= link_to project.affiliation, project, class: "text-secondary" %></h5>
     </div>
     <div class="col-sm-3">

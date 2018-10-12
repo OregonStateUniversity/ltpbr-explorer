@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function() {
     for (var i = 0; i < projects.length; i++ ) {
       var marker = L.marker([projects[i].latitude, projects[i].longitude]).addTo(leaflet_map);
       marker.bindPopup("<b>"
-                        + projects[i].project_name
+                        + projects[i].name
                         + "</b><br>Stream: "
                         + projects[i].stream_name
                         + "</b><br>Watershed: "

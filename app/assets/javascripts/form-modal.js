@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
-  $('#project_name-help').on('click', function() {
-    $('#project_name-modal').modal();
+  $('#name-help').on('click', function() {
+    $('#name-modal').modal();
   });
 
   $('#photo-help').on('click', function() {

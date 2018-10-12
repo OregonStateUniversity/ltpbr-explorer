@@ -4,11 +4,11 @@
 <div class="row">
   <div class="col">
     <!-- PROJECT NAME -->
-    <%= f.label :project_name, 'Project Name' %>
-    <div class="btn btn-question" id="project_name-help">
+    <%= f.label :name, 'Project Name' %>
+    <div class="btn btn-question" id="name-help">
       <%= image_tag 'question.png' %>
     </div>
-    <%= f.text_field :project_name, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Bridge Creek Incision Recovery', class: 'form-control' %>
+    <%= f.text_field :name, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Bridge Creek Incision Recovery', class: 'form-control' %>
   </div>
 </div>
 <div class="row">
@@ -123,7 +123,7 @@
 <% end %>
 
 <!-- MODAL INFORMATION -->
-<div aria-hidden='true' class='modal fade' id='project_name-modal' role='dialog' tabindex='-1'>
+<div aria-hidden='true' class='modal fade' id='name-modal' role='dialog' tabindex='-1'>
   <div class='modal-dialog' role='document'>
     <div class='modal-content'>
       <div class='modal-header'>
