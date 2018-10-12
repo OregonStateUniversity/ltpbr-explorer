@@ -2,4 +2,4 @@ en:
   activerecord:
     attributes:
       project:
-        area: "Treatment length"
+        length: "Treatment length"
