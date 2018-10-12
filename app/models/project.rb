@@ -6,7 +6,7 @@ class Project < ApplicationRecord
 
   before_save :assign_lonlat
 
-  validates :affiliation, :stream_name, :implementation_date, :primary_contact,
+  validates :name, :affiliation, :stream_name, :implementation_date, :primary_contact,
             :longitude, :latitude, presence: true
 
   validates_numericality_of :length, only_integer: true, greater_than: 0
