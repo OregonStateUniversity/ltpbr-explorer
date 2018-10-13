@@ -12,9 +12,6 @@
     </div>
   <% else %>
     <h2><%= current_user.name.possessive %> Projects</h2>
-
-    <!-- render list with partial -->
-    <%= render "projects/list", list_projects: current_user.projects.each  %>
-
+    <%= render current_user.projects %>
   <% end %>
 </div>

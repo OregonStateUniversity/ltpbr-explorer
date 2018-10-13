@@ -1,6 +1,5 @@
 <% provide(:title, 'Project List') %>
 
-
 <div class="container pt-3">
   <div class="row">
     <div class="col">
@@ -10,7 +9,5 @@
       <%= link_to 'Map View', projects_map_path, class: "btn btn-secondary" %>
     </div>
   </div>
-  
-  <!-- render list with partial -->
-    <%= render "projects/list", list_projects: @projects %>
+  <%= render @projects %>
 </div>
