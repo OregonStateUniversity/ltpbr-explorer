@@ -1,20 +1,20 @@
-<% provide(:title, "#{current_user.username.possessive} Projects") %>
+<% provide(:title, "#{current_user.name.possessive} Projects") %>
 <div class="container pt-3">
   <% if current_user.projects.empty? %>
     <div class="jumbotron">
-      <h1 class="display-3">Hi, <%= current_user.username %></h1>
-      <p class="lead">Welcome to BDA Explorer</p>
+      <h1 class="display-3">Hi, <%= current_user.name %>.</h1>
+      <p class="lead">Welcome to BDA Explorer.</p>
       <hr class="my-4"/>
-      <p>To get started create a new project.</p>
+      <p>To get started, create a new project.</p>
       <p class="lead">
         <%= link_to 'New Project', new_project_path, class: 'btn btn-primary btn-lg' %>
       </p>
     </div>
   <% else %>
-    <h2><%= current_user.username.possessive %> Projects</h2>
-    
+    <h2><%= current_user.name.possessive %> Projects</h2>
+
     <!-- render list with partial -->
     <%= render "projects/list", list_projects: current_user.projects.each  %>
-     
+
   <% end %>
 </div>

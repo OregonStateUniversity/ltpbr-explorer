@@ -18,12 +18,14 @@
             Currently waiting confirmation for: #{resource.unconfirmed_email}
           </div>
         <% end %>
+        <%= f.label :name %>
+        <%= f.text_field :name, autocomplete: 'off' %>
         <%= f.label :affiliation %>
         <%= f.text_field :affiliation, autocomplete: 'off' %>
-        <%= f.label :password %>
-        <i>( leave blank if you don't want to change it )</i>
+        <%= f.label :password, 'New Password' %>
+        <i>( Leave blank if you don't want to change it )</i>
         <%= f.password_field :password, autocomplete: 'off' %>
-        <%= f.label :password_confirmation %>
+        <%= f.label :password_confirmation, 'New Password Confirmation' %>
         <% if @minimum_password_length %>
           <em>
             (

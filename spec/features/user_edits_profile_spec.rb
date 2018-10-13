@@ -17,7 +17,8 @@ RSpec.describe 'User edits profile', type: :feature do
       fill_in('Current password', with: user.password)
       click_button('Update')
       expect(page).to have_selector '.alert', text: 'Your account has been updated successfully.'
-      expect(page).to have_selector '.nav-link', text: new_username
+      visit edit_user_registration_path
+      expect(find_field('Username').value).to eq new_username
     end
 
     it 'updates affiliation' do

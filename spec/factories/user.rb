@@ -4,6 +4,7 @@ FactoryBot.define do
     email { 'example@example.com' }
     password { 'password' }
     password_confirmation { 'password' }
+    name { 'Fake Name' }
     affiliation { 'exampleAffiliation' }
   end
 end

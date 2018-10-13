@@ -8,6 +8,8 @@ RSpec.describe 'User signs up', type: :feature do
     it 'sees a success message' do
       fill_in('Username', with: 'valid_username')
       fill_in('Email', with: 'valid@email.com')
+      fill_in('Name', with: 'Fake Name')
+      fill_in('Affiliation', with: 'Fake Affiliation')
       fill_in('Password', with: 'valid_password')
       fill_in('Password confirmation', with: 'valid_password')
       click_on('Sign up')
