@@ -58,6 +58,8 @@ GEM
       aws-sdk-core (= 2.3.22)
     bcrypt (3.1.12)
     bindex (0.5.0)
+    bootsnap (1.3.2)
+      msgpack (~> 1.0)
     bootstrap (4.0.0)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
@@ -170,6 +172,7 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    msgpack (1.2.4)
     multi_json (1.13.1)
     nenv (0.3.0)
     nio4r (2.3.1)
@@ -326,6 +329,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgis-adapter
   aws-sdk (~> 2.3.0)
+  bootsnap
   bootstrap (~> 4.0.0.beta3)
   byebug
   capybara (~> 2.13)
@@ -346,7 +350,7 @@ DEPENDENCIES
   possessive
   puma (~> 3.7)
   rabl-rails
-  rails (~> 5.2.0)
+  rails (~> 5.2.1)
   recaptcha
   rspec-rails (~> 3.7.0)
   sass-rails (~> 5.0)
@@ -365,4 +369,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.4
+   1.16.6
