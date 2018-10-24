@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+
 gem 'activerecord-postgis-adapter'
 gem 'aws-sdk', '~> 2.3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -48,6 +49,10 @@ group :test do
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+end
+
+group :production do
+  gem 'airbrake'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

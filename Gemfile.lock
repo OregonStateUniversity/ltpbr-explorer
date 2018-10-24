@@ -47,6 +47,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    airbrake (7.4.0)
+      airbrake-ruby (~> 2.12)
+    airbrake-ruby (2.12.0)
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -334,6 +337,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgis-adapter
+  airbrake
   aws-sdk (~> 2.3.0)
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.1.3)
