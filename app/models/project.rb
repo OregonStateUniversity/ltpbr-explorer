@@ -7,7 +7,7 @@ class Project < ApplicationRecord
   before_save :assign_lonlat
 
   validates :name, :affiliation, :stream_name, :implementation_date, :primary_contact,
-            :longitude, :latitude, :narrative, presence: true
+            :longitude, :latitude, :narrative, :structure_description, presence: true
 
   validates_numericality_of :length, only_integer: true, greater_than: 0
   validates_numericality_of :latitude, greater_than: -90, less_than: 90, message: 'must be in decimal notation'
