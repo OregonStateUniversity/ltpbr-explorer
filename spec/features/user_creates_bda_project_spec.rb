@@ -29,7 +29,7 @@ RSpec.feature 'User creates BDA project' do
 
   scenario 'providing invalid project attributes' do
     click_on('Create Project')
-    expect(page).to have_selector '.alert', text: 'The form contains 12 errors.'
+    expect(page).to have_selector '.alert', text: 'The form contains 15 errors.'
     page.find('#error_explanation').tap do |error_explanations|
       expect(error_explanations).to have_content("Name can't be blank")
       expect(error_explanations).to have_content("Affiliation can't be blank")
@@ -43,6 +43,9 @@ RSpec.feature 'User creates BDA project' do
       expect(error_explanations).to have_content('Number of structures is not a number')
       expect(error_explanations).to have_content("Treatment length is not a number")
       expect(error_explanations).to have_content("Primary contact can't be blank")
+      expect(error_explanations).to have_content("Narrative can't be blank")
+      expect(error_explanations).to have_content("Structure description can't be blank")
+      expect(error_explanations).to have_content("Watershed can't be blank")
     end
   end
 end
