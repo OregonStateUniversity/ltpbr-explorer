@@ -1,51 +1,43 @@
 <% provide(:title, @project.stream_name) %>
 <div class="container pt-5">
-  <h4 class="display-4"><%= @project.name %></h4>
+  <h1 class="display-4"><%= @project.name %></h1>
   <p class="lead"><%= @project.affiliation %></p>
   <hr/>
 
   <div class="row">
     <div class="col-md-7">
       <% if @project.photo.file? %>
-        <%= image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 rounded' %>
+        <%= image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
       <% end %>
     </div>
     <div class="col-md-5">
-      <div class="form-group">
         <label>Stream Name:</label>
-        <p class="form-control"><%= @project.stream_name %></p>
-      </div>
+        <p class="h5 mb-3"><%= @project.stream_name %></p>
+        <hr>
 
-      <div class="form-group">
         <label>Watershed:</label>
-        <p class="form-control"><%= @project.watershed %></p>
-      </div>
+        <p class="h5 mb-3"><%= @project.watershed %></p>
+        <hr>
 
-      <div class="form-group">
         <label>Implementation Date:</label>
-        <p class="form-control"><%= @project.implementation_date %></p>
-      </div>
+        <p class="h5 mb-3"><%= @project.implementation_date.strftime("%b" + ". " + "%d" + ", " + "%Y") %></p>
+        <hr>
 
-      <div class="form-group">
-        <label>Treatment Length:</label>
-        <p class="form-control"><%= @project.length %></p>
-      </div>
+        <label>Treatment Length (m):</label>
+        <p class="h5 mb-3"><%= @project.length %></p>
+        <hr>
 
-      <div class="form-group">
         <label>BDA Structures:</label>
-        <p class="form-control"><%= @project.number_of_structures %></p>
-      </div>
+        <p class="h5 mb-3"><%= @project.number_of_structures %></p>
+        <hr>
     </div>
   </div>
 
-  <div class="form-group">
     <h5>Project Goals and Objectives</h5>
-    <p class="form-control"><%= @project.narrative %></p>
-  </div>
-  <div class="form-group">
+    <p><%= @project.narrative %></p>
+
     <h5>Structure Construction Elements</h5>
-    <p class="form-control"><%= @project.structure_description %></p>
-  </div>
+    <p><%= @project.structure_description %></p>
 
   <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="map" class="rounded border border-secondary"></div>
 
