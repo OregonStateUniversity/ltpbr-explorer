@@ -2,12 +2,12 @@
 <div class="container pt-5">
   <h1 class="display-4"><%= @project.name %></h1>
   <p class="lead"><%= @project.affiliation %></p>
-  <hr/>
+  <hr />
 
   <div class="row">
     <div class="col-md-7">
       <% if @project.photo.file? %>
-        <%= image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
+      <%= image_tag @project.photo.url(:default), alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
       <% end %>
     </div>
     <div class="col-md-5">
@@ -27,25 +27,25 @@
       <p class="h5 mb-3"><%= @project.length %></p>
       <hr>
 
-      <label>BDA Structures:</label>
+      <label>LT-PBR Structures:</label>
       <p class="h5 mb-3"><%= @project.number_of_structures %></p>
       <hr>
     </div>
   </div>
 
-    <h5>Project Goals and Objectives</h5>
-    <p><%= @project.narrative %></p>
+  <h5>Project Goals and Objectives</h5>
+  <p><%= @project.narrative %></p>
 
-    <h5>Structure Construction Elements</h5>
-    <p><%= @project.structure_description %></p>
+  <h5>Structure Construction Elements</h5>
+  <p><%= @project.structure_description %></p>
 
   <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="map" class="rounded border border-secondary"></div>
 
   <% if user_signed_in? && @project.author_id == current_user.id %>
-    <hr/>
-    <div class="btn-group">
-      <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary', title: "Edit #{@project}" %>
-      <%= link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-secondary', title: "Delete #{@project}" %>
-    </div>
+  <hr />
+  <div class="btn-group">
+    <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary', title: "Edit #{@project}" %>
+    <%= link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-secondary', title: "Delete #{@project}" %>
+  </div>
   <% end %>
 </div>

@@ -4,8 +4,9 @@
 </div>
 <div class="jumbotron jumbotron-fluid text-muted">
   <div class="container text-sm-center">
-    <h3 class="display-3">OR BDA EXPLORER</h3>
-    <p class="lead pb-2">A source of information on the use of Beaver Dam Analogs for restoration of stream and riparian areas in Oregon</p>
+    <h3 class="display-3">LT-PBR EXPLORER</h3>
+    <p class="lead pb-2">A place to <em>share</em> and <em>discover</em> <a href="https://lowtechpbr.restoration.usu.edu/" target=_blank>Low-Tech Process-Based</a> Riverscape Restoration Projects</p>
+    <button type="button" class="btn btn-outline-primary btn-lg">View the Project Map</button>
   </div>
 </div>
 <!-- CARDS -->
@@ -18,7 +19,7 @@
           <%= image_tag 'home_about.jpg', class: "card-img-top" %>
           <div class="card-body">
             <h4 class="text-muted">About</h4>
-            <p class="card-text text-muted">Learn more about the BDA Explorer site</p>
+            <p class="card-text text-muted">Learn more about the LT-PBR Explorer site</p>
             <div class="d-flex justify-content-between align-items-center">
               <%= link_to 'About', about_path, class: 'btn btn-primary' %>
             </div>
@@ -31,7 +32,7 @@
           <%= image_tag 'home_projects.jpg', class: "card-img-top" %>
           <div class="card-body">
             <h4 class="text-muted">Projects</h4>
-            <p class="card-text text-muted">Explore existing BDA projects in OR</p>
+            <p class="card-text text-muted">Explore LT-PBR restoration projects</p>
             <div class="d-flex justify-content-between align-items-center">
               <%= link_to 'Projects', projects_map_path, class: 'btn btn-primary' %>
             </div>
@@ -43,8 +44,8 @@
         <div class="card mb-4 shadow">
           <%= image_tag 'home_signup.jpg', class: "card-img-top" %>
           <div class="card-body">
-            <h4 class="text-muted">Account</h4>
-            <p class="card-text text-muted">Sign up or login to add your projects</p>
+            <h4 class="text-muted">Add Project</h4>
+            <p class="card-text text-muted">Sign up or login to add your projects to the map</p>
             <div class="d-flex justify-content-between align-items-center">
               <%= link_to 'Sign Up', new_user_session_path, class: 'btn btn-primary' %>
             </div>
@@ -66,12 +67,12 @@
         { name: 'OR NWC', url: 'http://www.oregonwatersheds.org', logo_filename: 'logo_WC.png' },
         { name: 'Anabranch Solutions', url: 'http://www.anabranchsolutions.com', logo_filename: 'logo_AS.png' }
       ].each do |supporter| %>
-      <div class="col">
-        <a href="<%= supporter[:url] %>">
-          <%= image_tag supporter[:logo_filename], class: "mx-auto d-block", height: 100 %>
-        </a>
-        <p class="text-sm-center text-muted"><%= supporter[:name] %></p>
-      </div>
+    <div class="col">
+      <a href="<%= supporter[:url] %>">
+        <%= image_tag supporter[:logo_filename], class: "mx-auto d-block", height: 100 %>
+      </a>
+      <p class="text-sm-center text-muted"><%= supporter[:name] %></p>
+    </div>
     <% end %>
   </div>
 </div>
