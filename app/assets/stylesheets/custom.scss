@@ -1,4 +1,3 @@
-
 // Variables & Mixins
 
 $green: #30A64A;
@@ -29,6 +28,7 @@ footer {
 
 a {
   color: $green;
+
   &:hover {
     color: lighten($green, 20%);
   }
@@ -37,6 +37,7 @@ a {
 .btn-primary {
   background-color: $green;
   border-color: $green;
+
   &:hover {
     background-color: lighten($green, 20%);
     border-color: lighten($green, 20%);
@@ -46,6 +47,7 @@ a {
 .btn-outline-primary {
   border-color: $green;
   color: $green;
+
   &:hover {
     background-color: $green;
     border-color: $green;
@@ -61,9 +63,10 @@ nav {
   }
 }
 
-.navbar-nav > li {
+.navbar-nav>li {
   margin-left: 20px;
   text-decoration: none;
+
   :hover {
     color: white;
   }
@@ -71,6 +74,7 @@ nav {
 
 .new-project-btn:hover {
   color: white;
+
   a {
     color: white;
     text-decoration: none;
@@ -105,6 +109,7 @@ nav {
 
 .center-text {
   text-align: center;
+
   h1 {
     margin: auto;
   }
@@ -128,7 +133,9 @@ nav {
 
 // Forms
 
-input, textarea, select {
+input,
+textarea,
+select {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
@@ -180,6 +187,7 @@ input[type="checkbox"] {
 
 #error_explanation {
   color: red;
+
   ul {
     color: red;
     margin: 0 0 30px 0;
@@ -190,6 +198,7 @@ input[type="checkbox"] {
   background-color: white;
   margin-bottom: 8px;
   padding: 0;
+
   img {
     height: 17px;
   }
@@ -203,6 +212,7 @@ input[type="checkbox"] {
 
 .alert {
   text-align: left;
+
   li {
     list-style: none;
   }
@@ -213,7 +223,7 @@ input[type="checkbox"] {
   border-color: #eed3d7;
   color: #b94a48;
 
- }
+}
 
 .alert-alert {
   padding: 0;
@@ -221,14 +231,16 @@ input[type="checkbox"] {
   background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
+
   ul {
     margin-top: 12px;
   }
+
   .close {
     margin-top: 10px;
     margin-right: 15px;
   }
- }
+}
 
 .alert-success {
   padding: 0;
@@ -236,14 +248,16 @@ input[type="checkbox"] {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;
+
   ul {
     margin-top: 12px;
   }
+
   .close {
     margin-top: 10px;
     margin-right: 15px;
   }
- }
+}
 
 .alert-notice {
   padding: 0;
@@ -251,9 +265,11 @@ input[type="checkbox"] {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;
+
   ul {
     margin-top: 12px;
   }
+
   .close {
     margin-top: 10px;
     margin-right: 15px;
@@ -286,12 +302,6 @@ input[type="checkbox"] {
   min-width: 400px;
   min-height: 400px;
   margin: auto;
-}
-
-#master-map-container {
-  width: 100%;
-  height: 500px;
-  position: relative;
 }
 
 #master-map {
