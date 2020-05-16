@@ -16,8 +16,8 @@ $(document).on('turbolinks:load', function () {
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
 
     var baseLayers = {
-      'Topographic': Esri_NatGeoWorldMap,
-      'Satellite Imagery': Esri_WorldImagery
+      'Topography': Esri_NatGeoWorldMap,
+      'Imagery': Esri_WorldImagery
     };
 
     // Create the map
@@ -28,7 +28,8 @@ $(document).on('turbolinks:load', function () {
 
 
     // layer control
-    var layer_control = L.control.layers(baseLayers).addTo(project_map);
+    var layer_control = L.control.layers(baseLayers);
+    layer_control.addTo(project_map);
 
     // add scale bar
     L.control.scale().addTo(project_map);

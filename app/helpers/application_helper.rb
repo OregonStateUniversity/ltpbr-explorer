@@ -1,5 +1,5 @@
 module ApplicationHelper
-  BASE_TITLE = 'Beaver Dam Analogue Explorer'.freeze
+  BASE_TITLE = 'Low-Tech Restoration Explorer'.freeze
   def full_title(page_title = '')
     page_title.empty? ? BASE_TITLE : "#{page_title} | #{BASE_TITLE}"
   end
