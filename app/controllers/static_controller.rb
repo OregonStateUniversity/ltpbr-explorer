@@ -1,5 +1,9 @@
 class StaticController < ApplicationController
-  def home; end
+  def home
+    @project_count = Project.project_count
+    @structure_sum = Project.structure_sum
+    @project_total_length_km = Project.project_total_length_km
+  end
 
   def about; end
 
