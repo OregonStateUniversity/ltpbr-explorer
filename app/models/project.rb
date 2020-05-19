@@ -20,7 +20,7 @@ class Project < ApplicationRecord
   has_attached_file :photo,
     styles: { default: '700x400>',
     convert_options: { default: '-quality 75 -strip'}},
-    default_url: ActionController::Base.helpers.asset_path('missing_image.jpeg')
+    default_url: 'missing_image.jpg'
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
