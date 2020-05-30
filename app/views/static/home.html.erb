@@ -22,7 +22,7 @@
         <div class="card mb-4 shadow">
           <%= image_tag 'home_about.jpg', class: "card-img-top" %>
           <div class="card-body">
-            <h4 class="text-muted">About</h4>
+            <h4 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> About</h4>
             <p class="card-text text-muted">Learn more about the LT-PBR Explorer site</p>
             <div class="d-flex justify-content-between align-items-center">
               <%= link_to 'About', about_path, class: 'btn btn-primary' %>
@@ -35,8 +35,8 @@
         <div class="card mb-4 shadow">
           <%= image_tag 'home_projects.jpg', class: "card-img-top" %>
           <div class="card-body">
-            <h4 class="text-muted">Projects</h4>
-            <p class="card-text text-muted">Explore LT-PBR restoration projects</p>
+            <h4 class="text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> Projects</h4>
+            <p class="card-text text-muted">Explore the LT-PBR restoration project map</p>
             <div class="d-flex justify-content-between align-items-center">
               <%= link_to 'Projects', projects_map_path, class: 'btn btn-primary' %>
             </div>
@@ -48,8 +48,8 @@
         <div class="card mb-4 shadow">
           <%= image_tag 'home_signup.jpg', class: "card-img-top" %>
           <div class="card-body">
-            <h4 class="text-muted">Add Project</h4>
-            <p class="card-text text-muted">Sign up or login to add your projects to the map</p>
+            <h4 class="text-muted"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My Project</h4>
+            <p class="card-text text-muted">Sign up or login to add and edit your project</p>
             <div class="d-flex justify-content-between align-items-center">
               <%= link_to 'Sign Up', new_user_session_path, class: 'btn btn-primary' %>
             </div>
