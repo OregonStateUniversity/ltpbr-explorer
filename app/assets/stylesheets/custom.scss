@@ -1,7 +1,7 @@
 // Variables & Mixins
 
-$green: #30A64A;
-$danger-red: #CA242D;
+$green: #27ae60;
+$danger-red: #c0392b;
 $enable-shadows: true;
 
 @mixin box_sizing {
@@ -54,6 +54,13 @@ a {
     color: white;
   }
 }
+
+.badge {
+  background-color: $green;
+  font-size: 1.2rem;
+}
+
+
 
 // Nav
 
