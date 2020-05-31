@@ -18,7 +18,7 @@ RSpec.feature 'User creates BDA project' do
     fill_in('Project Watershed', with: 'Example Watershed')
     fill_in('Latitude', with: 45.0000)
     fill_in('Longitude', with: 45.0000)
-    fill_in('Total BDA Structures', with: 2)
+    fill_in('Total LT-PBR Structures', with: 2)
     fill_in('Treatment Length (meters)', with: 1000)
     fill_in('Implementation Date', with: Date.today)
     fill_in('Project Restoration Goals', with: 'Example Project Narrative')
