@@ -6,7 +6,7 @@
     <!-- PROJECT NAME -->
     <%= f.label :name, 'Project Name' %>
     <div class="btn btn-question" id="name-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.text_field :name, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Bridge Creek Incision Recovery', class: 'form-control' %>
   </div>
@@ -16,7 +16,7 @@
     <!-- PRIMARY CONTACT -->
     <%= f.label :primary_contact, 'Primary Contact Name' %>
     <div class="btn btn-question" id="primary_contact-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.text_field :primary_contact, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Jane Doe', class: 'form-control' %>
   </div>
@@ -24,7 +24,7 @@
     <!-- PROJECT AFFILIATION -->
     <%= f.label :affiliation, 'Project Affiliation' %>
     <div class="btn btn-question" id="affiliation-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.text_field :affiliation, autofocus: true, autocomplete: 'off', placeholder: 'e.g. NOAA Fisheries', class: 'form-control' %>
   </div>
@@ -34,7 +34,7 @@
     <!-- STREAM NAME -->
     <%= f.label :stream_name, 'Stream Name' %>
     <div class="btn btn-question" id="stream_name-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.text_field :stream_name, autofocus: true, autocomplete: 'off', placeholder: 'Bear Creek', class: 'form-control' %>
   </div>
@@ -42,7 +42,7 @@
     <!-- WATERSHED -->
     <%= f.label :watershed, 'Project Watershed' %>
     <div class="btn btn-question" id="watershed-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.text_field :watershed, autofocus: true, autocomplete: 'off', placeholder: 'e.g. John Day', class: 'form-control' %>
   </div>
@@ -52,7 +52,7 @@
     <!-- LATITUDE -->
     <%= f.label :latitude %>
     <div class="btn btn-question" id="latitude-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.text_field :latitude, autocomplete: 'off', placeholder: 'e.g. 44.103436', class: 'form-control' %>
   </div>
@@ -60,7 +60,7 @@
     <!-- LONGITUDE -->
     <%= f.label :longitude %>
     <div class="btn btn-question" id="longitude-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.text_field :longitude, autocomplete: 'off', placeholder: 'e.g. -121.769211', class: 'form-control' %>
   </div>
@@ -70,7 +70,7 @@
     <!-- STRUCTURES -->
     <%= f.label :number_of_structures, 'Total LT-PBR Structures' %>
     <div class="btn btn-question" id="number_of_structures-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.text_field :number_of_structures, autocomplete: 'off', placeholder: 'e.g. 50', class: 'form-control' %>
   </div>
@@ -78,7 +78,7 @@
     <!-- TREATMENT LENGTH -->
     <%= f.label :length, 'Treatment Length (meters)' %>
     <div class="btn btn-question" id="treatment_length-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.text_field :length, autocomplete: 'off', placeholder: 'e.g. 500', class: 'form-control' %>
   </div>
@@ -88,7 +88,7 @@
     <!-- IMPLEMENTATION DATE -->
     <%= f.label :implementation_date, 'Implementation Date' %>
     <div class="btn btn-question" id="implementation_date-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.date_field :implementation_date, autocomplete: 'off', placeholder: 'yyyy-mm-dd', class: 'form-control' %>
   </div>
@@ -96,7 +96,7 @@
     <!-- PROJECT IMAGE -->
     <%= f.label :photo, 'Project Photo' %>
     <div class="btn btn-question" id="photo-help">
-      <%= image_tag 'question.png' %>
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.file_field :photo, class: 'custom-file-control form-control' %>
   </div>
@@ -104,14 +104,14 @@
 <!-- NARRATIVE -->
 <%= f.label :narrative, 'Project Restoration Goals' %>
 <div class="btn btn-question" id="narrative-help">
-  <%= image_tag 'question.png' %>
+  <i class="fa fa-question-circle-o" aria-hidden="true"></i>
 </div>
 <%= f.text_area :narrative, autocomplete: 'off', placeholder: 'Restoration goals for the project. e.g. Expansion of riparian vegetation.', class: 'form-control', rows: 5 %>
 
 <!-- STRUCTURE CONSTRUCTION -->
 <%= f.label :structure_description, 'Structure Construction Elements' %>
 <div class="btn btn-question" id="structure_description-help">
-  <%= image_tag 'question.png' %>
+  <i class="fa fa-question-circle-o" aria-hidden="true"></i>
 </div>
 <%= f.text_area :structure_description, autocomplete: 'off', placeholder: 'Briefly describe LT-PBR design and/or construction elements.', class: 'form-control', rows: 5 %>
 
