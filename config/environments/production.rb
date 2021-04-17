@@ -67,12 +67,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'https://bda-explorer.herokuapp.com/'}
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    address:              ENV['MAILGUN_SMTP_SERVER'],
-    port:                 ENV['MAILGUN_SMTP_PORT'],
-    domain:               'bda-explorer.herokuapp.com',
-    user_name:            ENV['MAILGUN_SMTP_LOGIN'],
-    password:             ENV['MAILGUN_SMTP_PASSWORD'],
-    authentication:       :plain,
+    address:              'smtp.gmail.com',
+    port:                 587,
+    authentication:       'plain',
+    enable_starttls_auto: true,
+    user_name:            ENV['GMAIL_SMTP_USERNAME'],
+    password:             ENV['GMAIL_SMTP_PASSWORD'],
+    openssl_verify_mode: 'none'
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
