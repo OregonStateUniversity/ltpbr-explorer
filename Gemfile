@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.6'
-
+ruby '2.7.4'
 
 gem 'activerecord-postgis-adapter'
 gem 'aws-sdk', '~> 2.3.0'
@@ -21,7 +20,7 @@ gem 'possessive'
 gem 'pg'
 gem 'puma', '~> 3.12.6'
 gem 'rabl-rails'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 5.2.6'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'sassc-rails', '~> 2.1.2'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
