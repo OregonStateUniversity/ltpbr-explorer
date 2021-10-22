@@ -6,7 +6,7 @@ ruby '2.7.4'
 gem 'activerecord-postgis-adapter'
 gem 'aws-sdk', '~> 2.3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', '>= 4.3.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '>= 4.7.1'
 gem 'figaro'
