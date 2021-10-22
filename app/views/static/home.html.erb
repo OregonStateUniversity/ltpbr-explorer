@@ -6,16 +6,18 @@
   <div class="container text-sm-center">
     <h3 class="display-2">LT-PBR EXPLORER</h3>
     <p class="lead pb-2"><em>Share</em> and <em>Discover</em> <a href="https://lowtechpbr.restoration.usu.edu/" target=_blank>Low-Tech Process-Based</a> Restoration</p>
+    <%= link_to 'View the Projects Map', projects_map_path, class: 'btn btn-primary btn-lg' %>
     <hr>
     <!--
     <p class="lead text-muted"><span class="badge badge-success"><%= @project_count %> </span> projects, <span class="badge badge-success"> <%= @structure_sum %> </span> restoration structures, and <span class="badge badge-success"> <%= @project_total_length_km %> </span> kilometers of process-based riverscape restoration and counting.</p>
     -->
-    <!-- STATS -->
+    <!-- STATS CARDS -->
     <div class="jumbotron jumbotron-fluid p-0">
         <div class="container">
             <h1 class="display-4">Project Statistics</h1>
             <p class="lead">Statistics accumuluated from every LT-PBR Explorer Project contribution</p>
         </div>
+    <br>
     <div class="card-deck">
             <div class="col-xl-4 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
@@ -55,7 +57,7 @@
                   </div>
                   <p class="mt-3 mb-0 text-muted text-sm">
                     <span class="text-success mr-2"><i class="fa fa-arrow-up"></i></span>
-                    <span class="text-wrap">Total accumulated riverscape restoration structures</span>
+                    <span class="text-wrap">Accumulated riverscape restoration structures</span>
                   </p>
                 </div>
               </div>
@@ -82,10 +84,9 @@
                 </div>
               </div>
             </div>       
+        </div>
+        </div>
     </div>
-  </div>
-  <%= link_to 'View the Projects Map', projects_map_path, class: 'btn btn-primary btn-lg' %>
-</div>
 <hr>
 <!-- CARDS -->
 <br>
