@@ -324,3 +324,23 @@ project-photo {
   max-width: 100%;
   height: auto;
 }
+
+// Icons
+
+.icon-card {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+.icon-card i {
+    font-size: 2.25rem;
+}
+  
+.icon-card-shape {
+    display: inline-flex;
+    padding: 12px;
+    text-align: center;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+  }
