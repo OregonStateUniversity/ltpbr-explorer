@@ -17,8 +17,13 @@ html {
 }
 
 body {
-  margin-bottom: 25px;
-  height: 100%;
+    margin: 0;
+    margin-bottom: 25px;
+    height: calc(100% - 65px); /* minus navbar incl. border */
+}
+
+html, #map {
+    height: 100%;
 }
 
 footer {
@@ -104,6 +109,10 @@ nav {
   :hover {
     color: black !important;
   }
+}
+
+header.navbar {
+    margin-bottom: 0; /* remove bottom margin */ 
 }
 
 // Home Layout
@@ -343,4 +352,4 @@ project-photo {
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-  }
+}
