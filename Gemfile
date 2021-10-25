@@ -9,6 +9,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.6.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '>= 4.7.1'
+gem 'ffi-geos'
 gem 'figaro'
 gem 'gon'
 gem 'haml'

@@ -108,6 +108,8 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.15.4)
+    ffi-geos (2.2.0)
+      ffi (>= 1.0.0)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
     formatador (0.3.0)
@@ -346,6 +348,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (>= 4.7.1)
   factory_bot_rails
+  ffi-geos
   figaro
   gon
   guard
