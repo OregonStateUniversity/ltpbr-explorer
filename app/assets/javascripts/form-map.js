@@ -17,27 +17,41 @@ $(document).on('turbolinks:load', function() {
       // accessToken: 'pk.eyJ1IjoieWJha29zIiwiYSI6ImNqamZmbGh4aTA2MWszcXJtM3phbWlyenoifQ.q9CV0qTFVrReLsKnrj5ALg'
     }).addTo(leaflet_map);
 
-    var marker;
-
     var updateLatlng = latlng => {
-      latitude = latlng.lat;
-      longitude = latlng.lng;
-      project_latitude.value = latitude.toPrecision(8);
-      project_longitude.value = longitude.toPrecision(8);
+      project_latitude.value = latlng.lat.toPrecision(8);
+      project_longitude.value = latlng.lng.toPrecision(8);
     };
 
-    leaflet_map.on('click', function(e){
-      // Remove existing marker
-      if(marker) {
-        leaflet_map.removeLayer(marker);
-      }
-      console.log(e.latlng.toString());
-      updateLatlng(e.latlng);
+    var marker;
 
-      marker = L.marker(e.latlng, {draggable:true}).addTo(leaflet_map);
+    var create_marker = latlng => {
+      if(marker) leaflet_map.removeLayer(marker);
+
+      marker = L.marker(latlng, {draggable:true}).addTo(leaflet_map);
       marker.on('drag', function(e) {
         updateLatlng(e.latlng);
       });
+    };
+
+    create_marker({lat: project_latitude.value, lng: project_longitude.value});
+
+    var latlngTextListener = e => {
+      var latlng = {
+        lat: project_latitude.value,
+        lng: project_longitude.value
+      };
+
+      create_marker(latlng);
+
+      leaflet_map.panTo(latlng)
+    };
+
+    project_latitude.addEventListener('input', latlngTextListener);
+    project_longitude.addEventListener('input', latlngTextListener);
+
+    leaflet_map.on('click', function(e){
+      updateLatlng(e.latlng);
+      create_marker(e.latlng);
     });
   });
 });
