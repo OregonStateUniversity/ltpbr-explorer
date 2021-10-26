@@ -20,4 +20,5 @@
 //= require master-map
 //= require master-map-scroll
 //= require project-map
+//= require form-map
 //= require_tree .

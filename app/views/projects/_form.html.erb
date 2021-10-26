@@ -67,6 +67,18 @@
 </div>
 <div class="row">
   <div class="col-md">
+    <%# Sends the peak of Three Sisters as default coordinates if @project.lonlat is nil %>
+    <div 
+      data-latitude="<%=@project.lonlat ? @project.lonlat.y : 44.103436 %>" 
+      data-longitude="<%=@project.lonlat ? @project.lonlat.x : -121.769211 %>" 
+      id="form-map" 
+      class="rounded border border-secondary"
+    >
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md">
     <!-- STRUCTURES -->
     <%= f.label :number_of_structures, 'Total LT-PBR Structures' %>
     <div class="btn btn-question" id="number_of_structures-help">
