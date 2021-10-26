@@ -31,3 +31,7 @@
 /public/system
 
 .ruby-gemset
+
+#Stuff added by RubyMine to be ignored
+.idea/
+vendor/cache/
