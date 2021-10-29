@@ -35,27 +35,24 @@ $(document).on('turbolinks:load', function () {
     L.control.scale().addTo(project_map);
 
     // project points now
-    var Projects = L.featureGroup();
+    var project_markers = L.featureGroup();
 
-    for (var i = 0; i < projects.length; i++) {
-      var marker = L.marker([projects[i].latitude, projects[i].longitude]);
-      marker.bindPopup("<b>" +
-        projects[i].name +
-        "</b><br>Stream: " +
-        projects[i].stream_name +
-        "</b><br>Watershed: " +
-        projects[i].watershed +
-        "<br><a href='/projects/" +
-        projects[i].id +
-        "'>View Project</a>"
+    projects.forEach(project => {
+      var marker = L.marker([project.latitude, project.longitude]);
+      marker.bindPopup(
+        `<b>${project.name}</b><br>` +
+        `Stream: ${project.stream_name}<br>` +
+        `Watershed: ${project.watershed}<br>` +
+        `<a href='/projects/${project.id}'>View Project</a>`
       );
-      Projects.addLayer(marker);
-    }
+      project_markers.addLayer(marker);
+    });
+      
 
     // add all projects to map
-    Projects.addTo(project_map);
+    project_markers.addTo(project_map);
 
     // fit display to points on the map
-    project_map.fitBounds(Projects.getBounds());
+    project_map.fitBounds(project_markers.getBounds());
   });
 });
