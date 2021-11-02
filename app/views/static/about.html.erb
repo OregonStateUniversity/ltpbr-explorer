@@ -2,8 +2,13 @@
 <div class="banner">
   <%= image_tag 'bridge_banner.jpg' %>
 </div>
-<%=render 'about/aboutsidebar'%>
-<div class="container">
+
+<div class="d-flex" id="wrapper">
+    <div class="bg-light border-right vh-100" id="sidebar-wrapper">
+        <%=render 'about/aboutsidebar'%>
+    </div>
+<div class="pull-left" id="page-content-wrapper">
+
   <h1 class="display-4 mt-5">About</h1>
   <hr>
     <%= render 'about/aboutheader', header: "About this Site", subtitle: ""%>
@@ -17,5 +22,5 @@
   <div class="text-center">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Y2O7abHO538" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
-
+</div>
 </div>
