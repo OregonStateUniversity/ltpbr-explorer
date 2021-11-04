@@ -7,16 +7,31 @@
     <div class="bg-light border-right vh-100" id="sidebar-wrapper">
         <%=render 'about/aboutsidebar'%>
     </div>
+
 <div class="pull-left" id="page-content-wrapper">
-
-  <h1 class="display-4 mt-5">About</h1>
+<br>
+  <div class="p-4 text-center bg-light">
+    <h1 class="display-3 mb-2">About</h1>
+  </div>
   <hr>
-    <%= render 'about/aboutheader', header: "About this Site", subtitle: ""%>
-  <h2>LT-PBR Explorer</h2>
+    <!--<p>This simple site was established to encourage communication among restoration practitioners utilizing <a href="https://lowtechpbr.restoration.usu.edu/" target=_blank>Low-Tech Processes-Based</a> restoration practices to restore riverscape health. Low-tech process-based restoration focuses on the use of structural elements that mimic the form and function of beaver dams (i.e., beaver dam analogs, BDAs) and woody debris accumulations (i.e., post assisted log structures, PALS). The restoration approach involves the strategic introduction of these structural elements using a design intended to amplify natural hydrologic, geomorphic, and biological processes that accelerate stream recovery trajectories. Fundamentally, the approach follows the tenants of process – based restoration outlined by <a href="https://academic.oup.com/bioscience/article/60/3/209/257006" target=_blank>(Beechie et al. 2010)</a>, tenants of ecological restoration proposed by <a href="https://doi.org/10.1111/j.1365-2664.2005.01004.x" target=_blank>Palmer et al. (2005)</a> and its extension as Low – Tech Process – Based Restoration (LT-PBR) by <a href="http://lowtechpbr.restoration.usu.edu/manual/" target=_blank>Wheaton et al. (2019)</a> that emphasized the use of structural treatments that can be built by hand.</p>
+    -->
+    <%= render 'about/aboutheader', header: "About the LT-PBR Explorer Website", subtitle: ""%>
 
-  <p>This simple site was established to encourage communication among restoration practitioners utilizing <a href="https://lowtechpbr.restoration.usu.edu/" target=_blank>Low-Tech Processes-Based</a> restoration practices to restore riverscape health. Low-tech process-based restoration focuses on the use of structural elements that mimic the form and function of beaver dams (i.e., beaver dam analogs, BDAs) and woody debris accumulations (i.e., post assisted log structures, PALS). The restoration approach involves the strategic introduction of these structural elements using a design intended to amplify natural hydrologic, geomorphic, and biological processes that accelerate stream recovery trajectories. Fundamentally, the approach follows the tenants of process – based restoration outlined by <a href="https://academic.oup.com/bioscience/article/60/3/209/257006" target=_blank>(Beechie et al. 2010)</a>, tenants of ecological restoration proposed by <a href="https://doi.org/10.1111/j.1365-2664.2005.01004.x" target=_blank>Palmer et al. (2005)</a> and its extension as Low – Tech Process – Based Restoration (LT-PBR) by <a href="http://lowtechpbr.restoration.usu.edu/manual/" target=_blank>Wheaton et al. (2019)</a> that emphasized the use of structural treatments that can be built by hand.</p>
-  <hr>
-
+    <%= render 'about/aboutcontentblock', parheader: "LT-PBR Explorer",paragraph: "This simple site was established to encourage communication among restoration practitioners utilizing Low-Tech Processes-Based restoration practices to restore riverscape health. Low-tech process-based restoration focuses on the use of structural elements that mimic the form and function of beaver dams (i.e., beaver dam analogs, BDAs) and woody debris accumulations (i.e., post assisted log structures, PALS). The restoration approach involves the strategic introduction of these structural elements using a design intended to amplify natural hydrologic, geomorphic, and biological processes that accelerate stream recovery trajectories. Fundamentally, the approach follows the tenants of process – based restoration outlined by (Beechie et al. 2010) tenants of ecological restoration proposed by Palmer et al. (2005) and its extension as Low – Tech Process – Based Restoration (LT-PBR) by Wheaton et al. (2019) that emphasized the use of structural treatments that can be built by hand.",
+    source_1: 'https://academic.oup.com/bioscience/article/60/3/209/257006', source_1_name: 'Low-Tech Processes-Based Restoration', 
+    source_2: 'https://academic.oup.com/bioscience/article/60/3/209/257006', source_2_name: 'Beechie et al. 2010', 
+    source_3: 'https://doi.org/10.1111/j.1365-2664.2005.01004.x', source_3_name: 'Palmer et al. 2005',
+    source_4: 'http://lowtechpbr.restoration.usu.edu/manual/', source_4_name: 'Wheaton et al. 2019'
+    %>
+    <hr>
+    <%= render 'about/aboutcontentblock', parheader: "How to use this site", paragraph:''%>
+    <hr>
+    <%= render 'about/aboutcontentblock', parheader: "Website introduction and Operation", paragraph:'>Short introductory video introducing the LT-PBR website, and covering the basics of sharing and discovering restoration projects.'%>
+    <div class="text-center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Y2O7abHO538" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <hr>
   <h2>Website Introduction and Operation</h2>
   <p>Short introductory video introducing the LT-PBR website, and covering the basics of sharing and discovering restoration projects.</p>
   <div class="text-center">

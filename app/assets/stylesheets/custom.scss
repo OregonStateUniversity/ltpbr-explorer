@@ -361,6 +361,24 @@ project-photo {
     justify-content: center;
 }
 
+// About header
+
+#about-header-container {
+    height: 100px;
+    justify-content: space-between !important;
+    
+}
+
+#about-header {
+    position: absolute;
+    display: flex;
+    font-size: 50px;    
+    padding-left: 10px;
+    padding-bottom: -50px;
+    margin-top: 0px;
+}
+
+
 // About page Sidebar
 
 #sidebar-wrapper {
