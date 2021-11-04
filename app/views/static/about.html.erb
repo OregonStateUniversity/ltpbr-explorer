@@ -16,7 +16,7 @@
   <hr>
     <!--<p>This simple site was established to encourage communication among restoration practitioners utilizing <a href="https://lowtechpbr.restoration.usu.edu/" target=_blank>Low-Tech Processes-Based</a> restoration practices to restore riverscape health. Low-tech process-based restoration focuses on the use of structural elements that mimic the form and function of beaver dams (i.e., beaver dam analogs, BDAs) and woody debris accumulations (i.e., post assisted log structures, PALS). The restoration approach involves the strategic introduction of these structural elements using a design intended to amplify natural hydrologic, geomorphic, and biological processes that accelerate stream recovery trajectories. Fundamentally, the approach follows the tenants of process – based restoration outlined by <a href="https://academic.oup.com/bioscience/article/60/3/209/257006" target=_blank>(Beechie et al. 2010)</a>, tenants of ecological restoration proposed by <a href="https://doi.org/10.1111/j.1365-2664.2005.01004.x" target=_blank>Palmer et al. (2005)</a> and its extension as Low – Tech Process – Based Restoration (LT-PBR) by <a href="http://lowtechpbr.restoration.usu.edu/manual/" target=_blank>Wheaton et al. (2019)</a> that emphasized the use of structural treatments that can be built by hand.</p>
     -->
-    <%= render 'about/aboutheader', header: "About the LT-PBR Explorer Website", subtitle: ""%>
+    <%= render 'about/aboutheader', header: "About LT-PBR Explorer", subtitle: ""%>
 
     <%= render 'about/aboutcontentblock', parheader: "LT-PBR Explorer",paragraph: "This simple site was established to encourage communication among restoration practitioners utilizing Low-Tech Processes-Based restoration practices to restore riverscape health. Low-tech process-based restoration focuses on the use of structural elements that mimic the form and function of beaver dams (i.e., beaver dam analogs, BDAs) and woody debris accumulations (i.e., post assisted log structures, PALS). The restoration approach involves the strategic introduction of these structural elements using a design intended to amplify natural hydrologic, geomorphic, and biological processes that accelerate stream recovery trajectories. Fundamentally, the approach follows the tenants of process – based restoration outlined by (Beechie et al. 2010) tenants of ecological restoration proposed by Palmer et al. (2005) and its extension as Low – Tech Process – Based Restoration (LT-PBR) by Wheaton et al. (2019) that emphasized the use of structural treatments that can be built by hand.",
     source_1: 'https://academic.oup.com/bioscience/article/60/3/209/257006', source_1_name: 'Low-Tech Processes-Based Restoration', 
@@ -52,15 +52,16 @@
 </div>
 </div>
 <script>
+// Function that lets the sidebar scroll with the page when it reaches the top
 $(window).scroll(function(e){ 
   var $el = $('.sidebar');
   var bottom = $('.banner').position().top+$('.banner').offset().top+$('.banner').outerHeight(true)
   var isPositionFixed = ($el.css('position') == 'fixed');
-  if ($(this).scrollTop() > bottom-50 && !isPositionFixed){ 
-    $el.css({'position': 'fixed', 'top': '0px'}); 
+  if ($(this).scrollTop() > bottom-60 && !isPositionFixed){ 
+    $el.css({'position': 'fixed', 'top': '0px', 'width': '20vw'}); 
   }
-  if ($(this).scrollTop() < bottom-50 && isPositionFixed){
-    $el.css({'position': 'static', 'top': '0px'}); 
+  if ($(this).scrollTop() < bottom-60 && isPositionFixed){
+    $el.css({'position': 'static', 'top': '0px', 'width': '20vw'}); 
   } 
 });
 </script>
