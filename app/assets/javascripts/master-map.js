@@ -44,6 +44,7 @@ $(document).on('turbolinks:load', function () {
         month: 'short', 
         day: 'numeric' 
       };
+      var updated_at = project.updated_at.replace(' UTC', '');
       var popup = L.popup({
         maxWidth: 600,
         minWidth: 400,
@@ -81,7 +82,7 @@ $(document).on('turbolinks:load', function () {
           </div>
           <div class='row mx-auto my-1'>
             <label class='marker-info-text'>Last Updated:</label>
-            <span class='marker-info-text font-weight-bold'>${new Date(project.updated_at).toLocaleString(undefined, dateOptions)}</span>
+            <span class='marker-info-text font-weight-bold'>${new Date(updated_at).toLocaleString(undefined, dateOptions)}</span>
           </div>
           <div class='row mx-auto btn-group'>
             <a class='btn btn-primary text-white' href='/projects/${project.id}'>View Project</a>
