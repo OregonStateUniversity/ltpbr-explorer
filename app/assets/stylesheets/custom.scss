@@ -360,3 +360,96 @@ project-photo {
     align-items: center;
     justify-content: center;
 }
+
+// About header
+
+#about-header-container {
+    height: 100px;
+    justify-content: space-between !important;
+    box-shadow: 2px 2px 2px gray;
+    
+}
+
+#about-header {
+    position: absolute;
+    display: flex;
+    font-size: 45px;    
+    padding-left: 10px;
+    padding-bottom: -50px;
+    margin-top: 0px;
+}
+
+
+// About page Sidebar
+
+#sidebar-wrapper {
+    min-height: 20vh;
+    height: auto;
+    margin-left: -15rem;
+    min-width: 20vw;
+    position: relative;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 20vw;
+    border-right: 1px solid rgb(219, 219, 219);
+    border-bottom: 1px solid rgb(219, 219, 219);
+    margin-right: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    cursor: pointer;
+}
+
+#navlinkbartext:hover {
+    background-color: $green;
+    color: $green;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#page-content-wrapper {
+    padding-left: 1vw;
+    padding-right: 80px;
+}
+
+@media (min-width: 200px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+}
+// **Remove navbar when window is too small and adjust styling for main content
+@media only screen and (max-width: 800px) {
+    #sidebar-wrapper  {
+        display: none;
+    }
+    #page-content-wrapper {
+        text-align: left;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    #about-header{
+        font-size: 30px;   
+        }
+}
+@media only screen and (max-width: 400px) {
+#about-header{
+    font-size: 20px;    
+    }
+}
