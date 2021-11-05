@@ -38,8 +38,10 @@ $(document).on('turbolinks:load', function () {
     var project_markers = L.featureGroup();
 
     projects.forEach(project => {
+      console.log(project);
       var marker = L.marker([project.latitude, project.longitude]);
       marker.bindPopup(
+        `<img src='${project.photo}' class: 'img-fluid mb-4 shadow rounded'>` +
         `<b>${project.name}</b><br>` +
         `Stream: ${project.stream_name}<br>` +
         `Watershed: ${project.watershed}<br>` +
