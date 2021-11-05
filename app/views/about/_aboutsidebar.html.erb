@@ -1,9 +1,26 @@
-    <div class="bg-light border-right vh-20" id="sidebar-wrapper">
-        <div class="sidebar-heading">Quick Access Navigation </div>
-        <div class="list-group list-group-flush overflow-auto h-20">
-            <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Menu 1</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Menu 2</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Menu 3</a>
-        </div>
+<div class="bg-light border-right vh-20" id="sidebar-wrapper">
+<div class="smooth-scroll list-unstyled">
+    <div class="sidebar-heading">Quick Access Navigation </div>
+    <div class="list-group list-group-flush overflow-auto h-20">
+        <a class="list-group-item list-group-item-action bg-light font-weight-bold" onclick = scrollToElement(1)>About LT-PBR Explorer</a>
+        <a class="list-group-item list-group-item-action bg-light" onclick = scrollToElement(1.1)>LT-PBR Explorer</a>
+        <a class="list-group-item list-group-item-action bg-light" onclick = scrollToElement(1.2)>How to use this site</a>
+        <a class="list-group-item list-group-item-action bg-light" onclick = scrollToElement(1.3)>Website introduction and Operation</a>
+        <a class="list-group-item list-group-item-action bg-light font-weight-bold" onclick = scrollToElement(2)>What LT-PBR is</a>
+        <a class="list-group-item list-group-item-action bg-light" onclick = scrollToElement(2.1)>Introduction to LT-PBR</a>
+        <a class="list-group-item list-group-item-action bg-light" onclick = scrollToElement(2.2)>Impacts of LT-PBR</a>
+        <a class="list-group-item list-group-item-action bg-light" onclick = scrollToElement(2.3)>Legality of LT-PBR</a>
+        <a class="list-group-item list-group-item-action bg-light font-weight-bold" onclick = scrollToElement(3)>Getting started with LT-PBR</a>
+        <a class="list-group-item list-group-item-action bg-light" onclick = scrollToElement(3.1)>Necessary Tools</a>
+        <a class="list-group-item list-group-item-action bg-light" onclick = scrollToElement(3.2)>Processes Involved</a>
+        <a class="list-group-item list-group-item-action bg-light" onclick = scrollToElement(3.3)>Construction of LT-PBR</a>
     </div>
+</div>
+</div>
+<script>
+    function scrollToElement(elementName) {
+        document.getElementById(elementName).scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+</script>
