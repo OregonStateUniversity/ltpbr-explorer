@@ -40,13 +40,57 @@ $(document).on('turbolinks:load', function () {
     projects.forEach(project => {
       console.log(project);
       var marker = L.marker([project.latitude, project.longitude]);
-      marker.bindPopup(
-        `<img src='${project.photo}' class: 'img-fluid mb-4 shadow rounded'>` +
-        `<b>${project.name}</b><br>` +
-        `Stream: ${project.stream_name}<br>` +
-        `Watershed: ${project.watershed}<br>` +
-        `<a href='/projects/${project.id}'>View Project</a>`
+      var dateOptions = { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+      };
+      var popup = L.popup({
+        maxWidth: 400,
+        minWidth: 400,
+      }).setContent(
+        `<div class='container'>
+          <div class='row border-bottom mx-auto'>
+            <span class='h2'>${project.name}</span>
+          </div>
+          <div class='row my-2 border-bottom marker-info'>
+            <div class='col-md-8 my-4'>
+              <img class='img-thumbnail shadow rounded' src='${project.photo}'>
+            </div>
+            <div class='col-md-4'>
+              <div class='row my-2 border-bottom'>
+                <label class='h6'>Stream:</label>
+                <span class='h6 font-weight-bold'>${project.stream_name}</span>
+              </div>
+              <div class='row my-2 border-bottom'>
+                <label class='h6'>Watershed:</label>
+                <span class='h6 font-weight-bold'>${project.watershed}</span>
+              </div>
+              <div class='row my-2 border-bottom'>
+                <label class='h6'>Treatment Length (m):</label>
+                <span class='h6 font-weight-bold'>${project.length}</span>
+              </div>
+              <div class='row my-2'>
+                <label class='h6'>LT-PBR Structures:</label>
+                <span class='h6 font-weight-bold'>${project.number_of_structures}</span>
+              </div>
+            </div>
+          </div>
+          <div class='row mx-auto my-2 marker-info'>
+            <label class='h6 font-weight-bold'>Implementation Date:</label>
+            <span class='h6'>${new Date(project.implementation_date).toLocaleString(undefined, dateOptions)}</span>
+          </div>
+          <div class='row mx-auto my-2 marker-info'>
+            <label class='h6 font-weight-bold'>Last Updated:</label>
+            <span class='h6'>${new Date(project.updated_at).toLocaleString(undefined, dateOptions)}</span>
+          </div>
+          <div class='row mx-auto btn-group'>
+            <a class='btn btn-primary text-white' href='/projects/${project.id}'>View Project</a>
+          </div>
+        </div>`
       );
+      
+      marker.bindPopup(popup);
       project_markers.addLayer(marker);
     });
       

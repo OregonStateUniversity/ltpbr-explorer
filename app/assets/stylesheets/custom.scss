@@ -39,6 +39,10 @@ a {
   }
 }
 
+label {
+  margin-right: 10px;
+}
+
 .btn-primary {
   background-color: $green;
   border-color: $green;
@@ -332,6 +336,11 @@ input[type="checkbox"] {
 #master-map {
   width: 100%;
   height: 100%;
+}
+
+.marker-info {
+  display: flex;
+  align-items: center;
 }
 
 // Projects
