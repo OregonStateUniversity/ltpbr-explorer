@@ -366,6 +366,7 @@ project-photo {
 #about-header-container {
     height: 100px;
     justify-content: space-between !important;
+    box-shadow: 2px 2px 2px gray;
     
 }
 
@@ -383,6 +384,7 @@ project-photo {
 
 #sidebar-wrapper {
     min-height: 20vh;
+    height: auto;
     margin-left: -15rem;
     min-width: 20vw;
     position: relative;
@@ -401,6 +403,10 @@ project-photo {
     width: 20vw;
     border-right: 1px solid rgb(219, 219, 219);
     border-bottom: 1px solid rgb(219, 219, 219);
+    margin-right: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     cursor: pointer;
 }
 
