@@ -38,7 +38,6 @@ $(document).on('turbolinks:load', function () {
     var project_markers = L.featureGroup();
 
     projects.forEach(project => {
-      console.log(project);
       var marker = L.marker([project.latitude, project.longitude]);
       var dateOptions = { 
         year: 'numeric', 
