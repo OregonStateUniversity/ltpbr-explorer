@@ -45,43 +45,43 @@ $(document).on('turbolinks:load', function () {
         day: 'numeric' 
       };
       var popup = L.popup({
-        maxWidth: 400,
+        maxWidth: 600,
         minWidth: 400,
       }).setContent(
         `<div class='container'>
           <div class='row border-bottom mx-auto'>
             <span class='h2'>${project.name}</span>
           </div>
-          <div class='row my-2 border-bottom marker-info'>
-            <div class='col-md-8 my-4'>
+          <div class='row my-1 border-bottom marker-info'>
+            <div class='col-md-8 my-2'>
               <img class='img-thumbnail shadow rounded' src='${project.photo}'>
             </div>
             <div class='col-md-4'>
-              <div class='row my-2 border-bottom'>
-                <label class='h6'>Stream:</label>
-                <span class='h6 font-weight-bold'>${project.stream_name}</span>
+              <div class='row my-1 border-bottom'>
+                <label class='marker-info-text'>Stream:</label>
+                <span class='marker-info-text font-weight-bold'>${project.stream_name}</span>
               </div>
-              <div class='row my-2 border-bottom'>
-                <label class='h6'>Watershed:</label>
-                <span class='h6 font-weight-bold'>${project.watershed}</span>
+              <div class='row my-1 border-bottom'>
+                <label class='marker-info-text'>Watershed:</label>
+                <span class='marker-info-text font-weight-bold'>${project.watershed}</span>
               </div>
-              <div class='row my-2 border-bottom'>
-                <label class='h6'>Treatment Length (m):</label>
-                <span class='h6 font-weight-bold'>${project.length}</span>
+              <div class='row my-1 border-bottom'>
+                <label class='marker-info-text'>Length:</label><br>
+                <span class='marker-info-text font-weight-bold'>${project.length} m</span>
               </div>
-              <div class='row my-2'>
-                <label class='h6'>LT-PBR Structures:</label>
-                <span class='h6 font-weight-bold'>${project.number_of_structures}</span>
+              <div class='row my-1'>
+                <label class='marker-info-text'>Structures:</label><br><br><br>
+                <span class='marker-info-text font-weight-bold'>${project.number_of_structures}</span>
               </div>
             </div>
           </div>
-          <div class='row mx-auto my-2 marker-info'>
-            <label class='h6 font-weight-bold'>Implementation Date:</label>
-            <span class='h6'>${new Date(project.implementation_date).toLocaleString(undefined, dateOptions)}</span>
+          <div class='row mx-auto my-1'>
+            <label class='marker-info-text'>Implementation Date:</label>
+            <span class='marker-info-text font-weight-bold'>${new Date(project.implementation_date).toLocaleString(undefined, dateOptions)}</span>
           </div>
-          <div class='row mx-auto my-2 marker-info'>
-            <label class='h6 font-weight-bold'>Last Updated:</label>
-            <span class='h6'>${new Date(project.updated_at).toLocaleString(undefined, dateOptions)}</span>
+          <div class='row mx-auto my-1'>
+            <label class='marker-info-text'>Last Updated:</label>
+            <span class='marker-info-text font-weight-bold'>${new Date(project.updated_at).toLocaleString(undefined, dateOptions)}</span>
           </div>
           <div class='row mx-auto btn-group'>
             <a class='btn btn-primary text-white' href='/projects/${project.id}'>View Project</a>
