@@ -410,6 +410,11 @@ project-photo {
     cursor: pointer;
 }
 
+#navlinkbartext:hover {
+    background-color: $green;
+    color: $green;
+}
+
 #page-content-wrapper {
     min-width: 100vw;
 }
