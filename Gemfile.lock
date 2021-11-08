@@ -1493,7 +1493,7 @@ DEPENDENCIES
   activerecord-postgis-adapter
   airbrake
   aws-sdk (~> 3)
-  bootsnap (>= 1.1.0)
+  bootsnap (>= 1.9.1)
   bootstrap (~> 4.6.0)
   byebug
   capybara (>= 3.32.2)
