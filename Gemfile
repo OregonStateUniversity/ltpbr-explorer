@@ -41,7 +41,7 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'guard'
   gem 'guard-rspec', require: false
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 3.3.1'
 end
 
 group :test do
