@@ -1498,7 +1498,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.32.2)
   coffee-rails (~> 4.2.2)
-  devise (>= 4.7.1)
+  devise (>= 4.8)
   factory_bot_rails
   ffi-geos
   figaro
