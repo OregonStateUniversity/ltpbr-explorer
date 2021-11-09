@@ -5,7 +5,7 @@
 
 <div class="d-flex" id="wrapper">
 <div class="sidebar-container">
-    <div class="bg-light border-right vh-100" id="sidebar-wrapper">
+    <div class="vh-100" id="sidebar-wrapper">
         <div class="sidebar"><%=render 'about/aboutsidebar'%></div>
     </div>
     </div>
@@ -60,10 +60,10 @@ $(window).scroll(function(e){
   var bottom = $('.banner').position().top+$('.banner').offset().top+$('.banner').outerHeight(true)
   var isPositionFixed = ($el.css('position') == 'fixed');
   if ($(this).scrollTop() > bottom-60 && !isPositionFixed){ 
-    $el.css({'position': 'fixed', 'top': '0px', 'bottom': '0px', 'width': '20vw', 'overflow-x': 'scroll'}); 
+    $el.css({'position': 'fixed', 'top': '0px', 'bottom': '0px', 'width': '20vw', 'overflow-y': 'auto', 'overflow-x': 'hidden', 'border-right': '1px solid rgb(219, 219, 219)'}); 
   }
   if ($(this).scrollTop() < bottom-60 && isPositionFixed){
-    $el.css({'position': 'static', 'top': '0px', 'width': '20vw'}); 
+    $el.css({'position': 'static', 'top': '0px', 'width': '20vw', 'overflow-y': 'auto'}); 
   } 
 });
 </script>
