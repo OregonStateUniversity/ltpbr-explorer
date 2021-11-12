@@ -12,11 +12,6 @@
     <p class="lead text-muted"><span class="badge badge-success"><%= @project_count %> </span> projects, <span class="badge badge-success"> <%= @structure_sum %> </span> restoration structures, and <span class="badge badge-success"> <%= @project_total_length_km %> </span> kilometers of process-based riverscape restoration and counting.</p>
     -->
     <!-- STATS CARDS -->
-    <div class="jumbotron jumbotron-fluid p-0">
-        <div class="container">
-            <h1 class="display-4">Project Statistics</h1>
-            <p class="lead">Statistics accumuluated from every LT-PBR Explorer Project contribution</p>
-        </div>
     <br>
     <div class="card-deck">
             <div class="col-xl-4 col-lg-6">
@@ -69,7 +64,7 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Length</h5>
-                      <span class="h2 font-weight-bold mb-0"><%= @project_total_length_km %>km</span>
+                      <span class="h2 font-weight-bold mb-0"><%= @project_total_length_km %> miles</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon-card icon-card-shape bg-success text-white rounded-circle shadow">
