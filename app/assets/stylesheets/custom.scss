@@ -347,6 +347,50 @@ input[type="checkbox"] {
   font-size: 14px;
 }
 
+.leaflet-control {
+  float: left;
+  clear: none;
+}
+
+.leaflet-control-layers {
+  padding-right: 0;
+}
+
+.leaflet-control-layers label {
+  display: inline-block;
+  border-radius: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+}
+
+.leaflet-control-layers-selector {
+  width: 0px;
+  opacity: 0;
+  margin: 0;
+}
+
+.leaflet-control-layers-selected {
+  border: 2px solid darken($green, 10%);
+  background-color: lighten($green, 40%);
+  color: darken($green, 20%);
+}
+
+.leaflet-control-layers-img {
+  max-width: 100px;
+  overflow: hidden;
+  max-height: 100px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.leaflet-control-layers-text{
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
 // Projects
 
 project-photo {

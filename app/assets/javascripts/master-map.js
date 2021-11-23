@@ -23,14 +23,27 @@ $(document).on('turbolinks:load', function () {
 
     // Layer control
     var baseLayers = {
-      '<img src=\'map_layer_topography_example.png\'>Topography': Esri_NatGeoWorldMap,
-      '<img src=\'map_layer_imagery_example.png\'>Imagery': Esri_WorldImagery
+      '<img class="leaflet-control-layers-img img-thumbnail" src="map_layer_topography_example.png"><div class=leaflet-control-layers-text>Topography</div>': Esri_NatGeoWorldMap,
+      '<img class="leaflet-control-layers-img img-thumbnail" src="map_layer_imagery_example.png"><div class=leaflet-control-layers-text>Imagery</div>': Esri_WorldImagery
     };
 
-    var layer_control = L.control.layers(baseLayers);
+    var layer_control_options = {
+      collapsed: false
+    }
+    var layer_control = L.control.layers(baseLayers, null, layer_control_options);
     layer_control.addTo(project_map);
 
     //jQuery(function($){$('.leaflet-control-layers-toggle').append('test');});
+    //$("div").css( "color", "red" );
+    $('.leaflet-control-layers-selector:checked').parent().closest('label').addClass('leaflet-control-layers-selected');
+    $('.leaflet-control-layers-selector').change(
+      function (){
+        $('.leaflet-control-layers-selector').parent().closest('label').removeClass('leaflet-control-layers-selected');
+        if ($(this).is(':checked')) {
+          $(this).parent().closest('label').addClass('leaflet-control-layers-selected');
+        }
+      }
+    );
 
     // add scale bar
     L.control.scale().addTo(project_map);
