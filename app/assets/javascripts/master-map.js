@@ -28,19 +28,20 @@ $(document).on('turbolinks:load', function () {
     };
 
     var layer_control_options = {
-      collapsed: false
+      // collapsed: false
     }
     var layer_control = L.control.layers(baseLayers, null, layer_control_options);
     layer_control.addTo(project_map);
 
-    //jQuery(function($){$('.leaflet-control-layers-toggle').append('test');});
-    //$("div").css( "color", "red" );
     $('.leaflet-control-layers-selector:checked').parent().closest('label').addClass('leaflet-control-layers-selected');
+    $('.leaflet-control-layers-selector:not(:checked)').parent().closest('label').addClass('leaflet-control-layers-unselected');
     $('.leaflet-control-layers-selector').change(
       function (){
-        $('.leaflet-control-layers-selector').parent().closest('label').removeClass('leaflet-control-layers-selected');
+        $('.leaflet-control-layers-selector').parent().closest('label').addClass('leaflet-control-layers-unselected');
         if ($(this).is(':checked')) {
-          $(this).parent().closest('label').addClass('leaflet-control-layers-selected');
+          $(this).parent().closest('label')
+            .removeClass('leaflet-control-layers-unselected')
+            .addClass('leaflet-control-layers-selected');
         }
       }
     );

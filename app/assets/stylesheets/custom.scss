@@ -375,6 +375,11 @@ input[type="checkbox"] {
   color: darken($green, 20%);
 }
 
+.leaflet-control-layers-unselected {
+  border: 2px solid rgba(255, 255, 255, 0);
+  background-color: white;
+}
+
 .leaflet-control-layers-img {
   max-width: 100px;
   overflow: hidden;
