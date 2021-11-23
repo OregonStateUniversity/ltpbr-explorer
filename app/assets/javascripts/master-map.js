@@ -15,21 +15,22 @@ $(document).on('turbolinks:load', function () {
     var Esri_WorldImagery = L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
 
-    var baseLayers = {
-      'Topography': Esri_NatGeoWorldMap,
-      'Imagery': Esri_WorldImagery
-    };
-
     // Create the map
     var project_map = L.map("master-map").setView([map_center_lat, map_center_lon], zoom);
 
     // Add imagery
     Esri_NatGeoWorldMap.addTo(project_map);
 
+    // Layer control
+    var baseLayers = {
+      '<img src=\'map_layer_topography_example.png\'>Topography': Esri_NatGeoWorldMap,
+      '<img src=\'map_layer_imagery_example.png\'>Imagery': Esri_WorldImagery
+    };
 
-    // layer control
     var layer_control = L.control.layers(baseLayers);
     layer_control.addTo(project_map);
+
+    //jQuery(function($){$('.leaflet-control-layers-toggle').append('test');});
 
     // add scale bar
     L.control.scale().addTo(project_map);
