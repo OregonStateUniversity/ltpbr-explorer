@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function() {
       autoClose: true,
       keepResult: true,
     });
-    project_map.addControl(searchControl);
+    leaflet_map.addControl(searchControl);
 
     var updateLatlng = latlng => {
       project_latitude.value = latlng.lat.toPrecision(8);
