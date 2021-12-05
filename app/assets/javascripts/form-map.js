@@ -43,6 +43,7 @@ $(document).on('turbolinks:load', function() {
       if(marker) leaflet_map.removeLayer(marker);
 
       marker = L.marker(latlng, {draggable:true}).addTo(leaflet_map);
+      // Update marker on drag
       marker.on('drag', function(e) {
         updateLatlng(e.latlng);
       });
@@ -61,14 +62,6 @@ $(document).on('turbolinks:load', function() {
       leaflet_map.panTo(latlng)
     };
 
-    project_latitude.addEventListener('input', latlngTextListener);
-    project_longitude.addEventListener('input', latlngTextListener);
-
-    leaflet_map.on('click', function(e){
-      updateLatlng(e.latlng);
-      create_marker(e.latlng);
-    });
-
     // Update marker on searching for location in geosearch
     leaflet_map.on('geosearch/showlocation', (e) => {
       var latlng = {
@@ -79,5 +72,14 @@ $(document).on('turbolinks:load', function() {
       create_marker(latlng)
     });
 
+    // Update marker on updated input in latitude/longitude text fields
+    project_latitude.addEventListener('input', latlngTextListener);
+    project_longitude.addEventListener('input', latlngTextListener);
+
+    // Update marker on clicking on the form's map
+    leaflet_map.on('click', function(e){
+      updateLatlng(e.latlng);
+      create_marker(e.latlng);
+    });
   });
 });
