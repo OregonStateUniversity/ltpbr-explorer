@@ -68,5 +68,16 @@ $(document).on('turbolinks:load', function() {
       updateLatlng(e.latlng);
       create_marker(e.latlng);
     });
+
+    // Update marker on searching for location in geosearch
+    leaflet_map.on('geosearch/showlocation', (e) => {
+      var latlng = {
+        lat: e.location.y,
+        lng: e.location.x,
+      };
+      updateLatlng(latlng);
+      create_marker(latlng)
+    });
+
   });
 });
