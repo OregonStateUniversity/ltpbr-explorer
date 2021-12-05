@@ -108,6 +108,10 @@ $(document).on('turbolinks:load', function () {
     const searchControl = new SearchControl({
       style: 'bar',
       provider: provider,
+      maxMarkers: 0,
+      showMarker: false,
+      autoClose: true,
+      keepResult: true,
     });
     project_map.addControl(searchControl);
     
