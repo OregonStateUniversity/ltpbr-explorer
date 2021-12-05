@@ -9,12 +9,22 @@
   </title>
   <%= include_gon %>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css" rel="stylesheet">
-  <link rel='stylesheet' href='https://unpkg.com/leaflet@1.5.1/dist/leaflet.css' integrity='sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==' crossorigin='' />
-  <script src='https://unpkg.com/leaflet@1.5.1/dist/leaflet.js' integrity='sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==' crossorigin=''></script>
   <script src="https://use.fontawesome.com/2aff377185.js"></script>
+  <link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css' crossorigin='' />
+  <script src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js' crossorigin=''></script>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet-geosearch@3.6.0/dist/geosearch.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet-geosearch@3.6.0/assets/css/leaflet.css"
+  />
+  <script src="https://unpkg.com/leaflet-geosearch@3.6.0/dist/geosearch.umd.js"></script>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%# <script src='https://unpkg.com/requirejs@2.3.6/require.js' crossorigin=''></script> %>
 </head>
 
 <body class="<%= controller.action_name %>">

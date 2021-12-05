@@ -17,6 +17,17 @@ $(document).on('turbolinks:load', function() {
       // accessToken: 'pk.eyJ1IjoieWJha29zIiwiYSI6ImNqamZmbGh4aTA2MWszcXJtM3phbWlyenoifQ.q9CV0qTFVrReLsKnrj5ALg'
     }).addTo(leaflet_map);
 
+    // Add search bar
+    const SearchControl = window.GeoSearch.SearchControl;
+    const OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+    const provider = new OpenStreetMapProvider();
+
+    const searchControl = new SearchControl({
+      style: 'bar',
+      provider: provider,
+    });
+    project_map.addControl(searchControl);
+
     var updateLatlng = latlng => {
       project_latitude.value = latlng.lat.toPrecision(8);
       project_longitude.value = latlng.lng.toPrecision(8);

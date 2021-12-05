@@ -26,7 +26,6 @@ $(document).on('turbolinks:load', function () {
     // Add imagery
     Esri_NatGeoWorldMap.addTo(project_map);
 
-
     // layer control
     var layer_control = L.control.layers(baseLayers);
     layer_control.addTo(project_map);
@@ -100,5 +99,17 @@ $(document).on('turbolinks:load', function () {
 
     // fit display to points on the map
     project_map.fitBounds(project_markers.getBounds());
+
+    // Add search bar
+    const SearchControl = window.GeoSearch.SearchControl;
+    const OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+    const provider = new OpenStreetMapProvider();
+
+    const searchControl = new SearchControl({
+      style: 'bar',
+      provider: provider,
+    });
+    project_map.addControl(searchControl);
+    
   });
 });
