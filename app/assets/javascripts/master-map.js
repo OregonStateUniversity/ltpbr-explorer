@@ -15,20 +15,35 @@ $(document).on('turbolinks:load', function () {
     var Esri_WorldImagery = L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
 
-    var baseLayers = {
-      'Topography': Esri_NatGeoWorldMap,
-      'Imagery': Esri_WorldImagery
-    };
-
     // Create the map
     var project_map = L.map("master-map").setView([map_center_lat, map_center_lon], zoom);
 
     // Add imagery
     Esri_NatGeoWorldMap.addTo(project_map);
 
-    // layer control
-    var layer_control = L.control.layers(baseLayers);
+    // Layer control
+    var baseLayers = {
+      '<img class="leaflet-control-layers-img img-thumbnail" src="map_layer_topography_example.png"><div class=leaflet-control-layers-text>Topography</div>': Esri_NatGeoWorldMap,
+      '<img class="leaflet-control-layers-img img-thumbnail" src="map_layer_imagery_example.png"><div class=leaflet-control-layers-text>Imagery</div>': Esri_WorldImagery
+    };
+    var layer_control_options = {
+      // collapsed: false
+    }
+    var layer_control = L.control.layers(baseLayers, null, layer_control_options);
     layer_control.addTo(project_map);
+
+    $('.leaflet-control-layers-selector:checked').parent().closest('label').addClass('leaflet-control-layers-selected');
+    $('.leaflet-control-layers-selector:not(:checked)').parent().closest('label').addClass('leaflet-control-layers-unselected');
+    $('.leaflet-control-layers-selector').change(
+      function (){
+        $('.leaflet-control-layers-selector').parent().closest('label').addClass('leaflet-control-layers-unselected');
+        if ($(this).is(':checked')) {
+          $(this).parent().closest('label')
+            .removeClass('leaflet-control-layers-unselected')
+            .addClass('leaflet-control-layers-selected');
+        }
+      }
+    );
 
     // add scale bar
     L.control.scale().addTo(project_map);
