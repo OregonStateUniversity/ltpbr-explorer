@@ -17,6 +17,21 @@ $(document).on('turbolinks:load', function() {
       // accessToken: 'pk.eyJ1IjoieWJha29zIiwiYSI6ImNqamZmbGh4aTA2MWszcXJtM3phbWlyenoifQ.q9CV0qTFVrReLsKnrj5ALg'
     }).addTo(leaflet_map);
 
+    // Add search bar
+    const SearchControl = window.GeoSearch.SearchControl;
+    const OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+    const provider = new OpenStreetMapProvider();
+
+    const searchControl = new SearchControl({
+      style: 'bar',
+      provider: provider,
+      maxMarkers: 0,
+      showMarker: false,
+      autoClose: true,
+      keepResult: true,
+    });
+    leaflet_map.addControl(searchControl);
+
     var updateLatlng = latlng => {
       project_latitude.value = latlng.lat.toPrecision(8);
       project_longitude.value = latlng.lng.toPrecision(8);
@@ -28,6 +43,7 @@ $(document).on('turbolinks:load', function() {
       if(marker) leaflet_map.removeLayer(marker);
 
       marker = L.marker(latlng, {draggable:true}).addTo(leaflet_map);
+      // Update marker on drag
       marker.on('drag', function(e) {
         updateLatlng(e.latlng);
       });
@@ -46,9 +62,21 @@ $(document).on('turbolinks:load', function() {
       leaflet_map.panTo(latlng)
     };
 
+    // Update marker on searching for location in geosearch
+    leaflet_map.on('geosearch/showlocation', (e) => {
+      var latlng = {
+        lat: e.location.y,
+        lng: e.location.x,
+      };
+      updateLatlng(latlng);
+      create_marker(latlng)
+    });
+
+    // Update marker on updated input in latitude/longitude text fields
     project_latitude.addEventListener('input', latlngTextListener);
     project_longitude.addEventListener('input', latlngTextListener);
 
+    // Update marker on clicking on the form's map
     leaflet_map.on('click', function(e){
       updateLatlng(e.latlng);
       create_marker(e.latlng);
