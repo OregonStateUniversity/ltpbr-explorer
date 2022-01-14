@@ -15,6 +15,10 @@ $(document).on('turbolinks:load', function() {
     $('#watershed-modal').modal();
   });
 
+  $('#url-help').on('click', function() {
+    $('#url-modal').modal();
+  });
+
   $('#affiliation-help').on('click', function() {
     $('#affiliation-modal').modal();
   });
