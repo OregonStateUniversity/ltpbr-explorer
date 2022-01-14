@@ -18,7 +18,9 @@
       <hr>
 
       <label>Project URL:</label>
-      <p class="h5 mb-3"><%= @project.url %></p>
+      <% url = @project.url %>
+      <% html_url = url.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+      <p class="h5 mb-3"><%= html_url %></p>
       <hr>
 
       <label>Implementation Date:</label>
