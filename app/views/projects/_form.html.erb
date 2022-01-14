@@ -2,7 +2,7 @@
 
 <%= form_errors_for(@project) %>
 <div class="row">
-  <div class="col">
+  <div class="col-md">
     <!-- PROJECT NAME -->
     <%= f.label :name, 'Project Name' %>
     <div class="btn btn-question" id="name-help">
@@ -10,15 +10,23 @@
     </div>
     <%= f.text_field :name, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Bridge Creek Incision Recovery', class: 'form-control' %>
   </div>
-</div>
-<div class="row">
-  <div class="col-md">
+    <div class="col-md">
     <!-- PRIMARY CONTACT -->
     <%= f.label :primary_contact, 'Primary Contact Name' %>
     <div class="btn btn-question" id="primary_contact-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <%= f.text_field :primary_contact, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Jane Doe', class: 'form-control' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md">
+    <!-- URL -->
+    <%= f.label :url, 'Project URL' %>
+    <div class="btn btn-question" id="url-help">
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+    </div>
+    <%= f.text_field :url, autofocus: true, autocomplete: 'off', placeholder: 'e.g. https://www.anabranchsolutions.com/beaver-dam-analogs.html', class: 'form-control' %>
   </div>
   <div class="col-md">
     <!-- PROJECT AFFILIATION -->
@@ -202,6 +210,24 @@
       </div>
       <div class='modal-body'>
         Project watershed or sub-watershed. e.g. "John Day"
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='url-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Project URL</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Outside link to existing project. e.g. "https://www.anabranchsolutions.com/beaver-dam-analogs.html"
       </div>
       <div class='modal-footer'>
         <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
