@@ -409,6 +409,15 @@ input[type="checkbox"] {
     left: -70px;
 }
 
+#list-view-button-btn {
+    box-shadow: 10px 10px;
+    position: absolute;
+}
+
+#projects-dropdown{
+    color: $green;
+}
+
 @media only screen and (max-width: 780px) {
     #list-view-button{
         margin-top: 65px;
