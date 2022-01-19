@@ -401,6 +401,21 @@ input[type="checkbox"] {
   margin-left: 8px;
 }
 
+#list-view-button {
+    position: absolute;
+    z-index: 1000;
+    margin-top: 15px;
+    margin-right: 5%;
+    left: -70px;
+}
+
+@media only screen and (max-width: 780px) {
+    #list-view-button{
+        margin-top: 65px;
+        left: 5px;  
+    }
+}
+
 // Projects
 
 project-photo {
