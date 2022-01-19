@@ -18,7 +18,7 @@
         <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="http://example.com" id="projects-dropdown">
           Projects
         </a>
-        <div aria-labelledby="dropdown" class="dropdown-menu dropdown-menu-right">
+        <div aria-labelledby="dropdown" class="dropdown-menu dropdown-menu-right" id="dropdown">
           <div class="dropdown-item">
             <%= link_to 'Projects Map', projects_map_path %>
           </div>
@@ -36,7 +36,7 @@
         <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="http://example.com" id="dropdown">
           <%= current_user.name %>
         </a>
-        <div aria-labelledby="dropdown" class="dropdown-menu dropdown-menu-right">
+        <div aria-labelledby="dropdown" class="dropdown-menu dropdown-menu-right" id="dropdown">
           <div class="dropdown-item">
             <%= link_to 'My Projects', user_path(current_user) %>
           </div>

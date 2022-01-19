@@ -418,6 +418,10 @@ input[type="checkbox"] {
     color: $green;
 }
 
+#dropdown, #projects-dropdown {
+    z-index: 10000;
+}
+
 @media only screen and (max-width: 780px) {
     #list-view-button{
         margin-top: 65px;
