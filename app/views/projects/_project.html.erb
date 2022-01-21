@@ -1,7 +1,7 @@
 <hr>
 <div class="row">
   <div class="col-sm-2">
-    <%= image_tag project.photo.url(:default), alt: "Project on #{project.stream_name}", class: 'rounded', width: 100 %>
+    <%= image_tag project.photos[0].presence || "missing_image.jpg", alt: "Project on #{project.stream_name}", class: 'rounded', width: 100 %>
   </div>
   <div class="col-sm-7">
     <h3><%= link_to project.name, project, class: "text-dark" %></h3>

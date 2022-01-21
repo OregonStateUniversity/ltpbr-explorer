@@ -114,11 +114,11 @@
   </div>
   <div class="col-md">
     <!-- PROJECT IMAGE -->
-    <%= f.label :photo, 'Project Photo' %>
+    <%= f.label :photos, 'Project Photos' %>
     <div class="btn btn-question" id="photo-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
-    <%= f.file_field :photo, class: 'custom-file-control form-control' %>
+    <%= f.file_field :photos, multiple: true, class: 'custom-file-control form-control' %>
   </div>
 </div>
 <!-- NARRATIVE -->
@@ -167,13 +167,13 @@
   <div class='modal-dialog' role='document'>
     <div class='modal-content'>
       <div class='modal-header'>
-        <h5 class='modal-title'>Project Photo</h5>
+        <h5 class='modal-title'>Project Photos</h5>
         <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
           <span aria-hidden='true'>×</span>
         </button>
       </div>
       <div class='modal-body'>
-        Upload a representative picture of the project area, channel, or structures.
+        Upload at least one representative picture of the project area, channel, or structures.
       </div>
       <div class='modal-footer'>
         <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>

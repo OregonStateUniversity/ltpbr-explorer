@@ -17,12 +17,7 @@ class Project < ApplicationRecord
 
   validates_format_of :implementation_date, :with => /\d{4}\-\d{2}\-\d{2}/, :message => 'must be in the following format: yyyy-mm-dd'
 
-  has_attached_file :photo,
-    styles: { default: '700x400>',
-    convert_options: { default: '-quality 75 -strip'}},
-    default_url: 'missing_image.jpg'
-
-  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
+  has_many_attached :photos
 
   def title
     "Project on #{stream_name}"
