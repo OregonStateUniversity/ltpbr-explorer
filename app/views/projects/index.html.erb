@@ -14,11 +14,10 @@
     </div>
   </div>
     <div class="col text-left">
-      Sort By:
-      <%= link_to 'Name', projects_path(order: 'name'), class: "btn btn-success" %>
-      <%= link_to 'Affiliation', projects_path(order: 'affiliation'), class: "btn btn-success" %>
-      <%= link_to 'Stream', projects_path(order: 'stream'), class: "btn btn-success" %>
-      <%= link_to 'Watershed', projects_path(order: 'watershed'), class: "btn btn-success" %>
+      <%= link_to 'Name <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'name'), class: "btn btn-success" %>
+      <%= link_to 'Affiliation <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'affiliation'), class: "btn btn-success" %>
+      <%= link_to 'Stream <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'stream'), class: "btn btn-success" %>
+      <%= link_to 'Watershed<i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'watershed'), class: "btn btn-success" %>
 
     </div>
 <%= render @projects%>
