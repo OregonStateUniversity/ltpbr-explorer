@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :affiliation, presence: true
 
+  enum role: { public: 'public', admin: 'admin' }, _suffix: true
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
