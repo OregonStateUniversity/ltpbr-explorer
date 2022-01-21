@@ -1,9 +1,4 @@
 <% provide(:title, 'Project List') %>
-<% name_sort = true%>
-<% affiliation_sort = false%>
-<% stream_name = false%>
-<% watershed_sort = false%>
-<%= name_sort%>
 <div class="container pt-3">
   <div class="row">
     <div class="col">
@@ -18,8 +13,6 @@
       <%= link_to 'Affiliation <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'affiliation'), class: "btn btn-success" %>
       <%= link_to 'Stream <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'stream'), class: "btn btn-success" %>
       <%= link_to 'Watershed<i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'watershed'), class: "btn btn-success" %>
-
     </div>
 <%= render @projects%>
-
 </div>
