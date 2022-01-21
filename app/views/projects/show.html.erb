@@ -47,7 +47,7 @@
 
   <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="map" class="rounded border border-secondary"></div>
 
-  <% if user_signed_in? && @project.author_id == current_user.id %>
+  <% if user_signed_in? && (@project.author_id == current_user.id || current_user.admin_role?) %>
   <hr />
   <div class="btn-group">
     <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary', title: "Edit #{@project}" %>

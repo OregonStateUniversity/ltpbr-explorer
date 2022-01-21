@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
   end
 
   def require_owner
-    unless @project.author_id == current_user.id
+    unless (@project.author_id == current_user.id) | (current_user.admin_role?)
       redirect_to root_path
       flash[:alert] = 'Restricted action, must own project.'
     end
