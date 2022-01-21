@@ -5,6 +5,16 @@ class ProjectsController < ApplicationController
 
   def index;
     @projects = Project.all
+
+    if params[:order] == 'name'
+        @projects = Project.all.order('name')
+    elsif params[:order] == 'watershed'
+        @projects = Project.all.order('watershed')
+    elsif params[:order] == 'stream_name'
+        @projects = Project.all.order('stream_name')
+    elsif params[:order] == 'watershed'
+        @projects = Project.all.order('affiliation')
+    end
   end
 
   def show

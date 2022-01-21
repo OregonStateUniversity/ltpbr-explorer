@@ -1,4 +1,9 @@
 <% provide(:title, 'Project List') %>
+<% name_sort = true%>
+<% affiliation_sort = false%>
+<% stream_name = false%>
+<% watershed_sort = false%>
+<%= name_sort%>
 <div class="container pt-3">
   <div class="row">
     <div class="col">
@@ -10,18 +15,12 @@
   </div>
     <div class="col text-left">
       Sort By:
-      <%= link_to 'Map View', projects_path, class: "btn btn-success" %>
-      <button type="button" class="btn btn-secondary">Name</button>
-      <button type="button" class="btn btn-secondary">Affiliation</button>
-      <button type="button" class="btn btn-secondary">Stream</button>
-      <button type="button" class="btn btn-secondary">Watershed</button>
+      <%= link_to 'Name', projects_path(order: 'name'), class: "btn btn-success" %>
+      <%= link_to 'Affiliation', projects_path(order: 'affiliation'), class: "btn btn-success" %>
+      <%= link_to 'Stream', projects_path(order: 'stream'), class: "btn btn-success" %>
+      <%= link_to 'Watershed', projects_path(order: 'watershed'), class: "btn btn-success" %>
+
     </div>
-<% name_sort = false%>
-<% affiliation_sort = false%>
-<% stream_name = false%>
-<% watershed_sort = false%>
+<%= render @projects%>
 
-
-<%= render :partial => 'project', :collection => @projects.sort_by(&:name) if name_sort == false%>
-  
 </div>
