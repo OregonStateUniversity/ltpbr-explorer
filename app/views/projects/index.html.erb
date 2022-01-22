@@ -15,5 +15,7 @@
       <%= link_to 'Watershed<i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'watershed'), class: "btn btn-success" %>
     </div>
 <%= render @projects%>
+<hr>
 <%= paginate @projects%>
+
 </div>
