@@ -4,19 +4,47 @@ class ProjectsController < ApplicationController
   before_action :require_owner, only: [:edit, :update, :destroy]
 
   $displaylimit = 15
-
+  $nametoggle, $affiliationtoggle, $stream_nametoggle, $watershedtoggle = false
   def index;
     @projects = Project.page(params[:page]).per($displaylimit)
-
     if params[:order] == 'name'
+        $stream_nametoggle, @affiliationtoggle, $watershedtoggle = false;
+        if $nametoggle == true
+            @projects = Project.page(params[:page]).per($displaylimit).order('name DESC')
+            $nametoggle = false
+        else
         @projects = Project.page(params[:page]).per($displaylimit).order('name')
-    elsif params[:order] == 'watershed'
-        @projects = Project.page(params[:page]).per($displaylimit).order('watershed')
-    elsif params[:order] == 'stream_name'
-        @projects = Project.page(params[:page]).per($displaylimit).order('stream_name')
-    elsif params[:order] == 'watershed'
+        $nametoggle = true;
+        end
+    elsif params[:order] == 'affiliation'
+        $stream_nametoggle, @watershedtoggle, $nametoggle = false;
+        if $affiliationtoggle == true
+            @projects = Project.page(params[:page]).per($displaylimit).order('affiliation DESC')
+            $affiliationtoggle = false
+        else
         @projects = Project.page(params[:page]).per($displaylimit).order('affiliation')
+        $affiliationtoggle = true;
+        end
+    elsif params[:order] == 'stream_name'
+        $watershedtoggle, @affiliationtoggle, $nametoggle = false;
+        if $stream_nametoggle == true
+            @projects = Project.page(params[:page]).per($displaylimit).order('stream_name DESC')
+            $stream_nametoggle = false
+        else
+        @projects = Project.page(params[:page]).per($displaylimit).order('stream_name')
+        $stream_nametoggle = true;
+        end
+    elsif params[:order] == 'watershed'
+        $stream_nametoggle, @affiliationtoggle, $nametoggle = false;
+        if $watershedtoggle == true
+            @projects = Project.page(params[:page]).per($displaylimit).order('watershed DESC')
+            $watershedtoggle = false
+        else
+        @projects = Project.page(params[:page]).per($displaylimit).order('watershed')
+        $watershedtoggle = true;
+        end
     elsif params[:order] == 'normal'
+        $watershedtoggle, $stream_nametoggle, @affiliationtoggle, $nametoggle = false;
         @projects = Project.page(params[:page]).per($displaylimit)
     end
   end
