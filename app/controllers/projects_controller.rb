@@ -3,17 +3,19 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :require_owner, only: [:edit, :update, :destroy]
 
+  $displaylimit = 2
+
   def index;
-    @projects = Project.all
+    @projects = Project.limit($displaylimit)
 
     if params[:order] == 'name'
-        @projects = Project.all.order('name')
+        @projects = Project.limit($displaylimit).order('name')
     elsif params[:order] == 'watershed'
-        @projects = Project.all.order('watershed')
+        @projects = Project.limit($displaylimit).order('watershed')
     elsif params[:order] == 'stream_name'
-        @projects = Project.all.order('stream_name')
+        @projects = Project.limit($displaylimit).order('stream_name')
     elsif params[:order] == 'watershed'
-        @projects = Project.all.order('affiliation')
+        @projects = Project.limit($displaylimit).order('affiliation')
     end
   end
 
