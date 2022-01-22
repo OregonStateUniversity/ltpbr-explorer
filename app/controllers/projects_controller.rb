@@ -6,16 +6,16 @@ class ProjectsController < ApplicationController
   $displaylimit = 2
 
   def index;
-    @projects = Project.limit($displaylimit)
+    @projects = Project.page(params[:page]).per($displaylimit)
 
     if params[:order] == 'name'
-        @projects = Project.limit($displaylimit).order('name')
+        @projects = Project.page(params[:page]).per($displaylimit).order('name')
     elsif params[:order] == 'watershed'
-        @projects = Project.limit($displaylimit).order('watershed')
+        @projects = Project.page(params[:page]).per($displaylimit).order('watershed')
     elsif params[:order] == 'stream_name'
-        @projects = Project.limit($displaylimit).order('stream_name')
+        @projects = Project.page(params[:page]).per($displaylimit).order('stream_name')
     elsif params[:order] == 'watershed'
-        @projects = Project.limit($displaylimit).order('affiliation')
+        @projects = Project.page(params[:page]).per($displaylimit).order('affiliation')
     end
   end
 
