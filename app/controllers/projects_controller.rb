@@ -16,6 +16,8 @@ class ProjectsController < ApplicationController
         @projects = Project.page(params[:page]).per($displaylimit).order('stream_name')
     elsif params[:order] == 'watershed'
         @projects = Project.page(params[:page]).per($displaylimit).order('affiliation')
+    elsif params[:order] == 'normal'
+        @projects = Project.page(params[:page]).per($displaylimit)
     end
   end
 
