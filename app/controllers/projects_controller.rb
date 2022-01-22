@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :require_owner, only: [:edit, :update, :destroy]
 
-  $displaylimit = 1
+  $displaylimit = 15
 
   def index;
     @projects = Project.page(params[:page]).per($displaylimit)

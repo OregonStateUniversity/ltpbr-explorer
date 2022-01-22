@@ -2,20 +2,23 @@
 <div class="container pt-3">
   <div class="row">
     <div class="col">
-      <h2>LT-PBR Projects</h2>
+      <h1>LT-PBR Projects</h1>
+      <br>
     </div>
     <div class="col text-right">
-      <%= link_to 'Map View', projects_map_path, class: "btn btn-success" %>
+      <%= link_to 'Map View', projects_map_path, class: "btn btn-success", id: "filter-button" %>
     </div>
   </div>
-    <div class="col text-left">
-      <%= link_to 'Name <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'name'), class: "btn btn-success" %>
-      <%= link_to 'Affiliation <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'affiliation'), class: "btn btn-success" %>
-      <%= link_to 'Stream <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'stream'), class: "btn btn-success" %>
-      <%= link_to 'Watershed<i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'watershed'), class: "btn btn-success" %>
+    <div class="text-left">
+      <%= link_to 'Name <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'name'), class: "btn btn-success", id: "filter-button"%>
+      <%= link_to 'Affiliation <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'affiliation'), class: "btn btn-success", id: "filter-button" %>
+      <%= link_to 'Stream <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'stream'), class: "btn btn-success", id: "filter-button" %>
+      <%= link_to 'Watershed<i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'watershed'), class: "btn btn-success", id: "filter-button" %>
     </div>
 <%= render @projects%>
 <hr>
+<div class ="pagination">
 <%= paginate @projects%>
+</div>
 
 </div>
