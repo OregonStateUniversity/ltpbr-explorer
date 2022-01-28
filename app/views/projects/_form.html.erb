@@ -118,7 +118,7 @@
     <div class="btn btn-question" id="photo-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
-    <%= f.file_field :photos, multiple: true, class: 'custom-file-control form-control' %>
+    <%= f.file_field :photos, multiple: true, accept: 'image/*', class: 'custom-file-control form-control' %>
   </div>
 </div>
 <!-- NARRATIVE -->
@@ -173,7 +173,8 @@
         </button>
       </div>
       <div class='modal-body'>
-        Upload at least one representative picture of the project area, channel, or structures.
+        Upload at least one representative photo of the project area, channel, or structures.
+        Each of the photos must be below 10 MB in size and be in the JPEG, PNG, GIF, BMP, AVIF, or WebP format.
       </div>
       <div class='modal-footer'>
         <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>

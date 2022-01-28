@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.4'
 
 gem 'activerecord-postgis-adapter'
+gem 'active_storage_validations'
 gem 'aws-sdk', '~> 3'
 gem 'bootsnap', '>= 1.9.1', require: false
 gem 'bootstrap', '~> 4.6.0'

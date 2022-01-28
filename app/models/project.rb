@@ -6,6 +6,8 @@ class Project < ApplicationRecord
 
   before_save :assign_lonlat
 
+  has_many_attached :photos
+
   validates :name, :affiliation, :stream_name, :implementation_date, :primary_contact,
             :longitude, :latitude, :narrative, :structure_description, :watershed,
             :url, presence: true
@@ -17,7 +19,7 @@ class Project < ApplicationRecord
 
   validates_format_of :implementation_date, :with => /\d{4}\-\d{2}\-\d{2}/, :message => 'must be in the following format: yyyy-mm-dd'
 
-  has_many_attached :photos
+  validates :photos, attached: true, content_type: [:png, :jpg, :jpeg, :gif, :bmp, :avif, :webp], size: { less_than: 10.megabytes , message: 'must be below 10 MB in size each' }
 
   def title
     "Project on #{stream_name}"
