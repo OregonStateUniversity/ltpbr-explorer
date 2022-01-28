@@ -34,6 +34,9 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    attachments = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
+    attachments.map(&:purge)
+
     if @project.update(project_params)
       redirect_to @project
       flash[:success] = 'Project was successfully updated.'

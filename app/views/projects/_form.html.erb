@@ -135,6 +135,23 @@
 </div>
 <%= f.text_area :structure_description, autocomplete: 'off', placeholder: 'Briefly describe LT-PBR design and/or construction elements.', class: 'form-control', rows: 5 %>
 
+<!-- DELETE EXISTING PHOTOS -->
+<% if @project.photos.attached? %>
+  <%= f.label :photos, 'Select Existing Photos to Delete' %>
+  <div class="btn btn-question" id="delete-photos-help">
+    <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% @project.photos.each do |photo| %>
+        <div class="col-3">
+          <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
+          <%= check_box_tag "select_delete_photo_ids[]", photo.id %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <div class="actions">
   <%= f.submit class: 'btn confirm-btn' %>
@@ -391,6 +408,24 @@
       </div>
       <div class='modal-body'>
         Briefly describe LT-PBR structure design and/or construction elements. e.g., Structures were primarily BDAs, and generally built at a low elevation of 0.25 m. Majority of the structures utilized two post rows and juniper and sagebrush as fill material.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='delete-photos-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Select Existing Photos to Delete</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Select photos by clicking or tapping on them to mark them for deletion.
       </div>
       <div class='modal-footer'>
         <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>

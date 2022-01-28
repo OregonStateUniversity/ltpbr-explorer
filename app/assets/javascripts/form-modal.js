@@ -54,4 +54,8 @@ $(document).on('turbolinks:load', function() {
   $('#structure_description-help').on('click', function() {
     $('#structure_description-modal').modal();
   });
+
+  $('#delete-photos-help').on('click', function() {
+    $('#delete-photos-modal').modal();
+  });
 });
