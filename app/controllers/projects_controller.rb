@@ -29,6 +29,7 @@ class ProjectsController < ApplicationController
       redirect_to @project
       flash[:success] = 'Project was successfully created.'
     else
+      @project.photos.purge
       render :new
     end
   end
