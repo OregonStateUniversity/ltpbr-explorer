@@ -30,6 +30,7 @@ class Project < ApplicationRecord
     "Project on #{stream_name}"
   end
 
+
   def byline
     if affiliation.present?
       "Implemented on #{implementation_date.to_formatted_s(:long)} in affiliation with #{affiliation}"

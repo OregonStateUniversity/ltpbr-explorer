@@ -2,6 +2,12 @@
 <div class="container pt-5">
   <h1 class="display-4"><%= @project.name %></h1>
   <p class="lead"><%= @project.affiliation %></p>
+  <% @project.affiliation.each do |affiliation|%>
+    <%= affiliation.affiliation_name%>
+        <%if(affiliation != project.affiliation.last)%>
+        :
+        <%end%>
+  <%end%>
   <hr />
 
   <div class="row">
