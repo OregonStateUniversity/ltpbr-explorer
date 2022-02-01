@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_053859) do
+ActiveRecord::Schema.define(version: 2022_02_01_014746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,10 +39,9 @@ ActiveRecord::Schema.define(version: 2022_01_21_053859) do
 
   create_table "affiliations", force: :cascade do |t|
     t.string "name"
-    t.string "description"
-    t.string "icon_name"
-    t.integer "icon_file_size"
-    t.string "icon_content_type"
+    t.text "description"
+    t.string "contact"
+    t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
