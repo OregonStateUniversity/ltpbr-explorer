@@ -4,6 +4,8 @@ class Project < ApplicationRecord
 
   belongs_to :author, class_name: 'User'
 
+  has_and_belongs_to_many :affiliation
+
   before_save :assign_lonlat
 
   validates :name, :affiliation, :stream_name, :implementation_date, :primary_contact,
