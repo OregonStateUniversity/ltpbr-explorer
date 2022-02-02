@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_02_032228) do
+ActiveRecord::Schema.define(version: 2022_02_02_185339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_032228) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "affiliation_legacy", null: false
+    t.string "affiliation_legacy"
     t.string "stream_name", null: false
     t.date "implementation_date", null: false
     t.text "narrative", null: false
