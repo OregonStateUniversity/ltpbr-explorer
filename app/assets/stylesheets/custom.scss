@@ -232,6 +232,16 @@ input[type="checkbox"] {
   margin-bottom: 15px;
 }
 
+#affiliation-dropdown-select {
+    background-color: red;
+    color: red;
+}
+
+.affiliation-dropdown-select option {
+    color: red;
+    background-color: red;
+}
+
 // Flash messages
 
 .alert {
