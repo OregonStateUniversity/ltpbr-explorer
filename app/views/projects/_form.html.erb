@@ -34,7 +34,7 @@
     <div class="btn btn-question" id="affiliation-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
-    <%= f.collection_select :affiliation_ids, @affiliations, :id, :collection_display%>
+    <%= f.collection_select(:affiliation_ids, Affiliation.all, :id, :affiliation_name,  {:prompt => "Please Select a Sector"}, {:multiple => true}) %>
 
   </div>
 </div>
