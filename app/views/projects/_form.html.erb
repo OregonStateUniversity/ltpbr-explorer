@@ -34,9 +34,12 @@
     <div class="btn btn-question" id="affiliation-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
-    <%= f.text_field :affiliation, autofocus: true, autocomplete: 'off', placeholder: 'e.g. NOAA Fisheries', class: 'form-control' %>
+
+    <%= f.collection_select :affiliation, Affiliation.order(:affiliation_name),:affiliation_name,:affiliation_name, {include_blank: true}%>
+
   </div>
 </div>
+
 <div class="row">
   <div class="col-md">
     <!-- STREAM NAME -->

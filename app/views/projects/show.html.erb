@@ -4,7 +4,7 @@
   <p class="lead"><%= @project.affiliation %></p>
   <% @project.affiliation.each do |affiliation|%>
     <%= affiliation.affiliation_name%>
-        <%if(affiliation != project.affiliation.last)%>
+        <% if(affiliation != @project.affiliation.last)%>
         :
         <%end%>
   <%end%>
