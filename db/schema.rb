@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_053859) do
+ActiveRecord::Schema.define(version: 2022_01_23_002225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,16 +37,6 @@ ActiveRecord::Schema.define(version: 2022_01_21_053859) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "affiliations", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
-    t.string "icon_name"
-    t.integer "icon_file_size"
-    t.string "icon_content_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "projects", force: :cascade do |t|
     t.string "affiliation", null: false
     t.string "stream_name", null: false
@@ -58,10 +48,6 @@ ActiveRecord::Schema.define(version: 2022_01_21_053859) do
     t.datetime "updated_at", null: false
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}, null: false
     t.integer "author_id", null: false
-    t.string "photo_file_name"
-    t.string "photo_content_type"
-    t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
     t.integer "number_of_structures", null: false
     t.text "structure_description", null: false
     t.string "name", null: false
