@@ -10,17 +10,33 @@
   <tbody>
     <% @affiliations.each do |affiliation| %>
       <tr>
-        <td>
-          <%= link_to 'Show', affiliation %>
-          <%= affiliation.affiliation_name%>
-        </td>
-        <td>
-          <%= link_to 'Edit', edit_affiliation_path(affiliation) %>
-        </td>
-        <td>
-          <%= link_to 'Destroy', affiliation, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
+      <div class="container pt-5">
+    <hr />
+    <div class="row">
+    <div class="col-md-5">
+      <label>Affiliation Name:</label>
+      <p class="h5 mb-3"><%= affiliation.affiliation_name %></p>
+      <hr>
+
+      <label>Affiliation Description:</label>
+      <p class="h5 mb-3"><%= affiliation.description %></p>
+      <hr>
+
+      <label>Affiliation Contact:</label>
+      <p class="h5 mb-3"><%= affiliation.contact %></p>
+      <hr>
+
+      <label>Affiliation Website:</label>
+      <p class="h5 mb-3"><%= affiliation.website %></p>
+      <hr>
+        <%= link_to 'Show', affiliation %>
+        <%= link_to 'Edit', edit_affiliation_path(affiliation) %>
+        <%= link_to 'Destroy', affiliation, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <td>
+      </td>
+    </div>
+    </div>
+    </tr>
     <% end %>
   </tbody>
 </table>
