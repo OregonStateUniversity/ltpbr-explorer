@@ -29,19 +29,23 @@ class ProjectsController < ApplicationController
       redirect_to @project
       flash[:success] = 'Project was successfully created.'
     else
+      # Delete uploaded photos if creation failed - Rails 5.2 bug
       @project.photos.purge
       render :new
     end
   end
 
   def update
-    attachments = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
-    attachments.map(&:purge)
+    # Delete selected photos
+    photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
+    photos_selected_for_deletion.map(&:purge)
 
     if @project.update(project_params)
       redirect_to @project
       flash[:success] = 'Project was successfully updated.'
     else
+      # Delete uploaded photos if update failed - Rails 5.2 bug
+      @project.photos.purge
       render :edit
     end
   end
