@@ -2,6 +2,7 @@
 
 $green: #27ae60;
 $danger-red: #c0392b;
+$success-green: #28a745;
 $enable-shadows: true;
 
 @mixin box_sizing {
@@ -9,6 +10,7 @@ $enable-shadows: true;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 
 // Layout
 
@@ -638,5 +640,92 @@ project-photo {
 @media only screen and (max-width: 400px) {
 #about-header{
     font-size: 20px;    
+    }
+}
+
+
+// Project List Page and Pagination
+
+#filter-button {
+    background-color: $green;
+}
+
+#filter-button:hover {
+    background-color: $success-green;
+}
+
+.pagination a, .pagination span.current, .pagination span.gap {
+    float: left;
+    padding: 0 14px;
+    line-height: 38px;
+    color: $green;
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid #DDD;
+    border-left-width: 0;
+    transition: background-color .3s;
+}
+.pagination > li > a
+{
+    background-color: white;
+    color: $green;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #eee;
+    background-color: $green;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: $green;
+    background-color: $green !important;
+    border: solid 1px lightgray !important;
+}
+
+.pagination > .active > a:hover
+{
+    color: white;
+    background-color: $success-green !important;
+    border: solid 1px lightgray;
+}
+.pagination a:hover {
+    background-color: $green;
+}
+.pagination:active {
+    color: $green;
+}
+
+.pagination {
+    color: $green;
+    .first{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .prev {
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .page{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .next{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .last{
+        padding : 0;
+        float: none;
+        border: none;
     }
 }
