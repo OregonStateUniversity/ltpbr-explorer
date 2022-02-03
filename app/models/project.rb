@@ -21,7 +21,7 @@ class Project < ApplicationRecord
 
   validates :photos, 
     content_type: [:png, :jpg, :jpeg, :gif, :bmp, :avif, :webp], 
-    size: { less_than: 10.megabytes , message: 'must be below 10 MB in size each' }, 
+    size: { less_than: 50.megabytes , message: 'must be below 50 MB in size each' }, 
     limit: { min: 0, max: 20, message: 'must have fewer than 20 photos'}
 
   def title
