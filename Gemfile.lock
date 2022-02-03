@@ -41,6 +41,9 @@ GEM
     activerecord-postgis-adapter (5.2.3)
       activerecord (~> 5.1)
       rgeo-activerecord (~> 6.0)
+    activerecord-postgres_enum (2.0.1)
+      activerecord (>= 5.2)
+      pg
     activestorage (5.2.6)
       actionpack (= 5.2.6)
       activerecord (= 5.2.6)
@@ -1497,6 +1500,7 @@ PLATFORMS
 DEPENDENCIES
   active_storage_validations
   activerecord-postgis-adapter
+  activerecord-postgres_enum
   airbrake
   aws-sdk (~> 3)
   bootsnap (>= 1.9.1)

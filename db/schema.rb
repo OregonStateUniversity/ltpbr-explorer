@@ -16,6 +16,11 @@ ActiveRecord::Schema.define(version: 2022_01_23_002225) do
   enable_extension "plpgsql"
   enable_extension "postgis"
 
+  create_enum :user_role, [
+    "public",
+    "admin",
+  ], force: :cascade
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -53,10 +58,32 @@ ActiveRecord::Schema.define(version: 2022_01_23_002225) do
     t.string "name", null: false
     t.string "watershed", null: false
     t.text "url"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'user_role' for column 'role'
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "username", null: false
+    t.string "affiliation", null: false
+    t.string "name", null: false
+    t.enum "role", default: "public", enum_type: "user_role"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "projects", "users", column: "author_id"
