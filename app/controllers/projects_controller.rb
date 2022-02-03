@@ -71,15 +71,23 @@ class ProjectsController < ApplicationController
       redirect_to @project
       flash[:success] = 'Project was successfully created.'
     else
+      # Delete uploaded photos if creation failed - Rails 5.2 bug
+      @project.photos.purge
       render :new
     end
   end
 
   def update
+    # Delete selected photos
+    photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
+    photos_selected_for_deletion.map(&:purge)
+
     if @project.update(project_params)
       redirect_to @project
       flash[:success] = 'Project was successfully updated.'
     else
+      # Delete uploaded photos if update failed - Rails 5.2 bug
+      @project.photos.purge
       render :edit
     end
   end
@@ -98,8 +106,8 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:affiliation, :stream_name, :implementation_date,
-      :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures, :photo,
-      :structure_description, :name, :watershed, :url)
+      :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures,
+      :structure_description, :name, :watershed, :url, photos: [])
   end
 
   def require_owner

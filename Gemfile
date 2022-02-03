@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.4'
 
 gem 'activerecord-postgis-adapter'
+gem 'active_storage_validations'
+gem 'activerecord-postgres_enum'
 gem 'aws-sdk', '~> 3'
 gem 'bootsnap', '>= 1.9.1', require: false
 gem 'bootstrap', '~> 4.6.0'
@@ -17,7 +19,6 @@ gem 'haml-rails'
 gem 'jbuilder', '~> 2.10.1'
 gem 'jquery-rails'
 gem 'kaminari', '~> 1.2.2'
-gem 'paperclip', '~> 5.2.1'
 gem 'possessive'
 gem 'pg'
 gem 'puma', '~> 4.3.10'
