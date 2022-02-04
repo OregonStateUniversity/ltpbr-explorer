@@ -231,17 +231,15 @@ input[type="checkbox"] {
 #recaptcha {
   margin-bottom: 15px;
 }
-
-#affiliation-dropdown-select {
-    background-color: red;
-    color: red;
+    
+.selectWrapper {
+    max-height: 100px;
+    overflow-y: scroll;
 }
 
-.affiliation-dropdown-select option {
-    color: red;
-    background-color: red;
+#form-check,#form-check checkbox{
+    display: inline-block;
 }
-
 // Flash messages
 
 .alert {

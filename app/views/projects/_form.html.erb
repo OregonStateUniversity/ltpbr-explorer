@@ -30,12 +30,25 @@
   </div>
   <div class="col-md">
     <!-- PROJECT AFFILIATION -->
-    <%= f.label :affiliation, 'Project Affiliation' %>
+    <%= f.label :affiliation, 'Project Affiliation(s)' %>
     <div class="btn btn-question" id="affiliation-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
-    <div class = "affiliation-dropdown-select">
-    <%= f.collection_select(:affiliation_ids, Affiliation.all.order(:affiliation_name), :id, :affiliation_name,  {:prompt => "Please Select one or More", class: 'form-control' , id: "affiliation-dropdown-select"}, {:multiple => true}) %>
+    <div class = "selectWrapper">
+    <%= f.select :affiliation_ids, options_from_collection_for_select(Affiliation.all.order(:affiliation_name), :id, :affiliation_name), multiple: true %>
+    <%= f.collection_check_boxes(:affiliation_ids, Affiliation.all.order(:affiliation_name), :id, :affiliation_name,  {class: 'dropdown-menu', id: "affiliation-dropdown-select", :prompt => "Please Select one or More", :multiple => true, include_blank: true}) do |b| %>
+    <div class="ruby-names-wrapper collapsed" id="form-check">
+        <%= b.label(class: "checkbox") do %>
+            <div>
+                <%= b.check_box(class: "checkbox") %>
+            </div>
+
+        <div>
+            <%= b.object.affiliation_name %>
+        </div>       
+    <% end %>
+  </div>
+<% end %>
     </div>
   </div>
 </div>
