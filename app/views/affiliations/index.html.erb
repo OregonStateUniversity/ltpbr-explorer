@@ -1,44 +1,16 @@
-<h1>Listing affiliations</h1>
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @affiliations.each do |affiliation| %>
-      <tr>
-      <div class="container pt-5">
-    <hr />
-    <div class="row">
-    <div class="col-md-5">
-      <label>Affiliation Name:</label>
-      <p class="h5 mb-3"><%= affiliation.affiliation_name %></p>
-      <hr>
+<% provide(:title, 'Affiliations List') %>
+<div class="container pt-3">
 
-      <label>Affiliation Description:</label>
-      <p class="h5 mb-3"><%= affiliation.description %></p>
-      <hr>
-
-      <label>Affiliation Contact:</label>
-      <p class="h5 mb-3"><%= affiliation.contact %></p>
-      <hr>
-
-      <label>Affiliation Website:</label>
-      <p class="h5 mb-3"><%= affiliation.website %></p>
-      <hr>
-        <%= link_to 'Show', affiliation %>
-        <%= link_to 'Edit', edit_affiliation_path(affiliation) %>
-        <%= link_to 'Destroy', affiliation, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <td>
-      </td>
+  <div class="row">
+    <div class="col">
+      <h1>Affiliations</h1>
     </div>
+    <div class="col text-right">
+      <%= link_to 'New Affiliation', new_affiliation_path, class: "btn btn-success", id: "filter-button" %>
     </div>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<br/>
-<%= link_to 'New Affiliation', new_affiliation_path %>
+  </div>
+<%= render @affiliations%>
+<hr>
+</div>
+
+</div>
