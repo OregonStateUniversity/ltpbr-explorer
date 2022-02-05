@@ -7,6 +7,7 @@ gem 'activerecord-postgis-adapter'
 gem 'aws-sdk', '~> 3'
 gem 'bootsnap', '>= 1.9.1', require: false
 gem 'bootstrap', '~> 4.6.0'
+gem 'chosen-rails', '~> 1.8.7'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'devise', '>= 4.8'
 gem 'ffi-geos'
@@ -16,6 +17,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.10.1'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'kaminari', '~> 1.2.2'
 gem 'paperclip', '~> 5.2.1'
 gem 'possessive'
@@ -23,6 +25,7 @@ gem 'pg'
 gem 'puma', '~> 4.3.10'
 gem 'rabl-rails'
 gem 'rails', '~> 5.2.6'
+gem 'rails-assets-chosen'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'sassc-rails', '~> 2.1.2'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
@@ -57,3 +60,4 @@ group :production do
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+

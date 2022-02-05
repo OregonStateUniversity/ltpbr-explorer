@@ -34,21 +34,13 @@
     <div class="btn btn-question" id="affiliation-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
-    <div class = "selectWrapper">
-    <%= f.select :affiliation_ids, options_from_collection_for_select(Affiliation.all.order(:affiliation_name), :id, :affiliation_name), multiple: true %>
-    <%= f.collection_check_boxes(:affiliation_ids, Affiliation.all.order(:affiliation_name), :id, :affiliation_name,  {class: 'dropdown-menu', id: "affiliation-dropdown-select", :prompt => "Please Select one or More", :multiple => true, include_blank: true}) do |b| %>
-    <div class="ruby-names-wrapper collapsed" id="form-check">
-        <%= b.label(class: "checkbox") do %>
-            <div>
-                <%= b.check_box(class: "checkbox") %>
-            </div>
 
-        <div>
-            <%= b.object.affiliation_name %>
-        </div>       
-    <% end %>
-  </div>
-<% end %>
+    <div class = "selectWrapper">
+    <%= f.select :affiliation_ids,
+    Affiliation.all.map { |u| [u.affiliation_name, u.id] },
+               { include_blank: true, multiple: true},
+               { class: 'chosen-select', multiple: true }
+    %>
     </div>
   </div>
 </div>
@@ -413,3 +405,4 @@
     </div>
   </div>
 </div>
+

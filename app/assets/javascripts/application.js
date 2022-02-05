@@ -13,7 +13,18 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery3
+//= require jquery.turbolinks
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery-readyselector
+//= require chosen-jquery
+//= require chosen
 //= require_tree .
+
+const onLoad = () => {
+    $(".chosen-select").chosen({
+        placeholder_text_multiple: "Select one or more Affiliations",
+    });
+}
+document.addEventListener("load", onLoad)
+document.addEventListener("turbolinks:load", onLoad)
