@@ -37,7 +37,7 @@
 
     <div class = "selectWrapper">
     <%= f.select :affiliation_ids,
-    Affiliation.all.map { |u| [u.affiliation_name, u.id] },
+    Affiliation.all.order(:affiliation_name).map { |u| [u.affiliation_name, u.id] },
                { include_blank: true, multiple: true},
                { class: 'chosen-select', multiple: true }
     %>

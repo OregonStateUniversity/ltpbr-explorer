@@ -235,6 +235,11 @@ input[type="checkbox"] {
 #form-check,#form-check checkbox{
     display: inline-block;
 }
+
+.chosen-container-multi .chosen-choices {
+    position: absolute;
+}
+
 // Flash messages
 
 .alert {

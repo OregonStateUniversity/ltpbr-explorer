@@ -1,13 +1,7 @@
 <% provide(:title, @project.stream_name) %>
 <div class="container pt-5">
   <h1 class="display-4"><%= @project.name %></h1>
-  <p class="lead"><%= @project.affiliation %></p>
-  <% @project.affiliation.each do |affiliation|%>
-    <%= affiliation.affiliation_name%>
-        <% if(affiliation != @project.affiliation.last)%>
-        :
-        <%end%>
-  <%end%>
+  <h5 class="text"><%= @project.affiliation.order(:affiliation_name).each.map(&:affiliation_name).join(", ")%></h5>
   <hr />
 
   <div class="row">

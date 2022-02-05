@@ -5,13 +5,10 @@
   </div>
   <div class="col-sm-7">
     <h3><%= link_to project.name, project, class: "text-dark" %></h3>
-    <h5><%= link_to project.affiliation, project, class: "text-secondary" %></h5>
-    <% project.affiliation.each do |affiliation|%>
-        <%= affiliation.affiliation_name%>
-        <%if(affiliation != project.affiliation.last)%>
-        :
-        <%end%>
-    <%end%>
+    <h5><%#= link_to project.affiliation, project, class: "text-secondary" %></h5>
+    <div class="affiliation-tagline-list">
+        <h5 class="text-secondary"><%= project.affiliation.order(:affiliation_name).each.map(&:affiliation_name).join(", ")%></h5>
+    </div>
   </div>
   <div class="col-sm-3">
     <h5><%= link_to project.watershed, project, class: "text-dark" %></h5>
