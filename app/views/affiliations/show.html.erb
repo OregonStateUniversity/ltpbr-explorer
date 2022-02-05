@@ -1,7 +1,28 @@
-<p id="notice">
-  <%= notice %>
-</p>
 
-<%= link_to 'Edit', edit_affiliation_path(@affiliation) %>
-\|
-<%= link_to 'Back', affiliations_path %>
+<% provide(:title, @affiliation.affiliation_name) %>
+<div class="container pt-5">
+  <h1 class="display-4"><%= @affiliation.affiliation_name %></h1>
+  <%= link_to 'Affiliations List', affiliations_path, class: "btn btn-success", id: "filter-button" %>
+  <div class="row">
+
+    <div class="col-md-5">
+      <label>Affiliation Name:</label>
+      <p class="h5 mb-3"><%= @affiliation.affiliation_name %></p>
+      <hr>
+
+      <label>Affiliation Contact:</label>
+      <p class="h5 mb-3"><%= @affiliation.contact%></p>
+      <hr>
+
+      <label>Affiliation Website:</label>
+      <% url = @affiliation.website%>
+
+      <% html_url = url.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe if url%>
+      <% html_url = "No link provided" if !url%>
+      <em><p class="h5 mb-3"><%= html_url %></p></em>
+      <hr>
+    </div>
+  </div>
+
+  <h5>Affiliation Description</h5>
+  <p><%= @affiliation.description %></p>
