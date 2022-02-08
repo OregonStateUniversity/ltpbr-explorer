@@ -17,7 +17,6 @@
 //= require bootstrap-sprockets
 //= require jquery-readyselector
 //= require chosen-jquery
-//= require chosen
 //= require_tree .
 
 const onLoad = () => {

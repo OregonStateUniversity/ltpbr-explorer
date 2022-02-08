@@ -1399,9 +1399,6 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.2.6)
       sprockets-rails (>= 2.0.0)
-    rails-assets-chosen (1.4.2)
-      rails-assets-jquery (>= 1.4.4)
-    rails-assets-jquery (3.6.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -1546,7 +1543,6 @@ DEPENDENCIES
   puma (~> 4.3.10)
   rabl-rails
   rails (~> 5.2.6)
-  rails-assets-chosen
   recaptcha
   rspec-rails (~> 5.0.2)
   sassc-rails (~> 2.1.2)
