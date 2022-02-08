@@ -122,11 +122,11 @@
   </div>
   <div class="col-md">
     <!-- PROJECT IMAGE -->
-    <%= f.label :photo, 'Project Photo' %>
+    <%= f.label :photos, 'Project Photos' %>
     <div class="btn btn-question" id="photo-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
-    <%= f.file_field :photo, class: 'custom-file-control form-control' %>
+    <%= f.file_field :photos, multiple: true, accept: 'image/*', class: 'custom-file-control form-control' %>
   </div>
 </div>
 <!-- NARRATIVE -->
@@ -143,6 +143,46 @@
 </div>
 <%= f.text_area :structure_description, autocomplete: 'off', placeholder: 'Briefly describe LT-PBR design and/or construction elements.', class: 'form-control', rows: 5 %>
 
+<!-- DELETE EXISTING PHOTOS -->
+<% if @project.photos.attached? %>
+  <%= f.label :photos, 'Select Existing Photos to Delete' %>
+  <div class="btn btn-question" id="delete-photos-help">
+    <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% @project.photos.each do |photo| %>
+        <div class="col-3">
+          <label class="image-checkbox rounded">
+            <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'img-fluid shadow' %>
+            <%= check_box_tag "select_delete_photo_ids[]", photo.id %>
+            <i class="fa fa-trash bg-dark shadow rounded"></i>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <script>
+    // Initialize state
+    $(".image-checkbox").each(function () {
+      if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+        $(this).addClass('image-checkbox-checked');
+      }
+      else {
+        $(this).removeClass('image-checkbox-checked');
+      }
+    });
+
+    // Sync state when image is clicked
+    $(".image-checkbox").on("click", function (e) {
+      $(this).toggleClass('image-checkbox-checked');
+      var $checkbox = $(this).find('input[type="checkbox"]');
+      $checkbox.prop("checked",!$checkbox.prop("checked"))
+
+      e.preventDefault();
+    });
+  </script>
+<% end %>
 
 <div class="actions">
   <%= f.submit class: 'btn confirm-btn' %>
@@ -175,13 +215,15 @@
   <div class='modal-dialog' role='document'>
     <div class='modal-content'>
       <div class='modal-header'>
-        <h5 class='modal-title'>Project Photo</h5>
+        <h5 class='modal-title'>Project Photos</h5>
         <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
           <span aria-hidden='true'>×</span>
         </button>
       </div>
       <div class='modal-body'>
-        Upload a representative picture of the project area, channel, or structures.
+        <p>Upload at least one representative photo of the project area, channel, or structures.</p>
+        <p>Each of the photos must be below 50 MB in size and be in the JPEG, PNG, GIF, BMP, AVIF, or WebP format.</p>
+        <p>There is a limit of 20 photos.</p>
       </div>
       <div class='modal-footer'>
         <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
@@ -405,4 +447,21 @@
     </div>
   </div>
 </div>
-
+<div aria-hidden='true' class='modal fade' id='delete-photos-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Select Existing Photos to Delete</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Select photos by clicking or tapping on them to mark them for deletion.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

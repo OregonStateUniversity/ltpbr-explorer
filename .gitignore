@@ -35,3 +35,6 @@
 #Stuff added by RubyMine to be ignored
 .idea/
 vendor/cache/
+
+# Ignore local ActiveStorage files
+/storage

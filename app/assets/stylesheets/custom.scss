@@ -446,6 +446,72 @@ project-photo {
   height: auto;
 }
 
+.carousel {
+  max-width: 600px;
+  height: 600px;
+}
+
+.carousel-inner {
+  height: 100%;
+}
+
+.carousel-item {
+  background-size: contain;
+  background-repeat: no-repeat; 
+  background-position: 50% 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item > img {
+  visibility: hidden;
+  margin: auto;
+  height: auto; 
+  width: auto; 
+  max-width: 100%; 
+  max-height: 600px;
+}
+
+.carousel-control-next, .carousel-control-prev, .carousel-indicators {
+  filter: invert(100%);
+}
+
+.image-checkbox {
+	cursor: pointer;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	border: 4px solid transparent;
+	outline: 0;
+  position: relative;
+}
+
+.image-checkbox input[type="checkbox"] {
+	display: none;
+}
+
+.image-checkbox-checked {
+	border-color: $danger-red;
+}
+
+.image-checkbox .fa {
+  position: absolute;
+  color: $danger-red;
+  border-color: #d6e9c6;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.image-checkbox .fa {
+  display: none;
+}
+
+.image-checkbox-checked .fa {
+  display: block !important;
+}
+
 // Icons
 
 .icon-card {
