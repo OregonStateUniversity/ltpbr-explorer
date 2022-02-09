@@ -9,6 +9,7 @@ gem 'activerecord-postgres_enum'
 gem 'aws-sdk', '~> 3'
 gem 'bootsnap', '>= 1.9.1', require: false
 gem 'bootstrap', '~> 4.6.0'
+gem 'chosen-rails', '~> 1.8.7'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'devise', '>= 4.8'
 gem 'ffi-geos'
@@ -18,6 +19,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.10.1'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'kaminari', '~> 1.2.2'
 gem 'possessive'
 gem 'pg'
@@ -58,3 +60,4 @@ group :production do
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
