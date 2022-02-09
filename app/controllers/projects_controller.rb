@@ -19,10 +19,10 @@ class ProjectsController < ApplicationController
     elsif params[:order] == 'affiliation'
         $stream_nametoggle, @watershedtoggle, $nametoggle = false;
         if $affiliationtoggle == true
-            @projects = Project.page(params[:page]).per($displaylimit).order('affiliation DESC')
+            @projects = Project.includes(:affiliation).page(params[:page]).per($displaylimit).order('affiliations.affiliation_name DESC')
             $affiliationtoggle = false
         else
-        @projects = Project.page(params[:page]).per($displaylimit).order('affiliation')
+        @projects = Project.includes(:affiliation).page(params[:page]).per($displaylimit).order('affiliations.affiliation_name')
         $affiliationtoggle = true;
         end
     elsif params[:order] == 'stream'
