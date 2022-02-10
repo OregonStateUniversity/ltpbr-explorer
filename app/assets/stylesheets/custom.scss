@@ -232,6 +232,14 @@ input[type="checkbox"] {
   margin-bottom: 15px;
 }
 
+#form-check,#form-check checkbox{
+    display: inline-block;
+}
+
+.chosen-container-multi .chosen-choices {
+    position: absolute;
+}
+
 // Flash messages
 
 .alert {

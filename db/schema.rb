@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_23_002225) do
+ActiveRecord::Schema.define(version: 2022_02_02_185339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,23 @@ ActiveRecord::Schema.define(version: 2022_01_23_002225) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "affiliations", force: :cascade do |t|
+    t.string "affiliation_name"
+    t.text "description"
+    t.string "contact"
+    t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "affiliations_projects", id: false, force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "affiliation_id", null: false
+    t.index ["project_id", "affiliation_id"], name: "index_affiliations_projects_on_project_id_and_affiliation_id", unique: true
+  end
+
   create_table "projects", force: :cascade do |t|
-    t.string "affiliation", null: false
+    t.string "affiliation_legacy"
     t.string "stream_name", null: false
     t.date "implementation_date", null: false
     t.text "narrative", null: false

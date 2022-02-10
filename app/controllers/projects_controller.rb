@@ -19,10 +19,10 @@ class ProjectsController < ApplicationController
     elsif params[:order] == 'affiliation'
         $stream_nametoggle, @watershedtoggle, $nametoggle = false;
         if $affiliationtoggle == true
-            @projects = Project.page(params[:page]).per($displaylimit).order('affiliation DESC')
+            @projects = Project.includes(:affiliation).page(params[:page]).per($displaylimit).order('affiliations.affiliation_name DESC')
             $affiliationtoggle = false
         else
-        @projects = Project.page(params[:page]).per($displaylimit).order('affiliation')
+        @projects = Project.includes(:affiliation).page(params[:page]).per($displaylimit).order('affiliations.affiliation_name')
         $affiliationtoggle = true;
         end
     elsif params[:order] == 'stream'
@@ -105,7 +105,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:affiliation, :stream_name, :implementation_date,
+    params.require(:project).permit(:affiliation, {affiliation_ids: []}, :stream_name, :implementation_date,
       :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures,
       :structure_description, :name, :watershed, :url, photos: [])
   end

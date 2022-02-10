@@ -30,13 +30,21 @@
   </div>
   <div class="col-md">
     <!-- PROJECT AFFILIATION -->
-    <%= f.label :affiliation, 'Project Affiliation' %>
+    <%= f.label :affiliation, 'Project Affiliation(s)' %>
     <div class="btn btn-question" id="affiliation-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
-    <%= f.text_field :affiliation, autofocus: true, autocomplete: 'off', placeholder: 'e.g. NOAA Fisheries', class: 'form-control' %>
+
+    <div class = "selectWrapper">
+    <%= f.select :affiliation_ids,
+    Affiliation.all.order(:affiliation_name).map { |u| [u.affiliation_name, u.id] },
+               { include_blank: true, multiple: true},
+               { class: 'chosen-select', multiple: true }
+    %>
+    </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-md">
     <!-- STREAM NAME -->
