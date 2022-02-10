@@ -9,7 +9,7 @@ gem 'activerecord-postgres_enum'
 gem 'aws-sdk', '~> 3'
 gem 'bootsnap', '>= 1.9.1', require: false
 gem 'bootstrap', '~> 4.6.0'
-gem 'chosen-rails', '~> 1.8.7'
+gem 'chosen-rails', '~> 1.10.0'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'devise', '>= 4.8'
 gem 'ffi-geos'
