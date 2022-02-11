@@ -72,7 +72,7 @@ class ProjectsController < ApplicationController
       flash[:success] = 'Project was successfully created.'
     else
       # Delete uploaded photos if creation failed - Rails 5.2 bug
-      @project.photos.purge
+      # @project.photos.purge
       render :new
     end
   end
@@ -87,7 +87,8 @@ class ProjectsController < ApplicationController
       flash[:success] = 'Project was successfully updated.'
     else
       # Delete uploaded photos if update failed - Rails 5.2 bug
-      @project.photos.purge
+      # @project.photos.purge
+      # params[:photos].purge
       render :edit
     end
   end
