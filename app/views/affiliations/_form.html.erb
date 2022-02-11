@@ -12,6 +12,9 @@
 <%= f.label :name, 'Affiliation Website' %>
 <%= f.text_field :website, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Website Here', class: 'form-control' %>
 
+<%= f.label :name, 'Affiliation Image' %>
+<%= f.file_field :icon, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Image Icon', class: 'form-control' %>
+
   <% if @affiliation.errors.any? %>
     <div id="error_explanation">
       <h2>

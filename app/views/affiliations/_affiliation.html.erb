@@ -1,6 +1,7 @@
 <hr>
 <div class="row">
   <div class="col-sm-7">
+  <%= image_tag(affiliation.icon) if affiliation.icon.attached? %>
     <h3><%= affiliation.affiliation_name %></h3>
     <h5 class="text-secondary"><%= affiliation.description %></h5>
   </div>
