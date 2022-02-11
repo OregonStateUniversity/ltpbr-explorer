@@ -1,10 +1,14 @@
 
 <% provide(:title, @affiliation.affiliation_name) %>
 <div class="container pt-5">
-  <h1 class="display-4"><%= @affiliation.affiliation_name %></h1>
-  <%= link_to 'Affiliations List', affiliations_path, class: "btn btn-success", id: "filter-button" %>
+  <div class="row align-items-center h-100">
+    <%= image_tag(@affiliation.icon, class: 'affiliation-icon-list') if @affiliation.icon.attached? %>
+    <h1 class="display-4"><%= @affiliation.affiliation_name %></h1>
+    <div class="col-sm-3 ml-auto">
+      <%= link_to 'Affiliations List', affiliations_path, class: "btn btn-success", id: "filter-button" %>
+    </div>
+  </div>
   <div class="row">
-
     <div class="col-md-5">
       <label>Affiliation Name:</label>
       <p class="h5 mb-3"><%= @affiliation.affiliation_name %></p>
