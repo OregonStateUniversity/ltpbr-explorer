@@ -5,7 +5,7 @@ class AffiliationsController < ApplicationController
   # GET /affiliations
   # GET /affiliations.json
   def index
-    @affiliations = Affiliation.all
+    @affiliations = Affiliation.all.order(:affiliation_name)
   end
 
   # GET /affiliations/1
@@ -70,6 +70,6 @@ class AffiliationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def affiliation_params
-      params.require(:affiliation).permit(:affiliation_name, :description, :contact, :website)
+      params.require(:affiliation).permit(:affiliation_name, :description, :contact, :website, :icon)
     end
 end

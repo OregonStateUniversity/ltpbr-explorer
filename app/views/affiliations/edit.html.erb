@@ -1,5 +1,7 @@
-<h1>Editing affiliation</h1>
-<%= render 'form' %>
-<%= link_to 'Show', @affiliation %>
-\|
-<%= link_to 'Back', affiliations_path %>
+<% provide(:title, 'Edit Affiliation') %>
+<div class="container pt-5">
+  <h2>Edit Affiliation</h2>
+  <p class="text-muted">Update affiliation details</p>
+  <hr>
+  <%= render partial: 'form' %>
+</div>
