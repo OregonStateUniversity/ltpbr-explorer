@@ -5,7 +5,7 @@ class AffiliationsController < ApplicationController
   # GET /affiliations
   # GET /affiliations.json
   def index
-    @affiliations = Affiliation.all
+    @affiliations = Affiliation.all.order(:affiliation_name)
   end
 
   # GET /affiliations/1
