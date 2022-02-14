@@ -5,7 +5,7 @@ class Project < ApplicationRecord
   belongs_to :author, class_name: 'User'
 
   has_many :affiliations
-  has_many :organizations, :through => :affiliations
+  has_many :organizations, through: :affiliations
 
   before_save :assign_lonlat
 

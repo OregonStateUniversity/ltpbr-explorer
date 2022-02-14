@@ -2,8 +2,8 @@
 <div class="container pt-5">
   <h1 class="display-4"><%= @project.name %></h1>
   <h5 class="text-secondary">
-    <%= raw(@project.affiliation.order(:affiliation_name).map{ |affiliation| 
-    raw(link_to(affiliation.affiliation_name, affiliation_path(affiliation))) }.join(', ')) %>
+    <%= raw(@project.organizations.order(:name).map{ |organization| 
+    raw(link_to(organization.name, organization_path(organization))) }.join(', ')) %>
   </h5>
   <hr />
 

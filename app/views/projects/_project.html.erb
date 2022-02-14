@@ -8,9 +8,9 @@
     <h5><%#= link_to project.affiliation, project, class: "text-secondary" %></h5>
     <div class="affiliation-tagline-list">
       <h5 class="text-secondary">
-        <%= raw(project.affiliation.order(:affiliation_name).map{ |affiliation| 
-        raw(link_to(affiliation.affiliation_name, affiliation_path(affiliation))) }.join(', ')) %>
-    </h5>
+        <%= raw(project.organizations.order(:name).map{ |organization| 
+        raw(link_to(organization.name, organization_path(organization))) }.join(', ')) %>
+      </h5>
     </div>
   </div>
   <div class="col-sm-3">
