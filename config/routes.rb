@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :organizations
   root 'static#home'
   get 'about', to: 'static#about'
   get 'projects-map', to: 'static#projects_map'
