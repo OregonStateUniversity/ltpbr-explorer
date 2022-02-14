@@ -1,5 +1,8 @@
 class Organization < ApplicationRecord
 
+    has_many :affiliations
+    has_many :projects, :through => :affiliations
+
     has_one_attached :icon
 
     validates :icon, 
