@@ -3,12 +3,13 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :require_owner, only: [:edit, :update, :destroy]
 
+  
   $displaylimit = 15
-  $nametoggle, $affiliationtoggle, $stream_nametoggle, $watershedtoggle = false
+  $nametoggle, $organizationtoggle, $stream_nametoggle, $watershedtoggle = false
   def index;
     @projects = Project.page(params[:page]).per($displaylimit)
     if params[:order] == 'name'
-        $stream_nametoggle, @affiliationtoggle, $watershedtoggle = false;
+        $stream_nametoggle, @organizationtoggle, $watershedtoggle = false;
         if $nametoggle == true
             @projects = Project.page(params[:page]).per($displaylimit).order('name DESC')
             $nametoggle = false
@@ -16,17 +17,17 @@ class ProjectsController < ApplicationController
         @projects = Project.page(params[:page]).per($displaylimit).order('name')
         $nametoggle = true;
         end
-    elsif params[:order] == 'affiliation'
+    elsif params[:order] == 'organization'
         $stream_nametoggle, @watershedtoggle, $nametoggle = false;
-        if $affiliationtoggle == true
+        if $organizationtoggle == true
             @projects = Project.includes(:organizations).page(params[:page]).per($displaylimit).order('organizations.name DESC')
-            $affiliationtoggle = false
+            $organizationtoggle = false
         else
         @projects = Project.includes(:organizations).page(params[:page]).per($displaylimit).order('organizations.name ')
-        $affiliationtoggle = true;
+        $organizationtoggle = true;
         end
     elsif params[:order] == 'stream'
-        $watershedtoggle, @affiliationtoggle, $nametoggle = false;
+        $watershedtoggle, @organizationtoggle, $nametoggle = false;
         if $stream_nametoggle == true
             @projects = Project.page(params[:page]).per($displaylimit).order('stream_name DESC')
             $stream_nametoggle = false
@@ -35,7 +36,7 @@ class ProjectsController < ApplicationController
         $stream_nametoggle = true;
         end
     elsif params[:order] == 'watershed'
-        $stream_nametoggle, @affiliationtoggle, $nametoggle = false;
+        $stream_nametoggle, @organizationtoggle, $nametoggle = false;
         if $watershedtoggle == true
             @projects = Project.page(params[:page]).per($displaylimit).order('watershed DESC')
             $watershedtoggle = false
@@ -44,7 +45,7 @@ class ProjectsController < ApplicationController
         $watershedtoggle = true;
         end
     elsif params[:order] == 'normal'
-        $watershedtoggle, $stream_nametoggle, @affiliationtoggle, $nametoggle = false;
+        $watershedtoggle, $stream_nametoggle, @organizationtoggle, $nametoggle = false;
         @projects = Project.page(params[:page]).per($displaylimit)
     end
   end
@@ -53,6 +54,10 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to projects_path, warning: 'That project does not exist.'
+    @affiliation_roles = Affiliation.
+    where(project_id: @project.project_id). # if paginate
+    group_by(&:project_id)
+
   end
 
   def new

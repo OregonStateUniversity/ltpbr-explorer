@@ -3,7 +3,8 @@
   <h1 class="display-4"><%= @project.name %></h1>
   <h5 class="text-secondary">
     <%= raw(@project.organizations.order(:name).map{ |organization| 
-    raw(link_to(organization.name, organization_path(organization))) }.join(', ')) %>
+    raw(link_to(organization.name, organization_path(organization)) +
+    " (" + @project.affiliations.find_by(project_id: @project.id, organization_id: organization.id).role) + ")" }.join(', ')) %>
   </h5>
   <hr />
 
