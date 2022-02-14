@@ -30,18 +30,19 @@
   </div>
   <div class="col-md">
     <!-- PROJECT AFFILIATION -->
-    <%= f.label :affiliation, 'Project Affiliation(s)' %>
+    <%= f.label :organization, 'Affiliated Project Organizations(s)' %>
     <div class="btn btn-question" id="affiliation-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
 
     <div class = "selectWrapper">
-    <%= f.select :affiliation_ids,
-    Affiliation.all.order(:affiliation_name).map { |u| [u.affiliation_name, u.id] },
+    <%#= f.select :organization_ids,
+    Organization.all.order(:name).map { |u| [u.name, u.id] },
                { include_blank: true, multiple: true},
                { class: 'chosen-select', multiple: true }
     %>
     </div>
+    <%= f.select :organization_ids, Organization.all %>
   </div>
 </div>
 

@@ -105,7 +105,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:affiliation, {affiliation_ids: []}, :stream_name, :implementation_date,
+    params.require(:project).permit(:organization, {organization_ids: []}, :stream_name, :implementation_date,
       :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures,
       :structure_description, :name, :watershed, :url, photos: [])
   end
