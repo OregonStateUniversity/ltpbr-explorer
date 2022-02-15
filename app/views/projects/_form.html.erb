@@ -42,16 +42,11 @@
                { class: 'chosen-select', multiple: true }
     %>
 
-    <h5 class="text-secondary">
-      <%= raw(@project.organizations.order(:name).map{ |organization|
-      role = @project.affiliations.find_by(project_id: @project.id, organization_id: organization.id).role
-      raw(link_to(organization.name, organization_path(organization)) +
-      (" (" + role + ")" unless role.to_s.empty?)) }.join(', '))%>
-    </h5>
-
+    <% i = 0 %>
     <%= f.fields_for :affiliations, @project.affiliations do |affiliation|%>
-      <%= affiliation.label :role, "Organization's Role in Project" %>
+      <%= affiliation.label :role, (@organizations[i].name + "'s Role in Project") %>
       <%= affiliation.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Donor, Founder', class: 'form-control' %>
+      <% i += 1%>
     <% end %>
     </div>
   </div>

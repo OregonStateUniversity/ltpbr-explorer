@@ -61,19 +61,22 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @organizations = @project.organizations
   end
 
   def edit
     @project.longitude = @project.lonlat.x
     @project.latitude = @project.lonlat.y
+    @organizations = @project.organizations
   end
 
   def create
     @project = Project.new(project_params)
     @project.author = current_user
+    @organizations = @project.organizations
     if @project.save
       redirect_to @project
-      flash[:success] = 'Project was successfully created.'
+      flash[:success] = 'Project was successfully created. Navigate to "Edit Project" to edit organization role(s) in project'
     else
       # Delete uploaded photos if creation failed - Rails 5.2 bug
       @project.photos.purge
