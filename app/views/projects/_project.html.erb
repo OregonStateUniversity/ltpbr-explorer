@@ -8,8 +8,10 @@
     <h5><%#= link_to project.affiliation, project, class: "text-secondary" %></h5>
     <div class="affiliation-tagline-list">
       <h5 class="text-secondary">
-        <%= raw(project.organizations.order(:name).map{ |organization| 
-        raw(link_to(organization.name, organization_path(organization))) }.join(', ')) %>
+        <%= raw(project.organizations.order(:name).map{ |organization|
+          role = project.affiliations.find_by(project_id: project.id, organization_id: organization.id).role
+          raw(link_to(organization.name, organization_path(organization)) +
+          (" (" + role + ")" unless role.to_s.empty?)) }.join(', ')) %>
       </h5>
     </div>
   </div>

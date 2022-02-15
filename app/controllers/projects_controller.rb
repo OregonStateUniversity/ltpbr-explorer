@@ -2,7 +2,6 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
   before_action :require_owner, only: [:edit, :update, :destroy]
-
   
   $displaylimit = 15
   $nametoggle, $organizationtoggle, $stream_nametoggle, $watershedtoggle = false
@@ -112,7 +111,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:organization, {organization_ids: []}, :stream_name, :implementation_date,
       :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures,
-      :structure_description, :name, :watershed, :url, photos: [])
+      :structure_description, :name, :watershed, :url, affiliations_attributes: [:id, :role], photos: [])
   end
 
   def require_owner

@@ -7,6 +7,15 @@ class Project < ApplicationRecord
   has_many :affiliations
   has_many :organizations, through: :affiliations
 
+  accepts_nested_attributes_for :affiliations
+
+  def affiliation_attributes=(attributes)
+    affiliation_roles.values.each do |affiliation_role| 
+      affiliation = Affiliation.find_or_create_by(affiliation_role)
+      self.affiliation << affiliation
+    end	  
+  end
+
   before_save :assign_lonlat
 
   has_many_attached :photos
