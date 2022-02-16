@@ -58,19 +58,23 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @organizations = @project.organizations
+    @project_organizations = @project.organizations
+    @organizations = Organization.all
   end
 
   def edit
     @project.longitude = @project.lonlat.x
     @project.latitude = @project.lonlat.y
-    @organizations = @project.organizations
+    @project_organizations = @project.organizations
+    @organizations = Organization.all
   end
 
   def create
     @project = Project.new(project_params)
     @project.author = current_user
-    @organizations = @project.organizations
+    @project_organizations = @project.organizations
+    @organizations = Organization.all
+
     if @project.save
       redirect_to @project
       flash[:success] = 'Project was successfully created. Navigate to "Edit Project" to edit organization role(s) in project'
@@ -86,7 +90,7 @@ class ProjectsController < ApplicationController
     photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
     photos_selected_for_deletion.map(&:purge)
 
-    @affiliations = Organization.all.order(:name)
+    @organizations = Organization.all
     @project = Project.find(params[:id])
     #update affiliation params before the rest of the params, otherwise it tries to update
     #non-existent affiliations if organizations are removed with out of order params
@@ -94,7 +98,7 @@ class ProjectsController < ApplicationController
 
     if @project.update(project_params)
       redirect_to @project
-      flash[:success] = 'Project was successfully updated.'
+      flash[:success] = 'Project was successfully updated. Navigate to "Edit Project" to edit any new organization role(s) in project'
     else
       # Delete uploaded photos if update failed - Rails 5.2 bug
       @project.photos.purge

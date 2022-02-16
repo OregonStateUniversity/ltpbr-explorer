@@ -1,6 +1,6 @@
 class Organization < ApplicationRecord
 
-    has_many :affiliations
+    has_many :affiliations, dependent: :delete_all
     has_many :projects, through: :affiliations
 
     has_one_attached :icon
