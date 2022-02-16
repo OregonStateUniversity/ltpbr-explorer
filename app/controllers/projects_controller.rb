@@ -53,9 +53,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to projects_path, warning: 'That project does not exist.'
-    @affiliation_roles = Affiliation.
-    where(project_id: @project.project_id). # if paginate
-    group_by(&:project_id)
 
   end
 
@@ -89,6 +86,9 @@ class ProjectsController < ApplicationController
     photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
     photos_selected_for_deletion.map(&:purge)
 
+    @project = Project.find(params[:id])
+    @project.update(project_organization_params)
+
     if @project.update(project_params)
       redirect_to @project
       flash[:success] = 'Project was successfully updated.'
@@ -111,10 +111,14 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def project_organization_params
+    params.require(:project).permit(:id, {affiliations_attributes: [:id, :role]})
+  end
+
   def project_params
-    params.require(:project).permit(:organization, {organization_ids: []}, :stream_name, :implementation_date,
+    params.require(:project).permit(:id, :organization, {organization_ids: []}, :stream_name, :implementation_date,
       :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures,
-      :structure_description, :name, :watershed, :url, affiliations_attributes: [:id, :role], photos: [])
+      :structure_description, :name, :watershed, :url, photos: [])
   end
 
   def require_owner

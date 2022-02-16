@@ -36,6 +36,7 @@
     </div>
 
     <div class = "selectWrapper">
+    
     <%= f.select :organization_ids,
     Organization.all.order(:name).map { |u| [u.name, u.id] },
                { include_blank: true, multiple: true},
@@ -43,11 +44,22 @@
     %>
 
     <% i = 0 %>
-    <%= f.fields_for :affiliations, @project.affiliations do |affiliation|%>
-      <%= affiliation.label :role, (@organizations[i].name + "'s Role in Project") %>
-      <%= affiliation.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Donor, Founder', class: 'form-control' %>
-      <% i += 1%>
+    <%= f.fields_for :affiliations do |affiliation_builder|%>
+        <%= affiliation_builder.label :role %>
+        <%= affiliation_builder.text_field :role %>
+        <%= affiliation_builder.hidden_field :id %>
+        <% i += 1%>
     <% end %>
+
+    <%# i = 0 %>
+    <%#= f.fields_for :affiliations do |affiliation|%>
+      <%#= affiliation.label :role, ("Role in Project") %>
+      <%#= affiliation.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Donor, Founder', class: 'form-control' %>
+      <%#= affiliation.hidden_field :id, :value => @project.affiliations.ids[i] %>
+      <%#= f.submit "follow", class: "submit-button" %>
+      <%# i += 1%>
+    <%# end %>
+    
     </div>
   </div>
 </div>

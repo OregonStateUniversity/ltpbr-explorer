@@ -9,12 +9,13 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :affiliations
 
-  def affiliation_attributes=(attributes)
-    affiliation_roles.values.each do |affiliation_role| 
-      affiliation = Affiliation.find_or_create_by(affiliation_role)
-      self.affiliation << affiliation
-    end	  
-  end
+  #def affiliations_attributes=(affiliations_attributes)
+  #  affiliations_attributes.each do |affiliation_attributes|
+  #      if affiliation_attributes[:role].to_i.length > 0
+  #          self.affiliations.build(affiliation_attributes)
+  #      end
+  #  end
+  #end
 
   before_save :assign_lonlat
 
