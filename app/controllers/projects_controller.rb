@@ -86,8 +86,11 @@ class ProjectsController < ApplicationController
     photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
     photos_selected_for_deletion.map(&:purge)
 
+    @affiliations = Organization.all.order(:name)
     @project = Project.find(params[:id])
-    @project.update(project_organization_params)
+    #update affiliation params before the rest of the params, otherwise it tries to update
+    #non-existent affiliations if organizations are removed with out of order params
+    @project.update(project_affiliation_params)
 
     if @project.update(project_params)
       redirect_to @project
@@ -111,7 +114,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  def project_organization_params
+  def project_affiliation_params
     params.require(:project).permit(:id, {affiliations_attributes: [:id, :role]})
   end
 
