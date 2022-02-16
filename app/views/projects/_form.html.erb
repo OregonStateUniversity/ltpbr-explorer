@@ -36,7 +36,6 @@
     </div>
 
     <div class = "selectWrapper">
-    
     <%= f.select :organization_ids,
     @organizations.order(:name).map { |u| [u.name, u.id] },
                { include_blank: true, multiple: true},

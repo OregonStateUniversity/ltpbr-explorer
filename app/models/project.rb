@@ -9,14 +9,6 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :affiliations
 
-  #def affiliations_attributes=(affiliations_attributes)
-  #  affiliations_attributes.each do |affiliation_attributes|
-  #      if affiliation_attributes[:role].to_i.length > 0
-  #          self.affiliations.build(affiliation_attributes)
-  #      end
-  #  end
-  #end
-
   before_save :assign_lonlat
 
   has_many_attached :photos
