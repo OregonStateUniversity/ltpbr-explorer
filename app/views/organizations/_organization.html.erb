@@ -1,0 +1,19 @@
+<hr>
+<div class="row align-items-center h-100">
+<%= image_tag(organization.icon, class: 'affiliation-icon-list') if organization.icon.attached? %>
+  <div class="col-sm-7">
+    <h3><%= link_to organization.name, organization, class: "text-dark" %></h3>
+    <h5 class="text-secondary"><%= organization.description %></h5>
+  </div>
+  <div class="col-sm-3 ml-auto">
+    <h5><%= organization.contact %></h5>
+    <% html_url = organization.website.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe if organization.website%>
+    <% html_url = "" if !organization.website%>
+    <h5 class="text-secondary"><%= html_url%></h5>
+  </div>
+  <br>
+  <div class="col-sm-3">
+    <%= link_to 'Edit', edit_organization_path(organization), class: "btn btn-success", id: "filter-button" %>
+    <%= link_to 'Destroy', organization, class: "btn btn-success", id: "filter-button", method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+</div>

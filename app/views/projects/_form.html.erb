@@ -30,17 +30,25 @@
   </div>
   <div class="col-md">
     <!-- PROJECT AFFILIATION -->
-    <%= f.label :affiliation, 'Project Affiliation(s)' %>
+    <%= f.label :organization, 'Affiliated Project Organizations(s)' %>
     <div class="btn btn-question" id="affiliation-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
 
     <div class = "selectWrapper">
-    <%= f.select :affiliation_ids,
-    Affiliation.all.order(:affiliation_name).map { |u| [u.affiliation_name, u.id] },
+    <%= f.select :organization_ids,
+    @organizations.order(:name).map { |u| [u.name, u.id] },
                { include_blank: true, multiple: true},
                { class: 'chosen-select', multiple: true }
     %>
+    <hr>
+    <% i = 0 %>
+    <%= f.fields_for :affiliations do |affiliation_builder|%>
+        <%= affiliation_builder.label :role, (@project_organizations[i].name + "'s Role in Project") %>
+        <%= affiliation_builder.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Donor, Founder', class: 'form-control' %>
+        <%= affiliation_builder.hidden_field :id %>
+        <% i += 1%>
+    <% end %>    
     </div>
   </div>
 </div>

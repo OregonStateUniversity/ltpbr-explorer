@@ -1,0 +1,16 @@
+<% provide(:title, 'Organizations List') %>
+<div class="container pt-3">
+
+  <div class="row">
+    <div class="col">
+      <h1>Organizations</h1>
+    </div>
+    <div class="col text-right">
+      <%= link_to 'New Organization', new_organization_path, class: "btn btn-success", id: "filter-button" %>
+    </div>
+  </div>
+<%= render @organizations%>
+<hr>
+</div>
+
+</div>
