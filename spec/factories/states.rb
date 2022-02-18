@@ -3,7 +3,7 @@ FactoryBot.define do
     Country { nil }
     name { "MyString" }
     hasc_code { "MyString" }
-    type { "" }
+    state_type { "" }
     geom { "" }
     total_length { 1 }
     total_number_of_structures { 1 }
