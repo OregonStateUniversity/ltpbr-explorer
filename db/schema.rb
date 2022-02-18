@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_02_185339) do
+ActiveRecord::Schema.define(version: 2022_02_14_051051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,18 +43,22 @@ ActiveRecord::Schema.define(version: 2022_02_02_185339) do
   end
 
   create_table "affiliations", force: :cascade do |t|
-    t.string "affiliation_name"
+    t.bigint "project_id", null: false
+    t.bigint "organization_id", null: false
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_affiliations_on_organization_id"
+    t.index ["project_id"], name: "index_affiliations_on_project_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
     t.text "description"
     t.string "contact"
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "affiliations_projects", id: false, force: :cascade do |t|
-    t.bigint "project_id", null: false
-    t.bigint "affiliation_id", null: false
-    t.index ["project_id", "affiliation_id"], name: "index_affiliations_projects_on_project_id_and_affiliation_id", unique: true
   end
 
   create_table "projects", force: :cascade do |t|
@@ -101,5 +105,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_185339) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "affiliations", "organizations"
+  add_foreign_key "affiliations", "projects"
   add_foreign_key "projects", "users", column: "author_id"
 end

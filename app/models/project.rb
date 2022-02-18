@@ -4,7 +4,10 @@ class Project < ApplicationRecord
 
   belongs_to :author, class_name: 'User'
 
-  has_and_belongs_to_many :affiliation
+  has_many :affiliations, dependent: :delete_all
+  has_many :organizations, through: :affiliations
+
+  accepts_nested_attributes_for :affiliations
 
   before_save :assign_lonlat
 
