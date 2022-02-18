@@ -86,17 +86,13 @@ ActiveRecord::Schema.define(version: 2022_02_18_185624) do
     t.string "name", null: false
     t.string "watershed", null: false
     t.text "url"
-    t.string "photo_file_name"
-    t.string "photo_content_type"
-    t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
   end
 
   create_table "states", force: :cascade do |t|
     t.bigint "country_id"
     t.string "name"
     t.string "hasc_code"
-    t.string "type"
+    t.string "state_type"
     t.geometry "geom", limit: {:srid=>0, :type=>"multi_polygon"}
     t.integer "total_length"
     t.integer "total_number_of_structures"
