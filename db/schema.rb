@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_02_185339) do
+ActiveRecord::Schema.define(version: 2022_02_18_185624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,19 @@ ActiveRecord::Schema.define(version: 2022_02_02_185339) do
     t.index ["project_id", "affiliation_id"], name: "index_affiliations_projects_on_project_id_and_affiliation_id", unique: true
   end
 
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.string "iso_code"
+    t.geometry "geom", limit: {:srid=>4326, :type=>"multi_polygon"}
+    t.integer "total_length"
+    t.integer "total_number_of_structures"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["geom"], name: "index_countries_on_geom", using: :gist
+    t.index ["iso_code"], name: "index_countries_on_iso_code", unique: true
+    t.index ["name"], name: "index_countries_on_name", unique: true
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "affiliation_legacy"
     t.string "stream_name", null: false
@@ -77,6 +90,20 @@ ActiveRecord::Schema.define(version: 2022_02_02_185339) do
     t.string "photo_content_type"
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.bigint "country_id"
+    t.string "name"
+    t.string "hasc_code"
+    t.string "type"
+    t.geometry "geom", limit: {:srid=>0, :type=>"multi_polygon"}
+    t.integer "total_length"
+    t.integer "total_number_of_structures"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_states_on_country_id"
+    t.index ["geom"], name: "index_states_on_geom", using: :gist
   end
 
   create_table "users", force: :cascade do |t|
@@ -102,4 +129,5 @@ ActiveRecord::Schema.define(version: 2022_02_02_185339) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "projects", "users", column: "author_id"
+  add_foreign_key "states", "countries"
 end

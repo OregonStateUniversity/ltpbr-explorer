@@ -1,0 +1,11 @@
+FactoryBot.define do
+  factory :state do
+    Country { nil }
+    name { "MyString" }
+    hasc_code { "MyString" }
+    type { "" }
+    geom { "" }
+    total_length { 1 }
+    total_number_of_structures { 1 }
+  end
+end
