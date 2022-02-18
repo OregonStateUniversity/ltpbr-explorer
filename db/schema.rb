@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_185624) do
+ActiveRecord::Schema.define(version: 2022_02_18_202502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 2022_02_18_185624) do
     t.string "name", null: false
     t.string "watershed", null: false
     t.text "url"
+    t.bigint "state_id"
+    t.index ["state_id"], name: "index_projects_on_state_id"
   end
 
   create_table "states", force: :cascade do |t|
@@ -124,6 +126,7 @@ ActiveRecord::Schema.define(version: 2022_02_18_185624) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "projects", "states"
   add_foreign_key "projects", "users", column: "author_id"
   add_foreign_key "states", "countries"
 end
