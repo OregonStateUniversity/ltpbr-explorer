@@ -6,7 +6,7 @@ class Project < ApplicationRecord
 
   has_and_belongs_to_many :affiliation
 
-  before_save :assign_lonlat
+  before_save :assign_lonlat, :assign_state
 
   has_many_attached :photos
 
@@ -65,6 +65,13 @@ class Project < ApplicationRecord
     else
       throw(:abort)
     end
+  end
+
+  def assign_state
+    point = "SRID=4326;#{self.lonlat}"
+    states = State.arel_table
+    containing_state = State.where(states[:geom].st_contains(Arel.spatial(point)))
+    self.state_id = containing_state.first.id
   end
 
 end
