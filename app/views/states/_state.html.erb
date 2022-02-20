@@ -1,0 +1,26 @@
+<% length = 0 %>
+<% structures = 0 %>
+<% projects = 0 %>
+<% Project.where(state_id: state.id).to_a.uniq.each do |project| %>
+  <% length += project.length %>
+  <% structures += project.number_of_structures %>
+  <% projects += 1 %>
+<% end %>
+
+<% if projects > 0%>
+<hr>
+<div class="d-flex justify-content-center row align-items-center">
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-3">
+    <h3><%= link_to state.name, state, class: "text-dark" %></h3>
+    <h5 class="text-secondary"><%= Country.find(state.country_id).name %></h5>
+  </div>
+  <div class="col-sm-6 ml-auto">
+    <h5>Project Count: <%= projects %></h5>
+    <h5>Total Length: <%= length %></h5>
+    <h5>Total Structures: <%= structures %></h5>
+  </div>
+  <br>
+</div>
+<% end %>
