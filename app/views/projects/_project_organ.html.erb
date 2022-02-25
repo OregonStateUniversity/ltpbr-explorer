@@ -1,3 +1,9 @@
 <div class="container">
-    <h5 class="text-secondary"><%=organization.name%></h5>
+  <div class="d-flex align-items-center wrap h-100">
+  
+    <% role = @project.affiliations.find_by(project_id: @project.id, organization_id: organization.id).role %>
+    <%= image_tag(organization.icon, class: 'affiliation-icon-list-sm') if organization.icon.attached? %>
+    <span class="badge badge-pill badge-success"><%=role%></span>
+    <h5 class="organization-list-display"><%=link_to(organization.name, organization_path(organization))%> </h5>
+  </div>
 </div>
