@@ -1,6 +1,6 @@
 class StatesController < ApplicationController
-  @states = State.all
+  @states = State.select(*State.attribute_names.reject{ |attr| attr=='geom' })
   def index
-    @states = State.all.order(:name)
+    @states = State.select(*State.attribute_names.reject{ |attr| attr=='geom' }).order(:name)
   end
 end
