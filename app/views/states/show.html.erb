@@ -1,16 +1,7 @@
-<% length = 0 %>
-<% structures = 0 %>
-<% projects = 0 %>
-<% Project.where(state_id: @state.id).to_a.uniq.each do |project| %>
-  <% length += project.length %>
-  <% structures += project.number_of_structures %>
-  <% projects += 1 %>
-<% end %>
-
 <% provide(:title, @state.name) %>
 <div class="container pt-5">
   <h1 class="display-4"><%= @state.name %></h1>
-  <h5 class="text-secondary"><%= Country.find(@state.country_id).name %></h5>
+  <h5 class="text-secondary"><%= @state.country_name %></h5>
   <hr />
 
   <div class="row">
@@ -23,7 +14,7 @@
           <div class="row">
             <div class="col">
               <h4 class="card-title text-uppercase text-muted text-left mb-0">Projects</h5>
-              <p class="h1 font-weight-bold text-left mb-0"><%= projects %></p>
+              <p class="h1 font-weight-bold text-left mb-0"><%= @state.project_count %></p>
             </div>
             <div class="col-auto">
               <div class="icon-card icon-card-shape bg-success text-white rounded-circle shadow">
@@ -42,7 +33,7 @@
           <div class="row">
             <div class="col">
               <h4 class="card-title text-uppercase text-muted text-left mb-0">Structures</h5>
-              <p class="h1 font-weight-bold text-left mb-0"><%= structures %></p>
+              <p class="h1 font-weight-bold text-left mb-0"><%= @state.structure_sum %></p>
             </div>
             <div class="col-auto">
               <div class="icon-card icon-card-shape bg-success text-white rounded-circle shadow">
@@ -61,7 +52,7 @@
           <div class="row">
             <div class="col">
               <h4 class="card-title text-uppercase text-muted text-left mb-0 ">Length</h5>
-              <p class="h1 font-weight-bold text-left mb-0"><%= length %>mi</p>
+              <p class="h1 font-weight-bold text-left mb-0"><%= @state.project_total_length_km %>mi</p>
             </div>
             <div class="col-auto">
               <div class="icon-card icon-card-shape bg-success text-white rounded-circle shadow">

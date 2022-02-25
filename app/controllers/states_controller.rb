@@ -9,4 +9,5 @@ class StatesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     redirect_to states_path, warning: 'That state does not exist.'
   end
+  
 end
