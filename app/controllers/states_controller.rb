@@ -6,8 +6,9 @@ class StatesController < ApplicationController
 
   def show
     @state = State.find(params[:id])
+    @state_projects = @state.projects
   rescue ActiveRecord::RecordNotFound
     redirect_to states_path, warning: 'That state does not exist.'
   end
-  
+
 end
