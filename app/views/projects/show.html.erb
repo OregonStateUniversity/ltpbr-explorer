@@ -1,12 +1,8 @@
 <% provide(:title, @project.stream_name) %>
 <div class="container pt-5">
   <h1 class="display-4"><%= @project.name %></h1>
-  <h5 class="text-secondary">
-    <%= raw(@project.organizations.order(:name).map{ |organization|
-    role = @project.affiliations.find_by(project_id: @project.id, organization_id: organization.id).role
-    raw(link_to(organization.name, organization_path(organization)) +
-    (" (" + role + ")" unless role.to_s.empty?)) }.join(', ')) %>
-  </h5>
+
+  <%= render :partial => 'project_organ', :collection => @project.organizations.order(:name), :as => :organization%>
   <hr />
 
   <div class="row">
