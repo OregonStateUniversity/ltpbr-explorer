@@ -1,5 +1,6 @@
 class AffiliationsController < ApplicationController
   before_action :get_project
+  before_action :set_affiliation
   before_action :set_affiliation, only: %w[ show edit update destroy ]
 
   # GET /affiliations
@@ -26,7 +27,9 @@ class AffiliationsController < ApplicationController
   # POST /affiliations.json
   def create
     @affiliation = @project.affiliations.build(affiliation_params)
-
+    if !@affiliation.valid?
+        flash.now.alert = "Error: Duplicate Organization"
+    end
     respond_to do |format|
       if @affiliation.save
         format.html { redirect_to project_affiliations_path(@project), notice: "Affiliation was successfully created." }
