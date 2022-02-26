@@ -1,10 +1,11 @@
 class AffiliationsController < ApplicationController
+  before_action :get_project
   before_action :set_affiliation, only: %w[ show edit update destroy ]
 
   # GET /affiliations
   # GET /affiliations.json
   def index
-    @affiliations = Affiliation.all
+    @affiliations = @project.affiliations
   end
 
   # GET /affiliations/1
@@ -14,7 +15,7 @@ class AffiliationsController < ApplicationController
 
   # GET /affiliations/new
   def new
-    @affiliation = Affiliation.new
+    @affiliation = @project.affiliations.build
   end
 
   # GET /affiliations/1/edit
@@ -24,11 +25,11 @@ class AffiliationsController < ApplicationController
   # POST /affiliations
   # POST /affiliations.json
   def create
-    @affiliation = Affiliation.new(affiliation_params)
+    @affiliation = @project.affiliations.build(affiliation_params)
 
     respond_to do |format|
       if @affiliation.save
-        format.html { redirect_to @affiliation, notice: "Affiliation was successfully created." }
+        format.html { redirect_to project_affiliations_path(@project), notice: "Affiliation was successfully created." }
         format.json { render :show, status: :created, location: @affiliation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +43,7 @@ class AffiliationsController < ApplicationController
   def update
     respond_to do |format|
       if @affiliation.update(affiliation_params)
-        format.html { redirect_to @affiliation, notice: "Affiliation was successfully updated." }
+        format.html { redirect_to project_affiliation_path(@project), notice: "Affiliation was successfully updated." }
         format.json { render :show, status: :ok, location: @affiliation }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,15 +57,19 @@ class AffiliationsController < ApplicationController
   def destroy
     @affiliation.destroy
     respond_to do |format|
-      format.html { redirect_to affiliations_url, notice: "Affiliation was successfully destroyed." }
+      format.html { redirect_to project_affiliations_path(@project), notice: "Affiliation was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+    def get_project
+      @project = Project.find(params[:project_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_affiliation
-      @affiliation = Affiliation.find(params[:id])
+      @affiliation = @project.affiliations.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
