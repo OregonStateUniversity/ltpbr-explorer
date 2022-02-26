@@ -1,18 +1,17 @@
-<%= form_for @affiliation do |f| %>
-  <% if @affiliation.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= "#{pluralize(@affiliation.errors.count, "error")} prohibited this affiliation from being saved:" %>
-      </h2>
-      <ul>
-        <% @affiliation.errors.full_messages.each do |message| %>
-          <li>
-            <%= message %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for [@project, @affiliation] do |f| %>
+
+<%= f.label :name, 'Organization Name' %>
+<%= f.select :organization_id,
+  Organization.order(:name).map { |u| [u.name, u.id] },
+    { include_blank: true},
+    { class: 'chosen-select'}
+  %>
+
+<%= f.label :role, 'Organization\'s role in Project' %>
+<%= f.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Founder, Donor', class: 'form-control' %>
+
+<%= f.hidden_field :project_id, value: @project.id%>
+
   <div class="actions">
     <%= f.submit 'Save' %>
   </div>

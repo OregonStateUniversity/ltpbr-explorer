@@ -74,6 +74,6 @@ class AffiliationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def affiliation_params
-      params.fetch(:affiliation, {})
+        params.require(:affiliation).permit(:role, :organization_id, :project_id,)
     end
 end
