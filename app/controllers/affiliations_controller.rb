@@ -7,6 +7,7 @@ class AffiliationsController < ApplicationController
   # GET /affiliations.json
   def index
     @affiliations = @project.affiliations
+    @affiliation = Affiliation.new
   end
 
   # GET /affiliations/1

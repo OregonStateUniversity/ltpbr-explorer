@@ -1,7 +1,7 @@
 <div class="container pt-3">
-<h1>Listing affiliations</h1>
+<h1>Listing Organization Affiliations for <%= @project.name %></h1>
 
-<%#= render :partial => 'form'%>
+<%= render :partial => 'form'%>
 <table>
   <tbody>
     <% @affiliations.each do |affiliation| %>
@@ -24,7 +24,7 @@
   </tbody>
 </table>
 <br/>
-<%= link_to 'New Affiliation', new_project_affiliation_path %>
+<%#= link_to 'New Affiliation', new_project_affiliation_path %>
 </div>
 
 

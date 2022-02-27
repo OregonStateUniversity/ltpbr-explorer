@@ -1,18 +1,21 @@
 <%= form_for [@project, @affiliation] do |f| %>
-
-<%= f.label :name, 'Organization Name' %>
-<%= f.select :organization_id,
-  Organization.order(:name).map { |u| [u.name, u.id] },
-    { include_blank: true},
-    { class: 'chosen-select'}
-  %>
-
-<%= f.label :role, 'Organization\'s role in Project' %>
-<%= f.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Founder, Donor', class: 'form-control' %>
-
-<%= f.hidden_field :project_id, value: @project.id%>
-
-  <div class="actions">
-    <%= f.submit 'Save' %>
+<div class="row">
+  <div class="col-md">
+    <%= f.label :name, 'Organization Name' %>
+    <%= f.select :organization_id,
+      Organization.order(:name).map { |u| [u.name, u.id] },
+      { include_blank: true},
+      { class: 'chosen-select'} %>
+  </div>
+  <div class="col-md">
+    <%= f.label :role, 'Organization\'s role in Project' %>
+    <%= f.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Founder, Donor', class: 'form-control' %>
+    <%= f.hidden_field :project_id, value: @project.id%>
+  </div>
+  <div class="col-md">
+    <div class="actions">
+      <%= f.submit class: 'btn confirm-btn' %>
+    </div>
   </div>
 <% end %>
+</div>
