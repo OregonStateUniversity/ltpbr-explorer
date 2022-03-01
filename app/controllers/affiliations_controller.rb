@@ -2,6 +2,7 @@ class AffiliationsController < ApplicationController
   before_action :get_project
   before_action :set_affiliation
   before_action :set_affiliation, only: %w[ show edit update destroy ]
+  before_action :require_owner
 
   # GET /affiliations
   # GET /affiliations.json
@@ -79,5 +80,12 @@ class AffiliationsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def affiliation_params
         params.require(:affiliation).permit(:role, :organization_id, :project_id,)
+    end
+
+    def require_owner
+      unless (@project.author_id == current_user.id) | (current_user.admin_role?)
+        redirect_to root_path
+        flash[:alert] = 'Restricted action, must own project.'
+      end
     end
 end
