@@ -4,6 +4,7 @@
 
   <%= render :partial => 'project_organ', :collection => @project.organizations.order(:name), :as => :organization%>
     <% if user_signed_in? && (@project.author_id == current_user.id || current_user.admin_role?) %>
+    <br>
     <div class="btn-group">
       <%= link_to 'Manage Affiliated Organizations', project_affiliations_path(@project), class: 'btn btn-primary', title: "Edit #{@project}" %>
     </div>

@@ -77,7 +77,7 @@ class ProjectsController < ApplicationController
 
     if @project.save
       redirect_to @project
-      flash[:success] = 'Project was successfully created. Navigate to "Edit Project" to edit organization role(s) in project'
+      flash[:success] = 'Project was successfully created.'
     else
       # Delete uploaded photos if creation failed - Rails 5.2 bug
       @project.photos.purge
@@ -98,7 +98,7 @@ class ProjectsController < ApplicationController
 
     if @project.update(project_params)
       redirect_to @project
-      flash[:success] = 'Project was successfully updated. Navigate to "Edit Project" to edit any new organization role(s) in project'
+      flash[:success] = 'Project was successfully updated.'
     else
       # Delete uploaded photos if update failed - Rails 5.2 bug
       @project.photos.purge
