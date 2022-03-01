@@ -191,6 +191,13 @@ input[type="checkbox"] {
   font-weight: 400;
 }
 
+.confirm-del-btn {
+    width: 200px;
+    color: white;
+    background-color: $danger-red;
+    font-weight: 400;
+  }
+
 .confirm-btn-wide {
   width: 350px;
   color: white;
@@ -757,3 +764,7 @@ project-photo {
     padding-left: 5px;
     padding-top: 9px;
 } 
+
+#affiliation-confirm-btn {
+    margin-top: 32px;
+}

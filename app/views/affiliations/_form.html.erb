@@ -1,5 +1,6 @@
 <%= form_for [@project, @affiliation] do |f| %>
 <div class="row">
+ <div class="input-group mb-3">
   <div class="col-md">
     <%= f.label :name, 'Organization Name' %>
     <%= f.select :organization_id,
@@ -14,8 +15,9 @@
   </div>
   <div class="col-md">
     <div class="actions">
-      <%= f.submit class: 'btn confirm-btn' %>
+      <%= f.submit class: 'btn confirm-btn', id: 'affiliation-confirm-btn' %>
     </div>
   </div>
+ </div>
 <% end %>
 </div>

@@ -1,28 +1,21 @@
 <div class="container pt-3">
 <h1>Listing Organization Affiliations for <%= @project.name %></h1>
-
+<%= link_to 'Return to Project', [@project], class: 'btn confirm-btn' %>
+<hr>
 <%= render :partial => 'form'%>
-<table>
-  <tbody>
+<hr>
     <% @affiliations.each do |affiliation| %>
-      <tr>
-        <td><%= affiliation.organization.name %></td>
-        <td><%= affiliation.project.name %></td>
-        <td><%= affiliation.role %></td>
-        <td><%= @project.name%>
-        <td>
-          <%= link_to 'Show Project', [@project] %>
-        </td>
-        <td>
-          <%= link_to 'Edit Affiliation', edit_project_affiliation_path(@project, affiliation) %>
-        </td>
-        <td>
-          <%= link_to 'Destroy', [@project, affiliation], method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
+      <div class="row justify-content-between">
+       <div class="col col-8">
+       <%= render :partial => 'project_organ', locals: {organization: affiliation.organization}%>
+       </div>
+       <div class="col col-3">
+       <%= link_to 'Edit', edit_project_affiliation_path(@project, affiliation), class: 'btn btn-primary'%>
+       <%= link_to 'Destroy', [@project, affiliation], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary' %>
+       </div>
+      </div>
+      <br>
     <% end %>
-  </tbody>
-</table>
 <br/>
 <%#= link_to 'New Affiliation', new_project_affiliation_path %>
 </div>
