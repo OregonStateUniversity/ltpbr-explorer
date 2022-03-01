@@ -31,17 +31,15 @@
   <div class="col-md">
     <!-- PROJECT AFFILIATION -->
     <%= f.label :organization, 'Affiliated Project Organizations(s)' %>
-    <div class="btn btn-question" id="affiliation-help">
+    <div class="btn btn-question" id="manage-affiliations-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
-
     <div class = "selectWrapper">
     <%= f.select :organization_ids,
     @organizations.order(:name).map { |u| [u.name, u.id] },
                { include_blank: true, multiple: true},
                { class: 'chosen-select', multiple: true }
     %>
-
     </div>
   </div>
 </div>

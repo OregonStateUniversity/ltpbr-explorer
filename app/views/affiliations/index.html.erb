@@ -4,18 +4,18 @@
 <hr>
 <%= render :partial => 'form'%>
 <hr>
-    <% @affiliations.each do |affiliation| %>
-      <div class="row justify-content-between">
-       <div class="col col-8">
-       <%= render :partial => 'project_organ', locals: {organization: affiliation.organization}%>
-       </div>
-       <div class="col col-3">
-       <%= link_to 'Edit', edit_project_affiliation_path(@project, affiliation), class: 'btn btn-primary'%>
-       <%= link_to 'Destroy', [@project, affiliation], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary' %>
-       </div>
+  <% @affiliations.each do |affiliation| %>
+    <div class="row justify-content-between">
+      <div class="col col-8">
+        <%= render :partial => 'project_organ', locals: {organization: affiliation.organization}%>
       </div>
-      <br>
-    <% end %>
+      <div class="col col-3">
+        <%= link_to 'Edit', edit_project_affiliation_path(@project, affiliation), class: 'btn btn-primary'%>
+        <%= link_to 'Destroy', [@project, affiliation], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+    <br>
+  <% end %>
 <br/>
 <%#= link_to 'New Affiliation', new_project_affiliation_path %>
 </div>
