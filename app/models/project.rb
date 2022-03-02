@@ -42,6 +42,13 @@ class Project < ApplicationRecord
     end
   end
 
+  def calculate_state
+    point = "SRID=4326;#{self.lonlat}"
+    states = State.arel_table
+    containing_state = State.where(states[:geom].st_contains(Arel.spatial(point)))
+    return containing_state.present? ? containing_state.first.id : nil
+  end
+
   def self.project_count
     all.count
   end
@@ -71,10 +78,7 @@ class Project < ApplicationRecord
   end
 
   def assign_state
-    point = "SRID=4326;#{self.lonlat}"
-    states = State.arel_table
-    containing_state = State.where(states[:geom].st_contains(Arel.spatial(point)))
-    self.state_id = containing_state.present? ? containing_state.first.id : nil
+    self.state_id = calculate_state
   end
 
 end

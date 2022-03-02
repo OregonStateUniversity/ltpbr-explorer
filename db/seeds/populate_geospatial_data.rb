@@ -2,6 +2,10 @@ puts "Deleting all previous geographical data..."
 
 connection = ActiveRecord::Base.connection()
 
+Project.find_each(:batch_size => 1000) do |project|
+  project.update_column(:state_id, nil)
+end
+
 State.delete_all
 Country.delete_all
 
@@ -51,4 +55,9 @@ end
 puts "States added:"
 State.all.each do |state|
   puts "#{state.id}, #{state.name}, #{state.hasc_code}, #{state.state_type}"
+end
+
+puts "Assigning states to projects..."
+Project.find_each(:batch_size => 1000) do |project|
+  project.update_column(:state_id, project.calculate_state)
 end
