@@ -9,7 +9,7 @@
       <div class="col col-8">
         <%= render :partial => 'project_organ', locals: {organization: affiliation.organization}%>
       </div>
-      <div class="col col-3">
+      <div class="col col-md-2">
         <%= link_to 'Edit', edit_project_affiliation_path(@project, affiliation), class: 'btn btn-primary'%>
         <%= link_to 'Destroy', [@project, affiliation], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary' %>
       </div>
