@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="d-flex align-items-center wrap h-100">
+    <%= image_tag(organization.icon, class: 'affiliation-icon-list-sm') if organization.icon.attached? %>
+    <% if @project%>
+      <% role = @project.affiliations.find_by(project_id: @project.id, organization_id: organization.id).role %>
+      <span class="badge badge-pill badge-success"><%=role%></span>
+    <% else %>
+      <% role = organization.affiliations.find_by(organization_id: organization.id, project_id: project_id).role %>
+      <span class="badge badge-pill badge-success"><%=role%></span>
+    <% end %>
+    <h5 class="organization-list-display"><%=link_to(organization.name, organization_path(organization))%> </h5>
+  </div>
+</div>
