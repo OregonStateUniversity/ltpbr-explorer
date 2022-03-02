@@ -29,10 +29,10 @@ class AffiliationsController < ApplicationController
   # POST /affiliations.json
   def create
     @affiliation = @project.affiliations.build(affiliation_params)
-    if !@affiliation.valid?
-        flash.now.alert = "Error: Duplicate Organization"
-    end
     respond_to do |format|
+      if !@affiliation.valid?
+        format.html { redirect_to request.referer, alert: 'Error: Duplicate or Invalid Organization' }
+      end
       if @affiliation.save
         format.html { redirect_to project_affiliations_path(@project), notice: "Affiliation was successfully created." }
         format.json { render :show, status: :created, location: @affiliation }
@@ -47,8 +47,11 @@ class AffiliationsController < ApplicationController
   # PATCH/PUT /affiliations/1.json
   def update
     respond_to do |format|
+      if !@affiliation.valid?
+        format.html { redirect_to request.referer, alert: 'Error: Duplicate or Invalid Organization' }
+      end
       if @affiliation.update(affiliation_params)
-        format.html { redirect_to project_affiliation_path(@project), notice: "Affiliation was successfully updated." }
+        format.html { redirect_to project_affiliations_path(@project), notice: "Affiliation was successfully updated." }
         format.json { render :show, status: :ok, location: @affiliation }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -77,7 +77,7 @@ class ProjectsController < ApplicationController
 
     if @project.save
       redirect_to @project
-      flash[:success] = 'Project was successfully created.'
+      flash[:success] = 'Project was successfully created. Add Organization roles or other affiliated Organizations with \'Manange Organizations and Roles\''
     else
       # Delete uploaded photos if creation failed - Rails 5.2 bug
       @project.photos.purge
@@ -98,7 +98,7 @@ class ProjectsController < ApplicationController
 
     if @project.update(project_params)
       redirect_to @project
-      flash[:success] = 'Project was successfully updated.'
+      flash[:success] = 'Project was successfully updated. Add roles to any newly affiliated Organizations with \'Manange Organizations and Roles\''
     else
       # Delete uploaded photos if update failed - Rails 5.2 bug
       @project.photos.purge
