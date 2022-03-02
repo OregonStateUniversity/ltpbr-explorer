@@ -8,7 +8,7 @@
     <%= f.select :organization_id,
       Organization.order(:name).map { |u| [u.name, u.id] },
       { },
-      { class: 'selectoptions', id: "organizations", name: "People_ID"}%>
+      { class: 'selectoptions', id: "organizations"}%>
   </div>
   <div class="col-md">
     <%= f.label :role, 'Organization\'s role in Project' %>
