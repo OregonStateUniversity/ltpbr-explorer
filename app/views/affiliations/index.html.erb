@@ -4,13 +4,16 @@
 <hr>
 <%= render :partial => 'form'%>
 <hr>
+        <div id="activity_form">
+        
+        </div> 
   <% @affiliations.each do |affiliation| %>
     <div class="row justify-content-between">
       <div class="col col-8">
         <%= render :partial => 'project_organ', locals: {organization: affiliation.organization}%>
       </div>
       <div class="col col-md-2" id="affiliations-index-buttons">
-        <%= link_to 'Edit', edit_project_affiliation_path(@project, affiliation), class: 'btn btn-primary'%>
+        <%= link_to 'Edit', edit_project_affiliation_path(@project, affiliation), class: 'btn btn-primary', :remote => true%>
         <%= link_to 'Destroy', [@project, affiliation], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary' %>
       </div>
     </div>
