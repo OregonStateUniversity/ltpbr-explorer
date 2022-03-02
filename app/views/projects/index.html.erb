@@ -11,7 +11,7 @@
   </div>
     <div class="text-left">
       <%= link_to 'Name <i class="fa fa-fw fa-sort id="sortbutton"></i>'.html_safe, projects_path(order: 'name'), class: "btn btn-success", id: "filter-button"%>
-      <%= link_to 'Affiliation <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'affiliation'), class: "btn btn-success", id: "filter-button" %>
+      <%= link_to 'Organization <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'organization'), class: "btn btn-success", id: "filter-button" %>
       <%= link_to 'Stream <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'stream'), class: "btn btn-success", id: "filter-button" %>
       <%= link_to 'Watershed<i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'watershed'), class: "btn btn-success", id: "filter-button" %>
       <%= link_to 'Reset Filter', projects_path(order: 'normal'), class: "btn btn-secondary"%>

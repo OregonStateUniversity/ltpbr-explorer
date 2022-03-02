@@ -43,18 +43,13 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
   end
 
   create_table "affiliations", force: :cascade do |t|
-    t.string "affiliation_name"
-    t.text "description"
-    t.string "contact"
-    t.string "website"
+    t.bigint "project_id", null: false
+    t.bigint "organization_id", null: false
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "affiliations_projects", id: false, force: :cascade do |t|
-    t.bigint "project_id", null: false
-    t.bigint "affiliation_id", null: false
-    t.index ["project_id", "affiliation_id"], name: "index_affiliations_projects_on_project_id_and_affiliation_id", unique: true
+    t.index ["organization_id"], name: "index_affiliations_on_organization_id"
+    t.index ["project_id"], name: "index_affiliations_on_project_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -68,6 +63,15 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
     t.index ["geom"], name: "index_countries_on_geom", using: :gist
     t.index ["iso_code"], name: "index_countries_on_iso_code", unique: true
     t.index ["name"], name: "index_countries_on_name", unique: true
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "contact"
+    t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
@@ -86,6 +90,10 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
     t.string "name", null: false
     t.string "watershed", null: false
     t.text "url"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
     t.bigint "state_id"
     t.index ["state_id"], name: "index_projects_on_state_id"
   end
@@ -126,6 +134,8 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "affiliations", "organizations"
+  add_foreign_key "affiliations", "projects"
   add_foreign_key "projects", "states"
   add_foreign_key "projects", "users", column: "author_id"
   add_foreign_key "states", "countries"
