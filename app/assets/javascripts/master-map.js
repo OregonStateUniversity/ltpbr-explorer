@@ -28,8 +28,8 @@ $(document).on('turbolinks:load', function () {
 
     // Layer control
     var baseLayers = {
-      '<img class="leaflet-control-layers-img img-thumbnail" src="map_layer_topography_example.png"><div class=leaflet-control-layers-text>Topography</div>': Esri_NatGeoWorldMap,
-      '<img class="leaflet-control-layers-img img-thumbnail" src="map_layer_imagery_example.png"><div class=leaflet-control-layers-text>Imagery</div>': Esri_WorldImagery
+      '<img class="leaflet-control-layers-img img-thumbnail" src="/map_layer_topography_example.png"><div class=leaflet-control-layers-text>Topography</div>': Esri_NatGeoWorldMap,
+      '<img class="leaflet-control-layers-img img-thumbnail" src="/map_layer_imagery_example.png"><div class=leaflet-control-layers-text>Imagery</div>': Esri_WorldImagery
     };
     var layer_control_options = {
       // collapsed: false

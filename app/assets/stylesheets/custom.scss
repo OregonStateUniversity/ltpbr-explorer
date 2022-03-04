@@ -340,9 +340,16 @@ input[type="checkbox"] {
   margin: auto;
 }
 
-#form-map, #state-map {
+#form-map{
   min-width: 400px;
   min-height: 400px;
+  margin: auto;
+  cursor: auto;
+}
+
+#state-map {
+  min-width: 400px;
+  min-height: 600px;
   margin: auto;
   cursor: auto;
 }
