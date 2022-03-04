@@ -1,9 +1,13 @@
 $(document).on('turbolinks:load', function() {
   $(".projects.show").ready(function() {
+    var map_id = $('#form-map');
+    if($(map_id).length == 0) {
+      return
+    }
+    
     var project_latitude = document.getElementById('project_latitude');
     var project_longitude = document.getElementById('project_longitude');
 
-    var map_id = $('#form-map');
     var latitude = map_id.data('latitude');
     var longitude = map_id.data('longitude');
     var zoom = 10;

@@ -1,10 +1,15 @@
 $(document).on('turbolinks:load', function () {
-  $(".static.projects_map").ready(function () {
-    var projects = gon.projects.projects;
+  const addMap = function(projects, map_id) {
+    if($(`#${map_id}`).length == 0) {
+      return
+    }
+
+    // Inital map view options
     var zoom = 6;
     var map_center_lat = 44.5;
     var map_center_lon = -120.5;
 
+    // Map tiles
     var Esri_NatGeoWorldMap = L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
         minZoom: 1,
@@ -16,7 +21,7 @@ $(document).on('turbolinks:load', function () {
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
 
     // Create the map
-    var project_map = L.map("master-map").setView([map_center_lat, map_center_lon], zoom);
+    var project_map = L.map(map_id).setView([map_center_lat, map_center_lon], zoom);
 
     // Add imagery
     Esri_NatGeoWorldMap.addTo(project_map);
@@ -129,6 +134,8 @@ $(document).on('turbolinks:load', function () {
       keepResult: true,
     });
     project_map.addControl(searchControl);
-    
-  });
+  }
+
+  $(".static.projects_map").ready(addMap(gon.projects.projects, "master-map"));
+  $(".states.show").ready(addMap(gon.projects.state_projects, "state-map"));
 });

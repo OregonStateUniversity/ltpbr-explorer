@@ -1,6 +1,10 @@
 $(document).on('turbolinks:load', function() {
   $(".projects.show").ready(function() {
     var map_id = $('#map');
+    if($(map_id).length == 0) {
+      return
+    }
+    
     var latitude = map_id.data('latitude');
     var longitude = map_id.data('longitude');
     var zoom = 15;

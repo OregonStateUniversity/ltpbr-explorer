@@ -33,7 +33,7 @@
         </div>
       
       <% else %>
-        <%= image_tag @project.photos[0].presence || "missing_image.jpg", alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
+        <%= image_tag @project.photos[0].presence || "/missing_image.jpg", alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
       <% end %>
     
     </div>

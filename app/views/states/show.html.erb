@@ -6,8 +6,11 @@
 
   <div class="row">
     <div class="col-md-7">
-      <div id="map" class="rounded border border-secondary"></div>
+      <div class="projects_map">
+        <div id="state-map" class="rounded border border-secondary"></div>
+      </div>
     </div>
+    <hr />
     <div class="col-md-5">
       <div class="card card-stats mb-4 mb-xl-0">
         <div class="card-body">
@@ -75,6 +78,6 @@
 
   <div class="container">
     <h4>State Projects</h5>
-    <%= render @state_projects%>
+    <%= render @state_projects %>
   </div>
 </div>
