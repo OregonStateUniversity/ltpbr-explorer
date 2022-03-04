@@ -772,3 +772,14 @@ project-photo {
 #affiliation-confirm-btn {
     margin-top: 32px;
 }
+
+// Select2 Styling
+
+  .select2-results__option--highlighted {
+    color: white !important;
+    background-color: $green !important;
+  }
+  
+  .select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: darkgray;
+  }
