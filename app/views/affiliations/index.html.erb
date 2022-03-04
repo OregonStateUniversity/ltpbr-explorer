@@ -8,7 +8,7 @@
   <% @affiliations.each do |affiliation| %>
     <div class="row justify-content-between">
       <div class="col col-8">
-        <%= render :partial => 'project_organ', locals: {organization: affiliation.organization}%>
+        <%= render :partial => 'projects/project_organ', locals: {organization: affiliation.organization}%>
       </div>
       <div class="col col-md-2" id="affiliations-index-buttons">
         <%= link_to 'Edit', edit_project_affiliation_path(@project, affiliation), class: 'btn btn-primary', :remote => true%>
