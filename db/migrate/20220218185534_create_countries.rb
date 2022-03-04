@@ -4,8 +4,6 @@ class CreateCountries < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :iso_code
       t.multi_polygon :geom, :srid => 4326
-      t.integer :total_length
-      t.integer :total_number_of_structures
 
       t.timestamps
     end

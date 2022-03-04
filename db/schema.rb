@@ -56,8 +56,6 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
     t.string "name"
     t.string "iso_code"
     t.geometry "geom", limit: {:srid=>4326, :type=>"multi_polygon"}
-    t.integer "total_length"
-    t.integer "total_number_of_structures"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["geom"], name: "index_countries_on_geom", using: :gist
@@ -90,10 +88,6 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
     t.string "name", null: false
     t.string "watershed", null: false
     t.text "url"
-    t.string "photo_file_name"
-    t.string "photo_content_type"
-    t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
     t.bigint "state_id"
     t.index ["state_id"], name: "index_projects_on_state_id"
   end
@@ -101,11 +95,9 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
   create_table "states", force: :cascade do |t|
     t.bigint "country_id"
     t.string "name"
-    t.string "hasc_code"
+    t.string "iso_code"
     t.string "state_type"
     t.geometry "geom", limit: {:srid=>0, :type=>"multi_polygon"}
-    t.integer "total_length"
-    t.integer "total_number_of_structures"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_states_on_country_id"
