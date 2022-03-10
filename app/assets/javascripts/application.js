@@ -24,5 +24,6 @@ const onLoad = () => {
         placeholder_text_multiple: "Select one or more Affiliations",
     });
 }
+
 document.addEventListener("load", onLoad)
 document.addEventListener("turbolinks:load", onLoad)

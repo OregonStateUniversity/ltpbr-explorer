@@ -83,6 +83,10 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
     t.datetime "updated_at", null: false
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}, null: false
     t.integer "author_id", null: false
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
     t.integer "number_of_structures", null: false
     t.text "structure_description", null: false
     t.string "name", null: false
