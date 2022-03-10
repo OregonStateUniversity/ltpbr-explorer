@@ -1,9 +1,4 @@
 class State < ApplicationRecord
-  belongs_to :country
-
-  def country_name
-    Country.find(self.country_id).name
-  end
 
   def projects
     Project.where(state_id: self.id)
