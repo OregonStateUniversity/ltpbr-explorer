@@ -35,16 +35,16 @@
     </div>
     <div class="card-deck">   
       <%= render :partial => 'home_stat_card', locals: {
-        title: "Projects",
-        value: @project_total_length_km, 
-        text: "Total channel length of riverscape restoration implementation",
-        icon: "fas fa-ruler"
+        title: "Organizations",
+        value: @organization_sum, 
+        text: "Number of Organizations represented on BDA-Explorer",
+        icon: "fas fa-building"
       }%>
       <%= render :partial => 'home_stat_card', locals: {
-        title: "Projects",
-        value: @project_total_length_km, 
-        text: "Total channel length of riverscape restoration implementation",
-        icon: "fas fa-ruler"
+        title: "States",
+        value: @organization_sum, 
+        text: "Number of unique US states containing BDA-Explorer projects",
+        icon: "fas fa-map"
       }%>    
     </div>
   </div>

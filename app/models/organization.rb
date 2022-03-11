@@ -13,4 +13,8 @@ class Organization < ApplicationRecord
     def small_icon
         return self.icon.variant(resize: '300x300')
     end
+
+    def self.organization_count
+        all.count
+    end
 end
