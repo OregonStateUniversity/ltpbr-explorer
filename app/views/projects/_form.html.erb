@@ -41,13 +41,6 @@
                { class: 'chosen-select', multiple: true }
     %>
     <hr>
-    <% i = 0 %>
-    <%= f.fields_for :affiliations do |affiliation_builder|%>
-        <%= affiliation_builder.label :role, (@project_organizations[i].name + "'s Role in Project") %>
-        <%= affiliation_builder.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Donor, Founder', class: 'form-control' %>
-        <%= affiliation_builder.hidden_field :id %>
-        <% i += 1%>
-    <% end %>    
     </div>
   </div>
 </div>
