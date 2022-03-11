@@ -136,6 +136,13 @@ $(document).on('turbolinks:load', function () {
     project_map.addControl(searchControl);
   }
 
-  $(".static.projects_map").ready(addMap(gon.projects.projects, "master-map"));
-  $(".states.show").ready(addMap(gon.projects.state_projects, "state-map"));
+  if(typeof(gon) === "undefined" || !gon.projects) {
+    return
+  }
+
+  if(gon.projects.projects){
+    $(addMap(gon.projects.projects, "master-map"));
+  } else if (gon.projects.state_projects) {
+    $(addMap(gon.projects.state_projects, "state-map"));
+  }
 });
