@@ -290,30 +290,13 @@
 
   <%=render :partial => 'form_help_modal', locals: {
     id: 'delete-photos-modal',
-    title: 'Select Existing Photos to Delete',
-    body: 'Select Existing Photos to Delete'
-  }%>
-  <%=render :partial => 'form_help_modal', locals: {
-    id: 'delete-photos-modal',
-    title: 'Select Existing Photos to Delete',
+    title: 'Photo Deletion',
     body: 'Select Existing Photos to Delete'
   }%>
 
-<div aria-hidden='true' class='modal fade' id='manage-affiliations-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Select Existing Photos to Delete</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Select photos by clicking or tapping on them to mark them for deletion.
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'manage-affiliations-modal',
+    title: 'Organizations',
+    body: 'Add or remove affiliated Organizations to this project',
+    body_2: 'Roles can be applied to each Organization, e.g. "Founder", after Project creation on project page through "Manage Organizations and Roles".'
+  }%>
