@@ -9,7 +9,7 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :affiliations
 
-  before_save :assign_lonlat
+  before_save :assign_lonlat, :assign_state
 
   has_many_attached :photos
 
@@ -42,6 +42,13 @@ class Project < ApplicationRecord
     end
   end
 
+  def calculate_state
+    point = "SRID=4326;#{self.lonlat}"
+    states = State.arel_table
+    containing_state = State.where(states[:geom].st_contains(Arel.spatial(point)))
+    return containing_state.present? ? containing_state.first.id : nil
+  end
+
   def self.project_count
     all.count
   end
@@ -68,6 +75,10 @@ class Project < ApplicationRecord
     else
       throw(:abort)
     end
+  end
+
+  def assign_state
+    self.state_id = calculate_state
   end
 
 end

@@ -345,15 +345,22 @@ input[type="checkbox"] {
 
 // Map
 
-#map {
+#project-map {
   min-width: 400px;
   min-height: 400px;
   margin: auto;
 }
 
-#form-map {
+#form-map{
   min-width: 400px;
   min-height: 400px;
+  margin: auto;
+  cursor: auto;
+}
+
+#state-map {
+  min-width: 400px;
+  min-height: 600px;
   margin: auto;
   cursor: auto;
 }
