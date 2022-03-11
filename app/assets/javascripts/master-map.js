@@ -140,10 +140,10 @@ $(document).on('turbolinks:load', function () {
     return
   }
 
-  if(typeof(gon.projects) !== "undefined"){
+  if(typeof(gon.state_name) === "undefined"){
     $(addMap(gon.projects, "master-map"));
-  } else if (typeof(gon.state_projects) !== "undefined"){} {
+  } else {
     let state_name = gon.state_name;
-    $(addMap(gon.state_projects, "state-map"));
+    $(addMap(gon.projects, "state-map"));
   }
 });
