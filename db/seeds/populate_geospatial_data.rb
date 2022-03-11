@@ -9,7 +9,6 @@ end
 State.delete_all
 
 connection.execute "ALTER SEQUENCE states_id_seq RESTART WITH 1"
-connection.execute "ALTER SEQUENCE countries_id_seq RESTART WITH 1"
 
 puts
 

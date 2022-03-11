@@ -52,17 +52,6 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
     t.index ["project_id"], name: "index_affiliations_on_project_id"
   end
 
-  create_table "countries", force: :cascade do |t|
-    t.string "name"
-    t.string "iso_code"
-    t.geometry "geom", limit: {:srid=>4326, :type=>"multi_polygon"}
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["geom"], name: "index_countries_on_geom", using: :gist
-    t.index ["iso_code"], name: "index_countries_on_iso_code", unique: true
-    t.index ["name"], name: "index_countries_on_name", unique: true
-  end
-
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -83,10 +72,6 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
     t.datetime "updated_at", null: false
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}, null: false
     t.integer "author_id", null: false
-    t.string "photo_file_name"
-    t.string "photo_content_type"
-    t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
     t.integer "number_of_structures", null: false
     t.text "structure_description", null: false
     t.string "name", null: false
@@ -97,14 +82,12 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
   end
 
   create_table "states", force: :cascade do |t|
-    t.bigint "country_id"
     t.string "name"
     t.string "iso_code"
     t.string "state_type"
     t.geometry "geom", limit: {:srid=>0, :type=>"multi_polygon"}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["country_id"], name: "index_states_on_country_id"
     t.index ["geom"], name: "index_states_on_geom", using: :gist
   end
 
@@ -134,5 +117,4 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
   add_foreign_key "affiliations", "projects"
   add_foreign_key "projects", "states"
   add_foreign_key "projects", "users", column: "author_id"
-  add_foreign_key "states", "countries"
 end
