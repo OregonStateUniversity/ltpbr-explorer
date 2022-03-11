@@ -218,26 +218,14 @@
   </div>
 </div>
 <!-- MODAL INFORMATION -->
-<div aria-hidden='true' class='modal fade' id='photo-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Project Photos</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        <p>Upload at least one representative photo of the project area, channel, or structures.</p>
-        <p>Each of the photos must be below 50 MB in size and be in the JPEG, PNG, GIF, BMP, AVIF, or WebP format.</p>
-        <p>There is a limit of 20 photos.</p>
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'photo-modal',
+    title: 'Project Photos',
+    body: 'Upload at least one representative photo of the project area, channel, or structures.',
+    body_2: 'Each of the photos must be below 50 MB in size and be in the JPEG, PNG, GIF, BMP, AVIF, or WebP format.',
+    body_3: 'There is a limit of 20 photos.'
+  }%>
+
 <div aria-hidden='true' class='modal fade' id='stream_name-modal' role='dialog' tabindex='-1'>
   <div class='modal-dialog' role='document'>
     <div class='modal-content'>
