@@ -55,7 +55,16 @@
                 </div>
               </div>
             </div>
-
+            <%= render :partial => 'home_stat_card', locals: {
+                value: @project_total_length_km, 
+                text: "Total channel length of riverscape restoration implementation",
+                icon: "fas fa-ruler"
+                }%>
+            <%= render :partial => 'home_stat_card', locals: {
+                value: @project_total_length_km, 
+                text: "Total channel length of riverscape restoration implementation",
+                icon: "fas fa-ruler"
+                }%>
             <div class="col-xl-4 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
