@@ -3,6 +3,8 @@ class StaticController < ApplicationController
     @project_count = Project.project_count
     @structure_sum = Project.structure_sum
     @project_total_length_km = Project.project_total_length_km
+    @organization_sum = Organization.organization_count
+    @unique_state_count = Project.distinct.count('state_id')
   end
 
   def about; end
