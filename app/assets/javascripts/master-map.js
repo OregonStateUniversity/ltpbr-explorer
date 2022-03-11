@@ -136,13 +136,14 @@ $(document).on('turbolinks:load', function () {
     project_map.addControl(searchControl);
   }
 
-  if(typeof(gon) === "undefined" || !gon.projects) {
+  if(typeof(gon) === "undefined") {
     return
   }
 
-  if(gon.projects.projects){
-    $(addMap(gon.projects.projects, "master-map"));
-  } else if (gon.projects.state_projects) {
-    $(addMap(gon.projects.state_projects, "state-map"));
+  if(typeof(gon.projects) !== "undefined"){
+    $(addMap(gon.projects, "master-map"));
+  } else if (typeof(gon.state_projects) !== "undefined"){} {
+    let state_name = gon.state_name;
+    $(addMap(gon.state_projects, "state-map"));
   }
 });

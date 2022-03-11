@@ -6,7 +6,8 @@ class StatesController < ApplicationController
   def show
     @state = State.find(params[:id])
     @state_projects = @state.projects
-    gon.rabl 'app/views/states/projects.rabl', as: 'projects'
+    gon.state_name = @state.name
+    gon.rabl 'app/views/states/projects.rabl'
   rescue ActiveRecord::RecordNotFound
     redirect_to states_path, warning: 'That state does not exist.'
   end
