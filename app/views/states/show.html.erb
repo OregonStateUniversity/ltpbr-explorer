@@ -1,0 +1,83 @@
+<% provide(:title, @state.name) %>
+<div class="container pt-5">
+  <h1 class="display-4"><%= @state.name %></h1>
+  <h5 class="text-secondary">United States</h5>
+  <hr />
+
+  <div class="row">
+    <div class="col-md-7">
+      <div class="projects_map">
+        <div id="state-map" class="rounded border border-secondary"></div>
+      </div>
+    </div>
+    <hr />
+    <div class="col-md-5">
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h4 class="card-title text-uppercase text-muted text-left mb-0">Projects</h5>
+              <p class="h1 font-weight-bold text-left mb-0"><%= @state.project_count %></p>
+            </div>
+            <div class="col-auto">
+              <div class="icon-card icon-card-shape bg-success text-white rounded-circle shadow">
+                <i class="fas fa-map-marker"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-muted text-left text-sm">
+            <span class="text-wrap">Process-based riverscape restoration projects</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h4 class="card-title text-uppercase text-muted text-left mb-0">Structures</h5>
+              <p class="h1 font-weight-bold text-left mb-0"><%= @state.structure_sum %></p>
+            </div>
+            <div class="col-auto">
+              <div class="icon-card icon-card-shape bg-success text-white rounded-circle shadow">
+                <i class="fab fa-pagelines"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-muted text-left text-sm">
+            <span class="text-wrap">Beaver dam analog (BDA) and post-assisted log structures (PALS)</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h4 class="card-title text-uppercase text-muted text-left mb-0 ">Length</h5>
+              <p class="h1 font-weight-bold text-left mb-0"><%= @state.project_total_length_km %>mi</p>
+            </div>
+            <div class="col-auto">
+              <div class="icon-card icon-card-shape bg-success text-white rounded-circle shadow">
+                <i class="fas fa-ruler"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-muted text-sm text-left">
+            <span class="text-wrap">Total channel length of riverscape restoration implementation</span>
+          </p>
+        </div>
+      </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="container">
+    <h4>State Projects</h5>
+    <%= render @state_projects %>
+  </div>
+</div>
