@@ -15,9 +15,10 @@ puts
 if State.all.count == 0
   puts "Importing state data..."
 
-  from_province_shp_sql = `shp2pgsql -c -g geom -W LATIN1 -s 4326 #{Rails.root.join("db", "shapefiles", "ne_110m_admin_1_states_provinces.shp")} states_ref`
+  #from_state_shp_sql = `shp2pgsql -c -g geom -W LATIN1 -s 4326 #{Rails.root.join("db", "shapefiles", "ne_110m_admin_1_states_provinces.shp")} states_ref`
+  from_state_shp_sql = File.read('db/seeds/states.sql')
   connection.execute "drop table if exists states_ref"
-  connection.execute from_province_shp_sql
+  connection.execute from_state_shp_sql
   connection.execute <<-SQL
       insert into states(name, iso_code, state_type, geom, created_at, updated_at)
         select NAME_EN, iso_3166_2, type, geom, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP from states_ref
