@@ -1,9 +1,18 @@
 <% provide(:title, @project.stream_name) %>
 <div class="container pt-5">
   <h1 class="display-4"><%= @project.name %></h1>
-  <h5 class="text"><%= @project.affiliation.order(:affiliation_name).each.map(&:affiliation_name).join(", ")%></h5>
+    <hr>
+  <%= render :partial => 'project_organ', :collection => @project.organizations.order(:name), :as => :organization%>
+    <% if user_signed_in? && (@project.author_id == current_user.id || current_user.admin_role?) %>
+    <br>
+    <div class="btn-group">
+      <%= link_to 'Manage Organizations and Roles', project_affiliations_path(@project), class: 'btn btn-primary', title: "Edit #{@project}" %>
+    </div>
+    <div class="btn btn-question" id="manage-affiliations-help">
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+    </div>
+    <% end %>
   <hr />
-
   <div class="row">
     <div class="col-md-7">
       
@@ -32,11 +41,19 @@
         </div>
       
       <% else %>
-        <%= image_tag @project.photos[0].presence || "missing_image.jpg", alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
+        <%= image_tag @project.photos[0].presence || "/missing_image.jpg", alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
       <% end %>
     
     </div>
     <div class="col-md-5">
+      <label>State:</label>
+      <% if @project.state_id.present? %>
+        <p class="h5 mb-3"><%= State.find(@project.state_id).name %></p>
+      <% else %>
+        <p class="h5 mb-3">N/A</p>
+      <% end %>
+      <hr>
+
       <label>Stream Name:</label>
       <p class="h5 mb-3"><%= @project.stream_name %></p>
       <hr>
@@ -82,7 +99,7 @@
     </div>
   </div>
 
-  <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="map" class="rounded border border-secondary"></div>
+  <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="project-map" class="rounded border border-secondary"></div>
 
   <% if user_signed_in? && (@project.author_id == current_user.id || current_user.admin_role?) %>
   <hr />
@@ -91,3 +108,23 @@
     <%= link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-secondary', title: "Delete #{@project}" %>
   </div>
   <% end %>
+
+<div aria-hidden='true' class='modal fade' id='manage-affiliations-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Manage Affiliated Organizations</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Select which organizations are affiliated with this project and assign a role to each
+        organization depending on their role in the project. 
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

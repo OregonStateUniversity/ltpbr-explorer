@@ -1,32 +1,32 @@
-<%= form_for @affiliation do |f| %>
-
-<%= f.label :name, 'Affiliation Name' %>
-<%= f.text_field :affiliation_name, autofocus: true, autocomplete: 'off', placeholder: 'e.g. NOAA', class: 'form-control' %>
-
-<%= f.label :name, 'Affiliation Description' %>
-<%= f.text_field :description, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Description Here', class: 'form-control' %>
-
-<%= f.label :name, 'Affiliation Contact' %>
-<%= f.text_field :contact, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Contact Here', class: 'form-control' %>
-
-<%= f.label :name, 'Affiliation Website' %>
-<%= f.text_field :website, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Website Here', class: 'form-control' %>
-
-  <% if @affiliation.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= "#{pluralize(@affiliation.errors.count, "error")} prohibited this affiliation from being saved:" %>
-      </h2>
-      <ul>
-        <% @affiliation.errors.full_messages.each do |message| %>
-          <li>
-            <%= message %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="actions">
-    <%= f.submit 'Save' %>
+<%= form_for([@project, @affiliation], :remote => true) do |f| %>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<div class="row">
+ <div class="input-group mb-3">
+  <div class="col-md">
+    <%= f.label :name, 'Organization Name' %>
+    <%= f.select :organization_id,
+      Organization.order(:name).map { |u| [u.name, u.id] },
+      { },
+      { class: 'selectoptions', id: "organizations"}%>
   </div>
+  <div class="col-md">
+    <%= f.label :role, 'Organization\'s role in Project' %>
+    <%= f.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Founder, Donor', class: 'form-control' %>
+    <%= f.hidden_field :project_id, value: @project.id%>
+  </div>
+  <div class="col-md">
+    <div class="actions">
+      <%= f.submit buttontext, class: 'btn confirm-btn pull-right', id: 'affiliation-confirm-btn' %>
+    </div>
+  </div>
+ </div>
 <% end %>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    $(".selectoptions").select2({
+        placeholder: "Select an Organization",
+        allowClear: true
+    });
+</script>

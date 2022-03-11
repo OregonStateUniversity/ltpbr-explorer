@@ -30,17 +30,24 @@
   </div>
   <div class="col-md">
     <!-- PROJECT AFFILIATION -->
-    <%= f.label :affiliation, 'Project Affiliation(s)' %>
-    <div class="btn btn-question" id="affiliation-help">
+    <%= f.label :organization, 'Affiliated Project Organizations(s)' %>
+    <div class="btn btn-question" id="manage-affiliations-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
-
     <div class = "selectWrapper">
-    <%= f.select :affiliation_ids,
-    Affiliation.all.order(:affiliation_name).map { |u| [u.affiliation_name, u.id] },
+    <%= f.select :organization_ids,
+    @organizations.order(:name).map { |u| [u.name, u.id] },
                { include_blank: true, multiple: true},
                { class: 'chosen-select', multiple: true }
     %>
+    <hr>
+    <% i = 0 %>
+    <%= f.fields_for :affiliations do |affiliation_builder|%>
+        <%= affiliation_builder.label :role, (@project_organizations[i].name + "'s Role in Project") %>
+        <%= affiliation_builder.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Donor, Founder', class: 'form-control' %>
+        <%= affiliation_builder.hidden_field :id %>
+        <% i += 1%>
+    <% end %>    
     </div>
   </div>
 </div>
@@ -295,7 +302,8 @@
         </button>
       </div>
       <div class='modal-body'>
-        Primary organization involved with project design and implementation.
+        Organizations involved with project design and implementation. Organizations' role can be modified in subsequent Affiliations form
+        page found on Project page after submission.
       </div>
       <div class='modal-footer'>
         <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
@@ -448,6 +456,24 @@
   </div>
 </div>
 <div aria-hidden='true' class='modal fade' id='delete-photos-modal' role='dialog' tabindex='-1'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>Select Existing Photos to Delete</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>×</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        Select photos by clicking or tapping on them to mark them for deletion.
+      </div>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div aria-hidden='true' class='modal fade' id='manage-affiliations-modal' role='dialog' tabindex='-1'>
   <div class='modal-dialog' role='document'>
     <div class='modal-content'>
       <div class='modal-header'>

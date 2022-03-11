@@ -10,6 +10,7 @@ gem 'aws-sdk', '~> 3'
 gem 'bootsnap', '>= 1.9.1', require: false
 gem 'bootstrap', '~> 4.6.0'
 gem 'chosen-rails', '~> 1.10.0'
+gem 'bootstrap-select-rails'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'devise', '>= 4.8'
 gem 'ffi-geos'

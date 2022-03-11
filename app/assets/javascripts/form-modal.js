@@ -23,6 +23,10 @@ $(document).on('turbolinks:load', function() {
     $('#affiliation-modal').modal();
   });
 
+  $('#manage-affiliations-help').on('click', function() {
+    $('#manage-affiliations-modal').modal();
+  });
+
   $('#implementation_date-help').on('click', function() {
     $('#implementation_date-modal').modal();
   });

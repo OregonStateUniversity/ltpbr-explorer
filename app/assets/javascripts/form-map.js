@@ -1,14 +1,19 @@
 $(document).on('turbolinks:load', function() {
-  $(".projects.show").ready(function() {
+  $(".projects.edit").ready(function() {
+    var map_id = 'form-map';
+    var map_div = $(`#${map_id}`);
+    if(map_div.length == 0) {
+      return
+    }
+    
     var project_latitude = document.getElementById('project_latitude');
     var project_longitude = document.getElementById('project_longitude');
 
-    var map_id = $('#form-map');
-    var latitude = map_id.data('latitude');
-    var longitude = map_id.data('longitude');
+    var latitude = map_div.data('latitude');
+    var longitude = map_div.data('longitude');
     var zoom = 10;
     var max_zoom = 16;
-    var leaflet_map = L.map('form-map').setView([latitude, longitude], zoom);
+    var leaflet_map = L.map(map_id).setView([latitude, longitude], zoom);
 
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
       attribution: 'Tiles &copy; Esri &mdash; and the GIS User Community',

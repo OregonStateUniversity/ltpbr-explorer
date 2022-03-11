@@ -191,6 +191,13 @@ input[type="checkbox"] {
   font-weight: 400;
 }
 
+.confirm-del-btn {
+    width: 200px;
+    color: white;
+    background-color: $danger-red;
+    font-weight: 400;
+  }
+
 .confirm-btn-wide {
   width: 350px;
   color: white;
@@ -206,6 +213,10 @@ input[type="checkbox"] {
   max-width: 200px;
   color: white;
   background-color: #B1B1B1;
+}
+
+#affiliations-index-buttons {
+  margin-top: 5px;
 }
 
 #error_explanation {
@@ -334,15 +345,22 @@ input[type="checkbox"] {
 
 // Map
 
-#map {
+#project-map {
   min-width: 400px;
   min-height: 400px;
   margin: auto;
 }
 
-#form-map {
+#form-map{
   min-width: 400px;
   min-height: 400px;
+  margin: auto;
+  cursor: auto;
+}
+
+#state-map {
+  min-width: 400px;
+  min-height: 600px;
   margin: auto;
   cursor: auto;
 }
@@ -736,4 +754,53 @@ project-photo {
         float: none;
         border: none;
     }
+}
+
+// Affiliations List Styling
+
+.affiliation-icon-list {
+    width: 100px !important;
+    width: 100px !important;
+    margin: 10px;
+}
+
+.affiliation-icon-list-sm {
+    width: 40px !important;
+    width: 40px !important;
+    margin: 4px;
+    margin-left: -20px;
+}
+
+.organization-list-display {
+    padding-left: 5px;
+    padding-top: 9px;
+} 
+
+#affiliation-confirm-btn {
+    margin-top: 32px;
+}
+
+// Select2 Styling
+
+  .select2-results__option--highlighted {
+    color: white !important;
+    background-color: $green !important;
+  }
+  
+  .select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: darkgray;
+  }
+
+// Role Badge and Organization Link Styling
+
+.badge-pill {
+    font-size: 1rem;
+}
+
+.badge-pill-text {
+    padding-top: 2px;
+}
+
+.organization-list-display {
+    font-weight: bold;
 }

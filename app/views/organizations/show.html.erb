@@ -1,0 +1,29 @@
+
+<% provide(:title, @organization.name) %>
+<div class="container pt-5">
+  <div class="col text-right">
+    <%= link_to 'Organizations List', organizations_path, class: "btn btn-success", id: "filter-button" %>
+  </div>
+  <div class="d-flex align-items-center wrap h-100">
+    <%= image_tag(@organization.icon, class: 'affiliation-icon-list') if @organization.icon.attached? %>
+    <h1 class="display-4"><%= @organization.name %></h1>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-5">
+      <label>Organization Contact:</label>
+      <p class="h5 mb-3"><%= @organization.contact%></p>
+      <hr>
+
+      <label>Organization Website:</label>
+      <% url = @organization.website%>
+      <% html_url = url.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe if url%>
+      <% html_url = "No link provided" if !url%>
+      <em><p class="h5 mb-3"><%= html_url %></p></em>
+      <hr>
+      
+    </div>
+  </div>
+
+  <h5>Organization Description</h5>
+  <p><%= @organization.description %></p>
