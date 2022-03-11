@@ -13,12 +13,24 @@
     -->
     <!-- STATS CARDS -->
     <br>
-    <div class="card-deck">   
+    <div class="card-deck justify-content-center">   
       <%= render :partial => 'home_stat_card', locals: {
         title: "Projects",
         value: @project_count, 
         text: "Process-based riverscape restoration projects",
         icon: "fas fa-map-marker"
+      }%>
+      <%= render :partial => 'home_stat_card', locals: {
+        title: "Organizations",
+        value: @organization_sum, 
+        text: "Number of Organizations represented on BDA-Explorer",
+        icon: "fas fa-building"
+      }%>
+      <%= render :partial => 'home_stat_card', locals: {
+        title: "Length",
+        value: @project_total_length_km, 
+        text: "Total channel length of riverscape restoration implementation",
+        icon: "fas fa-ruler"
       }%>
       <%= render :partial => 'home_stat_card', locals: {
         title: "Structures",
@@ -27,22 +39,8 @@
         icon: "fab fa-pagelines"
       }%>
       <%= render :partial => 'home_stat_card', locals: {
-        title: "Length",
-        value: @project_total_length_km, 
-        text: "Total channel length of riverscape restoration implementation",
-        icon: "fas fa-ruler"
-      }%>
-    </div>
-    <div class="card-deck">   
-      <%= render :partial => 'home_stat_card', locals: {
-        title: "Organizations",
-        value: @organization_sum, 
-        text: "Number of Organizations represented on BDA-Explorer",
-        icon: "fas fa-building"
-      }%>
-      <%= render :partial => 'home_stat_card', locals: {
         title: "States",
-        value: @organization_sum, 
+        value: @unique_state_count, 
         text: "Number of unique US states containing BDA-Explorer projects",
         icon: "fas fa-map"
       }%>    
