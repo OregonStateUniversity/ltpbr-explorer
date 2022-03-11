@@ -10,6 +10,6 @@ class StaticController < ApplicationController
   def projects_map
     @disable_footer = false
     @projects = Project.all
-    gon.rabl 'app/views/static/home.rabl'
+    gon.rabl :template => 'app/views/static/home.rabl'
   end
 end
