@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_02_18_202502) do
+=======
+ActiveRecord::Schema.define(version: 2022_02_14_051051) do
+>>>>>>> development
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +76,10 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
     t.datetime "updated_at", null: false
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}, null: false
     t.integer "author_id", null: false
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
     t.integer "number_of_structures", null: false
     t.text "structure_description", null: false
     t.string "name", null: false
@@ -115,6 +123,9 @@ ActiveRecord::Schema.define(version: 2022_02_18_202502) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "affiliations", "organizations"
   add_foreign_key "affiliations", "projects"
+<<<<<<< HEAD
   add_foreign_key "projects", "states"
+=======
+>>>>>>> development
   add_foreign_key "projects", "users", column: "author_id"
 end
