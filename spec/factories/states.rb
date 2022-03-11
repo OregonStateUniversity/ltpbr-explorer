@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :state do
-    Country { nil }
     name { "MyString" }
     hasc_code { "MyString" }
     state_type { "" }
