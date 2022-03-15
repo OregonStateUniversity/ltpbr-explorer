@@ -8,7 +8,7 @@
     <%= f.select :organization_id,
       Organization.order(:name).map { |u| [u.name, u.id] },
       { },
-      { class: 'selectoptions', id: "organizations"}%>
+      { class: (defined?(dropdownclass) ? "selectoptions" : "selectoptions2"), id: "organizations"}%>
   </div>
   <div class="col-md">
     <%= f.label :role, 'Organization\'s role in Project' %>
@@ -26,6 +26,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">
     $(".selectoptions").select2({
+        placeholder: "Select an Organization",
+        allowClear: true
+    });
+    $(".selectoptions2").select2({
         placeholder: "Select an Organization",
         allowClear: true
     });

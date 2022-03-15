@@ -28,7 +28,7 @@
       }%>
       <%= render :partial => 'home_stat_card', locals: {
         title: "Length",
-        value: @project_total_length_km, 
+        value: @project_total_length_km.to_s + "mi", 
         text: "Total channel length of riverscape restoration implementation",
         icon: "fas fa-ruler"
       }%>
