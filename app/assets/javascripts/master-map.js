@@ -54,7 +54,7 @@ $(document).on('turbolinks:load', function () {
     L.control.scale().addTo(project_map);
 
     // project points now
-    var project_markers = L.featureGroup();
+    let project_markers = L.markerClusterGroup();
 
     projects.forEach(project => {
       var marker = L.marker([project.latitude, project.longitude]);
