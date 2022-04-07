@@ -62,6 +62,14 @@ class Project < ApplicationRecord
     return total_km.round(1)
   end
 
+  def self.search(search)
+    if search
+        where(["name LIKE :search or watershed LIKE :search or stream_name LIKE :search", search: "%#{search}%"])
+    else
+        all
+    end
+  end
+
   private
 
   def round_string(str, precision)

@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
         $watershedtoggle, $stream_nametoggle, @organizationtoggle, $nametoggle = false;
         @projects = Project.page(params[:page]).per($displaylimit)
     end
-    @projects = Project.page(params[:page]).per($displaylimit).where(["name LIKE ?","%#{params[:search]}%"])
+    @projects = Project.page(params[:page]).per($displaylimit).search(params[:search])
   end
 
   def show
