@@ -18,8 +18,12 @@
       <%= link_to 'Stream <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'stream'), class: "btn btn-success", id: "filter-button" %>
       <%= link_to 'Watershed<i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'watershed'), class: "btn btn-success", id: "filter-button" %>
       <%= link_to 'Reset Filter', projects_path(order: 'normal'), class: "btn btn-secondary"%>
+      <br>
+      <%= form_tag projects_path, :method => 'get' do %>
+        <%= text_field_tag :search, params[:search]%>
+        <%= submit_tag 'Filter' %>
+      <% end %>
 
-      <%= text_field :search_query, autofocus: true, autocomplete: 'off', placeholder: 'Search Projects...', class: 'form-control' %>
       <%= link_to 'Filter Projects', projects_path(order: :search_query), class: "btn btn-success", id: "filter-button"%>
     </div>
 <%= render @projects%>
