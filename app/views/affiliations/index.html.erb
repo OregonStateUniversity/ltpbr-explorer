@@ -2,7 +2,7 @@
 <h1>Listing Organization Affiliations for <%= @project.name %></h1>
 <%= link_to 'Return to Project', [@project], class: 'btn confirm-btn' %>
 <hr>
-<%= render :partial => 'form', locals: {buttontext: 'Add Organization'}%>
+<%= render :partial => 'form', locals: {buttontext: 'Add Organization', dropdownclass: 'selectoptions'}%>
 <hr>
  <div id="activity_form"></div> 
   <% @affiliations.each do |affiliation| %>
