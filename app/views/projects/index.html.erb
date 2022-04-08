@@ -24,7 +24,7 @@
       <br>
       <%= form_tag projects_path, :method => 'get' do %>
         <%= text_field_tag :search, params[:search]%>
-        <%= select_tag :search_organization, options_from_collection_for_select(Organization.all, :id, :name, params[:search_organization] || [1,2]), class: 'select2', multiple: false %>
+        <%= select_tag :search_organization, options_from_collection_for_select(Organization.all, :id, :name, params[:search_organization]), class: 'select2', multiple: false, include_blank: true%>
         <%= submit_tag 'Filter' %>
      <% end %>
 
