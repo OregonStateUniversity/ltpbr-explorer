@@ -64,22 +64,19 @@ class Project < ApplicationRecord
 
   def self.search(search, search_organization)
     if search
-        joins(:organizations).where(organizations: {id: search_organization})
-    else
-        all
-    end
-  end
-
-  def self.searchs(search)
-    if search
-        where(["name LIKE :search or watershed LIKE :search or stream_name LIKE :search", search: "%#{search}%"])
         projects = Project.all
-        projects = projects.where(["name LIKE :search", search: "%#{search}%"])
-        projects = projects.where(["organizations.name i"])
+
+        projects = projects.where(["projects.name LIKE :search", search: "%#{search}%"]).or(
+        projects = projects.where(["watershed LIKE :search", search: "%#{search}%"])).or(
+        projects = projects.where(["stream_name LIKE :search", search: "%#{search}%"]))
+                    .joins(:organizations).where(organizations: {id: search_organization})
+        
+        return projects
     else
         all
     end
   end
+  
   private
 
   def round_string(str, precision)
