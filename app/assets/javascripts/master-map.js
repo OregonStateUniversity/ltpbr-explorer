@@ -5,36 +5,36 @@ $(document).on('turbolinks:load', function () {
     }
 
     // Inital map view options
-    var zoom = 6;
-    var map_center_lat = 44.5;
-    var map_center_lon = -120.5;
+    const zoom = 6;
+    const map_center_lat = 44.5;
+    const map_center_lon = -120.5;
 
     // Map tiles
-    var Esri_NatGeoWorldMap = L.tileLayer(
+    const Esri_NatGeoWorldMap = L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
         minZoom: 1,
         maxZoom: 16
       }
     );
 
-    var Esri_WorldImagery = L.tileLayer(
+    const Esri_WorldImagery = L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
 
     // Create the map
-    var project_map = L.map(map_id).setView([map_center_lat, map_center_lon], zoom);
+    const project_map = L.map(map_id).setView([map_center_lat, map_center_lon], zoom);
 
     // Add imagery
     Esri_NatGeoWorldMap.addTo(project_map);
 
     // Layer control
-    var baseLayers = {
+    const baseLayers = {
       '<img class="leaflet-control-layers-img img-thumbnail" src="/map_layer_topography_example.png"><div class=leaflet-control-layers-text>Topography</div>': Esri_NatGeoWorldMap,
       '<img class="leaflet-control-layers-img img-thumbnail" src="/map_layer_imagery_example.png"><div class=leaflet-control-layers-text>Imagery</div>': Esri_WorldImagery
     };
-    var layer_control_options = {
+    const layer_control_options = {
       // collapsed: false
     }
-    var layer_control = L.control.layers(baseLayers, null, layer_control_options);
+    const layer_control = L.control.layers(baseLayers, null, layer_control_options);
     layer_control.addTo(project_map);
 
     $('.leaflet-control-layers-selector:checked').parent().closest('label').addClass('leaflet-control-layers-selected');
@@ -54,17 +54,17 @@ $(document).on('turbolinks:load', function () {
     L.control.scale().addTo(project_map);
 
     // project points now
-    var project_markers = L.featureGroup();
+    const project_markers = L.markerClusterGroup();
 
     projects.forEach(project => {
-      var marker = L.marker([project.latitude, project.longitude]);
-      var dateOptions = { 
+      const marker = L.marker([project.latitude, project.longitude]);
+      const dateOptions = { 
         year: 'numeric', 
         month: 'short', 
         day: 'numeric' 
       };
-      var updated_at = project.updated_at.replace(' UTC', '');
-      var popup = L.popup({
+      const updated_at = project.updated_at.replace(' UTC', '');
+      const popup = L.popup({
         maxWidth: 600,
         minWidth: 400,
       }).setContent(
@@ -113,7 +113,6 @@ $(document).on('turbolinks:load', function () {
       project_markers.addLayer(marker);
     });
       
-
     // add all projects to map
     project_markers.addTo(project_map);
 
