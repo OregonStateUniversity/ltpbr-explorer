@@ -15,26 +15,31 @@
       <%= link_to 'Map View', projects_map_path, class: "btn btn-success", id: "filter-button" %>
     </div>
   </div>
-    <div class="text-left">
-      <%= link_to 'Name <i class="fa fa-fw fa-sort id="sortbutton"></i>'.html_safe, projects_path(order: 'name'), class: "btn btn-success", id: "filter-button"%>
-      <%= link_to 'Organization <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'organization'), class: "btn btn-success", id: "filter-button" %>
-      <%= link_to 'Stream <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'stream'), class: "btn btn-success", id: "filter-button" %>
-      <%= link_to 'Watershed<i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'watershed'), class: "btn btn-success", id: "filter-button" %>
-      <%= link_to 'Reset Filter', projects_path(order: 'normal'), class: "btn btn-secondary"%>
+      <%#= link_to 'Name <i class="fa fa-fw fa-sort id="sortbutton"></i>'.html_safe, projects_path(order: 'name'), class: "btn btn-success", id: "filter-button"%>
+      <%#= link_to 'Organization <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'organization'), class: "btn btn-success", id: "filter-button" %>
+      <%#= link_to 'Stream <i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'stream'), class: "btn btn-success", id: "filter-button" %>
+      <%#= link_to 'Watershed<i class="fa fa-fw fa-sort"></i>'.html_safe, projects_path(order: 'watershed'), class: "btn btn-success", id: "filter-button" %>
+      <%#= link_to 'Reset Filter', projects_path(order: 'normal'), class: "btn btn-secondary"%>
       <br>
       <%= form_tag projects_path, :method => 'get' do %>
-        <%= text_field_tag :search, params[:search]%>
-        <%= select_tag :search_organization, options_from_collection_for_select(Organization.all, :id, :name, params[:search_organization]), class: 'select2', multiple: false, include_blank: true%>
-        <%= submit_tag 'Filter' %>
-     <% end %>
+      <div class="row">
+        <div class="col-4">
+            <%= text_field_tag :search, params[:search], placeholder: "Enter search terms..."%>
+        </div>
+        <div class="col-4">
+            <%= select_tag :search_organization, options_from_collection_for_select(Organization.all, :id, :name, params[:search_organization]), class: 'select2', multiple: false, include_blank: true%>
+        </div>
+        <div class="col-2">
+            <%= submit_tag 'Filter', class: "btn btn-success", id: "filter-button"%>
+        </div>
+        <div class="col-2">
+            <%= link_to 'Reset Filter', projects_path(order: 'normal'), class: "btn btn-secondary"%>
+        </div>
+      </div>
+      <% end %>
 
-      <%= link_to 'Filter Projects', projects_path(order: :search_query), class: "btn btn-success", id: "filter-button"%>
-    </div>
-<%= render @projects%>
-<hr>
-<div class ="pagination">
-
-</div>
+    <%= render @projects%>
+    <hr>
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
