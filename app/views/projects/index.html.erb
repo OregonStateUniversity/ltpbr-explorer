@@ -24,7 +24,7 @@
       <br>
       <%= form_tag projects_path, :method => 'get' do %>
         <%= text_field_tag :search, params[:search]%>
-        <%= select_tag :organization_ids, options_from_collection_for_select(Organization.all, :id, :name, params[:organization_ids] || [1,2]), class: 'select2', multiple: true %>
+        <%= select_tag :search_organization, options_from_collection_for_select(Organization.all, :id, :name, params[:search_organization] || [1,2]), class: 'select2', multiple: false %>
         <%= submit_tag 'Filter' %>
      <% end %>
 
@@ -41,7 +41,7 @@
 <script type="text/javascript">
 
     $('.select2').select2({
-        placeholder: "Select Organization(s) to Match",
+        placeholder: "Select organization to match...",
         allowClear: true
     });
     $('.select2').select2('data',null);

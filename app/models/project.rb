@@ -62,11 +62,9 @@ class Project < ApplicationRecord
     return total_km.round(1)
   end
 
-  def self.search(search)
-    if(search and search.length > 0)
-        a = where(["name LIKE :search or watershed LIKE :search or stream_name LIKE :search", search: "%#{search}%"])
-        b = joins(:organizations).where("organizations.name LIKE :search", search: "%#{search}%")
-        a + b
+  def self.search(search, search_organization)
+    if search
+        joins(:organizations).where(organizations: {id: search_organization})
     else
         all
     end
@@ -75,6 +73,9 @@ class Project < ApplicationRecord
   def self.searchs(search)
     if search
         where(["name LIKE :search or watershed LIKE :search or stream_name LIKE :search", search: "%#{search}%"])
+        projects = Project.all
+        projects = projects.where(["name LIKE :search", search: "%#{search}%"])
+        projects = projects.where(["organizations.name i"])
     else
         all
     end

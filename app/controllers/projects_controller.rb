@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
         $watershedtoggle, $stream_nametoggle, @organizationtoggle, $nametoggle = false;
         @projects = Project.page(params[:page]).per($displaylimit)
     end
-    @projects = Project.distinct.page(params[:page]).per($displaylimit).search(params[:search])
+    @projects = Project.distinct.page(params[:page]).per($displaylimit).search(params[:search], params[:search_organization])
   end
 
   def show
