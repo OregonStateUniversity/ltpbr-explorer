@@ -2,6 +2,7 @@ class AffiliationsController < ApplicationController
   before_action :get_project
   before_action :set_affiliation
   before_action :set_affiliation, only: %w[ show edit update destroy ]
+  before_action :authenticate_user!
   before_action :require_owner
 
   # GET /affiliations
