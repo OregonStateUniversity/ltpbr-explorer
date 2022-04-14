@@ -66,15 +66,12 @@ class Project < ApplicationRecord
     projects = Project.all
     
     if search && search_organization
-        projects = projects.where(["projects.name LIKE :search", search: "%#{search}%"]).or(
-        projects = projects.where(["projects.watershed LIKE :search", search: "%#{search}%"])).or(
-        projects = projects.where(["stream_name LIKE :search", search: "%#{search}%"]))
+        projects = projects.where(["projects.name ILIKE :search", search: "%#{search}%"]).or(
+        projects = projects.where(["projects.watershed ILIKE :search", search: "%#{search}%"])).or(
+        projects = projects.where(["stream_name ILIKE :search", search: "%#{search}%"]))
 
         if search_organization.length > 0
-            projects = projects.where(["projects.name LIKE :search", search: "%#{search}%"]).or(
-            projects = projects.where(["projects.watershed LIKE :search", search: "%#{search}%"])).or(
-            projects = projects.where(["stream_name LIKE :search", search: "%#{search}%"]))
-                        .joins(:organizations).where(organizations: {id: search_organization})
+            projects = projects.joins(:organizations).where(organizations: {id: search_organization})
         end
         return projects
     else

@@ -46,9 +46,9 @@ class ProjectsController < ApplicationController
         end
     when 'normal'
         $watershedtoggle, $stream_nametoggle, @organizationtoggle, $nametoggle = false;
-        @projects = Project.page(params[:page]).per($displaylimit)
+        @projects = Project.page(params[:page])
     end
-    @projects = Project.distinct.page(params[:page]).per($displaylimit).search(params[:search], params[:search_organization])
+    @projects = Project.distinct.page(params[:page]).search(params[:search], params[:search_organization])
   end
 
   def show
