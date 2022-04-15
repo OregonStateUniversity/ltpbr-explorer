@@ -1644,7 +1644,7 @@ DEPENDENCIES
   possessive
   puma (~> 4.3.10)
   rabl-rails
-  rails (~> 7.0.2.2)
+  rails (~> 7.0.2.3)
   recaptcha
   rspec-rails (~> 5.0.2)
   sassc-rails (~> 2.1.2)
