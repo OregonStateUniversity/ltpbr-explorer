@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.4'
+ruby '3.1.2'
 
 gem 'activerecord-postgis-adapter'
 gem 'active_storage_validations'
@@ -9,8 +9,8 @@ gem 'activerecord-postgres_enum'
 gem 'aws-sdk', '~> 3'
 gem 'bootsnap', '>= 1.9.1', require: false
 gem 'bootstrap', '~> 4.6.0'
+gem 'chosen-rails', '~> 1.10.0'
 gem 'bootstrap-select-rails'
-gem 'chosen-rails', '~> 1.8.7'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'devise', '>= 4.8'
 gem 'ffi-geos'
@@ -26,7 +26,7 @@ gem 'possessive'
 gem 'pg'
 gem 'puma', '~> 4.3.10'
 gem 'rabl-rails'
-gem 'rails', '~> 5.2.6'
+gem 'rails', '~> 7.0.2.3'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'sassc-rails', '~> 2.1.2'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
