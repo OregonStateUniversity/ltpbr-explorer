@@ -41,13 +41,6 @@
                { class: 'chosen-select', multiple: true }
     %>
     <hr>
-    <% i = 0 %>
-    <%= f.fields_for :affiliations do |affiliation_builder|%>
-        <%= affiliation_builder.label :role, (@project_organizations[i].name + "'s Role in Project") %>
-        <%= affiliation_builder.text_field :role, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Donor, Founder', class: 'form-control' %>
-        <%= affiliation_builder.hidden_field :id %>
-        <% i += 1%>
-    <% end %>    
     </div>
   </div>
 </div>
@@ -198,296 +191,105 @@
 <% end %>
 
 <!-- MODAL INFORMATION -->
-<div aria-hidden='true' class='modal fade' id='name-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Project Name</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        <p>Just a simple name for the project e.g:</p>
-        <p>"Bear Creek Surface Flow Enhancement", or</p> "Bridge Creek Riparian Uplift"
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- MODAL INFORMATION -->
-<div aria-hidden='true' class='modal fade' id='photo-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Project Photos</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        <p>Upload at least one representative photo of the project area, channel, or structures.</p>
-        <p>Each of the photos must be below 50 MB in size and be in the JPEG, PNG, GIF, BMP, AVIF, or WebP format.</p>
-        <p>There is a limit of 20 photos.</p>
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='stream_name-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Stream Name</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Name of the project stream. e.g. Bridge Creek.
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='watershed-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Watershed Name</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Project watershed or sub-watershed. e.g. "John Day"
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='url-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Project URL</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Outside link to existing project. e.g. "https://www.anabranchsolutions.com/beaver-dam-analogs.html"
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='affiliation-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Affiliation</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Organizations involved with project design and implementation. Organizations' role can be modified in subsequent Affiliations form
-        page found on Project page after submission.
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='implementation_date-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Implementation date</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Approximate date of initial structure installation.
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='latitude-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Latitude</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Approximate project LATITUDE in decimal degrees (e.g., 44.23454).
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='longitude-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Longitude</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Approximate project LONGITUDE in decimal degrees (e.g., -122.3456).
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='number_of_structures-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Number of Structures</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Approximate number of structures currently installed or that will be installed in the future.
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='treatment_length-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Treatment length</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Approximate length of stream being treated with LT-PBR structures in meters.
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='narrative-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Narrative</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Briefly describe restoration goals for the project which may include increased fish habitat, riparian expansion, channel aggradation, etc.....
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='primary_contact-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Primary Contact</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Primary contact name for project manager or coordinator. e.g. John Doe
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='structure_description-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Structure Design Elements</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Briefly describe LT-PBR structure design and/or construction elements. e.g., Structures were primarily BDAs, and generally built at a low elevation of 0.25 m. Majority of the structures utilized two post rows and juniper and sagebrush as fill material.
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='delete-photos-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Select Existing Photos to Delete</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Select photos by clicking or tapping on them to mark them for deletion.
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div aria-hidden='true' class='modal fade' id='manage-affiliations-modal' role='dialog' tabindex='-1'>
-  <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title'>Select Existing Photos to Delete</h5>
-        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-          <span aria-hidden='true'>×</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-        Select photos by clicking or tapping on them to mark them for deletion.
-      </div>
-      <div class='modal-footer'>
-        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'name-modal',
+    title: 'Project Name',
+    body: 'Just a simple name for the project e.g:',
+    body_2: '"Bear Creek Surface Flow Enhancement", or',
+    body_3: '"Bridge Creek Riparian Uplift"'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'photo-modal',
+    title: 'Project Photos',
+    body: 'Upload at least one representative photo of the project area, channel, or structures.',
+    body_2: 'Each of the photos must be below 50 MB in size and be in the JPEG, PNG, GIF, BMP, AVIF, or WebP format.',
+    body_3: 'There is a limit of 20 photos.'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'stream_name-modal',
+    title: 'Stream Name',
+    body: 'Name of the project stream. e.g. Bridge Creek.'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'watershed-modal',
+    title: 'Watershed Name',
+    body: 'Project watershed or sub-watershed. e.g. "John Day"'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'url-modal',
+    title: 'Project URL',
+    body: 'Outside link to existing project. e.g. "https://www.anabranchsolutions.com/beaver-dam-analogs.html"'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'affiliation-modal',
+    title: 'Affiliated Organizations',
+    body: 'Organizations involved with project design and implementation. Organizations\' role can be modified in subsequent Affiliations form
+           page found on Project page after submission.'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'implementation_date-modal',
+    title: 'Implementation date',
+    body: 'Approximate date of initial structure installation.'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'latitude-modal',
+    title: 'Latitude',
+    body: 'Approximate project LATITUDE in decimal degrees (e.g., 44.23454).'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'longitude-modal',
+    title: 'Longitude',
+    body: 'Approximate project LONGITUDE in decimal degrees (e.g., -122.3456).'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'number_of_structures-modal',
+    title: 'Number of Structures',
+    body: 'Approximate number of structures currently installed or that will be installed in the future.'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'treatment_length-modal',
+    title: 'Treatment length',
+    body: 'Approximate length of stream being treated with LT-PBR structures in meters.'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'narrative-modal',
+    title: 'Narrative',
+    body: 'Briefly describe restoration goals for the project which may include increased fish habitat, riparian expansion, channel aggradation, etc...'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'primary_contact-modal',
+    title: 'Primary Contact',
+    body: 'Primary contact name for project manager or coordinator. e.g. John Doe'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'structure_description-modal',
+    title: 'Structure Design Elements',
+    body: 'Briefly describe LT-PBR structure design and/or construction elements. e.g., Structures were primarily BDAs, and generally built at a low elevation of 0.25 m. Majority of the structures utilized two post rows and juniper and sagebrush as fill material.'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'delete-photos-modal',
+    title: 'Photo Deletion',
+    body: 'Select Existing Photos to Delete'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'manage-affiliations-modal',
+    title: 'Organizations',
+    body: 'Add or remove affiliated Organizations to this project',
+    body_2: 'Roles can be applied to each Organization, e.g. "Founder", after Project creation on project page through "Manage Organizations and Roles".'
+  }%>

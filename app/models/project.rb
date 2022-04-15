@@ -62,6 +62,23 @@ class Project < ApplicationRecord
     return total_km.round(1)
   end
 
+  def self.search(search, search_organization)
+    projects = Project.all
+    
+    if search && search_organization
+        projects = projects.where(["projects.name ILIKE :search", search: "%#{search}%"]).or(
+        projects = projects.where(["projects.watershed ILIKE :search", search: "%#{search}%"])).or(
+        projects = projects.where(["stream_name ILIKE :search", search: "%#{search}%"]))
+
+        if search_organization.length > 0
+            projects = projects.joins(:organizations).where(organizations: {id: search_organization})
+        end
+        return projects
+    else
+        all
+    end
+  end
+
   private
 
   def round_string(str, precision)

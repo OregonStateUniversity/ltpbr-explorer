@@ -1,19 +1,19 @@
 $(document).on('turbolinks:load', function() {
   $(".projects.edit").ready(function() {
-    var map_id = 'form-map';
-    var map_div = $(`#${map_id}`);
+    const map_id = 'form-map';
+    const map_div = $(`#${map_id}`);
     if(map_div.length == 0) {
       return
     }
     
-    var project_latitude = document.getElementById('project_latitude');
-    var project_longitude = document.getElementById('project_longitude');
+    const project_latitude = document.getElementById('project_latitude');
+    const project_longitude = document.getElementById('project_longitude');
 
-    var latitude = map_div.data('latitude');
-    var longitude = map_div.data('longitude');
-    var zoom = 10;
-    var max_zoom = 16;
-    var leaflet_map = L.map(map_id).setView([latitude, longitude], zoom);
+    const latitude = map_div.data('latitude');
+    const longitude = map_div.data('longitude');
+    const zoom = 10;
+    const max_zoom = 16;
+    const leaflet_map = L.map(map_id).setView([latitude, longitude], zoom);
 
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
       attribution: 'Tiles &copy; Esri &mdash; and the GIS User Community',
@@ -37,14 +37,14 @@ $(document).on('turbolinks:load', function() {
     });
     leaflet_map.addControl(searchControl);
 
-    var updateLatlng = latlng => {
+    const updateLatlng = latlng => {
       project_latitude.value = latlng.lat.toPrecision(8);
       project_longitude.value = latlng.lng.toPrecision(8);
     };
 
-    var marker;
+    let marker;
 
-    var create_marker = latlng => {
+    const create_marker = latlng => {
       if(marker) leaflet_map.removeLayer(marker);
 
       marker = L.marker(latlng, {draggable:true}).addTo(leaflet_map);
@@ -56,8 +56,8 @@ $(document).on('turbolinks:load', function() {
 
     create_marker({lat: project_latitude.value, lng: project_longitude.value});
 
-    var latlngTextListener = e => {
-      var latlng = {
+    const latlngTextListener = e => {
+      const latlng = {
         lat: project_latitude.value,
         lng: project_longitude.value
       };
@@ -69,7 +69,7 @@ $(document).on('turbolinks:load', function() {
 
     // Update marker on searching for location in geosearch
     leaflet_map.on('geosearch/showlocation', (e) => {
-      var latlng = {
+      const latlng = {
         lat: e.location.y,
         lng: e.location.x,
       };
