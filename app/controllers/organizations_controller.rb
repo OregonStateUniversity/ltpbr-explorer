@@ -79,5 +79,5 @@ class OrganizationsController < ApplicationController
           redirect_to root_path
           flash[:alert] = 'Restricted action, must be an admin'
         end
-      end
+    end
 end
