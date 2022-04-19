@@ -1,5 +1,7 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: %w[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :require_admin, only: [:edit, :update, :destroy]
 
   # GET /organizations
   # GET /organizations.json
@@ -71,4 +73,11 @@ class OrganizationsController < ApplicationController
     def organization_params
         params.require(:organization).permit(:name, :description, :contact, :website, :icon)
     end
+
+    def require_admin
+        unless current_user.admin_role?
+          redirect_to root_path
+          flash[:alert] = 'Restricted action, must be an admin'
+        end
+      end
 end
