@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: %w[ show edit update destroy ]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :require_admin, only: [:edit, :update, :destroy]
+  before_action :require_admin, only: [:edit, :show, :create, :update, :destroy]
 
   # GET /organizations
   # GET /organizations.json
