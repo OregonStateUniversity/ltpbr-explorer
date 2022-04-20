@@ -62,6 +62,7 @@
       <p class="h5 mb-3"><%= @project.watershed %></p>
       <hr>
 
+      <% if @project.url %>
       <label>Project URL:</label>
       <% url = @project.url %>
 
@@ -69,6 +70,7 @@
       <% html_url = "No link provided" if !url%>
       <em><p class="h5 mb-3"><%= html_url %></p></em>
       <hr>
+      <% end %>
 
       <label>Implementation Date:</label>
       <p class="h5 mb-3"><%= @project.implementation_date.strftime("%b" + ". " + "%d" + ", " + "%Y") %></p>
