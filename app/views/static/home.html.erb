@@ -14,7 +14,7 @@
     -->
     <!-- STATS CARDS -->
     <br>
-    <div class="card-deck justify-content-center">   
+    <div class="card-deck justify-content-center h-100">   
       <%= render :partial => 'home_stat_card', locals: {
         title: "Projects",
         value: @project_count, 
@@ -24,7 +24,7 @@
       <%= render :partial => 'home_stat_card', locals: {
         title: "Organizations",
         value: @organization_sum, 
-        text: "Number of Organizations represented on BDA-Explorer",
+        text: "Organizations contributing to the LT-PBR Explorer",
         icon: "fas fa-building"
       }%>
       <%= render :partial => 'home_stat_card', locals: {
@@ -42,7 +42,7 @@
       <%= render :partial => 'home_stat_card', locals: {
         title: "States",
         value: @unique_state_count, 
-        text: "Number of unique US states containing BDA-Explorer projects",
+        text: "States with LT-PBR Explorer projects",
         icon: "fas fa-map"
       }%>    
     </div>
