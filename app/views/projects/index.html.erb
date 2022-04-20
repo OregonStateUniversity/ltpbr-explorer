@@ -36,6 +36,7 @@
             <%= link_to 'Reset Filter', projects_path(order: 'normal'), class: "btn btn-secondary"%>
         </div>
       </div>
+        <p>Showing results for <%= @filtered_count %> projects</p>
       </div>
       <% end %>
 
