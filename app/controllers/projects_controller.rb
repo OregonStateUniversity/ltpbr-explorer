@@ -3,49 +3,10 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :require_owner, only: [:edit, :update, :destroy]
   
-  $displaylimit = 15
-  $nametoggle, $organizationtoggle, $stream_nametoggle, $watershedtoggle = false
   def index;
-    @projects = Project.page(params[:page]).per($displaylimit)
+    @projects = Project.page(params[:page])
     case params[:order]
-    when 'name'
-        $stream_nametoggle, @organizationtoggle, $watershedtoggle = false;
-        if $nametoggle == true
-            @projects = Project.page(params[:page]).per($displaylimit).order('name DESC')
-            $nametoggle = false
-        else
-        @projects = Project.page(params[:page]).per($displaylimit).order('name')
-        $nametoggle = true;
-        end
-    when 'organization'
-        $stream_nametoggle, @watershedtoggle, $nametoggle = false;
-        if $organizationtoggle == true
-            @projects = Project.includes(:organizations).page(params[:page]).per($displaylimit).order('organizations.name DESC')
-            $organizationtoggle = false
-        else
-        @projects = Project.includes(:organizations).page(params[:page]).per($displaylimit).order('organizations.name ')
-        $organizationtoggle = true;
-        end
-    when 'stream'
-        $watershedtoggle, @organizationtoggle, $nametoggle = false;
-        if $stream_nametoggle == true
-            @projects = Project.page(params[:page]).per($displaylimit).order('stream_name DESC')
-            $stream_nametoggle = false
-        else
-        @projects = Project.page(params[:page]).per($displaylimit).order('stream_name')
-        $stream_nametoggle = true;
-        end
-    when 'watershed'
-        $stream_nametoggle, @organizationtoggle, $nametoggle = false;
-        if $watershedtoggle == true
-            @projects = Project.page(params[:page]).per($displaylimit).order('watershed DESC')
-            $watershedtoggle = false
-        else
-        @projects = Project.page(params[:page]).per($displaylimit).order('watershed')
-        $watershedtoggle = true;
-        end
     when 'normal'
-        $watershedtoggle, $stream_nametoggle, @organizationtoggle, $nametoggle = false;
         @projects = Project.page(params[:page])
     end
     @projects = Project.distinct.page(params[:page]).search(params[:search], params[:search_organization])
