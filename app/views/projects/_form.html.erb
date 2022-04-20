@@ -120,14 +120,6 @@
     </div>
     <%= f.date_field :implementation_date, autocomplete: 'off', placeholder: 'yyyy-mm-dd', class: 'form-control' %>
   </div>
-  <div class="col-md">
-    <!-- PROJECT IMAGE -->
-    <%= f.label :photos, 'Project Photos' %>
-    <div class="btn btn-question" id="photo-help">
-      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
-    </div>
-    <%= f.file_field :photos, multiple: true, accept: 'image/*', class: 'custom-file-control form-control' %>
-  </div>
 </div>
 <!-- NARRATIVE -->
 <%= f.label :narrative, 'Project Restoration Goals' %>
@@ -142,6 +134,13 @@
   <i class="fa fa-question-circle-o" aria-hidden="true"></i>
 </div>
 <%= f.text_area :structure_description, autocomplete: 'off', placeholder: 'Briefly describe LT-PBR design and/or construction elements.', class: 'form-control', rows: 5 %>
+
+<!-- PROJECT IMAGES -->
+<%= f.label :photos, 'Project Photos' %>
+<div class="btn btn-question" id="photo-help">
+  <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+</div>
+<%= f.file_field :photos, multiple: true, accept: 'image/*', class: 'custom-file-control form-control' %>
 
 <!-- DELETE EXISTING PHOTOS -->
 <% if @project.photos.attached? %>
