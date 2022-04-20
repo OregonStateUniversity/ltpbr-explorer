@@ -21,28 +21,32 @@
       <%#= link_to 'Reset Filter', projects_path(order: 'normal'), class: "btn btn-secondary"%>
       <br>
       <%= form_tag projects_path, :method => 'get' do %>
-      <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4">
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-md-4">
             <%= text_field_tag :search, params[:search], placeholder: "Enter search terms...", class: "search_text_field"%>
-        </div>
-        <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
             <%= select_tag :search_organization, options_from_collection_for_select(Organization.all, :id, :name, params[:search_organization]), class: 'select2', multiple: false, include_blank: true%>
-        </div>
-        <div class="col-md-2">
+          </div>
+          <div class="col-md-2">
             <%= submit_tag 'Filter', class: "btn btn-success", id: "filter-button"%>
-        </div>
-        <div class="col-md-2">
+          </div>
+          <div class="col-md-2">
             <%= link_to 'Reset Filter', projects_path(order: 'normal'), class: "btn btn-secondary"%>
+          </div>
         </div>
-      </div>
-        <p>Showing results for <%= @filtered_count %> projects</p>
+        <% if @filtered_count == 0 %>
+          <h5 class="text-secondary">No results found</h5>
+        <% else %>
+          <h5 >Showing <%=@result_plurality%> for <%= @filtered_count %> <%= @proj_plurality%></h5>
+        <% end %>
       </div>
       <% end %>
-
     <%= render @projects%>
-    <hr>
-
+    <% if @filtered_count > 0%>
+      <hr>
+    <% end %>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">

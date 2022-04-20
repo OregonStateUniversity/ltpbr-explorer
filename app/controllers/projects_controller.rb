@@ -11,6 +11,8 @@ class ProjectsController < ApplicationController
     
     @projects = Project.distinct.page(params[:page]).search(params[:search], params[:search_organization])
     @filtered_count = @projects.count
+    @result_plurality = @projects.count == 1 ? 'result' : 'results'
+    @proj_plurality = @projects.count == 1 ? 'project' : 'projects'
   end
 
   def show
