@@ -4,11 +4,6 @@ class ProjectsController < ApplicationController
   before_action :require_owner, only: [:edit, :update, :destroy]
   
   def index;
-    case params[:order]
-    when 'normal'
-        @projects = Project.page(params[:page])
-    end
-    
     @projects = Project.distinct.page(params[:page]).search(params[:search], params[:search_organization])
     @filtered_count = @projects.count
     @result_plurality = @projects.count == 1 ? 'result' : 'results'

@@ -33,7 +33,7 @@
             <%= submit_tag 'Filter', class: "btn btn-success", id: "filter-button"%>
           </div>
           <div class="col-md-2">
-            <%= link_to 'Reset Filter', projects_path(order: 'normal'), class: "btn btn-secondary"%>
+            <%= link_to 'Reset Filter', projects_path, class: "btn btn-secondary", id: "filter-button-clear-variant"%>
           </div>
         </div>
         <% if @filtered_count == 0 %>
