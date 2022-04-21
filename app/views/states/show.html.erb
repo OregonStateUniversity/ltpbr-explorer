@@ -16,7 +16,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <h4 class="card-title text-uppercase text-muted text-left mb-0">Projects</h5>
+              <h4 class="card-title text-uppercase text-muted text-left mb-0">Projects</h4>
               <p class="h1 font-weight-bold text-left mb-0"><%= @state.project_count %></p>
             </div>
             <div class="col-auto">
@@ -35,7 +35,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <h4 class="card-title text-uppercase text-muted text-left mb-0">Structures</h5>
+              <h4 class="card-title text-uppercase text-muted text-left mb-0">Structures</h4>
               <p class="h1 font-weight-bold text-left mb-0"><%= @state.structure_sum %></p>
             </div>
             <div class="col-auto">
@@ -54,7 +54,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <h4 class="card-title text-uppercase text-muted text-left mb-0 ">Length</h5>
+              <h4 class="card-title text-uppercase text-muted text-left mb-0 ">Length</h4>
               <p class="h1 font-weight-bold text-left mb-0"><%= @state.project_total_length_km %>mi</p>
             </div>
             <div class="col-auto">
@@ -73,11 +73,10 @@
       </div>
     </div>
   </div>
-
   <hr />
 
   <div class="container">
-    <h4>State Projects</h5>
+    <h4>State Projects</h4>
     <%= render @projects %>
   </div>
 </div>
