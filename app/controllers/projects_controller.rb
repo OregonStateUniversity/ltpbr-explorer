@@ -82,7 +82,7 @@ class ProjectsController < ApplicationController
       flash[:success] = 'Project was successfully created. Add Organization roles or other affiliated Organizations with \'Manange Organizations and Roles\''
     else
       # Delete uploaded photos if creation failed - Rails 5.2 bug
-      @project.photos.purge
+      # @project.photos.purge
       render :new
     end
   end
@@ -103,7 +103,8 @@ class ProjectsController < ApplicationController
       flash[:success] = 'Project was successfully updated. Add roles to any newly affiliated Organizations with \'Manange Organizations and Roles\''
     else
       # Delete uploaded photos if update failed - Rails 5.2 bug
-      @project.photos.purge
+      # @project.photos.purge
+      # params[:photos].purge
       render :edit
     end
   end

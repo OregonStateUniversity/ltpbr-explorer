@@ -62,13 +62,11 @@
       <p class="h5 mb-3"><%= @project.watershed %></p>
       <hr>
 
-      <label>Project URL:</label>
-      <% url = @project.url %>
-
-      <% html_url = url.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe if url%>
-      <% html_url = "No link provided" if !url%>
-      <em><p class="h5 mb-3"><%= html_url %></p></em>
-      <hr>
+      <% if @project.url %>
+        <label>Project URL:</label>
+        <p class="h5 mb-3"><%= link_to "Link", @project.url%>&#8599;</p>
+        <hr>
+      <% end %>
 
       <label>Implementation Date:</label>
       <p class="h5 mb-3"><%= @project.implementation_date.strftime("%b" + ". " + "%d" + ", " + "%Y") %></p>

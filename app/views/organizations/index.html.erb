@@ -5,9 +5,11 @@
     <div class="col">
       <h1>Organizations</h1>
     </div>
+    <% if current_user && current_user.admin_role? %>
     <div class="col text-right">
       <%= link_to 'New Organization', new_organization_path, class: "btn btn-success", id: "filter-button" %>
     </div>
+    <% end %>
   </div>
 <%= render @organizations%>
 <hr>
