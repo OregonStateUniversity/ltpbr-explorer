@@ -11,14 +11,10 @@ $(document).on('turbolinks:load', function() {
   projects.reverse();
   // Load project data
   const project_dates = projects.map(p => new Date(p.implementation_date.replace(' UTC', '')));
-  const length_over_time = projects
-    .map(p => p.length)
-    .map((length, i, arr) => i === 0 ? length : arr[i - 1] + length);
-  const structures_over_time = projects
-    .map(p => p.number_of_structures)
-    .map((structures, i, arr) => i === 0 ? structures : arr[i - 1] + structures);
-
-  console.log(length_over_time)
+  
+  const cumulative_sum = arr => arr.map((e, i, arr) => i === 0 ? e : arr[i - 1] + e);
+  const length_over_time = cumulative_sum(projects.map(p => p.length));
+  const structures_over_time = cumulative_sum(projects.map(p => p.number_of_structures));
 
   // Create array of readable project dates
   const dateOptions = { 
