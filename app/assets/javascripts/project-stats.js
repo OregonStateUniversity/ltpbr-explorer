@@ -5,9 +5,49 @@ $(document).on('turbolinks:load', function() {
     return
   }
   
+  // Assumes that projects are given in descending order of implementation
   const projects = gon.projects;
-  const project_dates = projects.map(p => new Date(p.updated_at.replace(' UTC', '')))
-  const project_lengths = projects.map(p => p.length)
-  const project_structures = projects.map(p => p.number_of_structures)
+  // Reverse project order to have oldest first
+  projects.reverse();
+  // Load project data
+  const project_dates = projects.map(p => new Date(p.implementation_date.replace(' UTC', '')));
+  const length_over_time = projects
+    .map(p => p.length)
+    .map((length, i, arr) => i === 0 ? length : arr[i - 1] + length);
+  const structures_over_time = projects
+    .map(p => p.number_of_structures)
+    .map((structures, i, arr) => i === 0 ? structures : arr[i - 1] + structures);
+
+  console.log(length_over_time)
+
+  // Create array of readable project dates
+  const dateOptions = { 
+    year: 'numeric', 
+    month: 'short', 
+    day: 'numeric' 
+  };
+  const labels = project_dates.map(d => d.toLocaleString(undefined, dateOptions));
+
+  // Canvas for chart
+  stats_div.append('<canvas id="project-stats-chart"></canvas>');
+  const ctx = $(`#project-stats-chart`);
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Length Restored Over Time (mi)',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: length_over_time,
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+  
+  var myChart = new Chart(ctx, config);
 
 });

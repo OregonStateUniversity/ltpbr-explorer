@@ -1,7 +1,8 @@
 class State < ApplicationRecord
 
+  # Return state projects in descending order of implementation
   def projects
-    Project.where(state_id: self.id)
+    Project.where(state_id: self.id).order(implementation_date: :desc)
   end
 
   def project_count
