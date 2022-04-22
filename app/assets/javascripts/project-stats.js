@@ -12,7 +12,13 @@ $(document).on('turbolinks:load', function() {
   // Load project data
   const project_dates = projects.map(p => new Date(p.implementation_date.replace(' UTC', '')));
   
-  const cumulative_sum = arr => arr.map((e, i, arr) => i === 0 ? e : arr[i - 1] + e);
+  const cumulative_sum = arr => {
+    const result = [arr[0]];
+    arr.slice(1).forEach((element, index) =>
+      result[index + 1] = element + result[index]
+    );
+    return result
+  }
   const length_over_time = cumulative_sum(projects.map(p => p.length));
   const structures_over_time = cumulative_sum(projects.map(p => p.number_of_structures));
 
