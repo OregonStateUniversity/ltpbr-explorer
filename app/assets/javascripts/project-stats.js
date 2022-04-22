@@ -19,6 +19,7 @@ $(document).on('turbolinks:load', function() {
     );
     return result
   }
+  const num_projects_over_time = cumulative_sum(projects.map(p => 1));
   const length_over_time = cumulative_sum(projects.map(p => p.length));
   const structures_over_time = cumulative_sum(projects.map(p => p.number_of_structures));
 
@@ -36,11 +37,24 @@ $(document).on('turbolinks:load', function() {
 
   const data = {
     labels: labels,
-    datasets: [{
-      label: 'Length Restored Over Time (mi)',
+    datasets: [
+    {
+      label: 'Number of Projects',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
+      data: num_projects_over_time,
+    },
+    {
+      label: 'Length Restored (m)',
+      backgroundColor: 'rgb(99, 255, 132)',
+      borderColor: 'rgb(99, 255, 132)',
       data: length_over_time,
+    },
+    {
+      label: 'BDA structures',
+      backgroundColor: 'rgb(132, 99, 255)',
+      borderColor: 'rgb(132, 99, 255)',
+      data: structures_over_time,
     }]
   };
 
