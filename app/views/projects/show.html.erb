@@ -41,7 +41,11 @@
         </div>
       
       <% else %>
-        <%= image_tag @project.photos[0].presence || "/missing_image.jpg", alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
+        <% if !@project.photos[0].presence%>
+          <%= image_tag "/missing_image_camera.png", alt: "Project on #{@project.stream_name}", align: "center", :size => "260x180" %>
+        <% else %>
+          <%= image_tag @project.photos[0].presence || "/missing_image_camera.png", alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded'%>
+        <% end %>
       <% end %>
     
     </div>
