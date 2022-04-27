@@ -152,7 +152,7 @@
     <div class="row">
       <% @project.photos.each do |photo| %>
         <div class="col-3">
-          <label class="image-checkbox rounded">
+          <label class="image-select rounded">
             <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'img-fluid shadow' %>
             <%= check_box_tag "select_delete_photo_ids[]", photo.id %>
             <i class="fa fa-trash bg-dark shadow rounded"></i>
@@ -163,20 +163,20 @@
   </div>
   <script>
     // Initialize state
-    $(".image-checkbox").each(function () {
+    $(".image-select").each(function () {
       if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
-        $(this).addClass('image-checkbox-delete-checked');
+        $(this).addClass('image-select-delete-checked');
       }
       else {
-        $(this).removeClass('image-checkbox-delete-checked');
+        $(this).removeClass('image-select-delete-checked');
       }
     });
 
     // Sync state when image is clicked
-    $(".image-checkbox").on("click", function (e) {
-      $(this).toggleClass('image-checkbox-delete-checked');
+    $(".image-select").on("click", function (e) {
+      $(this).toggleClass('image-select-delete-checked');
       var $checkbox = $(this).find('input[type="checkbox"]');
-      $checkbox.prop("checked",!$checkbox.prop("checked"))
+      $checkbox.prop("checked",!$checkbox.prop("checked"));
 
       e.preventDefault();
     });
