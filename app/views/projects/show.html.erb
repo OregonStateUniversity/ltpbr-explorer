@@ -12,7 +12,11 @@
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
     <% end %>
-  <hr />
+
+  <% if @project.organization_count > 0 %>
+    <hr />
+  <% end %>
+
   <div class="row">
     <div class="col-md-7">
       
@@ -41,7 +45,13 @@
         </div>
       
       <% else %>
-        <%= image_tag @project.photos[0].presence || "/missing_image.jpg", alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
+        <% if !@project.photos[0].presence%>
+          <div class="missing-image-container">
+            <%= image_tag "/missing_image_camera.png", alt: "Project on #{@project.stream_name}", class: "missing-image", align: "center", :size => "120x120" %>
+          </div>
+        <% else %>
+          <%= image_tag @project.photos[0].presence, alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded'%>
+        <% end %>
       <% end %>
     
     </div>
