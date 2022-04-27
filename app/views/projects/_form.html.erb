@@ -144,9 +144,23 @@
 
 <!-- DELETE EXISTING PHOTOS -->
 <% if @project.photos.attached? %>
-  <%= f.label :photos, 'Select Existing Photos to Delete' %>
-  <div class="btn btn-question" id="delete-photos-help">
-    <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+  <span id="cover-photo-info">
+    <label>Select Existing Photo as Cover Photo</label>
+    <div class="btn btn-question" id="delete-photos-help">
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+    </div>
+  </span>
+
+  <span id="delete-photos-info">
+    <label>Select Existing Photos To Delete</label>
+    <div class="btn btn-question" id="delete-photos-help">
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+    </div>
+  </span>
+
+  <div class="custom-switch custom-control">
+    <input type="checkbox" class="custom-control-input" id="delete-toggle">
+    <label class="custom-control-label" for="delete-toggle">Delete photos instead</label>
   </div>
   <div class="container">
     <div class="row">
@@ -155,16 +169,28 @@
           <label class="image-select rounded">
             <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'img-fluid shadow' %>
             <%= check_box_tag "select_delete_photo_ids[]", photo.id %>
+            <%= radio_button_tag "select_cover_photo_id", photo.id %>
             <i class="fa fa-trash bg-dark shadow rounded"></i>
           </label>
         </div>
       <% end %>
     </div>
   </div>
+
   <script>
     // Initialize state
+    // For the deleting toggle
+    if ($("#delete-toggle").prop('checked')) {
+      $("#delete-photos-info").show();
+      $("#cover-photo-info").hide();
+    } else {
+      $("#delete-photos-info").hide();
+      $("#cover-photo-info").show();
+    }
+
+    // For images selected for deletion
     $(".image-select").each(function () {
-      if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+      if ($(this).find('input[type="checkbox"]').first().prop("checked")) {
         $(this).addClass('image-select-delete-checked');
       }
       else {
@@ -172,11 +198,19 @@
       }
     });
 
+    // Sync state when deleting is toggled
+    $("#delete-toggle").on("click", function (e) {
+      $("#delete-photos-info").toggle();
+      $("#cover-photo-info").toggle();
+    });
+
     // Sync state when image is clicked
     $(".image-select").on("click", function (e) {
-      $(this).toggleClass('image-select-delete-checked');
-      var $checkbox = $(this).find('input[type="checkbox"]');
-      $checkbox.prop("checked",!$checkbox.prop("checked"));
+      if ($("#delete-toggle").prop('checked')){
+        $(this).toggleClass('image-select-delete-checked');
+        const $checkbox = $(this).find('input[type="checkbox"]');
+        $checkbox.prop("checked",!$checkbox.prop("checked"));
+      }
 
       e.preventDefault();
     });
