@@ -47,10 +47,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    # Delete selected photos
-    photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
-    photos_selected_for_deletion.map(&:purge)
-
     @organizations = Organization.all
     @project = Project.find(params[:id])
     #update affiliation params before the rest of the params, otherwise it tries to update
@@ -58,6 +54,13 @@ class ProjectsController < ApplicationController
     @project.update(project_affiliation_params)
 
     if @project.update(project_params)
+      # Delete selected photos
+      photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
+      photos_selected_for_deletion.map(&:purge)
+
+      # Get and set cover photo
+      photo_selected_as_cover = ActiveStorage::Attachment.where(id: params[:select_cover_photo_id])
+
       redirect_to @project
       flash[:success] = 'Project was successfully updated. Add roles to any newly affiliated Organizations with \'Manange Organizations and Roles\''
     else
