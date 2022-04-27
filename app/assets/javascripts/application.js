@@ -19,6 +19,9 @@
 //= require chosen-jquery
 //= require_tree .
 
+import "chartkick"
+import "Chart.bundle"
+
 const onLoad = () => {
     $(".chosen-select").chosen({
         placeholder_text_multiple: "Select one or more Affiliations",
