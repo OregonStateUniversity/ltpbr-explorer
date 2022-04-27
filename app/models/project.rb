@@ -49,6 +49,10 @@ class Project < ApplicationRecord
     return containing_state.present? ? containing_state.first.id : nil
   end
 
+  def organization_count
+    organizations.length
+  end
+
   def self.project_count
     all.count
   end
