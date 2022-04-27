@@ -165,16 +165,16 @@
     // Initialize state
     $(".image-checkbox").each(function () {
       if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
-        $(this).addClass('image-checkbox-checked');
+        $(this).addClass('image-checkbox-delete-checked');
       }
       else {
-        $(this).removeClass('image-checkbox-checked');
+        $(this).removeClass('image-checkbox-delete-checked');
       }
     });
 
     // Sync state when image is clicked
     $(".image-checkbox").on("click", function (e) {
-      $(this).toggleClass('image-checkbox-checked');
+      $(this).toggleClass('image-checkbox-delete-checked');
       var $checkbox = $(this).find('input[type="checkbox"]');
       $checkbox.prop("checked",!$checkbox.prop("checked"))
 
