@@ -14,13 +14,21 @@ class OrganizationsController < ApplicationController
   def show
     @organization_projects = Project.includes(:organizations)
 
-    @data = @organization_projects.group_by_month(:implementation_date).count
-    @data2 = @organization_projects.group_by_month(:implementation_date).sum(:number_of_structures)
-    @data3 = @organization_projects.group_by_month(:implementation_date).sum(:length)
+    @data = @organization_projects.group_by_quarter(:implementation_date).count
+    @data2 = @organization_projects.group_by_quarter(:implementation_date).sum(:number_of_structures)
+    @data3 = @organization_projects.group_by_quarter(:implementation_date).sum(:length)
 
     accumulate_data(@data)
     accumulate_data(@data2)
     accumulate_data(@data3)
+
+    @data = @data.to_a.reverse.to_h
+    
+    @data = @data.invert.invert
+    @data2 = @data2.invert.invert
+    @data3 = @data3.invert.invert
+
+    @data = @data.to_a.reverse.to_h
   end
 
   def accumulate_data(data)
