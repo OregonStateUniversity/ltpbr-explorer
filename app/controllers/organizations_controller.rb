@@ -24,9 +24,21 @@ class OrganizationsController < ApplicationController
       accumulator = val
     end
 
-    @data2 = @organization_projects.group(:number_of_structures).sum(:number_of_structures)
+    @data2 = @organization_projects.group_by_month(:implementation_date).sum(:number_of_structures)
+    @data3 = @organization_projects.group_by_month(:implementation_date).sum(:length)
     accumulator = 0
     @data2.transform_values! do |val|
+      val += accumulator
+      accumulator = val
+    end
+
+    accumulate_data(@data2)
+    accumulate_data(@data3)
+  end
+
+  def accumulate_data(data)
+    accumulator = 0
+    data.transform_values! do |val|
       val += accumulator
       accumulator = val
     end
