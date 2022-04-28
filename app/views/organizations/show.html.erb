@@ -31,10 +31,12 @@
   
   <%= @organization_projects_structures %>
 
-  <%= line_chart @organization_projects.group_by_week(:implementation_date).sum(1), stacked: true, xtitle: "Date", download: true%>
-  <%= line_chart [ 
+  <%= line_chart [
     {name: "Total Projects", data: @data},
+   ], 
+   stacked: true, download: true, adapter: "chartjs" %>
+  <%= line_chart [ 
     {name: "Number of Structures", data: @data2},
     {name: "Length", data: @data3},
-   ] %>
-  <%= line_chart [ name: "Line1", data: Project.group(:number_of_structures).group_by_month(:implementation_date).count ] %>
+   ],
+   stacked: true, download: true, adapter: "chartjs"  %>

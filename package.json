@@ -1,5 +1,7 @@
 {
   "name": "beaver-dam-analogues",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "chart.js": "^3.7.1"
+  }
 }
