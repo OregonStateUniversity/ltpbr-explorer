@@ -12,7 +12,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
-    @organization_projects = Project.includes(:organizations)
+    @organization_projects = Project.includes(:organizations).where(organizations: {id: @organization.id})
+    #@organization_projects = Organization.includes(:projects).where(:organization => @organization)
 
     @chart_project_count = accumulate_data(@organization_projects.group_by_quarter(:implementation_date).count)
     @chart_structure_count = accumulate_data(@organization_projects.group_by_quarter(:implementation_date).sum(:number_of_structures))
