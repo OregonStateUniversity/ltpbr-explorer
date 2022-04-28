@@ -27,5 +27,8 @@
 
   <h5>Organization Description</h5>
   <p><%= @organization.description %></p>
+  <hr>
+    
 
-  <%= line_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
+  <%= line_chart @organization_projects.group_by_week(:implementation_date).sum(1), stacked: true, xtitle: "Date", download: true%>
+  <%= line_chart @data %>

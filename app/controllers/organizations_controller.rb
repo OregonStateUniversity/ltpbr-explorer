@@ -12,6 +12,16 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+    @organization_projects = Project.includes(:organizations)
+    @organization_projects2 = Project.includes(:organizations).where(organizations: {id: @organizations}).group_by_day(:implementation_date)
+    @organizations3 = Project.group_by_week(:created_at).count
+
+    @data = @organization_projects.group_by_month(:created_at).count
+    accumulator = 0
+    @data.transform_values! do |val|
+      val += accumulator
+      accumulator = val
+    end
   end
 
   # GET /organizations/new
