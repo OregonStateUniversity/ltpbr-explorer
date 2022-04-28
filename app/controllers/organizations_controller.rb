@@ -14,21 +14,21 @@ class OrganizationsController < ApplicationController
   def show
     @organization_projects = Project.includes(:organizations)
 
-    @data = @organization_projects.group_by_quarter(:implementation_date).count
-    @data2 = @organization_projects.group_by_quarter(:implementation_date).sum(:number_of_structures)
-    @data3 = @organization_projects.group_by_quarter(:implementation_date).sum(:length)
+    @chart_project_count = @organization_projects.group_by_quarter(:implementation_date).count
+    @chart_structure_count = @organization_projects.group_by_quarter(:implementation_date).sum(:number_of_structures)
+    @chart_total_length = @organization_projects.group_by_quarter(:implementation_date).sum(:length)
 
-    accumulate_data(@data)
-    accumulate_data(@data2)
-    accumulate_data(@data3)
+    accumulate_data(@chart_project_count )
+    accumulate_data(@chart_structure_count)
+    accumulate_data(@chart_total_length)
 
-    @data = @data.to_a.reverse.to_h
+    @chart_project_count  = @chart_project_count.to_a.reverse.to_h
     
-    @data = @data.invert.invert
-    @data2 = @data2.invert.invert
-    @data3 = @data3.invert.invert
+    @chart_project_count  = @chart_project_count.invert.invert
+    @chart_structure_count = @chart_structure_count.invert.invert
+    @chart_total_length = @chart_total_length.invert.invert
 
-    @data = @data.to_a.reverse.to_h
+    @chart_project_count  = @chart_project_count.to_a.reverse.to_h
   end
 
   def accumulate_data(data)
