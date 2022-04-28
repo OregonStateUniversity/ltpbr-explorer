@@ -14,13 +14,9 @@ class OrganizationsController < ApplicationController
   def show
     @organization_projects = Project.includes(:organizations)
 
-    @chart_project_count = @organization_projects.group_by_quarter(:implementation_date).count
-    @chart_structure_count = @organization_projects.group_by_quarter(:implementation_date).sum(:number_of_structures)
-    @chart_total_length = @organization_projects.group_by_quarter(:implementation_date).sum(:length)
-
-    accumulate_data(@chart_project_count )
-    accumulate_data(@chart_structure_count)
-    accumulate_data(@chart_total_length)
+    @chart_project_count = accumulate_data(@organization_projects.group_by_quarter(:implementation_date).count)
+    @chart_structure_count = accumulate_data(@organization_projects.group_by_quarter(:implementation_date).sum(:number_of_structures))
+    @chart_total_length = accumulate_data(@organization_projects.group_by_quarter(:implementation_date).sum(:length))
 
     @chart_project_count  = @chart_project_count.to_a.reverse.to_h
     
