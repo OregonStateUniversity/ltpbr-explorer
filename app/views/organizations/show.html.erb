@@ -29,13 +29,13 @@
   <p><%= @organization.description %></p>
   <hr>
   
-  <%= @organization_projects_structures %>
+  <%#= @organization_projects_structures %>
 
-  <%= line_chart [
+  <%#= line_chart [
     {name: "Total Projects", data: @data},
    ], 
    stacked: true, download: true, adapter: "chartjs" %>
-  <%= line_chart [ 
+  <%#= line_chart [ 
     {name: "Number of Structures", data: @data2},
     {name: "Length", data: @data3},
    ],
@@ -47,8 +47,7 @@
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'line',
-
-
+    spanGaps: true,
     data: {
         labels: <%= @data.keys.to_json.html_safe%>,
         datasets: [{
@@ -58,7 +57,8 @@ const myChart = new Chart(ctx, {
               'rgba(78, 255, 132, 1)',
           ],
           borderWidth: 2,
-          yAxisID: "y1"
+          yAxisID: "y1",
+          spanGaps: true
         },
         {
           label: 'Number of Structures',
@@ -66,7 +66,8 @@ const myChart = new Chart(ctx, {
           borderColor: [
               'rgba(255, 99, 132, 1)',
           ],
-          borderWidth: 2
+          borderWidth: 2,
+          spanGaps: true
         },
         {
           label: 'Total Restorative Length',
@@ -74,7 +75,8 @@ const myChart = new Chart(ctx, {
           borderColor: [
               'rgba(4, 99, 132, 1)',
           ],
-          borderWidth: 2
+          borderWidth: 2,
+          spanGaps: true
         }]
     },
     options: {
