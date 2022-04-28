@@ -28,7 +28,12 @@
   <h5>Organization Description</h5>
   <p><%= @organization.description %></p>
   <hr>
-    
+  
+  <%= @organization_projects_structures %>
 
   <%= line_chart @organization_projects.group_by_week(:implementation_date).sum(1), stacked: true, xtitle: "Date", download: true%>
-  <%= line_chart @data %>
+  <%= line_chart [ 
+    {name: "Line1", data: @data},
+    {name: "Line1", data: @data2},
+   ] %>
+  <%= line_chart [ name: "Line1", data: Project.group(:number_of_structures).group_by_month(:implementation_date).count ] %>
