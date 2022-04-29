@@ -28,24 +28,6 @@
   <h5>Organization Description</h5>
   <p><%= @organization.description %></p>
   <hr>
-  
-  <%#= @organization_projects_structures %>
-
-  <%#= line_chart [
-    {name: "Total Projects", data: @data},
-   ], 
-   stacked: true, download: true, adapter: "chartjs" %>
-  <%#= line_chart [ 
-    {name: "Number of Structures", data: @data2},
-    {name: "Length", data: @data3},
-   ],
-   stacked: true, download: true, adapter: "chartjs"  %>
-
-<%= @chart_project_count%>
-<hr>
-<%= @charts%>
-<hr>
-<%= @timestamp%>
 
 <canvas id="myChart" width="400" height="200"></canvas>
 <script>
@@ -95,7 +77,7 @@ const myChart = new Chart(ctx, {
         xAxis: {
             ticks: {
                 maxTicksLimit: 5
-            }
+            },
         },
         y: {
           type: 'linear',

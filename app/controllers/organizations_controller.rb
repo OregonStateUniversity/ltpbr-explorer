@@ -13,25 +13,20 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
-    @timestamp = 1.year.ago
+    #Time window up to today to show projects on graph
+    @timestamp = 3.year.ago
+    #Gather all Projects associated with this organization
     @organization_projects = Project.includes(:organizations).where(organizations: {id: @organization.id})
 
-    @chart_project_count = accumulate_data(@organization_projects.group_by_month(:implementation_date).count)
+    #Group up project entries by month through implementation date, and run the accumulation function to create a cumulative graph instead of line graph
+    @chart_project_count = accumulate_data(@organization_projects.group_by_month(:implementation_date, format: "%b %Y").count)
     @chart_structure_count = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:number_of_structures))
     @chart_total_length = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:length))
 
-    @chart_project_count  = @chart_project_count.to_a.reverse.to_h
-    
-    @chart_project_count  = @chart_project_count
-    @chart_structure_count = @chart_structure_count
-    @chart_total_length = @chart_total_length
-
-    @chart_project_count = @chart_project_count.to_a.reverse.to_h
-
+    #Reject all projects from hash if they fall outside of the window set by timestamp
     @chart_project_count = @chart_project_count.keep_if { |i, _| i > @timestamp }
     @chart_structure_count = @chart_structure_count.keep_if { |i, _| i > @timestamp }
     @chart_total_length = @chart_total_length.keep_if { |i, _| i > @timestamp }
-
   end
 
   def accumulate_data(data)
