@@ -15,9 +15,9 @@ class OrganizationsController < ApplicationController
     @organization_projects = Project.includes(:organizations).where(organizations: {id: @organization.id})
     #@organization_projects = Organization.includes(:projects).where(:organization => @organization)
 
-    @chart_project_count = accumulate_data(@organization_projects.group_by_week(:implementation_date).count)
-    @chart_structure_count = accumulate_data(@organization_projects.group_by_week(:implementation_date).sum(:number_of_structures))
-    @chart_total_length = accumulate_data(@organization_projects.group_by_week(:implementation_date).sum(:length))
+    @chart_project_count = accumulate_data(@organization_projects.group_by_month(:implementation_date).count)
+    @chart_structure_count = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:number_of_structures))
+    @chart_total_length = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:length))
 
     @chart_project_count  = @chart_project_count.to_a.reverse.to_h
     
@@ -26,6 +26,10 @@ class OrganizationsController < ApplicationController
     @chart_total_length = @chart_total_length
 
     @chart_project_count  = @chart_project_count.to_a.reverse.to_h
+
+    @chart_project_count = @chart_project_count.select.with_index { |_, i| i >= @chart_project_count.length - 20}
+    @chart_structure_count = @chart_structure_count.select.with_index { |_, i| i >= @chart_structure_count.length - 20}
+    @chart_total_length = @chart_total_length.select.with_index { |_, i| i >= @chart_total_length.length - 20}
 
   end
 
