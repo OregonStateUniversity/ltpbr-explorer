@@ -42,9 +42,8 @@
    stacked: true, download: true, adapter: "chartjs"  %>
 
 <canvas id="myChart" width="400" height="200"></canvas>
-
-<script src="Chart.Scatter.js"></script>
 <script>
+
 const ctx = document.getElementById('myChart').getContext('2d');
 
 const nullDupes = data => data.map((x, i) => data[i - 1] === x ? null : x);
@@ -64,7 +63,7 @@ const myChart = new Chart(ctx, {
           borderWidth: 2,
           yAxisID: "y1",
           spanGaps: true,
-          lineTension: 0.2
+          grace: '50%'
         },
         {
           label: 'Number of Structures',
@@ -74,7 +73,6 @@ const myChart = new Chart(ctx, {
           ],
           borderWidth: 2,
           spanGaps: true,
-          lineTension: 0.2
         },
         {
           label: 'Total Restorative Length',
@@ -84,29 +82,27 @@ const myChart = new Chart(ctx, {
           ],
           borderWidth: 2,
           spanGaps: true,
-          lineTension: 0.2
         }]
     },
     options: {
       scales: {
-        xAxes: [{
-          type: 'time',
-          time: {
-            displayFOrmats: {
-              quarter: 'MMM YYYY'
+        xAxis: {
+            ticks: {
+                maxTicksLimit: 5
             }
-          }
-        }],
+        },
         y: {
           type: 'linear',
           display: true,
-          beginAtZero: true
+          beginAtZero: true,
+          grace: '50%'
         },
         y1: {
           type: 'linear',
           display: true,
           position: 'right',
-          beginAtZero: true
+          beginAtZero: true,
+          grace: '50%'
         }
       }
     }

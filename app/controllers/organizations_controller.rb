@@ -15,17 +15,18 @@ class OrganizationsController < ApplicationController
     @organization_projects = Project.includes(:organizations).where(organizations: {id: @organization.id})
     #@organization_projects = Organization.includes(:projects).where(:organization => @organization)
 
-    @chart_project_count = accumulate_data(@organization_projects.group_by_quarter(:implementation_date).count)
-    @chart_structure_count = accumulate_data(@organization_projects.group_by_quarter(:implementation_date).sum(:number_of_structures))
-    @chart_total_length = accumulate_data(@organization_projects.group_by_quarter(:implementation_date).sum(:length))
+    @chart_project_count = accumulate_data(@organization_projects.group_by_week(:implementation_date).count)
+    @chart_structure_count = accumulate_data(@organization_projects.group_by_week(:implementation_date).sum(:number_of_structures))
+    @chart_total_length = accumulate_data(@organization_projects.group_by_week(:implementation_date).sum(:length))
 
     @chart_project_count  = @chart_project_count.to_a.reverse.to_h
     
-    @chart_project_count  = @chart_project_count.invert.invert
-    @chart_structure_count = @chart_structure_count.invert.invert
-    @chart_total_length = @chart_total_length.invert.invert
+    @chart_project_count  = @chart_project_count
+    @chart_structure_count = @chart_structure_count
+    @chart_total_length = @chart_total_length
 
     @chart_project_count  = @chart_project_count.to_a.reverse.to_h
+
   end
 
   def accumulate_data(data)
