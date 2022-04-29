@@ -43,11 +43,13 @@
 
 <canvas id="myChart" width="400" height="200"></canvas>
 
+<script src="Chart.Scatter.js"></script>
 <script>
 const ctx = document.getElementById('myChart').getContext('2d');
 
 const nullDupes = data => data.map((x, i) => data[i - 1] === x ? null : x);
 const data = <%= @chart_project_count.keys.to_json.html_safe%>
+
 const myChart = new Chart(ctx, {
     type: 'line',
     spanGaps: true,
@@ -109,4 +111,5 @@ const myChart = new Chart(ctx, {
       }
     }
 });
+
 </script>

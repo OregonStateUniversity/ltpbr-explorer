@@ -2,6 +2,7 @@
   "name": "beaver-dam-analogues",
   "private": true,
   "dependencies": {
-    "chart.js": "^3.7.1"
+    "chart.js": "^3.7.1",
+    "chart.js-scatter": "^1.1.4"
   }
 }
