@@ -16,7 +16,7 @@ class OrganizationsController < ApplicationController
     #Time window up to today to show projects on graph
     @timestamp = 3.year.ago
     #Gather all Projects associated with this organization
-    @organization_projects = Project.includes(:organizations).where(organizations: {id: @organization.id})
+    @organization_projects = @organization.projects
 
     #Group up project entries by month through implementation date, and run the accumulation function to create a cumulative graph instead 
     #of line graph. Then, reject all dates if their timestamp is greater than the currently set timestamp
