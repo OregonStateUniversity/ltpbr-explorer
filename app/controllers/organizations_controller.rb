@@ -18,15 +18,17 @@ class OrganizationsController < ApplicationController
     #Gather all Projects associated with this organization
     @organization_projects = Project.includes(:organizations).where(organizations: {id: @organization.id})
 
-    #Group up project entries by month through implementation date, and run the accumulation function to create a cumulative graph instead of line graph
-    @chart_project_count = accumulate_data(@organization_projects.group_by_month(:implementation_date, format: "%b %Y").count)
-    @chart_structure_count = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:number_of_structures))
-    @chart_total_length = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:length))
+    #Group up project entries by month through implementation date, and run the accumulation function to create a cumulative graph instead 
+    #of line graph. Then, reject all dates if their timestamp is greater than the currently set timestamp
+    @chart_project_count = accumulate_data(@organization_projects.group_by_month(:implementation_date, format: "%b %Y").count).keep_if { |i, _| i > @timestamp }
+    @chart_structure_count = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:number_of_structures)).keep_if { |i, _| i > @timestamp }
+    @chart_total_length = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:length)).keep_if { |i, _| i > @timestamp }
 
-    #Reject all projects from hash if they fall outside of the window set by timestamp
-    @chart_project_count = @chart_project_count.keep_if { |i, _| i > @timestamp }
-    @chart_structure_count = @chart_structure_count.keep_if { |i, _| i > @timestamp }
-    @chart_total_length = @chart_total_length.keep_if { |i, _| i > @timestamp }
+
+    @project_count = @organization_projects.count
+    @structure_sum = @organization_projects.structure_sum
+    @project_total_length_km = @organization_projects.project_total_length_km
+    @project_total_length_mi = (@project_total_length_km* 0.6214).floor(1)
   end
 
   def accumulate_data(data)
