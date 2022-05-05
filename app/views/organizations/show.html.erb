@@ -10,20 +10,18 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-md-5">
-      <label>Organization Contact:</label>
-      <p class="h5 mb-3"><%= @organization.contact%></p>
-      <hr>
-
+    <div class="col-md-6">
       <label>Organization Website:</label>
       <% url = @organization.website%>
       <% html_url = url.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe if url%>
       <% html_url = "No link provided" if !url%>
       <em><p class="h5 mb-3"><%= html_url %></p></em>
       <hr>
-      
+
+      <label>Organization Contact:</label>
+      <p class="h5 mb-3"><%= @organization.contact%></p>
+      <hr>
     </div>
-    
   </div>
 
   <h5>Organization Description</h5>
@@ -49,7 +47,7 @@
         icon: "fab fa-pagelines"
       }%>
   </div>
-  <hr>
+  <br>
 
 <canvas id="myChart" width="400" height="200"></canvas>
 <script>
@@ -85,7 +83,7 @@ const myChart = new Chart(ctx, {
           spanGaps: true,
         },
         {
-          label: 'Total Restorative Length',
+          label: 'Total Restorative Length (m)',
           data: nullDupes(<%= @chart_total_length.values.to_json.html_safe%>),
           borderColor: [
               'rgba(4, 99, 132, 1)',
