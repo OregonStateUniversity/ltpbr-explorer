@@ -47,9 +47,15 @@
         icon: "fab fa-pagelines"
       }%>
   </div>
-  <br>
 
-<canvas id="myChart" width="400" height="200"></canvas>
+  <br>
+  <canvas id="myChart" width="400" height="200"></canvas>
+  <br>
+  
+  <div class="container">
+    <h4>Organization Associated Projects</h5>
+    <%= render @organization_projects %>
+  </div>
 <script>
 
 const ctx = document.getElementById('myChart').getContext('2d');
