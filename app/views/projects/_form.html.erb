@@ -170,7 +170,8 @@
             <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'img-fluid shadow' %>
             <%= check_box_tag "select_delete_photo_ids[]", photo.id %>
             <%= radio_button_tag "select_cover_photo_id", photo.id %>
-            <i class="fa fa-trash bg-dark shadow rounded"></i>
+            <i class="fa fa-trash delete-icon bg-dark shadow rounded"></i>
+            <i class="fa fa-image cover-icon bg-dark shadow rounded"></i>
           </label>
         </div>
       <% end %>
@@ -178,25 +179,35 @@
   </div>
 
   <script>
+    const updatePhotoSelectionOverlays = () => {
+      $(".image-select").each(function () {
+        // Update image overlays to show photo selected to be the cover
+        if($(this).find('input[type="radio"]').is(":checked")) {
+          $(this).addClass('image-select-cover-checked');
+        } else {
+          $(this).removeClass('image-select-cover-checked');
+        }
+
+        // Update image overlays to show photo selected to be deleted
+        if ($(this).find('input[type="checkbox"]').is(":checked")) {
+          $(this).addClass('image-select-delete-checked');
+        } else {
+          $(this).removeClass('image-select-delete-checked');
+        }
+      });
+    }
+
     // Initialize state
-    // For the deleting toggle
-    if ($("#delete-toggle").prop('checked')) {
+    updatePhotoSelectionOverlays();
+
+    // State of the deleting toggle
+    if($("#delete-toggle").prop('checked')) {
       $("#delete-photos-info").show();
       $("#cover-photo-info").hide();
     } else {
       $("#delete-photos-info").hide();
       $("#cover-photo-info").show();
     }
-
-    // For images selected for deletion
-    $(".image-select").each(function () {
-      if ($(this).find('input[type="checkbox"]').first().prop("checked")) {
-        $(this).addClass('image-select-delete-checked');
-      }
-      else {
-        $(this).removeClass('image-select-delete-checked');
-      }
-    });
 
     // Sync state when deleting is toggled
     $("#delete-toggle").on("click", function (e) {
@@ -206,11 +217,24 @@
 
     // Sync state when image is clicked
     $(".image-select").on("click", function (e) {
-      if ($("#delete-toggle").prop('checked')){
-        $(this).toggleClass('image-select-delete-checked');
-        const $checkbox = $(this).find('input[type="checkbox"]');
-        $checkbox.prop("checked",!$checkbox.prop("checked"));
+      // Radio button for selecting cover
+      const $coverButton = $(this).find('input[type="radio"]');
+      // Checkbox for deleting photos
+      const $deleteCheckbox = $(this).find('input[type="checkbox"]');
+
+      if ($("#delete-toggle").prop('checked')) {
+        // Sync state for deleting photos
+        $deleteCheckbox.prop("checked", !$deleteCheckbox.prop("checked"));
+        // If deleting, cannot be a cover photo
+        $coverButton.prop("checked", false);
+      } 
+      // Don't select a photo chosen to be deleted as a cover
+      else if (!$deleteCheckbox.is(":checked")) {
+        // Sync state for choosing a cover photo
+        $coverButton.prop("checked", true);
       }
+
+      updatePhotoSelectionOverlays();
 
       e.preventDefault();
     });

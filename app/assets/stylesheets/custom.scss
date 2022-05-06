@@ -543,8 +543,13 @@ project-photo {
   display: none;
 }
 
-.image-select-delete-checked .fa {
+.image-select-delete-checked .delete-icon {
   color: $danger-red;
+  display: block !important;
+}
+
+.image-select-cover-checked .cover-icon {
+  color: $success-green;
   display: block !important;
 }
 
