@@ -76,7 +76,7 @@
 
   <hr />
   <div class="container">
-  <br>
+  <h3 class="lead text-center">Graphing <%= @state.name%>'s Projects in the Last 3 Years</h3>
   <canvas id="myChart" width="400" height="200"></canvas>
   <br>
   </div>
@@ -126,6 +126,7 @@ const myChart = new Chart(ctx, {
               'rgba(4, 99, 132, 1)',
           ],
           borderWidth: 2,
+          yAxisID: "y1",
           spanGaps: true,
         }]
     },
