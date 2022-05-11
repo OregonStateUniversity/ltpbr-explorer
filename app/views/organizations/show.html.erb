@@ -47,8 +47,8 @@
         icon: "fab fa-pagelines"
       }%>
   </div>
-
   <br>
+  <h3 class="lead text-center">Graphing <%= @organization.name%>'s Projects in the Last 3 Years</h3>
   <canvas id="myChart" width="400" height="200"></canvas>
   <br>
   
@@ -89,11 +89,12 @@ const myChart = new Chart(ctx, {
           spanGaps: true,
         },
         {
-          label: 'Total Restorative Length (m)',
+          label: 'Total Restorative Length (km)',
           data: nullDupes(<%= @chart_total_length.values.to_json.html_safe%>),
           borderColor: [
               'rgba(4, 99, 132, 1)',
           ],
+          yAxisID: "y1",
           borderWidth: 2,
           spanGaps: true,
         }]

@@ -22,8 +22,8 @@ class OrganizationsController < ApplicationController
     #of line graph. Then, reject all dates if their timestamp is greater than the currently set timestamp
     @chart_project_count = accumulate_data(@organization_projects.group_by_month(:implementation_date, format: "%b %Y").count).keep_if { |i, _| i > @timestamp }
     @chart_structure_count = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:number_of_structures)).keep_if { |i, _| i > @timestamp }
-    @chart_total_length = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:length)).keep_if { |i, _| i > @timestamp }
-
+    #Convert from m to km at the end
+    @chart_total_length = accumulate_data(@organization_projects.group_by_month(:implementation_date).sum(:length)).keep_if { |i, _| i > @timestamp }.transform_values { |v| v / 1000.0}
 
     @project_count = @organization_projects.count
     @structure_sum = @organization_projects.structure_sum

@@ -2,7 +2,7 @@
 <div class="container pt-5">
   <h1 class="display-4"><%= @project.name %></h1>
     <hr>
-  <%= render :partial => 'project_organ', :collection => @project.organizations.order(:name), :as => :organization%>
+  <%= render :partial => 'project_organ', :collection => @project.project_organizations, :as => :organization%>
     <% if user_signed_in? && (@project.author_id == current_user.id || current_user.admin_role?) %>
     <br>
     <div class="btn-group">

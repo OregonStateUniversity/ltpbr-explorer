@@ -14,7 +14,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to projects_path, warning: 'That project does not exist.'
-
   end
 
   def new

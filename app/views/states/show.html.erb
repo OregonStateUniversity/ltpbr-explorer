@@ -55,7 +55,7 @@
           <div class="row">
             <div class="col">
               <h4 class="card-title text-uppercase text-muted text-left mb-0 ">Length</h5>
-              <p class="h1 font-weight-bold text-left mb-0"><%= @state.project_total_length_km %>mi</p>
+              <p class="h1 font-weight-bold text-left mb-0"><%= @state.project_total_length_mi %>mi</p>
             </div>
             <div class="col-auto">
               <div class="icon-card icon-card-shape bg-success text-white rounded-circle shadow">
@@ -76,7 +76,7 @@
 
   <hr />
   <div class="container">
-  <br>
+  <h3 class="lead text-center">Graphing <%= @state.name%>'s Projects in the Last 3 Years</h3>
   <canvas id="myChart" width="400" height="200"></canvas>
   <br>
   </div>
@@ -120,12 +120,13 @@ const myChart = new Chart(ctx, {
           spanGaps: true,
         },
         {
-          label: 'Total Restorative Length (m)',
+          label: 'Total Restorative Length (km)',
           data: nullDupes(<%= @chart_total_length.values.to_json.html_safe%>),
           borderColor: [
               'rgba(4, 99, 132, 1)',
           ],
           borderWidth: 2,
+          yAxisID: "y1",
           spanGaps: true,
         }]
     },
