@@ -1,19 +1,24 @@
 <hr>
 <div class="row">
-  <div class="col-sm-2">
+  <div class="col-md-2">
     <%= image_tag project.photos[0].presence || "/missing_image_camera.png", alt: "Project on #{project.stream_name}", class: 'rounded', width: 100 %>
   </div>
-  <div class="col-sm-7">
-    <h3><%= link_to project.name, project, class: "text-dark" %></h3>
-    <h5><%#= link_to project.affiliation, project, class: "text-secondary" %></h5>
-    <div class="affiliation-tagline-list">
-      <h5 class="text-secondary">
-        <%= render :partial => '/projects/project_organ', :collection => project.organizations.order(:name), :as => :organization, locals: {project_id: project.id}%>
-      </h5>
+
+  <div class="col-md-10">
+  <h3><%= link_to project.name, project, class: "text-dark" %></h3>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <h5><%= link_to project.watershed, project, class: "text-dark" %></h5>
+      <h5><%= link_to project.stream_name, project, class: "text-secondary" %></h5>
     </div>
-  </div>
-  <div class="col-sm-3">
-    <h5><%= link_to project.watershed, project, class: "text-dark" %></h5>
-    <h5><%= link_to project.stream_name, project, class: "text-secondary" %></h5>
+      <div class="col-md-8">
+        <div class="affiliation-tagline-list">
+          <h5 class="text-secondary">
+            <%= render :partial => '/projects/project_organ', :collection => project.organizations.order(:name), :as => :organization, locals: {project_id: project.id}%>
+          </h5>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
