@@ -50,7 +50,7 @@ class Project < ApplicationRecord
   end
 
   def project_organizations
-    organizations.order(:description)
+    organizations
   end
 
   def organization_count
