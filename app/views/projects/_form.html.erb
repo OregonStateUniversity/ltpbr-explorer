@@ -30,7 +30,7 @@
   </div>
   <div class="col-md">
     <!-- PROJECT AFFILIATION -->
-    <%= f.label :organization, 'Affiliated Project Organizations(s)' %>
+    <%= f.label :organization, 'Affiliated Project Organization(s)' %>
     <div class="btn btn-question" id="manage-affiliations-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
@@ -144,39 +144,103 @@
 
 <!-- DELETE EXISTING PHOTOS -->
 <% if @project.photos.attached? %>
-  <%= f.label :photos, 'Select Existing Photos to Delete' %>
-  <div class="btn btn-question" id="delete-photos-help">
-    <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+  <span id="cover-photo-info">
+    <label>Select Existing Photo as Cover Photo</label>
+    <div class="btn btn-question" id="cover-photo-help">
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+    </div>
+  </span>
+
+  <span id="delete-photos-info">
+    <label>Select Existing Photos To Delete</label>
+    <div class="btn btn-question" id="delete-photos-help">
+      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+    </div>
+  </span>
+
+  <div class="custom-switch custom-control">
+    <input type="checkbox" class="custom-control-input" id="delete-toggle">
+    <label class="custom-control-label" for="delete-toggle">Photo Deletion Mode</label>
   </div>
   <div class="container">
     <div class="row">
       <% @project.photos.each do |photo| %>
         <div class="col-3">
-          <label class="image-checkbox rounded">
+          <label class="image-select rounded">
             <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'img-fluid shadow' %>
-            <%= check_box_tag "select_delete_photo_ids[]", photo.id %>
-            <i class="fa fa-trash bg-dark shadow rounded"></i>
+            <%= check_box_tag "delete_photo_ids[]", photo.id %>
+            <%= radio_button_tag :cover_photo_id, photo.id %>
+            <i class="fa fa-trash delete-icon bg-dark shadow rounded"></i>
+            <i class="fa fa-image cover-icon bg-dark shadow rounded"></i>
           </label>
         </div>
       <% end %>
     </div>
   </div>
+
   <script>
+    const updatePhotoSelectionOverlays = () => {
+      $(".image-select").each(function () {
+        // Update image overlays to show photo selected to be the cover
+        if($(this).find('input[type="radio"]').is(":checked")) {
+          $(this).addClass('image-select-cover-checked');
+        } else {
+          $(this).removeClass('image-select-cover-checked');
+        }
+
+        // Update image overlays to show photo selected to be deleted
+        if ($(this).find('input[type="checkbox"]').is(":checked")) {
+          $(this).addClass('image-select-delete-checked');
+        } else {
+          $(this).removeClass('image-select-delete-checked');
+        }
+      });
+    }
+
     // Initialize state
-    $(".image-checkbox").each(function () {
-      if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
-        $(this).addClass('image-checkbox-checked');
+    // Activate checkbox for existing cover photo
+    $('input[type="radio"]').each(function () {
+      if($(this).val() == gon.cover_photo_id) {
+        $(this).prop("checked", true);
       }
-      else {
-        $(this).removeClass('image-checkbox-checked');
-      }
+    });
+    updatePhotoSelectionOverlays();
+
+    // State of the deleting toggle
+    if($("#delete-toggle").prop('checked')) {
+      $("#delete-photos-info").show();
+      $("#cover-photo-info").hide();
+    } else {
+      $("#delete-photos-info").hide();
+      $("#cover-photo-info").show();
+    }
+
+    // Sync state when deleting is toggled
+    $("#delete-toggle").on("click", function (e) {
+      $("#delete-photos-info").toggle();
+      $("#cover-photo-info").toggle();
     });
 
     // Sync state when image is clicked
-    $(".image-checkbox").on("click", function (e) {
-      $(this).toggleClass('image-checkbox-checked');
-      var $checkbox = $(this).find('input[type="checkbox"]');
-      $checkbox.prop("checked",!$checkbox.prop("checked"))
+    $(".image-select").on("click", function (e) {
+      // Radio button for selecting cover
+      const $coverButton = $(this).find('input[type="radio"]');
+      // Checkbox for deleting photos
+      const $deleteCheckbox = $(this).find('input[type="checkbox"]');
+
+      if ($("#delete-toggle").prop('checked')) {
+        // Sync state for deleting photos
+        $deleteCheckbox.prop("checked", !$deleteCheckbox.prop("checked"));
+        // If deleting, cannot be a cover photo
+        $coverButton.prop("checked", false);
+      } 
+      // Don't select a photo chosen to be deleted as a cover
+      else if (!$deleteCheckbox.is(":checked")) {
+        // Sync state for choosing a cover photo
+        $coverButton.prop("checked", !$coverButton.prop("checked"));
+      }
+
+      updatePhotoSelectionOverlays();
 
       e.preventDefault();
     });
@@ -223,6 +287,13 @@
     id: 'url-modal',
     title: 'Project URL',
     body: 'Outside link to existing project. e.g. "https://www.anabranchsolutions.com/beaver-dam-analogs.html"'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'manage-affiliations-modal',
+    title: 'Organizations',
+    body: 'Add or remove affiliated organizations for this project.',
+    body_2: 'Roles can be applied to each organization, e.g. "Founder", after Project creation on project page through "Manage Organizations and Roles".'
   }%>
 
   <%=render :partial => 'form_help_modal', locals: {
@@ -281,14 +352,15 @@
   }%>
 
   <%=render :partial => 'form_help_modal', locals: {
-    id: 'delete-photos-modal',
-    title: 'Photo Deletion',
-    body: 'Select Existing Photos to Delete'
+    id: 'cover-photo-modal',
+    title: 'Cover Photo',
+    body: 'Select an existing photo to be the cover photo for this project.',
+    body_2: 'This photo will be used as the thumbnail in the projects list and projects map.'
   }%>
 
   <%=render :partial => 'form_help_modal', locals: {
-    id: 'manage-affiliations-modal',
-    title: 'Organizations',
-    body: 'Add or remove affiliated Organizations to this project',
-    body_2: 'Roles can be applied to each Organization, e.g. "Founder", after Project creation on project page through "Manage Organizations and Roles".'
+    id: 'delete-photos-modal',
+    title: 'Photo Deletion',
+    body: 'Select existing photos to delete from this project.',
+    body_2: 'Multiple photos can be selected for deletion.'
   }%>

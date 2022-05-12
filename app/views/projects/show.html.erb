@@ -2,7 +2,7 @@
 <div class="container pt-5">
   <h1 class="display-4"><%= @project.name %></h1>
     <hr>
-  <%= render :partial => 'project_organ', :collection => @project.organizations.order(:name), :as => :organization%>
+  <%= render :partial => 'project_organ', :collection => @project.project_organizations, :as => :organization%>
     <% if user_signed_in? && (@project.author_id == current_user.id || current_user.admin_role?) %>
     <br>
     <div class="btn-group">
@@ -22,18 +22,33 @@
       
       <% if @project.photos[0].presence %>
         <div id="carousel-slideshow" class="carousel slide" data-ride="carousel">
+
           <ol class="carousel-indicators">
             <% @project.photos.each_with_index do |photo, index| %>
-              <li data-target="#carousel-slideshow" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
+              <% if !@project.cover_photo_id.nil? %>
+                <li data-target="#carousel-slideshow" data-slide-to="<%= index %>" class="<%= photo.id == @project.cover_photo_id ? 'active' : '' %>"></li>
+              <% else %>
+                <li data-target="#carousel-slideshow" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
+              <% end %>
             <% end %>
           </ol>
+
           <div class="carousel-inner">
-            <% @project.photos.each_with_index do |photo, index| %>
-              <div class="carousel-item <%= index == 0 ? 'active' : '' %>" style="background-image: url(<%= url_for(photo) %>);">
-                <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'shadow rounded' %>
-              </div>
+            <% if !@project.cover_photo_id.nil? %>
+              <% @project.photos.each do |photo| %>
+                <div class="carousel-item <%= photo.id == @project.cover_photo_id ? 'active' : '' %>" style="background-image: url(<%= url_for(photo) %>);">
+                  <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'shadow rounded' %>
+                </div>
+              <% end %>
+            <% else %>
+              <% @project.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item <%= index == 0 ? 'active' : '' %>" style="background-image: url(<%= url_for(photo) %>);">
+                  <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'shadow rounded' %>
+                </div>
+              <% end %>
             <% end %>
           </div>
+
           <a class="carousel-control-prev" href="#carousel-slideshow" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -42,16 +57,13 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
+
         </div>
       
       <% else %>
-        <% if !@project.photos[0].presence%>
-          <div class="missing-image-container">
-            <%= image_tag "/missing_image_camera.png", alt: "Project on #{@project.stream_name}", class: "missing-image", align: "center", :size => "120x120" %>
-          </div>
-        <% else %>
-          <%= image_tag @project.photos[0].presence, alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded'%>
-        <% end %>
+        <div class="missing-image-container">
+          <%= image_tag "/missing_image_camera.png", alt: "Project on #{@project.stream_name}", class: "missing-image", align: "center", :size => "120x120" %>
+        </div>
       <% end %>
     
     </div>
@@ -72,7 +84,7 @@
       <p class="h5 mb-3"><%= @project.watershed %></p>
       <hr>
 
-      <% if @project.url %>
+      <% if @project.url && @project.url =~ URI::regexp%>
         <label>Project URL:</label>
         <p class="h5 mb-3"><%= link_to "Link", @project.url%>&#8599;</p>
         <hr>
@@ -107,6 +119,7 @@
     </div>
   </div>
 
+  <h5>Project Location</h5>
   <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="project-map" class="rounded border border-secondary"></div>
 
   <% if user_signed_in? && (@project.author_id == current_user.id || current_user.admin_role?) %>
