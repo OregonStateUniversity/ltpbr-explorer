@@ -22,7 +22,7 @@
       
       <% if @project.photos[0].presence %>
         <div id="carousel-slideshow" class="carousel slide" data-ride="carousel">
-        
+
           <ol class="carousel-indicators">
             <% @project.photos.each_with_index do |photo, index| %>
               <% if !@project.cover_photo_id.nil? %>
@@ -61,13 +61,9 @@
         </div>
       
       <% else %>
-        <% if !@project.photos[0].presence%>
-          <div class="missing-image-container">
-            <%= image_tag "/missing_image_camera.png", alt: "Project on #{@project.stream_name}", class: "missing-image", align: "center", :size => "120x120" %>
-          </div>
-        <% else %>
-          <%= image_tag @project.photos[0].presence, alt: "Project on #{@project.stream_name}", class: 'img-fluid mb-4 shadow rounded'%>
-        <% end %>
+        <div class="missing-image-container">
+          <%= image_tag "/missing_image_camera.png", alt: "Project on #{@project.stream_name}", class: "missing-image", align: "center", :size => "120x120" %>
+        </div>
       <% end %>
     
     </div>
