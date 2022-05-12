@@ -54,12 +54,15 @@ class ProjectsController < ApplicationController
     @project.update(project_affiliation_params)
 
     if @project.update(project_params)
+      # Get and set cover photo
+      photo_selected_as_cover = ActiveStorage::Attachment.where(id: params[:cover_photo_id])
+      @project.update(cover_photo_id: params[:cover_photo_id])
+
       # Delete selected photos
+      # Assumes selected photo is not the cover; assumption should hold with the javascript used in form
+      # Must be done after setting cover photo to prevent violating foreign key constraint
       photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
       photos_selected_for_deletion.map(&:purge)
-
-      # Get and set cover photo
-      photo_selected_as_cover = ActiveStorage::Attachment.where(id: params[:select_cover_photo_id])
 
       redirect_to @project
       flash[:success] = 'Project was successfully updated. Add roles to any newly affiliated Organizations with \'Manange Organizations and Roles\''
