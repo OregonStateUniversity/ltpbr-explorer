@@ -35,7 +35,7 @@
 
           <div class="carousel-inner">
             <% if !@project.cover_photo_id.nil? %>
-              <% @project.photos.each_with_index do |photo, index| %>
+              <% @project.photos.each do |photo| %>
                 <div class="carousel-item <%= photo.id == @project.cover_photo_id ? 'active' : '' %>" style="background-image: url(<%= url_for(photo) %>);">
                   <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'shadow rounded' %>
                 </div>
