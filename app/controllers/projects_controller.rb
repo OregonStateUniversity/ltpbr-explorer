@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
       # Delete selected photos
       # Assumes selected photo is not the cover; assumption should hold with the javascript used in form
       # Must be done after setting cover photo to prevent violating foreign key constraint
-      photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
+      photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:delete_photo_ids])
       photos_selected_for_deletion.map(&:purge)
 
       redirect_to @project
@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:id, :organization, {organization_ids: []}, :stream_name, :implementation_date,
       :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures,
-      :structure_description, :name, :watershed, :url, :cover_photo_id, photos: [])
+      :structure_description, :name, :watershed, :url, :cover_photo_id, {delete_photo_ids: []}, photos: [])
   end
 
   def require_owner

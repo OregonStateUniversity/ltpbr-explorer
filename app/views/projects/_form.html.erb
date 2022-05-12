@@ -168,7 +168,7 @@
         <div class="col-3">
           <label class="image-select rounded">
             <%= image_tag photo, alt: "Project on #{@project.stream_name}", class: 'img-fluid shadow' %>
-            <%= check_box_tag "select_delete_photo_ids[]", photo.id %>
+            <%= check_box_tag "delete_photo_ids[]", photo.id %>
             <%= radio_button_tag :cover_photo_id, photo.id %>
             <i class="fa fa-trash delete-icon bg-dark shadow rounded"></i>
             <i class="fa fa-image cover-icon bg-dark shadow rounded"></i>
