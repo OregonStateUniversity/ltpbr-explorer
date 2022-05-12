@@ -1,7 +1,7 @@
 <hr>
 <div class="row">
   <div class="col-md-2">
-    <%= image_tag project.photos[0].presence || "/missing_image_camera.png", alt: "Project on #{project.stream_name}", class: 'rounded', width: 100 %>
+    <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 100 %>
   </div>
 
   <div class="col-md-10">

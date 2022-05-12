@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
     @project.latitude = @project.lonlat.y
     @project_organizations = @project.organizations
     @organizations = Organization.all
+    gon.cover_photo_id = @project.cover_photo_id
   end
 
   def create
@@ -46,10 +47,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    # Delete selected photos
-    photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:select_delete_photo_ids])
-    photos_selected_for_deletion.map(&:purge)
-
     @organizations = Organization.all
     @project = Project.find(params[:id])
     #update affiliation params before the rest of the params, otherwise it tries to update
@@ -57,6 +54,15 @@ class ProjectsController < ApplicationController
     @project.update(project_affiliation_params)
 
     if @project.update(project_params)
+      # Set cover photo
+      @project.update(cover_photo_id: params[:cover_photo_id])
+
+      # Delete selected photos
+      # Assumes selected photo is not the cover; assumption should hold with the javascript used in form
+      # Must be done after setting cover photo to prevent violating foreign key constraint
+      photos_selected_for_deletion = ActiveStorage::Attachment.where(id: params[:delete_photo_ids])
+      photos_selected_for_deletion.map(&:purge)
+
       redirect_to @project
       flash[:success] = 'Project was successfully updated. Add roles to any newly affiliated Organizations with \'Manange Organizations and Roles\''
     else
@@ -86,7 +92,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:id, :organization, {organization_ids: []}, :stream_name, :implementation_date,
       :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures,
-      :structure_description, :name, :watershed, :url, photos: [])
+      :structure_description, :name, :watershed, :url, :cover_photo_id, {delete_photo_ids: []}, photos: [])
   end
 
   def require_owner

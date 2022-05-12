@@ -57,6 +57,24 @@ class Project < ApplicationRecord
     organizations.length
   end
 
+  def cover_photo
+    @cover_photo = "/missing_image_camera.png"
+
+    if !self.cover_photo_id.nil? && self.photos.where(id: self.cover_photo_id).presence
+      @cover_photo = Rails.application.routes.url_helpers.rails_blob_url(
+        self.photos.where(id: self.cover_photo_id)[0],
+        Rails.application.config.action_mailer.default_url_options
+      )
+    elsif self.photos[0].presence
+      @cover_photo = Rails.application.routes.url_helpers.rails_blob_url(
+        self.photos[0],
+        Rails.application.config.action_mailer.default_url_options
+      )
+    end
+
+    @cover_photo
+  end
+
   def self.project_count
     all.count
   end
