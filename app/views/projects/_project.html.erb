@@ -1,16 +1,7 @@
 <hr>
 <div class="row">
   <div class="col-md-2">
-    <% if !project.cover_photo_id.nil? && project.photos.where(id: project.cover_photo_id).presence %>
-      <%  %>
-      <%= image_tag url_for(project.photos.where(id: project.cover_photo_id)[0]), alt: "Project on #{project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
-    <% elsif project.photos[0].presence %>
-      <%= image_tag project.photos[0].presence, alt: "Project on #{project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
-    <% else %>
-      <div class="missing-image-container">
-        <%= image_tag "/missing_image_camera.png", alt: "Project on #{project.stream_name}", class: "missing-image", align: "center", :size => "50x50" %>
-      </div>
-    <% end %>
+    <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 100 %>
   </div>
 
   <div class="col-md-10">
