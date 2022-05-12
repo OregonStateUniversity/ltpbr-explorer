@@ -17,4 +17,8 @@ class Organization < ApplicationRecord
     def self.organization_count
         all.count
     end
+
+    def organization_contact_info
+        contact
+    end
 end
