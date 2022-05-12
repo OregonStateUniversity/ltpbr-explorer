@@ -20,5 +20,19 @@ class Organization < ApplicationRecord
 
     def organization_contact_info
         contact
+        url?(contact)
     end
+
+    def url?(string)
+        uri = URI.parse(string)
+        throw "MailToError" if uri.scheme == 'mailto'
+        throw "TelError" if uri.scheme == 'tel'
+        !uri.host.nil?
+      rescue URI::BadURIError
+        false
+      rescue URI::InvalidURIError
+        false
+      rescue => e
+        !(e.to_s.include?("TelError") || e.to_s.include?("MailToError"))
+      end
 end
