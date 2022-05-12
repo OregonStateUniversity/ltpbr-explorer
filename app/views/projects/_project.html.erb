@@ -1,27 +1,33 @@
 <hr>
 <div class="row">
-  <div class="col-sm-2">
+  <div class="col-md-2">
     <% if !project.cover_photo_id.nil? && project.photos.where(id: project.cover_photo_id).presence %>
-      <%= image_tag url_for(project.photos.where(id: project.cover_photo_id)[0]), alt: "Project on #{project.stream_name}", class: 'img-fluid mb-4 shadow rounded'%>
+      <%  %>
+      <%= image_tag url_for(project.photos.where(id: project.cover_photo_id)[0]), alt: "Project on #{project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
     <% elsif project.photos[0].presence %>
-      <%= image_tag project.photos[0].presence, alt: "Project on #{project.stream_name}", class: 'img-fluid mb-4 shadow rounded'%>
+      <%= image_tag project.photos[0].presence, alt: "Project on #{project.stream_name}", class: 'img-fluid mb-4 shadow rounded' %>
     <% else %>
       <div class="missing-image-container">
         <%= image_tag "/missing_image_camera.png", alt: "Project on #{project.stream_name}", class: "missing-image", align: "center", :size => "50x50" %>
       </div>
     <% end %>
   </div>
-  <div class="col-sm-7">
-    <h3><%= link_to project.name, project, class: "text-dark" %></h3>
-    <h5><%#= link_to project.affiliation, project, class: "text-secondary" %></h5>
-    <div class="affiliation-tagline-list">
-      <h5 class="text-secondary">
-        <%= render :partial => '/projects/project_organ', :collection => project.organizations.order(:name), :as => :organization, locals: {project_id: project.id}%>
-      </h5>
+
+  <div class="col-md-10">
+  <h3><%= link_to project.name, project, class: "text-dark" %></h3>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <h5><%= link_to project.watershed, project, class: "text-dark" %></h5>
+      <h5><%= link_to project.stream_name, project, class: "text-secondary" %></h5>
     </div>
-  </div>
-  <div class="col-sm-3">
-    <h5><%= link_to project.watershed, project, class: "text-dark" %></h5>
-    <h5><%= link_to project.stream_name, project, class: "text-secondary" %></h5>
+      <div class="col-md-8">
+        <div class="affiliation-tagline-list">
+          <h5 class="text-secondary">
+            <%= render :partial => '/projects/project_organ', :collection => project.project_organizations, :as => :organization, locals: {project_id: project.id}%>
+          </h5>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
