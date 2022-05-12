@@ -30,7 +30,7 @@
   </div>
   <div class="col-md">
     <!-- PROJECT AFFILIATION -->
-    <%= f.label :organization, 'Affiliated Project Organizations(s)' %>
+    <%= f.label :organization, 'Affiliated Project Organization(s)' %>
     <div class="btn btn-question" id="manage-affiliations-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
@@ -146,7 +146,7 @@
 <% if @project.photos.attached? %>
   <span id="cover-photo-info">
     <label>Select Existing Photo as Cover Photo</label>
-    <div class="btn btn-question" id="delete-photos-help">
+    <div class="btn btn-question" id="cover-photo-help">
       <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
   </span>
@@ -160,7 +160,7 @@
 
   <div class="custom-switch custom-control">
     <input type="checkbox" class="custom-control-input" id="delete-toggle">
-    <label class="custom-control-label" for="delete-toggle">Delete photos instead</label>
+    <label class="custom-control-label" for="delete-toggle">Photo Deletion Mode</label>
   </div>
   <div class="container">
     <div class="row">
@@ -284,6 +284,13 @@
   }%>
 
   <%=render :partial => 'form_help_modal', locals: {
+    id: 'manage-affiliations-modal',
+    title: 'Organizations',
+    body: 'Add or remove affiliated organizations for this project.',
+    body_2: 'Roles can be applied to each organization, e.g. "Founder", after Project creation on project page through "Manage Organizations and Roles".'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
     id: 'affiliation-modal',
     title: 'Affiliated Organizations',
     body: 'Organizations involved with project design and implementation. Organizations\' role can be modified in subsequent Affiliations form
@@ -339,14 +346,15 @@
   }%>
 
   <%=render :partial => 'form_help_modal', locals: {
-    id: 'delete-photos-modal',
-    title: 'Photo Deletion',
-    body: 'Select Existing Photos to Delete'
+    id: 'cover-photo-modal',
+    title: 'Cover Photo',
+    body: 'Select an existing photo to be the cover photo for this project.',
+    body_2: 'This photo will be used as the thumbnail in the projects list and projects map.'
   }%>
 
   <%=render :partial => 'form_help_modal', locals: {
-    id: 'manage-affiliations-modal',
-    title: 'Organizations',
-    body: 'Add or remove affiliated Organizations to this project',
-    body_2: 'Roles can be applied to each Organization, e.g. "Founder", after Project creation on project page through "Manage Organizations and Roles".'
+    id: 'delete-photos-modal',
+    title: 'Photo Deletion',
+    body: 'Select existing photos to delete from this project.',
+    body_2: 'Multiple photos can be selected for deletion.'
   }%>
