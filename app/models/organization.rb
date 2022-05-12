@@ -20,7 +20,10 @@ class Organization < ApplicationRecord
 
     def organization_contact_info
         contact
-        url?(contact)
+    end
+
+    def description_truncate
+        description.truncate(180)
     end
 
     def url?(string)

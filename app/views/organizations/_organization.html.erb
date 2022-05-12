@@ -3,7 +3,7 @@
 <%= image_tag(organization.icon, class: 'affiliation-icon-list') if organization.icon.attached? %>
   <div class="col-sm-7">
     <h3><%= link_to organization.name, organization, class: "text-dark" %></h3>
-    <h5 class="text-secondary"><%= organization.description %></h5>
+    <h5 class="text-secondary"><%= organization.description_truncate %></h5>
   </div>
   <div class="col-sm-3 ml-auto">
     <% html_url = organization.website.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe if organization.website%>
