@@ -54,8 +54,7 @@ class ProjectsController < ApplicationController
     @project.update(project_affiliation_params)
 
     if @project.update(project_params)
-      # Get and set cover photo
-      photo_selected_as_cover = ActiveStorage::Attachment.where(id: params[:cover_photo_id])
+      # Set cover photo
       @project.update(cover_photo_id: params[:cover_photo_id])
 
       # Delete selected photos
@@ -93,7 +92,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:id, :organization, {organization_ids: []}, :stream_name, :implementation_date,
       :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures,
-      :structure_description, :name, :watershed, :url, photos: [])
+      :structure_description, :name, :watershed, :url, :cover_photo_id, photos: [])
   end
 
   def require_owner
