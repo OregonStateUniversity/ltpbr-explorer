@@ -198,6 +198,12 @@
     }
 
     // Initialize state
+    // Activate checkbox for existing cover photo
+    $('input[type="radio"]').each(function () {
+      if($(this).val() == gon.cover_photo_id) {
+        $(this).prop("checked", true);
+      }
+    });
     updatePhotoSelectionOverlays();
 
     // State of the deleting toggle
@@ -231,7 +237,7 @@
       // Don't select a photo chosen to be deleted as a cover
       else if (!$deleteCheckbox.is(":checked")) {
         // Sync state for choosing a cover photo
-        $coverButton.prop("checked", true);
+        $coverButton.prop("checked", !$coverButton.prop("checked"));
       }
 
       updatePhotoSelectionOverlays();
