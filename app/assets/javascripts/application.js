@@ -26,7 +26,6 @@ const onLoad = () => {
     $(".chosen-select").chosen({
         placeholder_text_multiple: "Select one or more Affiliations",
     });
-    console.log("Ayo")
 }
 
 document.addEventListener("load", onLoad)
