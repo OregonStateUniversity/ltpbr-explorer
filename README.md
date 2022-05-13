@@ -4,24 +4,72 @@ Beaver Dam Analogues (BDAs) are one low cost, 'cheap and cheerful' technique
 used in beaver-assisted restoration to mimic natural beaver dams, promote beaver
 to work in particular areas, and accelerate recovery of incised channels.
 
-This application enables users to add BDA their projects to a map, and browse
+[BDA-Explorer](https://bda-explorer.herokuapp.com/) enables users to add BDA their projects to a map, and browse
 other BDA projects.
 
-## Development
+## Prerequisites
+* [Ruby 3.1.2+](https://www.ruby-lang.org)
+* [Rails 7.0.2.3+](https://rubyonrails.org)
+* [PostgreSQL + postgresql-contrib](https://www.postgresql.org)
+* [PostGIS](https://postgis.net)
+* [GEOS](https://libgeos.org)
+* [A Javascript runtime supported by Rails (NodeJS recommended)](https://github.com/rails/execjs)
 
-This is a Rails application. After cloning the repository, you can:
+## Setting Up Development Environment
+### 1. Setting up the Repository
 
-* Install dependencies with `bundle install`.
-* Set up the database with `rails db:setup`.
-* Copy _config/application.yml.example_ to _config/application.yml_, and enter a valid [reCAPTCHA](https://www.google.com/recaptcha) key and secret.
-* Run the tests with `rake` or `rspec`.
-* Run the server in _development_ with `rails server`.
+Clone the repository by running `git clone https://github.com/osu-cascades/bda-explorer.git` into a directory of your choice.
 
-Requires PostgreSQL with the PostGIS extension available for enabling. You
-[may](https://github.com/rgeo/activerecord-postgis-adapter/issues/190) also need
-to install _geos_, via `brew install geos`.
+### 2. Installing gems
 
-Uses the [mapbox](https://www.mapbox.com) API, which requires a public token,
-which is hard-coded in some of the js files.
+Change into the cloned git repository and run `bundle install` to install the required gems and Rails version. 
 
-&copy; 2017 Nathan Struhs, Yong Bakos. All rights reserved.
+#### 2.1. Installing a PostgreSQL client library 
+
+This is required to build `pg`, one of the gems used in the app; the gem will print a compilation error and instructions for installing a PostgreSQL client library on your system, if one is not found. 
+
+### 3. Set up database
+
+A role with the current user’s name must created with `psql` with SUPERUSER, CREATEDB, CREATEROLE, and LOGIN privileges.
+Create the database with `./bin/rails db:setup`.
+
+#### 3.1. libffi error
+
+[On Ubuntu 20.04](https://askubuntu.com/questions/1377139/loaderror-libffi-so-8-cannot-open-shared-object-file-no-such-file-or-director), a `LoadError` may be thrown involving the `libffi` library. This library can be installed by running
+```
+wget http://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi8_3.4.2-1ubuntu5_amd64.deb
+sudo dpkg -i ./libffi8_3.4.2-1ubuntu5_amd64.deb
+```
+
+### 4. Run migrations
+
+Run `./bin/rails db:migrate` to update the database schema.
+
+### 5. Set up Captcha
+
+Copy `config/application.yml.example` to `config/application.yml`, and enter a valid reCAPTCHA (v2 Checkbox) key and secret to `config/application.yml`.
+
+### 6. Run tests
+
+Run tests with `rake` or `rspec` to ensure the development environment is working properly.
+
+### 7. Run server
+
+With PostgreSQL running, run the server locally with `./bin/rails server`.
+
+## Set Up Heroku
+If you have a Heroku account registered as a contributor for the [bda-explorer](https://dashboard.heroku.com/apps/bda-explorer) and [bda-explorer-staging](https://dashboard.heroku.com/apps/bda-explorer-staging) apps, you can push changes from your local git repository to the live/test version of the website.
+
+### Configure Git
+Add the production and staging environments as remote tracked repositories to your local git repository.
+
+Add the production environment by running `git remote add production https://git.heroku.com/bda-explorer.git`.
+
+Add the staging environment by running `git remote add staging https://git.heroku.com/bda-explorer-staging.git`. 
+
+### Pushing to Heroku
+Push your current version of `master` by running `git push production master`.
+
+For a feature branch to be tested on staging, run `git push --force staging <BRANCH>:master`, where `<BRANCH>` is the name of the feature branch. The feature branch should not be missing migrations present on the current build of staging.
+
+&copy; 2022 Gatlin Cooper, Chris Miraflor, Nathan Struhs, Yong Bakos. All rights reserved.
