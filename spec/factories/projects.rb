@@ -7,8 +7,8 @@ FactoryBot.define do
     structure_description { "Example project description with design elements"}
     length { 1 }
     primary_contact { "Example Contact" }
-    latitude { 1.0 }
-    longitude { 1.0 }
+    latitude { 44.042969 }
+    longitude { -121.333481 }
     number_of_structures { 1 }
     author factory: :user
   end

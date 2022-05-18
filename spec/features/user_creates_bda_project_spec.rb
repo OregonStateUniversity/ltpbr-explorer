@@ -16,8 +16,9 @@ RSpec.feature 'User creates BDA project' do
     fill_in('Project Affiliation', with: 'Example Affiliation')
     fill_in('Stream Name', with: 'Example Stream Name')
     fill_in('Project Watershed', with: 'Example Watershed')
-    fill_in('Latitude', with: 45.0000)
-    fill_in('Longitude', with: 45.0000)
+    # Approximate coordinates of OSU-Cascades
+    fill_in('Latitude', with: 44.042969)
+    fill_in('Longitude', with: -121.333481)
     fill_in('Total LT-PBR Structures', with: 2)
     fill_in('Treatment Length (meters)', with: 1000)
     fill_in('Implementation Date', with: Date.today)

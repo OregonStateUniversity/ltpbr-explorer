@@ -43,19 +43,19 @@ RSpec.describe Project, type: :model do
 
   describe 'generating lonlat before saving' do
     it 'matches the latitude and longitude' do
-      project.latitude = 88.8
-      project.longitude = 99.9
+      project.latitude = 44.042969
+      project.longitude = -121.333481
       project.run_callbacks :save
-      expect(project.lonlat.x).to be(99.9)
-      expect(project.lonlat.y).to be(88.8)
+      expect(project.lonlat.x).to be(44.042969)
+      expect(project.lonlat.y).to be(-121.333481)
     end
 
     it 'rounds values to a precision of 6' do
-      project.latitude = 88.1234561
-      project.longitude = 99.1234567
+      project.latitude = 44.0429694
+      project.longitude = -121.3334816
       project.run_callbacks :save
-      expect(project.lonlat.x).to be(99.123457)
-      expect(project.lonlat.y).to be(88.123456)
+      expect(project.lonlat.x).to be(44.042969)
+      expect(project.lonlat.y).to be(-121.333481)
     end
   end
 end
