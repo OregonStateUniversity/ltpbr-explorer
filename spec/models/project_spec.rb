@@ -4,7 +4,6 @@ RSpec.describe Project, type: :model do
   let(:project) { build(:project) }
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:affiliation) }
     it { is_expected.to validate_presence_of(:stream_name) }
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:url) }
