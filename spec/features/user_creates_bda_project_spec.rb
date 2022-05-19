@@ -13,6 +13,7 @@ RSpec.feature 'User creates BDA project' do
   scenario 'providing valid project attributes' do
     fill_in('Project Name', with: 'Example Name')
     fill_in('Primary Contact Name', with: 'Example Contact Name')
+    fill_in('Project URL', with: 'example.com')
     # fill_in('Project Affiliation', with: 'Example Affiliation')
     fill_in('Stream Name', with: 'Example Stream Name')
     fill_in('Project Watershed', with: 'Example Watershed')
@@ -34,6 +35,7 @@ RSpec.feature 'User creates BDA project' do
     page.find('#error_explanation').tap do |error_explanations|
       expect(error_explanations).to have_content("Name can't be blank")
       # expect(error_explanations).to have_content("Affiliation can't be blank")
+      expect(error_explanations).to have_content("Url can't be blank")
       expect(error_explanations).to have_content("Stream name can't be blank")
       expect(error_explanations).to have_content("Implementation date can't be blank")
       expect(error_explanations).to have_content("Implementation date must be in the following format: yyyy-mm-dd")
