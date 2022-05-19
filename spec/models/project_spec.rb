@@ -31,17 +31,6 @@ RSpec.describe Project, type: :model do
     expect(project.title).to eq "Project on #{stream_name}"
   end
 
-  describe 'byline' do
-    it 'consists of a date' do
-      expect(project.byline).to match /Implemented on #{Date.today.to_formatted_s(:long)}/
-    end
-    context 'with an affiliation' do
-      it 'consists of a date and affiliation' do
-        expect(project.byline).to eq "Implemented on #{Date.today.to_formatted_s(:long)} in affiliation with Example Affiliation"
-      end
-    end
-  end
-
   describe 'generating lonlat before saving' do
     it 'matches the latitude and longitude' do
       project.latitude = 44.042969
