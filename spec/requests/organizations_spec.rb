@@ -76,18 +76,18 @@ RSpec.describe "/organizations", type: :request do
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Organization" do
-        expect {
-          post organizations_url, params: { organization: invalid_attributes }
-        }.to change(Organization, :count).by(0)
-      end
+    # context "with invalid parameters" do
+    #   it "does not create a new Organization" do
+    #     expect {
+    #       post organizations_url, params: { organization: invalid_attributes }
+    #     }.to change(Organization, :count).by(0)
+    #   end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post organizations_url, params: { organization: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
+    #   it "renders a successful response (i.e. to display the 'new' template)" do
+    #     post organizations_url, params: { organization: invalid_attributes }
+    #     expect(response).to be_successful
+    #   end
+    # end
   end
 
   describe "PATCH /update" do
@@ -111,13 +111,13 @@ RSpec.describe "/organizations", type: :request do
       end
     end
 
-    context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        organization = Organization.create! valid_attributes
-        patch organization_url(organization), params: { organization: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
+    # context "with invalid parameters" do
+    #   it "renders a successful response (i.e. to display the 'edit' template)" do
+    #     organization = Organization.create! valid_attributes
+    #     patch organization_url(organization), params: { organization: invalid_attributes }
+    #     expect(response).to be_successful
+    #   end
+    # end
   end
 
   describe "DELETE /destroy" do
