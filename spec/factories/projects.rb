@@ -1,8 +1,10 @@
 FactoryBot.define do
   factory :project do
     # affiliation { "Example Affiliation" }
+    name { "Example Project Name" }
     url { "example.com" }
     stream_name { "Example Stream Name" }
+    watershed { "Example Watershed" }
     implementation_date { Date.today }
     narrative { "Example Narrative" }
     structure_description { "Example project description with design elements"}
