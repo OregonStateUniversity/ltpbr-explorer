@@ -24,7 +24,7 @@ RSpec.describe "/organizations", type: :request do
   # Organization. As you add validations to Organization, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    attributes_for(:organization)
   }
 
   let(:invalid_attributes) {
@@ -93,7 +93,7 @@ RSpec.describe "/organizations", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        attributes_for(:organization)
       }
 
       it "updates the requested organization" do
