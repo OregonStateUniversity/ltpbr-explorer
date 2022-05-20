@@ -13,6 +13,13 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/organizations", type: :request do
+  include Devise::Test::IntegrationHelpers
+
+  let(:user) { create(:user, :admin) }
+
+  before do
+    sign_in(user)
+  end
   
   # Organization. As you add validations to Organization, be sure to
   # adjust the attributes here as well.
