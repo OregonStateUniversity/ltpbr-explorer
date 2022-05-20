@@ -93,14 +93,22 @@ RSpec.describe "/organizations", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        attributes_for(:organization)
+        {
+          name: "New Organization Name",
+          description: "New organization description",
+          contact: "New organization contact",
+          website: "example.com/neworganization"
+        }
       }
 
       it "updates the requested organization" do
         organization = Organization.create! valid_attributes
         patch organization_url(organization), params: { organization: new_attributes }
         organization.reload
-        skip("Add assertions for updated state")
+        expect(organization.name).to eq "New Organization Name"
+        expect(organization.description).to eq "New organization description"
+        expect(organization.contact).to eq "New organization contact"
+        expect(organization.website).to eq "example.com/neworganization"
       end
 
       it "redirects to the organization" do
