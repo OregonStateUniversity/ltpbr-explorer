@@ -7,7 +7,11 @@
     <h6><%= link_to project.stream_name, project, class: "text-dark" %>, <%= link_to project.watershed, project, class: "text-secondary" %></h6>
   </div>
   <div class="col-md-2">
-    <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 200 %>
+    <% if project.photo_presence %>
+      <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 200 %>
+    <% else %>
+      <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 100 %>
+    <% end %>
   </div>
 
   <div class="col-md-10">

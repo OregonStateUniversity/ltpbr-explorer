@@ -75,6 +75,10 @@ class Project < ApplicationRecord
     @cover_photo
   end
 
+  def photo_presence
+    self.photos[0].present?
+  end
+
   def self.project_count
     all.count
   end
