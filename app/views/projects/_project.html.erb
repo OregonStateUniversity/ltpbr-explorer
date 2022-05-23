@@ -4,25 +4,22 @@
     <h3><%= link_to project.name, project, class: "text-dark" %></h3>
   </div>
   <div class="col-md-12">
-    <h5><%= link_to project.watershed, project, class: "text-dark" %>, <%= link_to project.stream_name, project, class: "text-secondary" %></h5>
+    <h6><%= link_to project.stream_name, project, class: "text-dark" %>, <%= link_to project.watershed, project, class: "text-secondary" %></h6>
   </div>
   <div class="col-md-2">
-    <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 150 %>
+    <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 200 %>
   </div>
 
   <div class="col-md-10">
   
   <div class="row">
-    <div class="col-md-4">
-      <h5><%= link_to project.watershed, project, class: "text-dark" %></h5>
-      <h5><%= link_to project.stream_name, project, class: "text-secondary" %></h5>
-    </div>
-      <div class="col-md-8">
-        <div class="affiliation-tagline-list">
-          <h5 class="text-secondary">
-            <%= render :partial => '/projects/project_organ', :collection => project.project_organizations, :as => :organization, locals: {project_id: project.id}%>
-          </h5>
-        </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+      <div class="affiliation-tagline-list">
+        <h5 class="text-secondary">
+          <%= render :partial => '/projects/project_organ', :collection => project.project_organizations, :as => :organization, locals: {project_id: project.id}%>
+        </h5>
+      </div>
       </div>
     </div>
   </div>
