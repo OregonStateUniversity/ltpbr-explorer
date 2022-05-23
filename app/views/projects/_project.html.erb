@@ -10,7 +10,7 @@
     <% if project.photo_presence %>
       <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 200 %>
     <% else %>
-      <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 100 %>
+      <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', id: 'project-list-missing-img', width: 100 %>
     <% end %>
   </div>
 
