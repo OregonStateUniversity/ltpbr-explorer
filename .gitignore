@@ -38,3 +38,6 @@ vendor/cache/
 
 # Ignore local ActiveStorage files
 /storage
+
+# Ignore simplecov coverage report
+/coverage

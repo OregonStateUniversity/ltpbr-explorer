@@ -1355,6 +1355,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
     digest (3.1.0)
+    docile (1.4.0)
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.8.1)
@@ -1575,6 +1576,12 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     spring (2.1.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -1662,6 +1669,7 @@ DEPENDENCIES
   sassc-rails (~> 2.1.2)
   selenium-webdriver
   shoulda-matchers
+  simplecov
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)

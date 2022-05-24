@@ -31,6 +31,7 @@ gem 'rabl-rails'
 gem 'rails', '~> 7.0.2.3'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'sassc-rails', '~> 2.1.2'
+gem 'simplecov', require: false, group: :test
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 2.7.2'
