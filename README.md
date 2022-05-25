@@ -57,6 +57,14 @@ Run tests with `rake` or `rspec` to ensure the development environment is workin
 
 With PostgreSQL running, run the server locally with `./bin/rails server`.
 
+### Post-Install Configuration
+
+#### Setting Admin role/privileges
+By default, users have the 'public' role, which gives them standard CRUD permissions for projects they make.
+Users can be given the 'admin' role from the console, which gives them CRUD permissions for all projects, including projects they did not create, and CRUD permissions for organizations, which normal users do not have.
+
+A user can be given the 'admin' role by running `@user.update_attribute(:role, 'admin')`, where `@user` is the user record you want to give permissions to.
+
 ## Set Up Heroku
 If you have a Heroku account registered as a contributor for the [bda-explorer](https://dashboard.heroku.com/apps/bda-explorer) and [bda-explorer-staging](https://dashboard.heroku.com/apps/bda-explorer-staging) apps, you can push changes from your local git repository to the live/test version of the website.
 

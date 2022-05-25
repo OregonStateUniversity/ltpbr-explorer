@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "organizations/index", type: :view do
+  include Devise::Test::ControllerHelpers
+
   before(:each) do
     assign(:organizations, [
-      Organization.create!(),
-      Organization.create!()
+      Organization.create!(description: "Example description 1"),
+      Organization.create!(description: "Example description 1")
     ])
   end
 

@@ -33,15 +33,6 @@ class Project < ApplicationRecord
     "Project on #{stream_name}"
   end
 
-
-  def byline
-    if affiliation.present?
-      "Implemented on #{implementation_date.to_formatted_s(:long)} in affiliation with #{affiliation}"
-    else
-      "Implemented on #{implementation_date.to_formatted_s(:long)}"
-    end
-  end
-
   def calculate_state
     point = "SRID=4326;#{self.lonlat}"
     states = State.arel_table
@@ -73,6 +64,10 @@ class Project < ApplicationRecord
     end
 
     @cover_photo
+  end
+
+  def photo_presence
+    self.photos[0].present?
   end
 
   def self.project_count

@@ -76,7 +76,7 @@
 
   <hr />
   <div class="container">
-  <h3 class="lead text-center">Graphing <%= @state.name%>'s Projects in the Last 3 Years</h3>
+  <h3 class="lead text-center">Graphing <%= @state.name%>'s Projects from <%=@chart_project_count.keys[0] %> Onward</h3>
   <canvas id="myChart" width="400" height="200"></canvas>
   <br>
   </div>
@@ -134,7 +134,7 @@ const myChart = new Chart(ctx, {
       scales: {
         xAxis: {
             ticks: {
-                maxTicksLimit: 5
+                maxTicksLimit: 8
             },
         },
         y: {

@@ -7,4 +7,9 @@ FactoryBot.define do
     name { 'Fake Name' }
     affiliation { 'exampleAffiliation' }
   end
+
+  trait :admin do
+    role { 'admin' }
+  end
+
 end
