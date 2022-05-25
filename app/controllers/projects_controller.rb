@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :require_owner, only: [:edit, :update, :destroy]
   
   def index;
-    @projects = Project.distinct.page(params[:page]).search(params[:search], params[:search_organization])
+    @projects = Project.distinct.search(params[:search], params[:search_organization])
     @filtered_count = @projects.count
     @result_plurality = @projects.count == 1 ? 'result' : 'results'
     @proj_plurality = @projects.count == 1 ? 'project' : 'projects'
