@@ -6,7 +6,7 @@ ruby '3.2.2'
 gem 'activerecord-postgis-adapter'
 gem 'active_storage_validations'
 gem 'activerecord-postgres_enum'
-gem 'aws-sdk', '~> 3.1.0'
+gem 'aws-sdk-s3', '~> 1.136.0', require: false
 gem 'bootsnap', '>= 1.16.0', require: false
 gem 'bootstrap', '~> 4.6.0'
 gem 'chosen-rails', '~> 1.10.0'
@@ -44,7 +44,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.1.0'
   gem 'spring-commands-rspec'
-  gem 'guard'
+  gem 'guard', require: false
   gem 'guard-rspec', require: false
   gem 'web-console', '>= 4.2.1'
 end
