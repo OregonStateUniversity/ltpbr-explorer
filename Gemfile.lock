@@ -1856,7 +1856,7 @@ DEPENDENCIES
   groupdate
   guard
   guard-rspec
-  haml-rails
+  haml-rails (~> 2.1.0)
   importmap-rails (~> 1.2.1)
   jbuilder (~> 2.11.5)
   jquery-rails
