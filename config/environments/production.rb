@@ -70,8 +70,8 @@ Rails.application.configure do
     port:                 587,
     authentication:       'plain',
     enable_starttls_auto: true,
-    user_name:            ENV['GMAIL_SMTP_USERNAME'],
-    password:             ENV['GMAIL_SMTP_PASSWORD'],
+    user_name:            Rails.application.credentials.gmail.username!,
+    password:             Rails.application.credentials.gmail.app_password!,
     openssl_verify_mode: 'none'
   }
 

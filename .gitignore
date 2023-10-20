@@ -41,3 +41,6 @@ vendor/cache/
 
 .env
 
+/config/master.key
+/config/credentials/development.key
+/config/credentials/production.key
