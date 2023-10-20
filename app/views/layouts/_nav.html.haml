@@ -18,7 +18,7 @@
       %li.nav-item.dropdown
         %a#projects-dropdown.nav-link.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#"} Projects
         #dropdown.dropdown-menu.dropdown-menu-right{"aria-labelledby": "dropdown"}
-          .dropdown-item= link_to 'Projects Map', projects_map_path
+          .dropdown-item= link_to 'Projects Map', map_projects_path
           .dropdown-item= link_to 'Projects List', projects_path
         %span.sr-only (current)
       - if user_signed_in?

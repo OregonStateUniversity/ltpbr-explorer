@@ -1,13 +1,18 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:index, :map, :show]
   before_action :require_owner, only: [:edit, :update, :destroy]
   
-  def index;
+  def index
     @projects = Project.distinct.search(params[:search], params[:search_organization])
     @filtered_count = @projects.count
     @result_plurality = @projects.count == 1 ? 'result' : 'results'
     @proj_plurality = @projects.count == 1 ? 'project' : 'projects'
+  end
+
+  def map
+    @projects = Project.all
+    gon.rabl(template: 'app/views/shared/projects.rabl')
   end
 
   def show

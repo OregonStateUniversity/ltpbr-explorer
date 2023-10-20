@@ -10,8 +10,4 @@ class StaticController < ApplicationController
 
   def about; end
 
-  def projects_map
-    @projects = Project.all
-    gon.rabl :template => 'app/views/shared/projects.rabl'
-  end
 end
