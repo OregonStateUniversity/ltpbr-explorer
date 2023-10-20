@@ -3,7 +3,7 @@
   = image_tag(organization.icon, class: 'affiliation-icon-list') if organization.icon.attached?
   .col-sm-7
     %h3= link_to organization.name, organization, class: "text-dark"
-    %h5.text-secondary= truncate(organization.description, 180)
+    %h5.text-secondary= truncate(organization.description, length: 180)
   .col-sm-3.ml-auto
     %h5= link_to "#{organization.name} Website", organization.website
   %br/
