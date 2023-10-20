@@ -1,0 +1,9 @@
+- provide(:title, 'Organizations List')
+.container.pt-3
+  .row
+    .col
+      %h1 Organizations
+    - if current_user && current_user.admin_role?
+      .col.text-right= link_to 'New Organization', new_organization_path, class: "btn btn-success", id: "filter-button"
+  = render @organizations
+  %hr/

@@ -22,10 +22,6 @@ class Organization < ApplicationRecord
         contact
     end
 
-    def description_truncate
-        description.truncate(180)
-    end
-
     def url?(string)
         uri = URI.parse(string)
         throw "MailToError" if uri.scheme == 'mailto'
