@@ -11,7 +11,6 @@ class StaticController < ApplicationController
   def about; end
 
   def projects_map
-    @disable_footer = false
     @projects = Project.all
     gon.rabl :template => 'app/views/shared/projects.rabl'
   end

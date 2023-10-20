@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{"http-equiv": "Content-Type", content: "text/html; charset=UTF-8"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}/
+    %title= full_title(yield(:title))
+    %link{rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css"}/
+    %script{src: "https://use.fontawesome.com/2aff377185.js"}
+    %link{rel: "stylesheet", crossorigin: "", href: "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"}/
+    %script{crossorigin: "", src: "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"}
+    %link{rel: "stylesheet", href: "https://unpkg.com/leaflet-geosearch@3.6.0/dist/geosearch.css"}/
+    %link{rel: "stylesheet", href: "https://unpkg.com/leaflet-geosearch@3.6.0/assets/css/leaflet.css"}/
+    %script{src: "https://unpkg.com/leaflet-geosearch@3.6.0/dist/geosearch.umd.js"}
+    %link{rel: "stylesheet", href: "https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"}/
+    %link{rel: "stylesheet", href: "https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"}/
+    %script{src: "https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_importmap_tags
+  %body{class: "#{controller.action_name}"}
+    = include_gon(:init => true)
+    = render 'layouts/nav'
+    = render 'layouts/messages'
+    = yield
+    = render 'layouts/footer'

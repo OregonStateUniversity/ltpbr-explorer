@@ -1,0 +1,38 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.navbar-fixed-top.sticky
+  = link_to root_path, :class => 'logo', title: 'BDA Explorer home' do
+    LT-PBR
+    %span#logo-highlight explorer
+  %button.navbar-toggler{"aria-controls": "nav", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#nav", "data-toggle": "collapse", type: "button"}
+    %span.navbar-toggler-icon
+  #nav.collapse.navbar-collapse.justify-content-end
+    %ul.navbar-nav
+      %li.nav-item
+        .nav-link= link_to 'About', about_path
+        %span.sr-only (current)
+      %li.nav-item
+        .nav-link= link_to 'Organizations', organizations_path
+        %span.sr-only (current)
+      %li.nav-item
+        .nav-link= link_to 'States', states_path
+        %span.sr-only (current)
+      %li.nav-item.dropdown
+        %a#projects-dropdown.nav-link.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#"} Projects
+        #dropdown.dropdown-menu.dropdown-menu-right{"aria-labelledby": "dropdown"}
+          .dropdown-item= link_to 'Projects Map', projects_map_path
+          .dropdown-item= link_to 'Projects List', projects_path
+        %span.sr-only (current)
+      - if user_signed_in?
+        %li= link_to 'New Project', new_project_path, class: 'btn btn-outline-primary my-2 my-sm-0 new-project-btn'
+        %li.nav-item.dropdown
+          %a#dropdown.nav-link.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#"}= current_user.name
+          #dropdown.dropdown-menu.dropdown-menu-right{"aria-labelledby": "dropdown"}
+            .dropdown-item= link_to 'My Projects', user_path(current_user)
+            .dropdown-item= link_to 'Edit Profile', edit_user_registration_path
+            .dropdown-divider
+            .dropdown-item= link_to 'Sign Out', destroy_user_session_path, method: :delete
+      - else
+        %li.nav-item
+          .nav-link= link_to 'Sign In', new_user_session_path
+          %span.sr-only (current)
+        %li.nav-item
+          .nav-link= link_to 'Sign Up', new_user_registration_path
