@@ -37,7 +37,6 @@ gem 'uglifier', '>= 4.2.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails', '~> 2.8.1'
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 6.0.3'
 end
