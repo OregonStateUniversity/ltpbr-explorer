@@ -1856,7 +1856,6 @@ DEPENDENCIES
   groupdate
   guard
   guard-rspec
-  haml
   haml-rails
   importmap-rails (~> 1.2.1)
   jbuilder (~> 2.11.5)
