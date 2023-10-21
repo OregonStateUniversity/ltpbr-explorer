@@ -1,8 +1,10 @@
 class State < ApplicationRecord
 
-  def projects
-    Project.where(state_id: self.id)
-  end
+  has_many :projects
+
+  validates :name, presence: true
+  validates :iso_code, presence: true
+  validates :geom, presence: true
 
   def project_count
     projects.count
