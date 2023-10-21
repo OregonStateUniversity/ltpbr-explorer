@@ -27,4 +27,18 @@ RSpec.describe State, type: :model do
     end
   end
 
+  describe 'project_total_length_km' do
+    # See https://github.com/OregonStateUniversity/bda-explorer/issues/310
+    skip 'should be total length in kilometers for all associated projects' do
+      expect(state_with_projects.project_total_length_km).to eq('TODO')
+    end
+  end
+
+  describe 'project_total_length_mi' do
+    # See https://github.com/OregonStateUniversity/bda-explorer/issues/310
+    skip 'should be total length in miles for all associated projects' do
+      expect(state_with_projects.project_total_length_mi).to eq('TODO')
+    end
+  end
+
 end
