@@ -22,6 +22,7 @@ RSpec.describe Project, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:author).class_name('User') }
+    it { is_expected.to belong_to(:state).optional }
   end
 
   it 'has a title consisting of its stream name' do

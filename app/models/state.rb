@@ -1,6 +1,6 @@
 class State < ApplicationRecord
 
-  has_many :projects
+  has_many :projects, dependent: :restrict_with_error
 
   validates :name, presence: true
   validates :iso_code, presence: true

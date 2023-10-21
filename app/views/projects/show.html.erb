@@ -69,11 +69,7 @@
     </div>
     <div class="col-md-5">
       <label>State:</label>
-      <% if @project.state_id.present? %>
-        <p class="h5 mb-3"><%= State.find(@project.state_id).name %></p>
-      <% else %>
-        <p class="h5 mb-3">N/A</p>
-      <% end %>
+      <p class="h5 mb-3"><%= @project.state&.name || "N/A" %></p>
       <hr>
 
       <label>Stream Name:</label>

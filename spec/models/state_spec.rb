@@ -16,7 +16,7 @@ RSpec.describe State, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to have_many(:projects) }
+    it { is_expected.to have_many(:projects).dependent(:restrict_with_error) }
   end
 
 end

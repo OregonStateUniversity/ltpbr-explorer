@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   attr_accessor :longitude, :latitude
 
   belongs_to :author, class_name: 'User'
+  belongs_to :state, optional: true
 
   has_many :affiliations, dependent: :delete_all
   has_many :organizations, through: :affiliations
