@@ -1,0 +1,12 @@
+- if state.projects_count > 0
+  %hr/
+  .row
+    .col-sm-3
+    .col-sm-3
+      %h3= link_to state.name, state, class: "text-dark"
+      %h5.text-secondary United States
+    .col-sm-6.ml-auto
+      %h5 Project Count: #{state.projects_count}
+      %h5 Total Structures: #{state.projects_count}
+      %h5 Total Length: #{state.project_total_length_km} mi
+    %br/
