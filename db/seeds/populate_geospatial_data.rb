@@ -20,8 +20,8 @@ if State.all.count == 0
   connection.execute "drop table if exists states_ref"
   connection.execute from_state_shp_sql
   connection.execute <<-SQL
-      insert into states(name, iso_code, state_type, geom, created_at, updated_at)
-        select NAME_EN, iso_3166_2, type, geom, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP from states_ref
+      insert into states(name, iso_code, geom, created_at, updated_at)
+        select NAME_EN, iso_3166_2, geom, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP from states_ref
   SQL
   connection.execute "drop table states_ref"
 
@@ -30,7 +30,7 @@ end
 
 puts "States added:"
 State.all.each do |state|
-  puts "#{state.id}, #{state.name}, #{state.iso_code}, #{state.state_type}"
+  puts "#{state.id}, #{state.name}, #{state.iso_code}"
 end
 
 puts "Assigning states to projects..."

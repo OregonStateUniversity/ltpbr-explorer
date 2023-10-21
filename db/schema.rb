@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_12_044725) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_21_174442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -91,7 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_044725) do
   create_table "states", force: :cascade do |t|
     t.string "name"
     t.string "iso_code"
-    t.string "state_type"
     t.geometry "geom", limit: {:srid=>0, :type=>"multi_polygon"}
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
