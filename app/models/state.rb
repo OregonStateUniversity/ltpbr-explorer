@@ -6,6 +6,9 @@ class State < ApplicationRecord
   validates :iso_code, presence: true
   validates :geom, presence: true
 
+  scope :with_projects, -> { where('projects_count > 0') }
+  scope :without_geom, -> { select(State.attribute_names - ['geom']) }
+
   def structure_sum
     projects.sum(:number_of_structures)
   end

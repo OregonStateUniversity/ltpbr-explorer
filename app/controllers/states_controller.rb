@@ -1,6 +1,7 @@
 class StatesController < ApplicationController
+
   def index
-    @states = State.select(*State.attribute_names.reject{ |attr| attr=='geom' }).order(:name)
+    @states = State.with_projects.without_geom.order(:name)
   end
 
   def show
