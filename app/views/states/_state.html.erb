@@ -1,17 +1,17 @@
-<% if state.project_count > 0 %>
-<hr>
-<div class="row">
-  <div class="col-sm-3">
+<% if state.projects_count > 0 %>
+  <hr>
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-3">
+      <h3><%= link_to state.name, state, class: "text-dark" %></h3>
+      <h5 class="text-secondary">United States</h5>
+    </div>
+    <div class="col-sm-6 ml-auto">
+      <h5>Project Count: <%= state.projects_count %></h5>
+      <h5>Total Structures: <%= state.projects_count %></h5>
+      <h5>Total Length: <%= state.project_total_length_km %> mi</h5>
+    </div>
+    <br>
   </div>
-  <div class="col-sm-3">
-    <h3><%= link_to state.name, state, class: "text-dark" %></h3>
-    <h5 class="text-secondary">United States</h5>
-  </div>
-  <div class="col-sm-6 ml-auto">
-    <h5>Project Count: <%= state.project_count %></h5>
-    <h5>Total Structures: <%= state.project_count %></h5>
-    <h5>Total Length: <%= state.project_total_length_km %> mi</h5>
-  </div>
-  <br>
-</div>
 <% end %>

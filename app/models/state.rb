@@ -6,10 +6,6 @@ class State < ApplicationRecord
   validates :iso_code, presence: true
   validates :geom, presence: true
 
-  def project_count
-    projects.count
-  end
-
   def structure_sum
     projects.sum(:number_of_structures)
   end

@@ -7,6 +7,7 @@ RSpec.describe State, type: :model do
     it { is_expected.to respond_to(:name) }
     it { is_expected.to respond_to(:iso_code) }
     it { is_expected.to respond_to(:geom) }
+    it { is_expected.to respond_to(:projects_count) }
   end
 
   describe 'validations' do
