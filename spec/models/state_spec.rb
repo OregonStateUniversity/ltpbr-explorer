@@ -20,4 +20,11 @@ RSpec.describe State, type: :model do
     it { is_expected.to have_many(:projects).dependent(:restrict_with_error) }
   end
 
+  describe 'number_of_structures' do
+    # See https://github.com/OregonStateUniversity/bda-explorer/issues/310
+    skip 'should be total number of structures for all associated projects' do
+      expect(state_with_projects.number_of_structures).to eq(6)
+    end
+  end
+
 end

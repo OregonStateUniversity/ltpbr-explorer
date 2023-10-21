@@ -9,7 +9,7 @@ class State < ApplicationRecord
   scope :with_projects, -> { where('projects_count > 0') }
   scope :without_geom, -> { select(State.attribute_names - ['geom']) }
 
-  def structure_sum
+  def number_of_structures
     projects.sum(:number_of_structures)
   end
 

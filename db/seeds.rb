@@ -68,7 +68,7 @@ end
   p = Project.create!(name: "Project #{i}", stream_name: "River #{i}", watershed: "Watershed #{i}",
     implementation_date: i.days.ago, primary_contact: "Contact #{i}",
     structure_description: "Description #{i}", narrative: "Narrative #{i}",
-    length: i * 100, latitude: 44.058174 + i/10.0, longitude: -121.315308 + i, number_of_structures: i,
+    length: i * 100, latitude: 44.058174 + i/10.0, longitude: -121.315308 + i, number_of_structures: i * 2,
     url: "https://project_#{i}.com", author: user)
   Organization.all.sample(2).each do |o|
     Affiliation.create!(project: p, organization: o, role: "Example affiliation role")
