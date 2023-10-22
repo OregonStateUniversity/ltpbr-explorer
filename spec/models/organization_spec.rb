@@ -15,6 +15,8 @@ RSpec.describe Organization, type: :model do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to allow_value('https://example.com').for(:website) }
     it { is_expected.to allow_value('').for(:website) }
+    it { is_expected.to validate_content_type_of(:logo) }
+    it { is_expected.to validate_size_of(:logo).less_than(50.megabytes) }
   end
 
   describe 'associations' do
