@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'map', on: :collection
     resources :affiliations
   end
-  resources :states
+  resources :states, only: [:index, :show]
   resources :users, only: :show
 
 end
