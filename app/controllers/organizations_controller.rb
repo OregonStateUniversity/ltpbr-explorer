@@ -1,28 +1,17 @@
 class OrganizationsController < ApplicationController
-  require 'date'
-  before_action :set_organization, only: %w[ show edit update destroy ]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :require_admin, only: [:edit, :new, :create, :update, :destroy], except: [:show, :index]
+  before_action :require_admin, except: [:show, :index]
+  before_action :set_organization, only: %w[ show edit update destroy ]
 
-  # GET /organizations
-  # GET /organizations.json
   def index
     @organizations = Organization.all
   end
 
-  # GET /organizations/1
-  # GET /organizations/1.json
   def show
-    #Gather all Projects associated with this organization
     @organization_projects = @organization.projects
-
-    #Group up project entries by month through implementation date, and run the accumulation function to create a cumulative graph instead 
-    #of line graph. Then, reject all dates if their timestamp is greater than the currently set timestamp
     @chart_project_count = accumulate_data(@organization_projects.group_by_day(:implementation_date, format: "%d %b %Y").count)
     @chart_structure_count = accumulate_data(@organization_projects.group_by_day(:implementation_date).sum(:number_of_structures))
-    #Convert from m to km at the end
     @chart_total_length = accumulate_data(@organization_projects.group_by_day(:implementation_date).sum(:length)).transform_values { |v| v / 1000.0}
-
     @project_count = @organization_projects.count
     @structure_sum = @organization_projects.structure_sum
     @project_total_length_km = @organization_projects.project_total_length_km
@@ -37,17 +26,13 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  # GET /organizations/new
   def new
     @organization = Organization.new
   end
 
-  # GET /organizations/1/edit
   def edit
   end
 
-  # POST /organizations
-  # POST /organizations.json
   def create
     @organization = Organization.new(organization_params)
 
@@ -62,8 +47,6 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /organizations/1
-  # PATCH/PUT /organizations/1.json
   def update
     respond_to do |format|
       if @organization.update(organization_params)
@@ -76,8 +59,6 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  # DELETE /organizations/1
-  # DELETE /organizations/1.json
   def destroy
     @organization.destroy
     respond_to do |format|
@@ -87,20 +68,19 @@ class OrganizationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_organization
       @organization = Organization.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def organization_params
-        params.require(:organization).permit(:name, :description, :contact, :website, :icon)
+      params.require(:organization).permit(:name, :description, :contact, :website, :icon)
     end
 
     def require_admin
-        unless current_user.admin_role?
-          redirect_to root_path
-          flash[:alert] = 'Restricted action, must be an Admin'
-        end
+      unless current_user.admin_role?
+        redirect_to root_path
+        flash[:alert] = 'Restricted action, must be an Admin'
+      end
     end
 end
