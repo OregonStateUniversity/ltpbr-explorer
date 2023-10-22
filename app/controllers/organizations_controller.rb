@@ -4,7 +4,7 @@ class OrganizationsController < ApplicationController
   before_action :set_organization, only: %w[ show edit update destroy ]
 
   def index
-    @organizations = Organization.all
+    @organizations = Organization.order('affiliations_count DESC, name')
   end
 
   def show
