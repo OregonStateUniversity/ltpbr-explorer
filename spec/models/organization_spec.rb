@@ -8,6 +8,7 @@ RSpec.describe Organization, type: :model do
     it { is_expected.to respond_to(:description) }
     it { is_expected.to respond_to(:contact) }
     it { is_expected.to respond_to(:website) }
+    it { is_expected.to respond_to(:affiliations_count)}
   end
 
   describe 'validations' do

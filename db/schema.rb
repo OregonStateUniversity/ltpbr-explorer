@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_22_064543) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_22_165507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -66,6 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_22_064543) do
     t.string "website"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "affiliations_count", default: 0, null: false
   end
 
   create_table "projects", force: :cascade do |t|
@@ -86,6 +87,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_22_064543) do
     t.text "url"
     t.bigint "state_id"
     t.bigint "cover_photo_id"
+    t.integer "affiliations_count", default: 0, null: false
     t.index ["state_id"], name: "index_projects_on_state_id"
   end
 
