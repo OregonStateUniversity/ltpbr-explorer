@@ -13,8 +13,11 @@ RSpec.describe Organization, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to allow_value('https://example.com').for(:website) }
-    it { is_expected.to allow_value('').for(:website) }
+    it {
+      is_expected.to allow_value('https://example.com').for(:website)
+      is_expected.to allow_value('').for(:website)
+      is_expected.to allow_value(nil).for(:website)
+    }
     it { is_expected.to validate_content_type_of(:logo) }
     it { is_expected.to validate_size_of(:logo).less_than(50.megabytes) }
   end
@@ -23,12 +26,6 @@ RSpec.describe Organization, type: :model do
     it { is_expected.to have_many(:affiliations).dependent(:delete_all) }
     it { is_expected.to have_many(:projects) }
     it { is_expected.to have_one_attached(:logo) }
-  end
-
-  describe 'TODO' do
-    skip 'TODO' do
-      expect('TODO').to eq(6)
-    end
   end
 
 end
