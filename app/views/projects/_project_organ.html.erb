@@ -1,6 +1,6 @@
 <div class="container">
   <div class="d-flex align-items-center wrap h-100">
-    <%= image_tag(organization.icon, class: 'affiliation-icon-list-sm') if organization.icon.attached? %>
+    <%= image_tag(organization.logo, class: 'affiliation-logo-list-sm') if organization.logo.attached? %>
     <h5 class="organization-list-display"><%=link_to(organization.name, organization_path(organization), :style=> 'color: gray;')%> </h5>
     <span class="invisible">x</span>
     <% if @project%>

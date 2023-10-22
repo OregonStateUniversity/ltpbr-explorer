@@ -1,6 +1,6 @@
 %hr/
 .row.align-items-center.h-100
-  = image_tag(organization.icon, class: 'affiliation-icon-list') if organization.icon.attached?
+  = image_tag(organization.logo, class: 'affiliation-logo-list') if organization.logo.attached?
   .col-sm-7
     %h3= link_to organization.name, organization, class: "text-dark"
     %h5.text-secondary= truncate(organization.description, length: 180)

@@ -18,7 +18,7 @@ RSpec.describe Organization, type: :model do
   describe 'associations' do
     it { is_expected.to have_many(:affiliations).dependent(:delete_all) }
     it { is_expected.to have_many(:projects) }
-    it { is_expected.to have_one_attached(:icon) }
+    it { is_expected.to have_one_attached(:logo) }
   end
 
   describe 'TODO' do
