@@ -56,7 +56,7 @@ Dir.glob("#{Rails.root}/db/seeds/*.rb").each { |f| require f }
 
 user = User.create!(name: 'Example User', username: 'example', email: 'example@example.com',
   password: 'password', password_confirmation: 'password', affiliation: 'Example Affiliation')
-admin = User.create!(name: 'Admin User', username: 'admin', email: 'admin@example.com',
+admin = User.create!(name: 'Admin User', username: 'admin', email: 'admin@example.com', role: 'admin',
   password: 'password', password_confirmation: 'password', affiliation: 'Admin Affiliation')
 
 1.upto(10) do |i|
