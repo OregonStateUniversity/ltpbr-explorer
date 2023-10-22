@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :organizations
   resources :projects do
     get 'map', on: :collection
-    resources :affiliations
+    resources :affiliations, except: [:new, :show]
   end
   resources :states, only: [:index, :show]
   resources :users, only: :show

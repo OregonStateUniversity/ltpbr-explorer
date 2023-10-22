@@ -34,6 +34,10 @@ class Project < ApplicationRecord
     "Project on #{stream_name}"
   end
 
+  def authored_by?(user)
+    author == user
+  end
+
   def calculate_state
     point = "SRID=4326;#{self.lonlat}"
     states = State.arel_table
