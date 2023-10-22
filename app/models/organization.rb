@@ -11,7 +11,7 @@ class Organization < ApplicationRecord
     limit: { min: 0, max: 20, message: 'must have fewer than 20 photos'}
 
   validates :name, presence: true
-  validates :website, format: URI.regexp
+  validates :website, format: URI.regexp, allow_blank: true
 
   def small_logo
     return self.logo.variant(resize: '300x300')
