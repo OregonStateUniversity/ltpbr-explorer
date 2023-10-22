@@ -1,9 +1,9 @@
 module UserHelpers
   def log_in_as(user)
-    visit login_path
+    visit new_user_session_path
     fill_in "Username", with: user.username
     fill_in "Password", with: user.password
-    find_by_id('commit').click
+    click_button('Sign In')
   end
 end
 
