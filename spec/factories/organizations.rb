@@ -3,6 +3,6 @@ FactoryBot.define do
     name { "Example Organization" }
     description { "Example organization description"}
     contact { "Example organization contact info" }
-    website { "example.com/organization" }
+    website { "https://example.org" }
   end
 end
