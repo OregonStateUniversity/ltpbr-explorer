@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :affiliation do
-    name { "MyString" }
-    description { "MyText" }
-    contact { "MyString" }
-    website { "MyString" }
+    project
+    organization
+    role { "Fake Affiliation Role" }
   end
 end

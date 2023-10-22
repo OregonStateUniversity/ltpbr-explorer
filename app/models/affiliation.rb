@@ -1,5 +1,8 @@
 class Affiliation < ApplicationRecord
-  belongs_to :project, optional: true
+
   belongs_to :organization
-  validates_uniqueness_of :organization_id, :scope => [:project_id]
+  belongs_to :project
+
+  validates :organization_id, uniqueness: { scope: :project_id }
+
 end
