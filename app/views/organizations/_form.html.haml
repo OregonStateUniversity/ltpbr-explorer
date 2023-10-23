@@ -1,0 +1,21 @@
+= form_for @organization do |f|
+  = f.label :name, 'Organization Name'
+  = f.text_field :name, autofocus: true, autocomplete: 'off', placeholder: 'e.g. NOAA', class: 'form-control'
+  = f.label :description, 'Organization Description'
+  = f.text_field :description, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Description Here', class: 'form-control'
+  = f.label :contact, 'Organization Contact'
+  = f.text_field :contact, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Contact Here', class: 'form-control'
+  = f.label :website, 'Organization Website'
+  = f.text_field :website, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Website Here', class: 'form-control'
+  = f.label :logo, 'Organization Image'
+  = f.file_field :logo, autofocus: true, autocomplete: 'off', placeholder: 'e.g. Image Icon', class: 'form-control'
+  - if @organization.errors.any?
+    #error_explanation
+      %h2
+        = "#{pluralize(@organization.errors.count, "error")} prohibited this organization from being saved:"
+      %ul
+        - @organization.errors.full_messages.each do |message|
+          %li
+            = message
+  .actions
+    = f.submit 'Save'
