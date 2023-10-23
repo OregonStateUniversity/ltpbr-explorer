@@ -6,6 +6,6 @@
     %h5.text-secondary= truncate(organization.description, length: 180)
   .col-sm-3.ml-auto
     %h5= link_to "#{organization.name} Website", organization.website
-    - if current_user && current_user.admin_role?
+    - if current_user&.admin_role?
       = link_to 'Edit', edit_organization_path(organization), class: 'btn btn-sm btn-outline-secondary'
       = link_to 'Delete', organization, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }

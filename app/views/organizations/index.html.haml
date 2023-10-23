@@ -3,7 +3,7 @@
   .row
     .col
       %h1 Organizations
-    - if current_user && current_user.admin_role?
+    - if current_user&.admin_role?
       .col.text-right= link_to 'New Organization', new_organization_path, class: 'btn btn-outline-primary'
   = render @organizations
   %hr/
