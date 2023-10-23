@@ -156,20 +156,6 @@ header.navbar {
 
 // Forms
 
-input,
-textarea,
-select {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-  padding-left: 5px;
-}
-
-input {
-  height: auto;
-}
-
 input[type="checkbox"] {
   margin: 4px 0 10px 0;
   box-shadow: none !important;
