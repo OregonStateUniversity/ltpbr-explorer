@@ -1,8 +1,11 @@
-
 <% provide(:title, @organization.name) %>
 <div class="container pt-5">
   <div class="col text-right">
-    <%= link_to 'Organizations List', organizations_path, class: "btn btn-success", id: "filter-button" %>
+    <%= link_to '« Organizations List', organizations_path, class: 'btn btn-link btn-link-primary' %>
+    <% if current_user && current_user.admin_role? %>
+      <%= link_to 'Edit', edit_organization_path(@organization), class: 'btn btn-outline-secondary ml-5' %>
+      <%= link_to 'Delete', @organization, class: 'btn btn-outline-danger ml-2', method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
   <div class="d-flex align-items-center wrap h-100">
     <%= image_tag(@organization.logo, class: 'affiliation-logo-list') if @organization.logo.attached? %>

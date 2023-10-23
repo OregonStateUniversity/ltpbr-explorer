@@ -66,6 +66,15 @@ label {
   }
 }
 
+.btn-link-primary {
+  color: $green;
+
+  &:hover {
+    color: lighten($green, 20%);
+  }
+}
+
+
 .badge {
   background-color: $green;
   font-size: 1.2rem;
