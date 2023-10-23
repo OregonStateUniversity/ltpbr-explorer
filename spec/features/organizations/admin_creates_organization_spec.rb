@@ -6,11 +6,11 @@ RSpec.describe 'Admin Creates an Organization', type: :feature do
     admin = create(:user, :admin)
     log_in_as(admin)
     visit new_organization_path
-    fill_in 'Organization Name', with: 'New Fake Organization'
-    fill_in 'Organization Description', with: 'New fake description.'
-    fill_in 'Organization Contact', with: 'New Fake Organization Contact'
-    fill_in 'Organization Website', with: 'https://example.com'
-    attach_file('Organization Image', File.absolute_path('spec/support/image.jpg'))
+    fill_in 'Name', with: 'New Fake Organization'
+    fill_in 'Description', with: 'New fake description.'
+    fill_in 'Contact', with: 'New Fake Organization Contact'
+    fill_in 'Website', with: 'https://example.com'
+    attach_file('Logo', File.absolute_path('spec/support/image.jpg'))
     click_on 'Save'
     expect(page).to have_text 'Organization was successfully created'
     expect(page).to have_text 'New Fake Organization'
@@ -23,8 +23,8 @@ RSpec.describe 'Admin Creates an Organization', type: :feature do
     admin = create(:user, :admin)
     log_in_as(admin)
     visit new_organization_path
-    fill_in 'Organization Name', with: ''
-    fill_in 'Organization Website', with: 'INVALID'
+    fill_in 'Name', with: ''
+    fill_in 'Website', with: 'INVALID'
     click_on 'Save'
     expect(page).to_not have_text 'Organization was successfully created'
     expect(page).to have_text 'errors prohibited this organization from being saved'
