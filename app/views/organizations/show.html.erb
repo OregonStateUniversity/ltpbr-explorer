@@ -14,13 +14,13 @@
   <br>
   <div class="row">
     <div class="col-md-6">
-      <label>Organization Website:</label>
-      <% url = @organization.website%>
-      <% html_url = url.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe if url%>
-      <% html_url = "No link provided" if !url%>
-      <em><p class="h5 mb-3"><%= html_url %></p></em>
+      <p>Organization Website:</p>
+      <% if @organization.website %>
+        <h5 class="mb-3"><%= link_to @organization.website, @organization.website %></h5>
+      <% else %>
+        <p>No link provided</p>
+      <% end %>
       <hr>
-
       <label>Organization Contact:</label>
       <p class="h5 mb-3"><%= @organization.contact%></p>
       <hr>
