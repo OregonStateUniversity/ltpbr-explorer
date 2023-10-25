@@ -17,6 +17,9 @@
   .form-group
     = f.label :website
     = f.text_field :website, placeholder: 'https://example.org', class: 'form-control'
+  - if @organization.logo.attached?
+    %p.mb-0 Current logo
+    = image_tag(@organization.logo, class: 'organization-logo mb-4')
   .form-group
     = f.label :logo
     = f.file_field :logo, class: 'form-control-file'

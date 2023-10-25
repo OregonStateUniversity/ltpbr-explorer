@@ -784,14 +784,16 @@ project-photo {
 
 // Affiliations List Styling
 
+.organization-logo {
+  width: 100px;
+}
+
 .affiliation-logo-list {
-    width: 100px !important;
     width: 100px !important;
     margin: 10px;
 }
 
 .affiliation-logo-list-sm {
-    width: 40px !important;
     width: 40px !important;
     margin: 4px;
     margin-left: -20px;
