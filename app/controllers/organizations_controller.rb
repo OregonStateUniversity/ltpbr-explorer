@@ -78,7 +78,7 @@ class OrganizationsController < ApplicationController
     end
 
     def require_admin
-      unless current_user.admin_role?
+      unless current_user&.admin_role?
         redirect_to root_path
         flash[:alert] = 'Restricted action, must be an Admin'
       end
