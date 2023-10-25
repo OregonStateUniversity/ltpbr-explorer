@@ -15,4 +15,12 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     current_user
   end
+
+  def require_admin
+    unless current_user&.admin_role?
+      redirect_to root_path
+      flash[:alert] = 'Restricted action, must be an Admin'
+    end
+  end
+
 end
