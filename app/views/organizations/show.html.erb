@@ -1,71 +1,3 @@
-<script>
-document.addEventListener("turbolinks:load", () => {
-  const ctx = document.getElementById('myChart').getContext('2d');
-
-  const nullDupes = data => data.map((x, i) => data[i - 1] === x ? null : x);
-  const data = <%= @chart_project_count.keys.to_json.html_safe%>
-
-  const myChart = new Chart(ctx, {
-      type: 'line',
-      spanGaps: true,
-      data: {
-          labels: data,
-          datasets: [{
-            label: 'Number of Projects',
-            data: nullDupes(<%= @chart_project_count.values.to_json.html_safe%>),
-            borderColor: [
-                'rgba(78, 255, 132, 1)',
-            ],
-            borderWidth: 2,
-            yAxisID: "y1",
-            spanGaps: true,
-            grace: '50%'
-          },
-          {
-            label: 'Number of Structures',
-            data: nullDupes(<%= @chart_structure_count.values.to_json.html_safe%>),
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-            ],
-            borderWidth: 2,
-            spanGaps: true,
-          },
-          {
-            label: 'Total Riverscape Length (km)',
-            data: nullDupes(<%= @chart_total_length.values.to_json.html_safe%>),
-            borderColor: [
-                'rgba(4, 99, 132, 1)',
-            ],
-            yAxisID: "y1",
-            borderWidth: 2,
-            spanGaps: true,
-          }]
-      },
-      options: {
-        scales: {
-          xAxis: {
-              ticks: {
-                  maxTicksLimit: 8
-              },
-          },
-          y: {
-            type: 'linear',
-            display: true,
-            beginAtZero: true,
-            grace: '50%'
-          },
-          y1: {
-            type: 'linear',
-            display: true,
-            position: 'right',
-            beginAtZero: true,
-            grace: '50%'
-          }
-        }
-      }
-  });
-});
-</script>
 <% provide(:title, @organization.name) %>
 <div class="container pt-5">
   <div class="col text-right">
@@ -127,3 +59,69 @@ document.addEventListener("turbolinks:load", () => {
     <h4>Organization Associated Projects</h5>
     <%= render @organization_projects %>
   </div>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+
+var nullDupes = data => data.map((x, i) => data[i - 1] === x ? null : x);
+var data = <%= @chart_project_count.keys.to_json.html_safe %>
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+    spanGaps: true,
+    data: {
+        labels: data,
+        datasets: [{
+          label: 'Number of Projects',
+          data: nullDupes(<%= @chart_project_count.values.to_json.html_safe %>),
+          borderColor: [
+              'rgba(78, 255, 132, 1)',
+          ],
+          borderWidth: 2,
+          yAxisID: "y1",
+          spanGaps: true,
+          grace: '50%'
+        },
+        {
+          label: 'Number of Structures',
+          data: nullDupes(<%= @chart_structure_count.values.to_json.html_safe %>),
+          borderColor: [
+              'rgba(255, 99, 132, 1)',
+          ],
+          borderWidth: 2,
+          spanGaps: true,
+        },
+        {
+          label: 'Total Riverscape Length (km)',
+          data: nullDupes(<%= @chart_total_length.values.to_json.html_safe %>),
+          borderColor: [
+              'rgba(4, 99, 132, 1)',
+          ],
+          yAxisID: "y1",
+          borderWidth: 2,
+          spanGaps: true,
+        }]
+    },
+    options: {
+      scales: {
+        xAxis: {
+            ticks: {
+                maxTicksLimit: 8
+            },
+        },
+        y: {
+          type: 'linear',
+          display: true,
+          beginAtZero: true,
+          grace: '50%'
+        },
+        y1: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          beginAtZero: true,
+          grace: '50%'
+        }
+      }
+    }
+});
+</script>
