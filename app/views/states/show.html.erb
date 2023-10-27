@@ -88,13 +88,12 @@
 </div>
 
 <script>
+var ctx = document.getElementById('myChart').getContext('2d');
 
-const ctx = document.getElementById('myChart').getContext('2d');
+var nullDupes = data => data.map((x, i) => data[i - 1] === x ? null : x);
+var data = <%= @chart_project_count.keys.to_json.html_safe%>
 
-const nullDupes = data => data.map((x, i) => data[i - 1] === x ? null : x);
-const data = <%= @chart_project_count.keys.to_json.html_safe%>
-
-const myChart = new Chart(ctx, {
+var myChart = new Chart(ctx, {
     type: 'line',
     spanGaps: true,
     data: {
@@ -153,5 +152,4 @@ const myChart = new Chart(ctx, {
       }
     }
 });
-
 </script>
