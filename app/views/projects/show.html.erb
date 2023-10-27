@@ -69,7 +69,13 @@
     </div>
     <div class="col-md-5">
       <label>State:</label>
-      <p class="h5 mb-3"><%= @project.state&.name || "N/A" %></p>
+      <p class="h5 mb-3">
+        <% if @project.state %>
+          <%= link_to @project.state.name, @project.state %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
       <hr>
 
       <label>Stream Name:</label>
