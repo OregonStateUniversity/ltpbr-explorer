@@ -1,0 +1,16 @@
+- provide(:title, "#{current_user.name.possessive} Projects")
+.container.pt-3
+  - if current_user.projects.empty?
+    .jumbotron
+      %h1.display-3
+        Hi, #{current_user.name}.
+      %p.lead Welcome to LT-PBR Explorer.
+      %hr.my-4/
+      %p To get started, create a new project.
+      %p.lead
+        = link_to 'New Project', new_project_path, class: 'btn btn-primary btn-lg'
+  - else
+    %h2
+      = current_user.name.possessive
+      Projects
+    = render current_user.projects
