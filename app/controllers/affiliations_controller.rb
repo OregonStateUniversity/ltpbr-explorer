@@ -1,7 +1,7 @@
 class AffiliationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project
-  before_action :require_owner_or_admin
+  before_action :require_author_or_admin
   before_action :set_affiliation, only: %w[ edit update destroy ]
 
   def index

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :map, :show]
   before_action :set_project, only: [:edit, :update, :destroy]
-  before_action :require_owner_or_admin, only: [:edit, :update, :destroy]
+  before_action :require_author_or_admin, only: [:edit, :update, :destroy]
 
   
   def index
