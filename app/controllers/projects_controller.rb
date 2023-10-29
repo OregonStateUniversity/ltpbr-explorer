@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :map, :show]
-  before_action :require_owner, only: [:edit, :update, :destroy]
+  before_action :set_project, only: [:edit, :update, :destroy]
+  before_action :require_owner_or_admin, only: [:edit, :update, :destroy]
+
   
   def index
     @projects = Project.distinct.search(params[:search], params[:search_organization])
@@ -100,10 +101,4 @@ class ProjectsController < ApplicationController
       :structure_description, :name, :watershed, :url, :cover_photo_id, {delete_photo_ids: []}, photos: [])
   end
 
-  def require_owner
-    unless (@project.author_id == current_user.id) | (current_user.admin_role?)
-      redirect_to root_path
-      flash[:alert] = 'Restricted action, must own project.'
-    end
-  end
 end

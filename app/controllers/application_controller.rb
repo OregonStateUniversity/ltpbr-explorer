@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_owner_or_admin
+    unless @project.authored_by?(current_user) || current_user.admin_role?
+      redirect_to root_path
+      flash[:alert] = 'Only the project author can manage the project and its affiliations.'
+    end
+  end
+
 end
