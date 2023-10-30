@@ -30,7 +30,6 @@ RSpec.describe Project, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:stream_name) }
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_presence_of(:url) }
     it { is_expected.to validate_presence_of(:implementation_date) }
     it { is_expected.to validate_presence_of(:primary_contact) }
     it { is_expected.to validate_presence_of(:longitude) }

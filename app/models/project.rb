@@ -13,7 +13,7 @@ class Project < ApplicationRecord
 
   validates :name, :stream_name, :implementation_date, :primary_contact,
             :longitude, :latitude, :narrative, :structure_description, :watershed,
-            :url, presence: true
+            presence: true
   validates_numericality_of :length, only_integer: true, greater_than: 0
   validates_numericality_of :latitude, greater_than: -90, less_than: 90, message: 'must be in decimal notation'
   validates_numericality_of :longitude, greater_than: -180, less_than: 180, message: 'must be in decimal notation'

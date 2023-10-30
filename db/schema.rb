@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_30_140911) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_30_141307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -84,7 +84,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_30_140911) do
     t.text "structure_description", null: false
     t.string "name", null: false
     t.string "watershed", null: false
-    t.text "url"
+    t.string "url"
     t.bigint "state_id"
     t.bigint "cover_photo_id"
     t.integer "affiliations_count", default: 0, null: false

@@ -86,9 +86,9 @@
       <p class="h5 mb-3"><%= @project.watershed %></p>
       <hr>
 
-      <% if @project.url && @project.url =~ URI::regexp%>
+      <% if @project.url && @project.url =~ URI::regexp %>
         <label>Project URL:</label>
-        <p class="h5 mb-3"><%= link_to "Link", @project.url%>&#8599;</p>
+        <p class="h5 mb-3"><%= link_to "Link", @project.url %> &#8599;</p>
         <hr>
       <% end %>
 
