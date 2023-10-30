@@ -3,6 +3,30 @@ require 'rails_helper'
 RSpec.describe Project, type: :model do
   let(:project) { build(:project) }
 
+  describe 'attributes' do
+    it { is_expected.to respond_to(:affiliation_legacy) }
+    it { is_expected.to respond_to(:stream_name) }
+    it { is_expected.to respond_to(:implementation_date) }
+    it { is_expected.to respond_to(:narrative) }
+    it { is_expected.to respond_to(:length) }
+    it { is_expected.to respond_to(:primary_contact) }
+    it { is_expected.to respond_to(:lonlat) }
+    it { is_expected.to respond_to(:number_of_structures) }
+    it { is_expected.to respond_to(:structure_description) }
+    it { is_expected.to respond_to(:name) }
+    it { is_expected.to respond_to(:watershed) }
+    it { is_expected.to respond_to(:url) }
+    skip { is_expected.to respond_to(:cover_photo) }
+    it { is_expected.to respond_to(:affiliations_count) }
+  end
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:author).class_name('User') }
+    it { is_expected.to belong_to(:state).optional }
+    it { is_expected.to have_many(:affiliations) }
+    it { is_expected.to have_many(:organizations).through(:affiliations) }
+  end
+
   describe 'validations' do
     it { is_expected.to validate_presence_of(:stream_name) }
     it { is_expected.to validate_presence_of(:name) }
@@ -19,11 +43,6 @@ RSpec.describe Project, type: :model do
     it { is_expected.to validate_numericality_of(:longitude).is_greater_than(-180).is_less_than(180).with_message('must be in decimal notation') }
     it { is_expected.to validate_numericality_of(:number_of_structures).only_integer.is_greater_than(0) }
     it { is_expected.to respond_to(:affiliations_count)}
-  end
-
-  describe 'associations' do
-    it { is_expected.to belong_to(:author).class_name('User') }
-    it { is_expected.to belong_to(:state).optional }
   end
 
   it 'has a title consisting of its stream name' do

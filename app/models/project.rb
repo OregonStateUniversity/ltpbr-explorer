@@ -4,31 +4,27 @@ class Project < ApplicationRecord
 
   belongs_to :author, class_name: 'User'
   belongs_to :state, optional: true, counter_cache: true
-
   has_many :affiliations, dependent: :delete_all
   has_many :organizations, through: :affiliations
 
-  accepts_nested_attributes_for :affiliations
-
-  before_save :assign_lonlat, :assign_state
-
   has_many_attached :photos
+
+  accepts_nested_attributes_for :affiliations
 
   validates :name, :stream_name, :implementation_date, :primary_contact,
             :longitude, :latitude, :narrative, :structure_description, :watershed,
             :url, presence: true
-
   validates_numericality_of :length, only_integer: true, greater_than: 0
   validates_numericality_of :latitude, greater_than: -90, less_than: 90, message: 'must be in decimal notation'
   validates_numericality_of :longitude, greater_than: -180, less_than: 180, message: 'must be in decimal notation'
   validates_numericality_of :number_of_structures, only_integer: true, greater_than: 0
-
   validates_format_of :implementation_date, :with => /\d{4}\-\d{2}\-\d{2}/, :message => 'must be in the following format: yyyy-mm-dd'
-
   validates :photos, 
     content_type: [:png, :jpg, :jpeg, :gif, :bmp, :avif, :webp], 
     size: { less_than: 50.megabytes , message: 'must be below 50 MB in size each' }, 
     limit: { min: 0, max: 20, message: 'must have fewer than 20 photos'}
+
+  before_save :assign_lonlat, :assign_state
 
   def title
     "Project on #{stream_name}"
