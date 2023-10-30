@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_22_172342) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_30_140911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_22_172342) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}, null: false
-    t.integer "author_id", null: false
+    t.bigint "author_id", null: false
     t.integer "number_of_structures", null: false
     t.text "structure_description", null: false
     t.string "name", null: false
@@ -88,6 +88,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_22_172342) do
     t.bigint "state_id"
     t.bigint "cover_photo_id"
     t.integer "affiliations_count", default: 0, null: false
+    t.index ["author_id"], name: "index_projects_on_author_id"
     t.index ["state_id"], name: "index_projects_on_state_id"
   end
 
