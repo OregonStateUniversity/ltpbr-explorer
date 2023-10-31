@@ -21,7 +21,7 @@
     <div class="col-md-11">
       <div class="affiliation-tagline-list">
         <h5 class="text-secondary">
-          <%= render :partial => '/projects/project_organ', :collection => project.project_organizations, :as => :organization, locals: {project_id: project.id}%>
+          <%= render :partial => '/projects/project_organ', :collection => project.organizations, :as => :organization, locals: { project_id: project.id } %>
         </h5>
       </div>
       </div>
