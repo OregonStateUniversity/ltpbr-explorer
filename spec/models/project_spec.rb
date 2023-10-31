@@ -28,8 +28,8 @@ RSpec.describe Project, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:stream_name) }
     it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:stream_name) }
     it { is_expected.to validate_presence_of(:implementation_date) }
     it { is_expected.to validate_presence_of(:primary_contact) }
     it { is_expected.to validate_presence_of(:longitude) }
@@ -41,7 +41,8 @@ RSpec.describe Project, type: :model do
     it { is_expected.to validate_numericality_of(:latitude).is_greater_than(-90).is_less_than(90).with_message('must be in decimal notation') }
     it { is_expected.to validate_numericality_of(:longitude).is_greater_than(-180).is_less_than(180).with_message('must be in decimal notation') }
     it { is_expected.to validate_numericality_of(:number_of_structures).only_integer.is_greater_than(0) }
-    it { is_expected.to respond_to(:affiliations_count)}
+    it { is_expected.to validate_content_type_of(:photos) }
+    it { is_expected.to validate_size_of(:photos).less_than(50.megabytes) }
   end
 
   it 'has a title consisting of its stream name' do
