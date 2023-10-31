@@ -36,10 +36,6 @@ class Project < ApplicationRecord
     return containing_state.present? ? containing_state.first.id : nil
   end
 
-  def organization_count
-    organizations.length
-  end
-
   def cover_photo
     @cover_photo = "/missing_image_camera.png"
 
