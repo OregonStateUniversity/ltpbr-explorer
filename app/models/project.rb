@@ -58,10 +58,6 @@ class Project < ApplicationRecord
     self.photos[0].present?
   end
 
-  def self.structure_sum
-    sum(:number_of_structures)
-  end
-
   def self.project_total_length_km
     total_km = sum(:length)/1000.to_f
     return total_km.round(1)
