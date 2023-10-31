@@ -58,10 +58,6 @@ class Project < ApplicationRecord
     self.photos[0].present?
   end
 
-  def self.project_count
-    all.count
-  end
-
   def self.structure_sum
     sum(:number_of_structures)
   end
