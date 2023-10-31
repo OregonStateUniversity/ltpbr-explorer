@@ -25,10 +25,6 @@ class Project < ApplicationRecord
 
   before_save :assign_lonlat, :assign_state
 
-  def title
-    "Project on #{stream_name}"
-  end
-
   def authored_by?(user)
     author == user
   end
@@ -98,6 +94,10 @@ class Project < ApplicationRecord
     else
         all
     end
+  end
+
+  def to_s
+    name
   end
 
   private

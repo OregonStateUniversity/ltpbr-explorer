@@ -46,10 +46,8 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many_attached(:photos) }
   end
 
-  it 'has a title consisting of its stream name' do
-    stream_name = 'Example Stream Name'
-    project.stream_name = stream_name
-    expect(project.title).to eq "Project on #{stream_name}"
+  it 'has a string representation which is its name' do
+    expect(project.to_s).to eq project.name
   end
 
   describe 'generating lonlat before saving' do
