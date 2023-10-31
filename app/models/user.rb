@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validates :name, presence: true
   validates :affiliation, presence: true
+  validates :role, presence: true
 
   enum role: { public: 'public', admin: 'admin' }, _suffix: true
 
