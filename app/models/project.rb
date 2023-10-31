@@ -63,6 +63,10 @@ class Project < ApplicationRecord
     return total_km.round(1)
   end
 
+  def self.project_total_length_mi
+    (self.project_total_length_km * 0.6214).floor(1)
+  end
+
   def self.search(search, search_organization)
     projects = Project.all
     
