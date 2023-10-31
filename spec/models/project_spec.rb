@@ -16,7 +16,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to respond_to(:name) }
     it { is_expected.to respond_to(:watershed) }
     it { is_expected.to respond_to(:url) }
-    skip { is_expected.to respond_to(:cover_photo) }
+    skip("replace with new attachment association") { is_expected.to respond_to(:cover_photo) }
     it { is_expected.to respond_to(:affiliations_count) }
   end
 
@@ -25,6 +25,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to belong_to(:state).optional }
     it { is_expected.to have_many(:affiliations) }
     it { is_expected.to have_many(:organizations).through(:affiliations) }
+    it { is_expected.to have_many_attached(:photos) }
   end
 
   describe 'validations' do
