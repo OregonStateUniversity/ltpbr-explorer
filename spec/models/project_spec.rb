@@ -20,14 +20,6 @@ RSpec.describe Project, type: :model do
     it { is_expected.to respond_to(:affiliations_count) }
   end
 
-  describe 'associations' do
-    it { is_expected.to belong_to(:author).class_name('User') }
-    it { is_expected.to belong_to(:state).optional }
-    it { is_expected.to have_many(:affiliations) }
-    it { is_expected.to have_many(:organizations).through(:affiliations) }
-    it { is_expected.to have_many_attached(:photos) }
-  end
-
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:stream_name) }
@@ -44,6 +36,14 @@ RSpec.describe Project, type: :model do
     it { is_expected.to validate_numericality_of(:number_of_structures).only_integer.is_greater_than(0) }
     it { is_expected.to validate_content_type_of(:photos) }
     it { is_expected.to validate_size_of(:photos).less_than(50.megabytes) }
+  end
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:author).class_name('User') }
+    it { is_expected.to belong_to(:state).optional }
+    it { is_expected.to have_many(:affiliations) }
+    it { is_expected.to have_many(:organizations).through(:affiliations) }
+    it { is_expected.to have_many_attached(:photos) }
   end
 
   it 'has a title consisting of its stream name' do
