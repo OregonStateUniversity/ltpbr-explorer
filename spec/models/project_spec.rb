@@ -85,6 +85,17 @@ RSpec.describe Project, type: :model do
         expect(project.lonlat.y).to be(44.042969)
         expect(project.lonlat.x).to be(-121.333482)
       end
+
+      it 'returns false if latitude or longitude are missing' do
+        project.latitude = 44.0429694
+        project.longitude = nil
+        expect(project.run_callbacks(:save)).to be_falsy
+        expect(project.lonlat).to be(nil)
+        project.latitude = nil
+        project.longitude = -121.3334816
+        expect(project.run_callbacks(:save)).to be_falsy
+        expect(project.lonlat).to be(nil)
+      end
     end
   end
 
