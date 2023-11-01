@@ -96,8 +96,9 @@ class Project < ApplicationRecord
 
   def assign_lonlat
     if @longitude.present? && @latitude.present?
-      mfactory = RGeo::ActiveRecord::SpatialFactoryStore.instance.factory(:geo_type => 'point')
-      self.lonlat = mfactory.point(round_string(longitude, 6), round_string(latitude, 6))
+      self.lonlat = RGeo::ActiveRecord::SpatialFactoryStore.instance
+        .factory(:geo_type => 'point')
+        .point(round_string(longitude, 6), round_string(latitude, 6))
     else
       throw(:abort)
     end
