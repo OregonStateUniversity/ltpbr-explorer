@@ -46,8 +46,10 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many_attached(:photos) }
   end
 
-  it 'has a string representation which is its name' do
-    expect(project.to_s).to eq project.name
+  describe 'to_s' do
+    it 'is its name' do
+      expect(project.to_s).to eq project.name
+    end
   end
 
   describe 'lonlat' do
