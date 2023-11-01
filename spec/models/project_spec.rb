@@ -52,6 +52,22 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe 'authored_by?' do
+    context 'when the project author is the user' do
+      it 'is true' do
+        user = build(:user)
+        project.author = user
+        expect(project.authored_by?(user)).to be_truthy
+      end
+    end
+    context 'when the project author is not the user' do
+      it 'is false' do
+        user = build(:user)
+        expect(Project.new.authored_by?(user)).to be_falsy
+      end
+    end
+  end
+
   describe 'lonlat' do
     context 'assigning lonlat before saving' do
       it 'matches the latitude and longitude' do
