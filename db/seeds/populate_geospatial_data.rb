@@ -35,5 +35,5 @@ end
 
 puts "Assigning states to projects..."
 Project.find_each(:batch_size => 1000) do |project|
-  project.update_column(:state_id, project.calculate_state)
+  project.update_column(:state_id, project.calculate_state&.id)
 end

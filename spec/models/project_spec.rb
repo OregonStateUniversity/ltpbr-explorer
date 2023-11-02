@@ -68,6 +68,31 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe 'calculate_state' do
+    context 'when the lonlat is nil' do
+      it 'returns nil' do
+        project.lonlat = nil
+        expect(project.calculate_state).to be_nil
+      end
+    end
+
+    context 'when the lonlat is not in a US state' do
+      it 'returns nil' do
+        project.latitude = 45.424721
+        project.longitude = -75.695
+        expect(project.calculate_state).to be_nil
+      end
+    end
+
+    context 'when the lonlat is in a US state' do
+      skip("see #306. returns an id") do
+        create(:state)
+        project.assign_lonlat
+        expect(project.calculate_state).to_not be_nil
+      end
+    end
+  end
+
   describe 'lonlat' do
     context 'assigning lonlat before saving' do
       it 'matches the latitude and longitude' do

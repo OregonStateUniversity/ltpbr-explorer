@@ -30,10 +30,12 @@ class Project < ApplicationRecord
   end
 
   def calculate_state
-    point = "SRID=4326;#{self.lonlat}"
-    states = State.arel_table
-    containing_state = State.where(states[:geom].st_contains(Arel.spatial(point)))
-    return containing_state.present? ? containing_state.first.id : nil
+    return nil if lonlat.nil?
+    State.where(
+      State.arel_table[:geom].st_contains(
+        Arel.spatial("SRID=4326;#{self.lonlat}")
+      )
+    ).first
   end
 
   def cover_photo
@@ -105,7 +107,7 @@ class Project < ApplicationRecord
   end
 
   def assign_state
-    self.state_id = calculate_state
+    self.state = calculate_state
   end
 
 end
