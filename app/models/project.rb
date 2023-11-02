@@ -56,10 +56,6 @@ class Project < ApplicationRecord
     @cover_photo
   end
 
-  def photo_presence
-    self.photos[0].present?
-  end
-
   def self.project_total_length_km
     total_km = sum(:length)/1000.to_f
     return total_km.round(1)

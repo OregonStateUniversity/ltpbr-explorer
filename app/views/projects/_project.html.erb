@@ -7,7 +7,7 @@
     <h6 class="mt-1"><%= link_to project.stream_name, project, class: "text-dark" %>, <%= link_to project.watershed, project, class: "text-secondary" %></h6>
   </div>
   <div class="col-md-2">
-    <% if project.photo_presence %>
+    <% if project.photos.any? %>
       <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 200 %>
     <% else %>
       <%= image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', id: 'project-list-missing-img', width: 70 %>
