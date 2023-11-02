@@ -7,7 +7,7 @@ FactoryBot.define do
     implementation_date { Date.today }
     narrative { "Example Narrative" }
     structure_description { "Example project description with design elements"}
-    length { 1 }
+    length { 100 }
     primary_contact { "Example Contact" }
     latitude { 44.042969 }
     longitude { -121.333481 }

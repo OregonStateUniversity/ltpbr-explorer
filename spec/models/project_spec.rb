@@ -46,6 +46,36 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many_attached(:photos) }
   end
 
+  describe 'project_total_length_km' do
+    it 'is 0 when there are no projects in the database' do
+      expect(Project.count).to eq(0)
+      expect(Project.project_total_length_km).to eq(0)
+    end
+    it 'is 0 when the lengths are 49m or less' do
+      create(:project, length: 49)
+      expect(Project.project_total_length_km).to eq(0)
+    end
+    it 'is the total sum of all project lengths in km' do
+      2.times { create(:project, length: 100) }
+      expect(Project.project_total_length_km).to eq(0.2)
+    end
+  end
+
+  describe 'project_total_length_mi' do
+    it 'is 0 when there are no projects in the database' do
+      expect(Project.count).to eq(0)
+      expect(Project.project_total_length_mi).to eq(0)
+    end
+    it 'is 0 when the lengths are less than 149m' do
+      create(:project, length: 149)
+      expect(Project.project_total_length_mi).to eq(0)
+    end
+    it 'is the total sum of all project lengths in miles' do
+      2.times { create(:project, length: 100) }
+      expect(Project.project_total_length_mi).to eq(0.1)
+    end
+  end
+
   describe 'to_s' do
     it 'is its name' do
       expect(project.to_s).to eq project.name
