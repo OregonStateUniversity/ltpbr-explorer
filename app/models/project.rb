@@ -29,6 +29,10 @@ class Project < ApplicationRecord
     author == user
   end
 
+  def editable_by?(user)
+    user&.admin_role? || authored_by?(user)
+  end
+
   def calculate_state
     return nil if lonlat.nil?
     State.where(

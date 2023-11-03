@@ -98,6 +98,29 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe 'editable_by?' do
+    context 'when the project author is the user' do
+      it 'is true' do
+        user = build(:user)
+        project.author = user
+        expect(project.editable_by?(user)).to be_truthy
+      end
+    end
+    context 'when the user is an admin but not the project author' do
+      it 'is true' do
+        admin = build(:user, :admin)
+        expect(project.author).to_not eq(admin)
+        expect(project.editable_by?(admin)).to be_truthy
+      end
+    end
+    context 'when the project author is not the user' do
+      it 'is false' do
+        user = build(:user)
+        expect(Project.new.editable_by?(user)).to be_falsy
+      end
+    end
+  end
+
   describe 'calculate_state' do
     context 'when the lonlat is nil' do
       it 'returns nil' do

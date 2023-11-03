@@ -1,21 +1,30 @@
 <% provide(:title, @project.stream_name) %>
 <div class="container pt-5">
-  <h1 class="display-4"><%= @project.name %></h1>
-    <hr>
-  <%= render :partial => 'project_organ', :collection => @project.organizations, :as => :organization %>
-    <% if user_signed_in? && (@project.author_id == current_user.id || current_user.admin_role?) %>
-    <br>
-    <div class="btn-group">
-      <%= link_to 'Manage Organizations and Roles', project_affiliations_path(@project), class: 'btn btn-primary', title: "Edit #{@project}" %>
+  <div class="row">
+    <div class="col">
+      <h1 class="display-4"><%= @project.name %></h1>
     </div>
-    <div class="btn btn-question" id="manage-affiliations-help">
-      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+    <div class="col text-right">
+      <% if @project.editable_by?(current_user) %>
+        <%= link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-outline-danger mr-5', title: "Delete #{@project}" %>
+        <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-outline-primary', title: "Edit #{@project}" %>
+      <% end %>
     </div>
-    <% end %>
-
-  <% if @project.affiliations_count > 0 %>
-    <hr />
-  <% end %>
+  </div><!-- /row -->
+  <hr>
+  <div class="row border-bottom mb-5 pb-2">
+    <div class="col">
+      <%= render partial: 'project_organ', collection: @project.organizations, as: :organization %>
+    </div>
+    <div class="col text-right">
+      <% if @project.editable_by?(current_user) %>
+        <div class="btn btn-question" id="manage-affiliations-help">
+          <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+        </div>
+        <%= link_to 'Manage Affiliations', project_affiliations_path(@project), class: 'btn btn-outline-primary' %>
+      <% end %>
+    </div>
+  </div><!-- /row -->
 
   <div class="row">
     <div class="col-md-7">
@@ -123,14 +132,6 @@
 
   <h5>Project Location</h5>
   <div data-latitude="<%= @project.lonlat.y %>" data-longitude="<%= @project.lonlat.x %>" id="project-map" class="rounded border border-secondary"></div>
-
-  <% if user_signed_in? && (@project.author_id == current_user.id || current_user.admin_role?) %>
-  <hr />
-  <div class="btn-group">
-    <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary', title: "Edit #{@project}" %>
-    <%= link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-secondary', title: "Delete #{@project}" %>
-  </div>
-  <% end %>
 
 <div aria-hidden='true' class='modal fade' id='manage-affiliations-modal' role='dialog' tabindex='-1'>
   <div class='modal-dialog' role='document'>
