@@ -695,17 +695,6 @@ project-photo {
     }
 }
 
-
-// Project List Page and Pagination
-
-#filter-button {
-    background-color: $green;
-}
-
-#filter-button:hover {
-    background-color: $success-green;
-}
-
 .pagination a, .pagination span.current, .pagination span.gap {
     float: left;
     padding: 0 14px;
@@ -832,12 +821,6 @@ project-photo {
 
 .select2-selection__clear {
     height: 36px !important;
-}
-
-.search_text_field {
-    height: 38px;
-    padding: 10px;
-    border-radius: 5px; 
 }
 
 // Role Badge and Organization Link Styling
