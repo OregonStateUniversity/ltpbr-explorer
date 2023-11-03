@@ -21,8 +21,8 @@
           .dropdown-item= link_to 'Projects Map', map_projects_path
           .dropdown-item= link_to 'Projects List', projects_path
         %span.sr-only (current)
+      %li= link_to 'Add a Project', new_project_path, class: 'btn btn-sm btn-primary mt-1'
       - if user_signed_in?
-        %li= link_to 'New Project', new_project_path, class: 'btn btn-outline-primary my-2 my-sm-0 new-project-btn'
         %li.nav-item.dropdown
           %a#dropdown.nav-link.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#"}= current_user.name
           #dropdown.dropdown-menu.dropdown-menu-right{"aria-labelledby": "dropdown"}
