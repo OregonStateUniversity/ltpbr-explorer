@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   
   def index
-    @projects = Project.distinct.search(params[:query], params[:organization_id])
+    @projects = Project.search(params[:query], params[:organization_id]).distinct.order(:name)
     @organizations = Organization.all.order(:name)
   end
 
