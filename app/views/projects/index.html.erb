@@ -24,10 +24,10 @@
       <div class="container-fluid p-0">
         <div class="row">
           <div class="col-md-4">
-            <%= text_field_tag :search, params[:search], placeholder: "Enter search terms...", class: "search_text_field"%>
+            <%= text_field_tag :query, params[:query], placeholder: "Enter search terms...", class: "search_text_field"%>
           </div>
           <div class="col-md-4">
-            <%= select_tag :search_organization, options_from_collection_for_select(Organization.all, :id, :name, params[:search_organization]), class: 'select2', multiple: false, include_blank: true%>
+            <%= select_tag :organization_id, options_from_collection_for_select(Organization.all, :id, :name, params[:organization_id]), class: 'select2', multiple: false, include_blank: true%>
           </div>
           <div class="col-md-2">
             <%= submit_tag 'Filter', class: "btn btn-success", id: "filter-button"%>

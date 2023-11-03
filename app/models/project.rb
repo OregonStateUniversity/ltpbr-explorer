@@ -65,20 +65,18 @@ class Project < ApplicationRecord
     (self.project_total_length_km * 0.6214).floor(1)
   end
 
-  def self.search(search, search_organization)
+  def self.search(query, organization_id)
     projects = Project.all
-    
-    if search && search_organization
-        projects = projects.where(["projects.name ILIKE :search", search: "%#{search}%"]).or(
-        projects = projects.where(["projects.watershed ILIKE :search", search: "%#{search}%"])).or(
-        projects = projects.where(["stream_name ILIKE :search", search: "%#{search}%"]))
-
-        if search_organization.length > 0
-            projects = projects.joins(:organizations).where(organizations: {id: search_organization})
-        end
-        return projects
+    if query && organization_id
+      projects = projects.where(["projects.name ILIKE :query", query: "%#{query}%"]).or(
+      projects = projects.where(["projects.watershed ILIKE :query", query: "%#{query}%"])).or(
+      projects = projects.where(["stream_name ILIKE :query", query: "%#{query}%"]))
+      if organization_id.length > 0
+        projects = projects.joins(:organizations).where(organizations: {id: organization_id})
+      end
+      return projects
     else
-        all
+      all
     end
   end
 

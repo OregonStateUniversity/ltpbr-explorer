@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   
   def index
-    @projects = Project.distinct.search(params[:search], params[:search_organization])
+    @projects = Project.distinct.search(params[:query], params[:organization_id])
     @filtered_count = @projects.count
     @result_plurality = @projects.count == 1 ? 'result' : 'results'
     @proj_plurality = @projects.count == 1 ? 'project' : 'projects'
