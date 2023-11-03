@@ -25,6 +25,28 @@ class Project < ApplicationRecord
 
   before_save :assign_lonlat, :assign_state
 
+  def self.search(query, organization_id)
+    projects = Project.all
+    if query.present?
+      projects = projects.where(["projects.name ILIKE :query", query: "%#{query}%"]).or(
+        projects.where(["projects.watershed ILIKE :query", query: "%#{query}%"])).or(
+          projects.where(["stream_name ILIKE :query", query: "%#{query}%"]))
+    end
+    if organization_id.present?
+      projects = projects.joins(:organizations).where(organizations: {id: organization_id})
+    end
+    projects
+  end
+
+  def self.project_total_length_km
+    total_km = sum(:length)/1000.to_f
+    return total_km.round(1)
+  end
+
+  def self.project_total_length_mi
+    (self.project_total_length_km * 0.6214).floor(1)
+  end
+
   def authored_by?(user)
     author == user
   end
@@ -58,30 +80,6 @@ class Project < ApplicationRecord
     end
 
     @cover_photo
-  end
-
-  def self.project_total_length_km
-    total_km = sum(:length)/1000.to_f
-    return total_km.round(1)
-  end
-
-  def self.project_total_length_mi
-    (self.project_total_length_km * 0.6214).floor(1)
-  end
-
-  def self.search(query, organization_id)
-    projects = Project.all
-    if query && organization_id
-      projects = projects.where(["projects.name ILIKE :query", query: "%#{query}%"]).or(
-      projects = projects.where(["projects.watershed ILIKE :query", query: "%#{query}%"])).or(
-      projects = projects.where(["stream_name ILIKE :query", query: "%#{query}%"]))
-      if organization_id.length > 0
-        projects = projects.joins(:organizations).where(organizations: {id: organization_id})
-      end
-      return projects
-    else
-      all
-    end
   end
 
   def to_s

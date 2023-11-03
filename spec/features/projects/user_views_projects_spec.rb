@@ -72,7 +72,156 @@ RSpec.describe 'User Views Projects', type: :feature do
         expect(page).to have_link 'Manage Affiliations'
       end
     end
+  end
 
+  describe 'filtering the project list' do
+    context 'without triggering the filter' do
+      it 'returns all projects' do
+        first_project = create(:project, name: 'First')
+        second_project = create(:project, name: 'Second')
+        visit projects_path
+        expect(page).to have_text('2 Projects')
+        within '.projects' do
+          expect(page).to have_text(first_project.name)
+          expect(page).to have_text(second_project.name)
+        end
+      end
+    end
+    context 'triggering the filter with blank values' do
+      it 'returns all projects' do
+        first_project = create(:project, name: 'First')
+        second_project = create(:project, name: 'Second')
+        visit projects_path
+        click_on 'Filter'
+        expect(page).to have_text('2 Projects')
+        within '.projects' do
+          expect(page).to have_text(first_project.name)
+          expect(page).to have_text(second_project.name)
+        end
+      end
+    end
+    context 'query nor organization match' do
+      it 'displays an empty page' do
+        project = create(:project, name: 'Yes', watershed: 'Yes', stream_name: 'Yes')
+          project.affiliations << create(:affiliation, organization: create(:organization))
+        organization = create(:organization, name: 'Yes')
+        visit projects_path
+        fill_in :query, with: 'Yes'
+        select organization.name, from: :organization_id
+        click_on 'Filter'
+        expect(page).to have_text('0 Projects')
+        within '.projects' do
+          expect(page).to_not have_text(project.name)
+        end
+      end
+    end
+    context 'with a query but no organization' do
+      it 'includes a project whose name matches the query' do
+        found_project = create(:project, name: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization))
+        unfound_project = create(:project, name: 'No')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization))
+        visit projects_path
+        fill_in :query, with: found_project.name
+        click_on 'Filter'
+        expect(page).to have_text('1 Project')
+        within '.projects' do
+          expect(page).to have_text(found_project.name)
+          expect(page).to_not have_text(unfound_project.name)
+        end
+      end
+      it 'includes a project whose watershed matches the query' do
+        found_project = create(:project, watershed: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization))
+        unfound_project = create(:project, watershed: 'No')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization))
+        visit projects_path
+        fill_in :query, with: found_project.watershed
+        click_on 'Filter'
+        expect(page).to have_text('1 Project')
+        within '.projects' do
+          expect(page).to have_text(found_project.watershed)
+          expect(page).to_not have_text(unfound_project.watershed)
+        end
+      end
+      it 'includes a project whose stream_name matches the query' do
+        found_project = create(:project, stream_name: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization))
+        unfound_project = create(:project, stream_name: 'No')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization))
+        visit projects_path
+        fill_in :query, with: found_project.stream_name
+        click_on 'Filter'
+        expect(page).to have_text('1 Project')
+        within '.projects' do
+          expect(page).to have_text(found_project.stream_name)
+          expect(page).to_not have_text(unfound_project.stream_name)
+        end
+      end
+    end
+    context 'with an organization but no query' do
+      it 'includes a project matching the organization' do
+        found_project = create(:project, name: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization, name: 'Yes'))
+        unfound_project = create(:project, name: 'No')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization, name: 'No'))
+        visit projects_path
+        select found_project.organizations.first.name, from: :organization_id
+        click_on 'Filter'
+        expect(page).to have_text('1 Project')
+        within '.projects' do
+          expect(page).to have_text(found_project.name)
+          expect(page).to_not have_text(unfound_project.name)
+        end
+      end
+    end
+    context 'with both query and organization are present' do
+      it 'includes a project whose name and organization matches the query' do
+        found_project = create(:project, name: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization, name: 'Yes'))
+        unfound_project = create(:project, name: 'Yes')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization, name: 'No'))
+        visit projects_path
+        fill_in :query, with: 'Yes'
+        select found_project.organizations.first.name, from: :organization_id
+        click_on 'Filter'
+        expect(page).to have_text('1 Project')
+        within '.projects' do
+          expect(page).to have_text(found_project.name)
+          expect(page).to_not have_text('No') # Project with same name but different organization
+        end
+      end
+      it 'includes a project whose watershed and organization id matches the query' do
+        found_project = create(:project, watershed: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization, name: 'Yes'))
+        unfound_project = create(:project, watershed: 'Yes')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization, name: 'No'))
+        visit projects_path
+        fill_in :query, with: 'Yes'
+        select found_project.organizations.first.name, from: :organization_id
+        click_on 'Filter'
+        expect(page).to have_text('1 Project')
+        within '.projects' do
+          expect(page).to have_text(found_project.name)
+          expect(page).to_not have_text('No') # Project with same watershed but different organization
+        end
+      end
+      it 'includes a project whose stream_name and organization id matches the query' do
+        found_project = create(:project, stream_name: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization, name: 'Yes'))
+        unfound_project = create(:project, stream_name: 'Yes')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization, name: 'No'))
+        visit projects_path
+        fill_in :query, with: 'Yes'
+        select found_project.organizations.first.name, from: :organization_id
+        click_on 'Filter'
+        expect(page).to have_text('1 Project')
+        within '.projects' do
+          expect(page).to have_text(found_project.name)
+          expect(page).to_not have_text('No') # Project with same stream_name but different organization
+        end
+      end
+    end
   end
 
 end

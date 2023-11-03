@@ -46,6 +46,126 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many_attached(:photos) }
   end
 
+  describe 'search' do
+    context 'query and organization_id are both nil' do
+      it 'returns all projects' do
+        project = create(:project)
+        expect(Project.search(nil, nil)).to include(project)
+      end
+    end
+    context 'query and organization_id are both blank' do
+      it 'returns all projects' do
+        project = create(:project)
+        expect(Project.search('', '')).to include(project)
+      end
+    end
+    context 'query nor organization_id match' do
+      it 'returns an empty list' do
+        project = create(:project, name: 'Yes', watershed: 'Yes', stream_name: 'Yes')
+          project.affiliations << create(:affiliation, organization: create(:organization))
+        results = Project.search('Yes', 0)
+        expect(results).to be_empty
+      end
+    end
+    context 'query is present but organization_id is nil' do
+      it 'includes a project whose name matches the query' do
+        found_project = create(:project, name: 'Yes')
+        unfound_project = create(:project, name: 'No')
+        results = Project.search(found_project.name, nil)
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+      it 'includes a project whose watershed matches the query' do
+        found_project = create(:project, watershed: 'Yes')
+        unfound_project = create(:project, watershed: 'No')
+        results = Project.search(found_project.watershed, nil)
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+      it 'includes a project whose stream_name matches the query' do
+        found_project = create(:project, stream_name: 'Yes')
+        unfound_project = create(:project, stream_name: 'No')
+        results = Project.search(found_project.stream_name, nil)
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+    end
+    context 'query is present but organization_id is blank' do
+      it 'includes a project whose name matches the query' do
+        found_project = create(:project, name: 'Yes')
+        unfound_project = create(:project, name: 'No')
+        results = Project.search(found_project.name, '')
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+      it 'includes a project whose watershed matches the query' do
+        found_project = create(:project, watershed: 'Yes')
+        unfound_project = create(:project, watershed: 'No')
+        results = Project.search(found_project.watershed, '')
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+      it 'includes a project whose stream_name matches the query' do
+        found_project = create(:project, stream_name: 'Yes')
+        unfound_project = create(:project, stream_name: 'No')
+        results = Project.search(found_project.stream_name, '')
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+    end
+    context 'query is nil but organization_id is present' do
+      it 'includes a project matching the organization_id' do
+        found_project = create(:project, name: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization))
+        unfound_project = create(:project, name: 'No')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization))
+        results = Project.search(nil, found_project.organizations.first.id)
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+    end
+    context 'query is blank but organization_id is present' do
+      it 'includes a project matching the organization_id' do
+        found_project = create(:project, name: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization))
+        unfound_project = create(:project, name: 'No')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization))
+        results = Project.search('', found_project.organizations.first.id)
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+    end
+    context 'both query and organization_id are present' do
+      it 'includes a project whose name and organization id matches the query' do
+        found_project = create(:project, name: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization))
+        unfound_project = create(:project, name: 'Yes')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization))
+        results = Project.search(found_project.name, found_project.organizations.first.id)
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+      it 'includes a project whose watershed and organization id matches the query' do
+        found_project = create(:project, watershed: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization))
+        unfound_project = create(:project, watershed: 'Yes')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization))
+        results = Project.search(found_project.watershed, found_project.organizations.first.id)
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+      it 'includes a project whose stream_name and organization id matches the query' do
+        found_project = create(:project, stream_name: 'Yes')
+          found_project.affiliations << create(:affiliation, organization: create(:organization))
+        unfound_project = create(:project, stream_name: 'Yes')
+          unfound_project.affiliations << create(:affiliation, organization: create(:organization))
+        results = Project.search(found_project.stream_name, found_project.organizations.first.id)
+        expect(results).to include(found_project)
+        expect(results).to_not include(unfound_project)
+      end
+    end
+  end
+
   describe 'project_total_length_km' do
     it 'is 0 when there are no projects in the database' do
       expect(Project.count).to eq(0)
