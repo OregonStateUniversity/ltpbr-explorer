@@ -1,0 +1,37 @@
+%link{href: "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css", rel: "stylesheet"}/
+%script{src: "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"}
+/ SELECT 2
+/ /SELECT2
+- provide(:title, 'Project List')
+.container.pt-3
+  .row
+    .col
+      %h1 LT-PBR Projects
+    .col.text-right
+      = link_to 'Map View', map_projects_path, class: "btn btn-success", id: "filter-button"
+  %br/
+  = form_tag projects_path, :method => 'get' do
+    .container-fluid.p-0
+      .row
+        .col-md-4
+          = text_field_tag :query, params[:query], placeholder: "Enter search terms...", class: "search_text_field"
+        .col-md-4
+          = select_tag :organization_id, options_from_collection_for_select(Organization.all, :id, :name, params[:organization_id]), class: 'select2', multiple: false, include_blank: true
+        .col-md-2
+          = submit_tag 'Filter', class: "btn btn-success", id: "filter-button"
+        .col-md-2
+          = link_to 'Reset Filter', projects_path, class: "btn btn-secondary", id: "filter-button-clear-variant"
+      - if @filtered_count == 0
+        %h5.text-secondary No results found
+      - else
+        %h5
+          Showing #{@result_plurality} for #{@filtered_count} #{@proj_plurality}
+  = render @projects
+  - if @filtered_count > 0
+    %hr/
+%script{crossorigin: "anonymous", integrity: "sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==", referrerpolicy: "no-referrer", src: "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"}
+:javascript
+  $('.select2').select2({
+      placeholder: "Select organization to match...",
+      allowClear: true
+  });
