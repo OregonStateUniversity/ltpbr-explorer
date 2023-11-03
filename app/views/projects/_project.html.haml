@@ -1,0 +1,20 @@
+%hr/
+.row
+  .col-md-12
+    %h3.mb-n1= link_to project.name, project, class: 'text-dark'
+  .col-md-12
+    %h6.mt-1
+      = link_to project.stream_name, project, class: 'text-dark'
+      , #{link_to project.watershed, project, class: 'text-secondary'}
+  .col-md-2
+    - if project.photos.any?
+      = image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 200
+    - else
+      = image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', id: 'project-list-missing-img', width: 70
+  .col-md-10
+    .row
+      .col-md-1
+      .col-md-11
+        .affiliation-tagline-list
+          %h5.text-secondary
+            = render partial: '/projects/project_organ', collection: project.organizations, as: :organization, locals: { project_id: project.id }

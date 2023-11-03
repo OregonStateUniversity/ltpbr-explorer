@@ -1,0 +1,14 @@
+.container
+  .d-flex.align-items-center.wrap.h-100
+    = image_tag(organization.logo, class: 'affiliation-logo-list-sm') if organization.logo.attached?
+    %h5.organization-list-display
+      = link_to(organization.name, organization_path(organization), style: 'color: gray;')
+    %span.invisible x
+    - if @project
+      - role = @project.affiliations.find_by(project_id: @project.id, organization_id: organization.id).role
+      .badge-pill-text
+        %span.badge.badge-pill.badge-success= role
+    - else
+      - role = organization.affiliations.find_by(organization_id: organization.id, project_id: project_id).role
+      .badge-pill-text
+        %span.badge.badge-pill.badge-success= role
