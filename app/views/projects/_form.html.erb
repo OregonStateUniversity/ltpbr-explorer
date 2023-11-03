@@ -135,6 +135,15 @@
 <%= f.text_area :structure_description, autocomplete: 'off', placeholder: 'Briefly describe LT-PBR design and/or construction elements.', class: 'form-control', rows: 5 %>
 
 <!-- PROJECT IMAGES -->
+
+<div class="form-group">
+  <%= f.label :cover_photo %>
+  <div class="btn btn-question" id="cover-photo-help">
+    <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+  </div>
+  <%= f.file_field :cover_photo, accept: 'image/*', class: 'form-control-file' %>
+</div>
+
 <%= f.label :photos, 'Project Photos' %>
 <div class="btn btn-question" id="photo-help">
   <i class="fa fa-question-circle-o" aria-hidden="true"></i>
@@ -260,6 +269,14 @@
     body: 'Just a simple name for the project e.g:',
     body_2: '"Bear Creek Surface Flow Enhancement", or',
     body_3: '"Bridge Creek Riparian Uplift"'
+  }%>
+
+  <%=render :partial => 'form_help_modal', locals: {
+    id: 'cover-photo-modal',
+    title: 'Cover Photo',
+    body: 'Upload one representative photo of the project area, channel, or structures.',
+    body_2: 'The photo must be below 50 MB in size and be in the JPEG, PNG, GIF, BMP, AVIF, or WebP format.',
+    body_3: 'The cover photo will be the first photo displayed everywhere.'
   }%>
 
   <%=render :partial => 'form_help_modal', locals: {

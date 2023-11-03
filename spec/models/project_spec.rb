@@ -16,8 +16,8 @@ RSpec.describe Project, type: :model do
     it { is_expected.to respond_to(:name) }
     it { is_expected.to respond_to(:watershed) }
     it { is_expected.to respond_to(:url) }
-    skip("replace with new attachment association") { is_expected.to respond_to(:cover_photo) }
     it { is_expected.to respond_to(:affiliations_count) }
+    it { is_expected.to respond_to(:xxx_cover_photo) } # delete me soon, see #349
   end
 
   describe 'validations' do
@@ -35,6 +35,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to validate_numericality_of(:longitude).is_greater_than(-180).is_less_than(180).with_message('must be in decimal notation') }
     it { is_expected.to validate_numericality_of(:number_of_structures).only_integer.is_greater_than(0) }
     it { is_expected.to validate_content_type_of(:photos) }
+    it { is_expected.to validate_size_of(:cover_photo).less_than(50.megabytes) }
     it { is_expected.to validate_size_of(:photos).less_than(50.megabytes) }
   end
 
@@ -43,6 +44,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to belong_to(:state).optional }
     it { is_expected.to have_many(:affiliations) }
     it { is_expected.to have_many(:organizations).through(:affiliations) }
+    it { is_expected.to have_one_attached(:cover_photo) }
     it { is_expected.to have_many_attached(:photos) }
   end
 

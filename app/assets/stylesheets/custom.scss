@@ -445,9 +445,8 @@ input[type="checkbox"] {
 
 // Projects
 
-project-photo {
-  max-width: 100%;
-  height: auto;
+.cover-photo-large {
+  width: 600px;
 }
 
 .missing-image-container {

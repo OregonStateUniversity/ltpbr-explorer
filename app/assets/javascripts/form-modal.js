@@ -3,6 +3,10 @@ $(document).on('turbolinks:load', function() {
     $('#name-modal').modal();
   });
 
+  $('#cover-photo-help').on('click', function() {
+    $('#cover-photo-modal').modal();
+  });
+
   $('#photo-help').on('click', function() {
     $('#photo-modal').modal();
   });

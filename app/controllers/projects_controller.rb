@@ -96,7 +96,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:id, :organization, {organization_ids: []}, :stream_name, :implementation_date,
       :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures,
-      :structure_description, :name, :watershed, :url, :cover_photo_id, {delete_photo_ids: []}, photos: [])
+      :structure_description, :name, :watershed, :url, :cover_photo, :cover_photo_id, {delete_photo_ids: []}, photos: [])
   end
 
 end

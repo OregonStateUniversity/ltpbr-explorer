@@ -28,7 +28,9 @@
 
   <div class="row">
     <div class="col-md-7">
-      
+      <% if @project.cover_photo.attached? %>
+        <%= image_tag @project.cover_photo, class: 'cover-photo-large' %>
+      <% end %>
       <% if @project.photos[0].presence %>
         <div id="carousel-slideshow" class="carousel slide" data-ride="carousel">
 

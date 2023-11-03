@@ -7,6 +7,7 @@ class Project < ApplicationRecord
   has_many :affiliations, dependent: :delete_all
   has_many :organizations, through: :affiliations
 
+  has_one_attached :cover_photo
   has_many_attached :photos
 
   accepts_nested_attributes_for :affiliations
@@ -18,9 +19,12 @@ class Project < ApplicationRecord
   validates_numericality_of :latitude, greater_than: -90, less_than: 90, message: 'must be in decimal notation'
   validates_numericality_of :longitude, greater_than: -180, less_than: 180, message: 'must be in decimal notation'
   validates_numericality_of :number_of_structures, only_integer: true, greater_than: 0
-  validates :photos, 
-    content_type: [:png, :jpg, :jpeg, :gif, :bmp, :avif, :webp], 
-    size: { less_than: 50.megabytes , message: 'must be below 50 MB in size each' }, 
+  validates :cover_photo,
+    content_type: [:png, :jpg, :jpeg, :gif, :bmp, :avif, :webp],
+    size: { less_than: 50.megabytes , message: 'must be below 50 MB in size each' }
+  validates :photos,
+    content_type: [:png, :jpg, :jpeg, :gif, :bmp, :avif, :webp],
+    size: { less_than: 50.megabytes , message: 'must be below 50 MB in size each' },
     limit: { min: 0, max: 20, message: 'must have fewer than 20 photos'}
 
   before_save :assign_lonlat, :assign_state
