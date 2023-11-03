@@ -8,9 +8,9 @@
       , #{link_to project.watershed, project, class: 'text-secondary'}
   .col-md-2
     - if project.photos.any?
-      = image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 200
+      = image_tag project.xxx_cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', width: 200
     - else
-      = image_tag project.cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', id: 'project-list-missing-img', width: 70
+      = image_tag project.xxx_cover_photo, alt: "Project on #{project.stream_name}", class: 'rounded', id: 'project-list-missing-img', width: 70
   .col-md-10
     .row
       .col-md-1

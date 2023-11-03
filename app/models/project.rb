@@ -64,7 +64,7 @@ class Project < ApplicationRecord
     ).first
   end
 
-  def cover_photo
+  def xxx_cover_photo
     @cover_photo = "/missing_image_camera.png"
 
     if !self.cover_photo_id.nil? && self.photos.where(id: self.cover_photo_id).presence
