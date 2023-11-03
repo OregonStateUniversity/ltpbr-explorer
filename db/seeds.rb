@@ -58,6 +58,8 @@ user = User.create!(name: 'Example User', username: 'example', email: 'example@e
   password: 'password', password_confirmation: 'password', affiliation: 'Example Affiliation')
 admin = User.create!(name: 'Admin User', username: 'admin', email: 'admin@example.com', role: 'admin',
   password: 'password', password_confirmation: 'password', affiliation: 'Admin Affiliation')
+projectless_user = User.create!(name: 'Example Projectless User', username: 'projectless', email: 'projectless@example.com',
+  password: 'password', password_confirmation: 'password', affiliation: 'Example Affiliation')
 
 1.upto(10) do |i|
   Organization.create!(name: "Organization #{i}", description: "Example organization description #{i}",
