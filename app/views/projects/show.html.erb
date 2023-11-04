@@ -4,7 +4,7 @@
     <div class="col">
       <h1 class="display-4"><%= @project.name %></h1>
     </div>
-    <div class="col text-right">
+    <div class="col-3 text-right">
       <% if @project.editable_by?(current_user) %>
         <%= link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-outline-danger mr-5', title: "Delete #{@project}" %>
         <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-outline-primary', title: "Edit #{@project}" %>
@@ -14,9 +14,9 @@
   <hr>
   <div class="row border-bottom mb-5 pb-2">
     <div class="col">
-      <%= render partial: 'project_organ', collection: @project.organizations, as: :organization %>
+      <%= render @project.affiliations %>
     </div>
-    <div class="col text-right">
+    <div class="col-3 text-right">
       <% if @project.editable_by?(current_user) %>
         <%= help_button('manage-affiliations-help') %>
         <%= link_to 'Manage Affiliations', project_affiliations_path(@project), class: 'btn btn-outline-primary' %>
@@ -25,10 +25,11 @@
   </div><!-- /row -->
 
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-7 border">
       <% if @project.cover_photo.attached? %>
         <%= image_tag @project.cover_photo, class: 'cover-photo-large' %>
       <% end %>
+
       <% if @project.photos[0].presence %>
         <div id="carousel-slideshow" class="carousel slide" data-ride="carousel">
 

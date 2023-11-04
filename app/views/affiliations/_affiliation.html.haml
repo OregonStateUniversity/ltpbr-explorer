@@ -1,0 +1,9 @@
+.row.mb-3
+  .col-1.align-items-center.wrap.text-right.p-0
+    - if affiliation.organization.logo.attached?
+      = link_to organization_path(affiliation.organization) do
+        = image_tag(affiliation.organization.logo, class: 'organization-logo-sm')
+  .col-11
+    %h5.organization-list-display
+      = link_to(affiliation.organization.name, organization_path(affiliation.organization), style: 'color: gray;')
+      %span.badge.badge-pill.badge-success.font-weight-normal= affiliation.role

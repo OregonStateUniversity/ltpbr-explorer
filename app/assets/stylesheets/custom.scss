@@ -75,13 +75,6 @@ label {
 }
 
 
-.badge {
-  background-color: $green;
-  font-size: 1.2rem;
-}
-
-
-
 // Nav
 
 nav {
@@ -445,8 +438,25 @@ input[type="checkbox"] {
 
 // Projects
 
+.project_row {
+  margin: 20px 0px;
+  padding: 20px 0px;
+  border-top: 1px solid #F0F0F0;
+}
+
 .cover-photo-large {
-  width: 600px;
+  max-width: 100%;
+}
+
+.cover-photo-small {
+  max-width: 100%;
+}
+
+.cover-photo-missing {
+  width: 80px;
+  margin: auto;
+  display: block;
+  opacity: 0.1;
 }
 
 .missing-image-container {
@@ -761,30 +771,34 @@ input[type="checkbox"] {
     }
 }
 
-// Affiliations List Styling
+// Organizations
 
 .organization-logo {
   width: 100px;
 }
 
-.affiliation-logo-list {
-    width: 100px !important;
-    margin: 10px;
+.organization-logo-sm {
+  width: 40px !important;
 }
 
-.affiliation-logo-list-sm {
-    width: 40px !important;
-    margin: 4px;
-    margin-left: -20px;
+// Affiliations
+
+.affiliation-logo-list {
+  width: 100px !important;
+  margin: 10px;
 }
 
 .organization-list-display {
-    padding-left: 5px;
-    padding-top: 9px;
+  padding-left: 5px;
+  padding-top: 9px;
 } 
 
 #affiliation-confirm-btn {
-    margin-top: 32px;
+  margin-top: 32px;
+}
+
+.organization-list-display {
+  font-weight: bold;
 }
 
 // Select2 Styling
@@ -811,18 +825,4 @@ input[type="checkbox"] {
 
 .select2-selection__clear {
     height: 36px !important;
-}
-
-// Role Badge and Organization Link Styling
-
-.badge-pill {
-    font-size: 1rem;
-}
-
-.badge-pill-text {
-    padding-top: 2px;
-}
-
-.organization-list-display {
-    font-weight: bold;
 }
