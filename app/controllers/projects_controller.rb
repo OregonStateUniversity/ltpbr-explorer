@@ -23,14 +23,14 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
     @project_organizations = @project.organizations
-    @organizations = Organization.all
+    @organizations = Organization.all.order(:name)
   end
 
   def edit
     @project.longitude = @project.lonlat.x
     @project.latitude = @project.lonlat.y
     @project_organizations = @project.organizations
-    @organizations = Organization.all
+    @organizations = Organization.all.order(:name)
     gon.cover_photo_id = @project.cover_photo_id
   end
 
@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.author = current_user
     @project_organizations = @project.organizations
-    @organizations = Organization.all
+    @organizations = Organization.all.order(:name)
 
     if @project.save
       redirect_to @project
@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @organizations = Organization.all
+    @organizations = Organization.all.order(:name)
     @project = Project.find(params[:id])
     #update affiliation params before the rest of the params, otherwise it tries to update
     #non-existent affiliations if organizations are removed with out of order params

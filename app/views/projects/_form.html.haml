@@ -1,0 +1,83 @@
+= form_for(@project, html: { multipart: true }) do |f|
+  = form_errors_for(@project)
+  .row
+    .col
+      .form-group
+        = f.label :name, 'Project Name'
+        = help_button('name-help')
+        = f.text_field :name, placeholder: 'e.g. Bridge Creek Incision Recovery', class: 'form-control'
+    .col
+      .form-group
+        = f.label :primary_contact, 'Primary Contact Name'
+        = help_button('primary_contact-help')
+        = f.text_field :primary_contact, placeholder: 'e.g. Jane Doe', class: 'form-control'
+  .row
+    .col
+      .form-group
+        = f.label :url, 'Project URL'
+        = help_button('url-help')
+        = f.text_field :url, placeholder: 'e.g. https://www.anabranchsolutions.com/beaver-dam-analogs.html', class: 'form-control'
+    .col
+      .form-group
+        = f.label :organization, 'Affiliated Project Organization(s)'
+        = help_button('manage-affiliations-help')
+        = f.select :organization_ids, @organizations.map { |u| [u.name, u.id] }, { include_blank: true, multiple: true }, { class: 'chosen-select form-control' }
+  .row
+    .col
+      .form-group
+        = f.label :stream_name, 'Stream Name'
+        = help_button('stream_name-help')
+        = f.text_field :stream_name, placeholder: 'Bear Creek', class: 'form-control'
+    .col
+      .form-group
+        = f.label :watershed, 'Project Watershed'
+        = help_button('watershed-help')
+        = f.text_field :watershed, placeholder: 'e.g. John Day', class: 'form-control'
+  .row
+    .col
+      .form-group
+        = f.label :latitude
+        = help_button('latitude-help')
+        = f.text_field :latitude, placeholder: 'e.g. 44.103436', class: 'form-control'
+    .col
+      .form-group
+        = f.label :longitude
+        = help_button('longitude-help')
+        = f.text_field :longitude, placeholder: 'e.g. -121.769211', class: 'form-control'
+  %p.text-center.text-muted You can drop a pin on the map to generate lat/lon.
+  .row.mb-3
+    .col
+      #form-map.rounded.border.border-secondary{"data-latitude" => "#{@project.lonlat ? @project.lonlat.y : 44.103436}", "data-longitude" => "#{@project.lonlat ? @project.lonlat.x : -121.769211}"}
+  .row
+    .col
+      .form-group
+        = f.label :implementation_date, 'Implementation Date'
+        = help_button('implementation_date-help')
+        = f.date_field :implementation_date, class: 'form-control'
+    .col
+      .form-group
+        = f.label :number_of_structures, 'Total LT-PBR Structures'
+        = help_button('number_of_structures-help')
+        = f.text_field :number_of_structures, placeholder: 'e.g. 50', class: 'form-control'
+    .col
+      .form-group
+        = f.label :length, 'Treatment Length (meters)'
+        = help_button('treatment_length-help')
+        = f.text_field :length, placeholder: 'e.g. 500', class: 'form-control'
+  .form-group
+    = f.label :narrative, 'Project Restoration Goals'
+    = help_button('narrative-help')
+    = f.text_area :narrative, placeholder: 'Restoration goals for the project. e.g. Expansion of riparian vegetation.', class: 'form-control', rows: 5
+  .form-group
+    = f.label :structure_description, 'Structure Construction Elements'
+    = help_button('structure_description-help')
+    = f.text_area :structure_description, placeholder: 'Briefly describe LT-PBR design and/or construction elements.', class: 'form-control', rows: 5
+  .form-group
+    = f.label :cover_photo, 'Cover photo'
+    = help_button('cover-photo-help')
+    = f.file_field :cover_photo, accept: 'image/*', class: 'form-control-file'
+    %small.form-text.text-muted Upload the main photo for the project. You'll be able to add more photos later.
+  .form-group.actions
+    = f.submit class: 'btn confirm-btn form-control'
+- ProjectsHelper::FORM_HELP_MODAL_ATTRIBUTES.each do |attributes|
+  = render partial: 'form_help_modal', locals: { modal_attributes: attributes }

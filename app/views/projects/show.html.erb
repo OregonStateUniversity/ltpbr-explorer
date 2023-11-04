@@ -18,9 +18,7 @@
     </div>
     <div class="col text-right">
       <% if @project.editable_by?(current_user) %>
-        <div class="btn btn-question" id="manage-affiliations-help">
-          <i class="fa fa-question-circle-o" aria-hidden="true"></i>
-        </div>
+        <%= help_button('manage-affiliations-help') %>
         <%= link_to 'Manage Affiliations', project_affiliations_path(@project), class: 'btn btn-outline-primary' %>
       <% end %>
     </div>
