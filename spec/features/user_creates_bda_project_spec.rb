@@ -14,17 +14,15 @@ RSpec.feature 'User creates BDA project' do
     fill_in('Project Name', with: 'Example Name')
     fill_in('Primary Contact Name', with: 'Example Contact Name')
     fill_in('Project URL', with: 'example.com')
-    # fill_in('Project Affiliation', with: 'Example Affiliation')
     fill_in('Stream Name', with: 'Example Stream Name')
     fill_in('Project Watershed', with: 'Example Watershed')
-    # Approximate coordinates of OSU-Cascades
     fill_in('Latitude', with: 44.042969)
     fill_in('Longitude', with: -121.333481)
     fill_in('Total LT-PBR Structures', with: 2)
     fill_in('Treatment Length (meters)', with: 1000)
     fill_in('Implementation Date', with: Date.today)
-    fill_in('Project Restoration Goals', with: 'Example Project Narrative')
-    fill_in('Structure Construction Elements', with: 'Example structure design elements')
+    fill_in('Narrative of Project Restoration Goals', with: 'Example Project Narrative')
+    fill_in('Description of Construction Elements', with: 'Example structure design elements')
     click_on('Create Project')
     expect(page).to have_content('Project was successfully created.')
   end
@@ -34,7 +32,6 @@ RSpec.feature 'User creates BDA project' do
     expect(page).to have_selector '.alert', text: 'The form contains 13 errors.'
     page.find('#error_explanation').tap do |error_explanations|
       expect(error_explanations).to have_content("Name can't be blank")
-      # expect(error_explanations).to have_content("Affiliation can't be blank")
       expect(error_explanations).to have_content("Stream name can't be blank")
       expect(error_explanations).to have_content("Implementation date can't be blank")
       expect(error_explanations).to have_content("Latitude can't be blank")
