@@ -452,10 +452,14 @@ input[type="checkbox"] {
   max-width: 100%;
 }
 
-.cover-photo-missing {
+.cover-photo-missing-small {
   width: 80px;
   margin: auto;
   display: block;
+}
+
+.cover-photo-missing {
+  max-width: 100%;
   opacity: 0.1;
 }
 

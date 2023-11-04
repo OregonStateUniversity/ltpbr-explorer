@@ -10,7 +10,7 @@
         - if project.cover_photo.attached?
           = image_tag project.cover_photo, alt: "Photo of #{project}", class: 'rounded cover-photo-small'
         - else
-          = image_tag 'missing_image_camera.png', alt: 'This project needs a nice cover photo', class: 'rounded cover-photo-small cover-photo-missing my-5'
+          = image_tag 'missing_image_camera.png', alt: 'This project needs a nice cover photo', class: 'rounded cover-photo-small cover-photo-missing cover-photo-missing-small my-5'
     .col-9
       .affiliation-tagline-list
         %h5.text-secondary

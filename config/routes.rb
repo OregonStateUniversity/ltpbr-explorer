@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :projects do
     get 'map', on: :collection
     resources :affiliations, except: [:new, :show]
+    resources :cover_photo, only: [:edit, :update]
   end
   resources :states, only: [:index, :show]
   resources :users, only: :show
