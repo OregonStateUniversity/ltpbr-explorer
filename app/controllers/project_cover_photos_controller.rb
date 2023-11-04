@@ -7,10 +7,11 @@ class ProjectCoverPhotosController < ApplicationController
   end
 
   def update
-    if @project.update(project_params)
+    if params.has_key?('project') && @project.update(project_params)
       redirect_to @project
       flash[:success] = 'Project cover photo has been updated.'
     else
+      flash[:warning] = "Please select a new cover photo to upload."
       render :edit
     end
   end

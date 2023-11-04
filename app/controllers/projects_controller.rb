@@ -44,7 +44,6 @@ class ProjectsController < ApplicationController
 
   def update
     @organizations = Organization.all.order(:name)
-    @project = Project.find(params[:id])
     #update affiliation params before the rest of the params, otherwise it tries to update
     #non-existent affiliations if organizations are removed with out of order params
     @project.update(project_affiliation_params)
@@ -79,6 +78,8 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+    @project.longitude = @project.lonlat&.x
+    @project.latitude = @project.lonlat&.y
   end
 
   def project_affiliation_params

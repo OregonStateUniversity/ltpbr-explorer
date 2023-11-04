@@ -1,0 +1,26 @@
+- provide(:title, 'Edit Project Cover Photo')
+.container.pt-5
+  .row.mb-4
+    .col
+      %h2 Change Project Cover Photo
+      %p.text-muted The cover photo is the main photo that is shown throughout the LT-PBR Explorer.
+    .col-2.text-right
+      = link_to '« Cancel', project_path(@project)
+  = form_with model: @project, url: project_cover_photo_path(@project), multipart: true do |f|
+    - if @project.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+        %ul
+          - @project.errors.full_messages.each do |message|
+            %li= message
+    %h2 Current cover photo
+    - if @project.cover_photo.attached?
+      = image_tag(@project.cover_photo, class: 'cover-photo-medium')
+    - else
+      = image_tag 'missing_image_camera.png', alt: 'This project needs a nice cover photo', class: 'cover-photo-missing cover-photo-medium'
+    .form-group.mt-5
+      = f.label :cover_photo, 'Upload a New Cover Photo', class: 'h3'
+      = f.file_field :cover_photo, class: 'form-control-file'
+    .form-group.actions
+      = f.submit 'Upload', class: 'btn btn-primary'
+      = link_to 'Cancel', project_path(@project), class: 'btn btn-outline btn-outline-secondary ml-5'
