@@ -3,7 +3,6 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :destroy]
   before_action :require_author_or_admin, only: [:edit, :update, :destroy]
 
-  
   def index
     @projects = Project.search(params[:query], params[:organization_id]).distinct.order(:name)
     @organizations = Organization.all.order(:name)
@@ -22,30 +21,23 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @project_organizations = @project.organizations
     @organizations = Organization.all.order(:name)
   end
 
   def edit
     @project.longitude = @project.lonlat.x
     @project.latitude = @project.lonlat.y
-    @project_organizations = @project.organizations
     @organizations = Organization.all.order(:name)
     gon.cover_photo_id = @project.cover_photo_id
   end
 
   def create
-    @project = Project.new(project_params)
-    @project.author = current_user
-    @project_organizations = @project.organizations
-    @organizations = Organization.all.order(:name)
-
+    @project = Project.new(project_params.merge(author: current_user))
     if @project.save
       redirect_to @project
       flash[:success] = 'Project was successfully created. Add Organization roles or other affiliated Organizations with \'Manange Affiliations\''
     else
-      # Delete uploaded photos if creation failed - Rails 5.2 bug
-      # @project.photos.purge
+      @organizations = Organization.all.order(:name)
       render :new
     end
   end
@@ -94,9 +86,9 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:id, :organization, {organization_ids: []}, :stream_name, :implementation_date,
+    params.require(:project).permit({organization_ids: []}, :stream_name, :implementation_date,
       :narrative, :length, :primary_contact, :longitude, :latitude, :number_of_structures,
-      :structure_description, :name, :watershed, :url, :cover_photo, :cover_photo_id, {delete_photo_ids: []}, photos: [])
+      :structure_description, :name, :watershed, :url, :cover_photo, photos: [])
   end
 
 end
