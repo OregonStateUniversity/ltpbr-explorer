@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
   end
 
   def map
+    ActiveStorage::Current.url_options = {host: request.host, port: request.port } if Rails.env.development?
     @projects = Project.all
     gon.rabl(template: 'app/views/shared/projects.rabl')
   end

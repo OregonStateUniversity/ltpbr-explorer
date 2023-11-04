@@ -29,6 +29,10 @@ class Project < ApplicationRecord
 
   before_save :assign_lonlat, :assign_state
 
+  def cover_photo_url
+    cover_photo.url if cover_photo.attached?
+  end
+
   def self.search(query, organization_id)
     projects = Project.all
     if query.present?
@@ -66,24 +70,6 @@ class Project < ApplicationRecord
         Arel.spatial("SRID=4326;#{self.lonlat}")
       )
     ).first
-  end
-
-  def xxx_cover_photo
-    @cover_photo = "/missing_image_camera.png"
-
-    if !self.cover_photo_id.nil? && self.photos.where(id: self.cover_photo_id).presence
-      @cover_photo = Rails.application.routes.url_helpers.rails_blob_url(
-        self.photos.where(id: self.cover_photo_id)[0],
-        Rails.application.config.action_mailer.default_url_options
-      )
-    elsif self.photos[0].presence
-      @cover_photo = Rails.application.routes.url_helpers.rails_blob_url(
-        self.photos[0],
-        Rails.application.config.action_mailer.default_url_options
-      )
-    end
-
-    @cover_photo
   end
 
   def to_s

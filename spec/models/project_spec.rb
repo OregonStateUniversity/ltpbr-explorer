@@ -17,7 +17,6 @@ RSpec.describe Project, type: :model do
     it { is_expected.to respond_to(:watershed) }
     it { is_expected.to respond_to(:url) }
     it { is_expected.to respond_to(:affiliations_count) }
-    it { is_expected.to respond_to(:xxx_cover_photo) } # delete me soon, see #349
   end
 
   describe 'validations' do
@@ -46,6 +45,18 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many(:organizations).through(:affiliations) }
     it { is_expected.to have_one_attached(:cover_photo) }
     it { is_expected.to have_many_attached(:photos) }
+  end
+
+  describe 'cover_photo_url' do
+    context 'without a cover photo' do
+      it 'is nil' do
+        expect(project.cover_photo_url).to be_nil
+      end
+    end
+    context 'with a cover photo' do
+      skip 'returns an http url' do
+      end
+    end
   end
 
   describe 'search' do
