@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_31_190905) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_06_004244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -69,6 +69,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_31_190905) do
     t.integer "affiliations_count", default: 0, null: false
   end
 
+  create_table "project_photos", force: :cascade do |t|
+    t.string "description"
+    t.date "date"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_photos_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "affiliation_legacy"
     t.string "stream_name", null: false
@@ -88,6 +97,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_31_190905) do
     t.bigint "state_id"
     t.bigint "cover_photo_id"
     t.integer "affiliations_count", default: 0, null: false
+    t.integer "project_photos_count", default: 0, null: false
     t.index ["author_id"], name: "index_projects_on_author_id"
     t.index ["state_id"], name: "index_projects_on_state_id"
   end
@@ -128,6 +138,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_31_190905) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "affiliations", "organizations"
   add_foreign_key "affiliations", "projects"
+  add_foreign_key "project_photos", "projects"
   add_foreign_key "projects", "active_storage_attachments", column: "cover_photo_id"
   add_foreign_key "projects", "states"
   add_foreign_key "projects", "users", column: "author_id"
