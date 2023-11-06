@@ -7,9 +7,11 @@ class AffiliationsController < ApplicationController
   def index
     @affiliations = @project.affiliations
     @affiliation = Affiliation.new
+    @organizations = Organization.all.order(:name)
   end
 
   def edit
+    @organizations = Organization.all.order(:name)
   end
 
   def create

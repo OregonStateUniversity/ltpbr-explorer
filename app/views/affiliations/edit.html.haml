@@ -1,0 +1,9 @@
+- provide(:title, 'Edit Affiliation')
+.container.pt-5
+  .row.mb-4
+    .col
+      %h2.mb-5 Edit affiliation
+    .col-2.text-right
+      = link_to '« Cancel', project_affiliations_path(@project)
+
+  = render 'form'

@@ -1,0 +1,18 @@
+- provide(:title, "Organization Affiliations for #{@project.to_s}")
+.container.pt-3
+  .row.mb-4
+    .col
+      %h1 Organization Affiliations
+      %h2.text-secondary.font-weight-normal= @project.name
+    .col-2.text-right
+      = link_to '« Back to Project', project_path(@project)
+
+  - @affiliations.each do |affiliation|
+    .row.justify-content-between[affiliation]
+      .col= render affiliation
+      .col-3
+        = link_to 'Edit', edit_project_affiliation_path(@project, affiliation), class: 'btn btn-outline-primary btn-sm'
+        = link_to 'Delete', [@project, affiliation], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'
+
+  %h2.mt-4 Add an Organization Affiliation
+  = render partial: 'form'
