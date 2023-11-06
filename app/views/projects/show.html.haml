@@ -100,16 +100,17 @@
             %small.form-text.text-muted You can modify or remove photos after uploading.
 
   %h5.mt-5 Project Location
-  #project-map.rounded.border.border-secondary{"data-latitude" => "#{@project.lonlat.y}", "data-longitude" => "#{@project.lonlat.x}"}
-  #manage-affiliations-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
-    .modal-dialog{role: "document"}
+  #project-map.rounded.border.border-secondary{ 'data-latitude': @project.lonlat.y, 'data-longitude': @project.lonlat.x }
+
+  #manage-affiliations-modal.modal.fade{'aria-hidden': 'true', role: 'dialog', tabindex: '-1'}
+    .modal-dialog{role: 'document'}
       .modal-content
         .modal-header
           %h5.modal-title Manage Affiliated Organizations
-          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
-            %span{"aria-hidden" => "true"} ×
+          %button.close{'aria-label': 'Close', 'data-dismiss': 'modal', type: 'button'}
+            %span{'aria-hidden': 'true'} ×
         .modal-body
           Select which organizations are affiliated with this project and assign a role to each
           organization depending on their role in the project.
         .modal-footer
-          %button.btn.btn-secondary{"data-dismiss" => "modal", type: "button"} Close
+          %button.btn.btn-secondary{'data-dismiss': 'modal', type: 'button'} Close
