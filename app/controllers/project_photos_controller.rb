@@ -26,7 +26,7 @@ class ProjectPhotosController < ApplicationController
   def update
     @project_photo = ProjectPhoto.find(params[:id])
     if @project_photo.update(project_photo_params)
-      redirect_to project_photos_path(@project), notice: 'Photo was successfully updated.'
+      redirect_to project_project_photos_path(@project), notice: 'Photo was successfully updated.'
     else
       render :edit, status: :unprocessable_entity, warning: 'Could not update the photo.'
     end

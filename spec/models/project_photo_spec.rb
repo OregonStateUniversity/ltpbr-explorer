@@ -9,6 +9,7 @@ RSpec.describe ProjectPhoto, type: :model do
   end
 
   describe 'validations' do
+    it { is_expected.to validate_presence_of(:image) }
     it { is_expected.to validate_content_type_of(:image) }
     it { is_expected.to validate_size_of(:image).less_than(50.megabytes) }
   end

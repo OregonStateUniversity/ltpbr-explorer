@@ -1,0 +1,24 @@
+- provide(:title, 'Edit Project Photo')
+.container.pt-5
+  %h2.mb-5 Edit Photo
+  .col-4.mb-5
+    = image_tag @project_photo.image, class: 'photo'
+  = form_with model: [@project, @project_photo], multipart: true do |f|
+    - if @project.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+        %ul
+          - @project.errors.full_messages.each do |message|
+            %li= message
+    .form-group
+      = f.label :image, 'New Image File'
+      = f.file_field :image, class: 'form-control-file form-control-sm'
+    .form-group
+      = f.label :date, 'Date of Photo'
+      = f.date_field :date, class: 'form-control form-control-sm'
+      %small.form-text.text-muted optional
+    .form-group
+      = f.label :description, 'Description'
+      = f.text_field :description, class: 'form-control form-control-sm', placeholder: 'Optional. A brief description.'
+    .form-group
+      = f.submit 'Update', class: 'btn btn-primary btn-sm mt-2'

@@ -14,7 +14,7 @@
         %p.text-muted.my-0.text-center= project_photo.date || '(no date)'
         %p.text-muted.my-0.text-center= project_photo.description.present? ? truncate(project_photo.description, size: 20) : 'no description'
         %p.text-center
-          = link_to 'Edit', [@project, project_photo], class: 'btn btn-outline-primary btn-sm mr-2', title: 'Edit photo'
+          = link_to 'Edit', edit_project_project_photo_path(@project, project_photo), class: 'btn btn-outline-primary btn-sm mr-2', title: 'Edit photo'
           = link_to 'Remove', [@project, project_photo], method: :delete, data: { confirm: "Delete this photo?" }, class: 'btn btn-outline-danger btn-sm', title: "Delete photo"
     .col-4
       %h4 Add a Photo
