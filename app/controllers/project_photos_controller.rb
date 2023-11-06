@@ -3,19 +3,14 @@ class ProjectPhotosController < ApplicationController
   before_action :set_project
   before_action :require_author_or_admin
 
-  def index
-    @project_photos = @project.project_photos
-    @project_photo = ProjectPhoto.new
-  end
-
   def create
     @project_photo = ProjectPhoto.new(project_photo_params.merge(project: @project))
     if @project_photo.save
-      redirect_to project_project_photos_url(@project)
+      redirect_to project_url(@project)
       flash[:success] = 'Photo has been added.'
     else
-      flash[:warning] = 'Could not add the photo.'
-      render :index, status: :unprocessable_entity
+      flash[:warning] = 'Could not add the photo. Be sure to select an image file smaller than 50MB.'
+      redirect_to project_url(@project)
     end
   end
 
@@ -26,7 +21,7 @@ class ProjectPhotosController < ApplicationController
   def update
     @project_photo = ProjectPhoto.find(params[:id])
     if @project_photo.update(project_photo_params)
-      redirect_to project_project_photos_path(@project), notice: 'Photo was successfully updated.'
+      redirect_to project_url(@project), notice: 'Photo was successfully updated.'
     else
       render :edit, status: :unprocessable_entity, warning: 'Could not update the photo.'
     end
@@ -35,7 +30,7 @@ class ProjectPhotosController < ApplicationController
   def destroy
     @project_photo = ProjectPhoto.find(params[:id])
     @project_photo.destroy
-    redirect_to project_project_photos_url(@project), notice: 'Photo was successfully removed.'
+    redirect_to project_url(@project), notice: 'Photo was successfully removed.'
   end
 
   private

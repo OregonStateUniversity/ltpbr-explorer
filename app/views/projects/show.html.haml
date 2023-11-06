@@ -14,40 +14,15 @@
       - if @project.editable_by?(current_user)
         = help_button('manage-affiliations-help')
         = link_to 'Manage Affiliations', project_affiliations_path(@project), class: 'btn btn-outline-primary'
-  .row.border
+  .row.border.mb-5
     .col-7
       - if @project.cover_photo.attached?
         = image_tag @project.cover_photo, class: 'rounded cover-photo-large'
       - else
         = image_tag 'missing_image_camera.png', alt: 'This project needs a nice cover photo', class: 'rounded cover-photo-missing'
-      .text-center.mt-2
-        = link_to('Modify cover photo', edit_project_cover_photo_path(@project), class: 'btn btn-outline-primary btn-sm') if @project.editable_by?(current_user)
-      - if @project.photos[0].presence
-        #carousel-slideshow.carousel.slide{"data-ride" => "carousel"}
-          %ol.carousel-indicators
-            - @project.photos.each_with_index do |photo, index|
-              - if !@project.cover_photo_id.nil?
-                %li{class: "#{photo.id == @project.cover_photo_id ? 'active' : ''}", "data-slide-to" => index, "data-target" => "#carousel-slideshow"}
-              - else
-                %li{class: "#{index == 0 ? 'active' : ''}", "data-slide-to" => index, "data-target" => "#carousel-slideshow"}
-          .carousel-inner
-            - if !@project.cover_photo_id.nil?
-              - @project.photos.each do |photo|
-                %div{class: "carousel-item #{photo.id == @project.cover_photo_id ? 'active' : ''}", style: "background-image: url(#{url_for(photo)});"}
-                  = image_tag photo, alt: "Project on #{@project.stream_name}", class: 'shadow rounded'
-            - else
-              - @project.photos.each_with_index do |photo, index|
-                %div{class: "carousel-item #{index == 0 ? 'active' : ''}", style: "background-image: url(#{url_for(photo)});"}
-                  = image_tag photo, alt: "Project on #{@project.stream_name}", class: 'shadow rounded'
-          %a.carousel-control-prev{"data-slide" => "prev", href: "#carousel-slideshow", role: "button"}
-            %span.carousel-control-prev-icon{"aria-hidden" => "true"}
-            %span.sr-only Previous
-          %a.carousel-control-next{"data-slide" => "next", href: "#carousel-slideshow", role: "button"}
-            %span.carousel-control-next-icon{"aria-hidden" => "true"}
-            %span.sr-only Next
-      - else
-        .missing-image-container
-          = image_tag "missing_image_camera.png", alt: "Project on #{@project.stream_name}", class: "missing-image", align: "center", :size => "120x120"
+        - if @project.editable_by?(current_user)
+          .text-center.mt-2
+            = link_to('Add a cover photo', edit_project_cover_photo_path(@project), class: 'btn btn-outline-primary btn-sm')
     .col-5
       %label State:
       %p.h5.mb-3
@@ -80,19 +55,51 @@
   %p= @project.narrative
   %h5 Structure Construction Elements
   %p= @project.structure_description
+  %h5.mt-5 Project Photos
   .row
-    .col
-      %h5 Project Photos
-    .col-2
-      = link_to('Manage photos', project_project_photos_path(@project), class: 'btn btn-sm btn-outline-primary') if @project.editable_by?(current_user)
-  .row
-    - if @project.cover_photo.attached?
+    .col-4
+      - if @project.cover_photo.attached?
+        = image_tag @project.cover_photo, alt: "Photo of #{@project}", class: 'img-fluid shadow rounded'
+      - else
+        = image_tag 'missing_image_camera.png', alt: 'This project needs a nice cover photo', class: 'img-fluid rounded shadow cover-photo-missing'
+      %p.text-muted.my-0.text-center Cover Photo
+      .text-center.mt-2
+        = link_to('Modify cover photo', edit_project_cover_photo_path(@project), class: 'btn btn-outline-primary btn-sm') if @project.editable_by?(current_user)
+    - @project.project_photos.each do |project_photo|
+      .col-4.mb-5
+        = image_tag project_photo.image, class: 'photo'
+        %p.text-muted.my-0.text-center= project_photo.date || '(no date)'
+        %p.text-muted.my-0.text-center= project_photo.description.presence || '(no description)'
+        - if @project.editable_by?(current_user)
+          %p.text-center
+            = link_to 'Edit', edit_project_project_photo_path(@project, project_photo), class: 'btn btn-outline-primary btn-sm mr-2', title: 'Edit photo'
+            = link_to 'Remove', [@project, project_photo], method: :delete, data: { confirm: "Delete this photo?" }, class: 'btn btn-outline-danger btn-sm', title: "Delete photo"
+    - if @project.editable_by?(current_user)
       .col-4
-        = image_tag @project.cover_photo, alt: "Photo of #{@project}", class: 'img-fluid mb-4 shadow rounded'
-    - @project.photos.each do |photo|
-      .col-4
-        = image_tag photo, alt: "Project on #{@project}", class: 'img-fluid mb-4 shadow rounded'
-  %h5 Project Location
+        %h4 Add a Photo
+        = form_with model: [@project, ProjectPhoto.new], multipart: true, id: 'add_project_photo' do |f|
+          - if @project.errors.any?
+            #error_explanation
+              %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+              %ul
+                - @project.errors.full_messages.each do |message|
+                  %li= message
+          .form-group
+            = f.label :image, 'Image File'
+            = f.file_field :image, class: 'form-control-file form-control-sm'
+            %small.form-text.text-muted Less than 50MB, please
+          .form-group
+            = f.label :date, 'Date of Photo'
+            = f.date_field :date, class: 'form-control form-control-sm'
+            %small.form-text.text-muted optional
+          .form-group
+            = f.label :description, 'Description'
+            = f.text_field :description, class: 'form-control form-control-sm', placeholder: 'Optional. A brief caption for the photo.'
+          .form-group
+            = f.submit 'Upload', class: 'btn btn-primary btn-sm mt-2'
+            %small.form-text.text-muted You can modify or remove photos after uploading.
+
+  %h5.mt-5 Project Location
   #project-map.rounded.border.border-secondary{"data-latitude" => "#{@project.lonlat.y}", "data-longitude" => "#{@project.lonlat.x}"}
   #manage-affiliations-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
     .modal-dialog{role: "document"}

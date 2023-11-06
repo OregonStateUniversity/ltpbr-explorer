@@ -28,8 +28,10 @@ RSpec.describe 'User Views Projects', type: :feature do
         expect(page).to_not have_link 'Edit'
         expect(page).to_not have_link 'Delete'
         expect(page).to_not have_link 'Manage Affiliations'
+        expect(page).to_not have_link 'Add a cover photo'
         expect(page).to_not have_link 'Modify cover photo'
-        expect(page).to_not have_link 'Manage photos'
+        expect(page).to_not have_text 'Add a Photo'
+        expect(page).to_not have_selector '#add_project_photo'
       end
     end
 
@@ -44,8 +46,10 @@ RSpec.describe 'User Views Projects', type: :feature do
         expect(page).to_not have_link 'Edit', exact: true
         expect(page).to_not have_link 'Delete'
         expect(page).to_not have_link 'Manage Affiliations'
+        expect(page).to_not have_link 'Add a cover photo'
         expect(page).to_not have_link 'Modify cover photo'
-        expect(page).to_not have_link 'Manage photos'
+        expect(page).to_not have_text 'Add a Photo'
+        expect(page).to_not have_selector '#add_project_photo'
       end
     end
 
@@ -60,8 +64,10 @@ RSpec.describe 'User Views Projects', type: :feature do
         expect(page).to have_link 'Edit', exact: true
         expect(page).to have_link 'Delete'
         expect(page).to have_link 'Manage Affiliations'
+        expect(page).to have_link 'Add a cover photo'
         expect(page).to have_link 'Modify cover photo'
-        expect(page).to have_link 'Manage photos'
+        expect(page).to have_text 'Add a Photo'
+        expect(page).to have_selector '#add_project_photo'
       end
     end
 
@@ -76,8 +82,10 @@ RSpec.describe 'User Views Projects', type: :feature do
         expect(page).to have_link 'Edit', exact: true
         expect(page).to have_link 'Delete'
         expect(page).to have_link 'Manage Affiliations'
+        expect(page).to have_link 'Add a cover photo'
         expect(page).to have_link 'Modify cover photo'
-        expect(page).to have_link 'Manage photos'
+        expect(page).to have_text 'Add a Photo'
+        expect(page).to have_selector '#add_project_photo'
       end
     end
   end

@@ -4,10 +4,6 @@ RSpec.describe ProjectPhotosController, type: :controller do
 
   context 'As a non logged-in user' do
 
-    describe 'GET #index' do
-      specify { expect(get(:index, params: {project_id: 'FAKE'})).to redirect_to(new_user_session_path) }
-    end
-
     describe 'PUT #create' do
       specify { expect(put(:create, params: {project_id: 'FAKE'})).to redirect_to(new_user_session_path) }
     end
@@ -33,10 +29,6 @@ RSpec.describe ProjectPhotosController, type: :controller do
     let(:project) { create(:project) }
     let(:user) { create(:user) }
     before(:each) { sign_in(user) }
-
-    describe 'GET #index' do
-      specify { expect(get(:index, params: {project_id: project.id})).to redirect_to(root_path) }
-    end
 
     describe 'PUT #create' do
       specify { expect(put(:create, params: {project_id: project.id})).to redirect_to(root_path) }
