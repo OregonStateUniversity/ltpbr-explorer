@@ -14,7 +14,7 @@
       - if @project.editable_by?(current_user)
         = help_button('manage-affiliations-help')
         = link_to 'Manage Affiliations', project_affiliations_path(@project), class: 'btn btn-outline-primary'
-  .row.border.mb-5
+  .row.mb-5
     .col-7
       - if @project.cover_photo.attached?
         #carousel-slideshow.carousel.slide{'data-ride': 'carousel'}
