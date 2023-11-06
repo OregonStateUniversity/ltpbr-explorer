@@ -1,4 +1,8 @@
 - provide(:title, 'Edit Project')
 .container.pt-5
-  %h2.mb-5 Edit Project
+  .row
+    .col
+      %h2.mb-5 Edit Project
+    .col-2.text-right
+      = link_to '« Cancel', project_path(@project)
   = render partial: 'form'

@@ -1,22 +1,21 @@
 - provide(:title, @project.stream_name)
-.container.pt-5
-  .row
+.container.pt-5.mb-5
+  .row.border-bottom.mb-5
     .col
       %h1.display-4= @project.name
     .col-3.text-right
       - if @project.editable_by?(current_user)
         = link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-outline-danger mr-5', title: "Delete #{@project}"
         = link_to 'Edit', edit_project_path(@project), class: 'btn btn-outline-primary', title: "Edit #{@project}"
-  %hr/
-  .row.border-bottom.mb-5.pb-2
+  .row.border-bottom.mb-5
     .col
       = render @project.affiliations
     .col-3.text-right
       - if @project.editable_by?(current_user)
         = help_button('manage-affiliations-help')
         = link_to 'Manage Affiliations', project_affiliations_path(@project), class: 'btn btn-outline-primary'
-  .row
-    .col-md-7
+  .row.border
+    .col-7
       - if @project.cover_photo.attached?
         = image_tag @project.cover_photo, class: 'rounded cover-photo-large'
       - else
@@ -49,7 +48,7 @@
       - else
         .missing-image-container
           = image_tag "missing_image_camera.png", alt: "Project on #{@project.stream_name}", class: "missing-image", align: "center", :size => "120x120"
-    .col-md-5
+    .col-5
       %label State:
       %p.h5.mb-3
         - if @project.state
@@ -64,10 +63,9 @@
       %p.h5.mb-3= @project.watershed
       %hr/
       - if @project.url && @project.url =~ URI::regexp
-        %label Project URL:
+        %label Project Web Site:
         %p.h5.mb-3
-          = link_to "Link", @project.url
-          ↗
+          = link_to "Link ↗", @project.url
         %hr/
       %label Implementation Date:
       %p.h5.mb-3= @project.implementation_date.strftime("%b" + ". " + "%d" + ", " + "%Y")

@@ -13,7 +13,7 @@ RSpec.feature 'User creates BDA project' do
   scenario 'providing valid project attributes' do
     fill_in('Project Name', with: 'Example Name')
     fill_in('Primary Contact Name', with: 'Example Contact Name')
-    fill_in('Project URL', with: 'example.com')
+    fill_in('Project Web Site Address', with: 'example.com')
     fill_in('Stream Name', with: 'Example Stream Name')
     fill_in('Project Watershed', with: 'Example Watershed')
     fill_in('Latitude', with: 44.042969)
