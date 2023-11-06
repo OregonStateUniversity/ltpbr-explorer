@@ -1,0 +1,25 @@
+- provide(:title, 'Edit Project Cover Photo')
+.container.pt-5
+  .row.mb-4
+    .col
+      %h2 Project Photos
+    .col-2.text-right
+      = link_to '« Cancel', project_path(@project)
+  %h3.text-muted= pluralize(@project.photos.count, 'photo')
+  .row
+    - @project.photos.each do |photo|
+      .col-4
+        = image_tag photo
+  = form_with model: @project, url: project_photos_path(@project), method: :post, multipart: true do |f|
+    - if @project.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+        %ul
+          - @project.errors.full_messages.each do |message|
+            %li= message
+    .form-group.mt-5
+      = f.label :photos, 'Upload Photos', class: 'h3'
+      = f.file_field :photos, multiple: true, class: 'form-control-file'
+    .form-group.actions
+      = f.submit 'Upload', class: 'btn btn-primary'
+      = link_to 'Cancel', project_path(@project), class: 'btn btn-outline btn-outline-secondary ml-5'
