@@ -29,6 +29,7 @@ RSpec.describe 'User Views Projects', type: :feature do
         expect(page).to_not have_link 'Delete'
         expect(page).to_not have_link 'Manage Affiliations'
         expect(page).to_not have_link 'Modify cover photo'
+        expect(page).to_not have_link 'Manage photos'
       end
     end
 
@@ -44,6 +45,7 @@ RSpec.describe 'User Views Projects', type: :feature do
         expect(page).to_not have_link 'Delete'
         expect(page).to_not have_link 'Manage Affiliations'
         expect(page).to_not have_link 'Modify cover photo'
+        expect(page).to_not have_link 'Manage photos'
       end
     end
 
@@ -59,6 +61,7 @@ RSpec.describe 'User Views Projects', type: :feature do
         expect(page).to have_link 'Delete'
         expect(page).to have_link 'Manage Affiliations'
         expect(page).to have_link 'Modify cover photo'
+        expect(page).to have_link 'Manage photos'
       end
     end
 
@@ -74,6 +77,7 @@ RSpec.describe 'User Views Projects', type: :feature do
         expect(page).to have_link 'Delete'
         expect(page).to have_link 'Manage Affiliations'
         expect(page).to have_link 'Modify cover photo'
+        expect(page).to have_link 'Manage photos'
       end
     end
   end

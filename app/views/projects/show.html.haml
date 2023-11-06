@@ -1,0 +1,110 @@
+- provide(:title, @project.stream_name)
+.container.pt-5
+  .row
+    .col
+      %h1.display-4= @project.name
+    .col-3.text-right
+      - if @project.editable_by?(current_user)
+        = link_to 'Delete', @project, method: :delete, data: { confirm: "Delete #{@project.stream_name}?" }, class: 'btn btn-outline-danger mr-5', title: "Delete #{@project}"
+        = link_to 'Edit', edit_project_path(@project), class: 'btn btn-outline-primary', title: "Edit #{@project}"
+  %hr/
+  .row.border-bottom.mb-5.pb-2
+    .col
+      = render @project.affiliations
+    .col-3.text-right
+      - if @project.editable_by?(current_user)
+        = help_button('manage-affiliations-help')
+        = link_to 'Manage Affiliations', project_affiliations_path(@project), class: 'btn btn-outline-primary'
+  .row
+    .col-md-7
+      - if @project.cover_photo.attached?
+        = image_tag @project.cover_photo, class: 'rounded cover-photo-large'
+      - else
+        = image_tag 'missing_image_camera.png', alt: 'This project needs a nice cover photo', class: 'rounded cover-photo-missing'
+      .text-center.mt-2
+        = link_to('Modify cover photo', edit_project_cover_photo_path(@project), class: 'btn btn-outline-primary btn-sm') if @project.editable_by?(current_user)
+      - if @project.photos[0].presence
+        #carousel-slideshow.carousel.slide{"data-ride" => "carousel"}
+          %ol.carousel-indicators
+            - @project.photos.each_with_index do |photo, index|
+              - if !@project.cover_photo_id.nil?
+                %li{class: "#{photo.id == @project.cover_photo_id ? 'active' : ''}", "data-slide-to" => index, "data-target" => "#carousel-slideshow"}
+              - else
+                %li{class: "#{index == 0 ? 'active' : ''}", "data-slide-to" => index, "data-target" => "#carousel-slideshow"}
+          .carousel-inner
+            - if !@project.cover_photo_id.nil?
+              - @project.photos.each do |photo|
+                %div{class: "carousel-item #{photo.id == @project.cover_photo_id ? 'active' : ''}", style: "background-image: url(#{url_for(photo)});"}
+                  = image_tag photo, alt: "Project on #{@project.stream_name}", class: 'shadow rounded'
+            - else
+              - @project.photos.each_with_index do |photo, index|
+                %div{class: "carousel-item #{index == 0 ? 'active' : ''}", style: "background-image: url(#{url_for(photo)});"}
+                  = image_tag photo, alt: "Project on #{@project.stream_name}", class: 'shadow rounded'
+          %a.carousel-control-prev{"data-slide" => "prev", href: "#carousel-slideshow", role: "button"}
+            %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+            %span.sr-only Previous
+          %a.carousel-control-next{"data-slide" => "next", href: "#carousel-slideshow", role: "button"}
+            %span.carousel-control-next-icon{"aria-hidden" => "true"}
+            %span.sr-only Next
+      - else
+        .missing-image-container
+          = image_tag "missing_image_camera.png", alt: "Project on #{@project.stream_name}", class: "missing-image", align: "center", :size => "120x120"
+    .col-md-5
+      %label State:
+      %p.h5.mb-3
+        - if @project.state
+          = link_to @project.state.name, @project.state
+        - else
+          N/A
+      %hr/
+      %label Stream Name:
+      %p.h5.mb-3= @project.stream_name
+      %hr/
+      %label Watershed:
+      %p.h5.mb-3= @project.watershed
+      %hr/
+      - if @project.url && @project.url =~ URI::regexp
+        %label Project URL:
+        %p.h5.mb-3
+          = link_to "Link", @project.url
+          ↗
+        %hr/
+      %label Implementation Date:
+      %p.h5.mb-3= @project.implementation_date.strftime("%b" + ". " + "%d" + ", " + "%Y")
+      %hr/
+      %label Treatment Length (m):
+      %p.h5.mb-3= @project.length
+      %hr/
+      %label LT-PBR Structures:
+      %p.h5.mb-3= @project.number_of_structures
+      %hr/
+  %h5 Project Goals and Objectives
+  %p= @project.narrative
+  %h5 Structure Construction Elements
+  %p= @project.structure_description
+  .row
+    .col
+      %h5 Project Photos
+    .col-2
+      = link_to('Manage photos', project_project_photos_path(@project), class: 'btn btn-sm btn-outline-primary') if @project.editable_by?(current_user)
+  .row
+    - if @project.cover_photo.attached?
+      .col-4
+        = image_tag @project.cover_photo, alt: "Photo of #{@project}", class: 'img-fluid mb-4 shadow rounded'
+    - @project.photos.each do |photo|
+      .col-4
+        = image_tag photo, alt: "Project on #{@project}", class: 'img-fluid mb-4 shadow rounded'
+  %h5 Project Location
+  #project-map.rounded.border.border-secondary{"data-latitude" => "#{@project.lonlat.y}", "data-longitude" => "#{@project.lonlat.x}"}
+  #manage-affiliations-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+    .modal-dialog{role: "document"}
+      .modal-content
+        .modal-header
+          %h5.modal-title Manage Affiliated Organizations
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+            %span{"aria-hidden" => "true"} ×
+        .modal-body
+          Select which organizations are affiliated with this project and assign a role to each
+          organization depending on their role in the project.
+        .modal-footer
+          %button.btn.btn-secondary{"data-dismiss" => "modal", type: "button"} Close
