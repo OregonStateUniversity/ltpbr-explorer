@@ -17,7 +17,23 @@
   .row.border.mb-5
     .col-7
       - if @project.cover_photo.attached?
-        = image_tag @project.cover_photo, class: 'rounded cover-photo-large'
+        #carousel-slideshow.carousel.slide{'data-ride': 'carousel'}
+          %ol.carousel-indicators
+            %li{class: 'active', 'data-slide-to': 0, 'data-target': '#carousel-slideshow'}
+            - @project.project_photos_count.times do |i|
+              %li{class: '', 'data-slide-to': i + 1, 'data-target': '#carousel-slideshow'}
+          .carousel-inner
+            %div{class: 'carousel-item active', style: "background-image: url(#{url_for(@project.cover_photo)});"}
+              = image_tag @project.cover_photo, alt: @project.to_s, class: 'shadow rounded'
+            - @project.project_photos.each do |project_photo|
+              %div{class: 'carousel-item', style: "background-image: url(#{url_for(project_photo.image)});"}
+                = image_tag project_photo.image, alt: @project.to_s, class: 'shadow rounded'
+          %a.carousel-control-prev{'data-slide': 'prev', href: '#carousel-slideshow', role: 'button'}
+            %span.carousel-control-prev-icon{'aria-hidden': 'true'}
+            %span.sr-only Previous
+          %a.carousel-control-next{'data-slide': 'next', href: '#carousel-slideshow', role: 'button'}
+            %span.carousel-control-next-icon{'aria-hidden': 'true'}
+            %span.sr-only Next
       - else
         = image_tag 'missing_image_camera.png', alt: 'This project needs a nice cover photo', class: 'rounded cover-photo-missing'
         - if @project.editable_by?(current_user)
