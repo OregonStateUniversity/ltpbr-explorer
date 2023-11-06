@@ -1,7 +1,7 @@
 class ProjectCoverPhotosController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :map, :show]
-  before_action :set_project, only: [:edit, :update]
-  before_action :require_author_or_admin, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_project
+  before_action :require_author_or_admin
 
   def edit
   end
