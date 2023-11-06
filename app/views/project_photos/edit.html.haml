@@ -1,6 +1,10 @@
 - provide(:title, 'Edit Project Photo')
 .container.pt-5
-  %h2.mb-5 Edit Photo
+  .row.mb-4
+    .col
+      %h2.mb-5 Edit Photo
+    .col-2.text-right
+      = link_to '« Cancel', project_path(@project)
   .col-5
     = image_tag @project_photo.image, class: 'photo mb-5'
     = form_with model: [@project, @project_photo], multipart: true do |f|
@@ -22,4 +26,5 @@
         = f.label :description, 'Description'
         = f.text_field :description, class: 'form-control form-control-sm', placeholder: 'Optional. A brief caption for the photo.'
       .form-group
-        = f.submit 'Update', class: 'btn btn-primary btn-sm mt-2'
+        = f.submit 'Update', class: 'btn btn-primary'
+        = link_to 'Cancel', project_path(@project), class: 'btn btn-outline btn-outline-secondary ml-5'
