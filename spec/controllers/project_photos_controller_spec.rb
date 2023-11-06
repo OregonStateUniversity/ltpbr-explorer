@@ -12,6 +12,18 @@ RSpec.describe ProjectPhotosController, type: :controller do
       specify { expect(put(:create, params: {project_id: 'FAKE'})).to redirect_to(new_user_session_path) }
     end
 
+    describe 'GET #edit' do
+      specify { expect(get(:edit, params: {project_id: 'FAKE', id: 'FAKE'})).to redirect_to(new_user_session_path) }
+    end
+
+    describe 'PUT #update' do
+      specify { expect(put(:update, params: {project_id: 'FAKE', id: 'FAKE'})).to redirect_to(new_user_session_path) }
+    end
+
+    describe 'PATCH #update' do
+      specify { expect(patch(:update, params: {project_id: 'FAKE', id: 'FAKE'})).to redirect_to(new_user_session_path) }
+    end
+
     describe 'DELETE #destroy' do
       specify { expect(delete(:destroy, params: {project_id: 'FAKE', id: 'FAKE'})).to redirect_to(new_user_session_path) }
     end
@@ -28,6 +40,18 @@ RSpec.describe ProjectPhotosController, type: :controller do
 
     describe 'PUT #create' do
       specify { expect(put(:create, params: {project_id: project.id})).to redirect_to(root_path) }
+    end
+
+    describe 'GET #edit' do
+      specify { expect(get(:edit, params: {project_id: project.id, id: 'FAKE'})).to redirect_to(root_path) }
+    end
+
+    describe 'PUT #update' do
+      specify { expect(put(:update, params: {project_id: project.id, id: 'FAKE'})).to redirect_to(root_path) }
+    end
+
+    describe 'PATCH #update' do
+      specify { expect(patch(:update, params: {project_id: project.id, id: 'FAKE'})).to redirect_to(root_path) }
     end
 
     describe 'DELETE #destroy' do
