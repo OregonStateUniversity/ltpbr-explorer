@@ -9,7 +9,7 @@ RSpec.describe 'Admin Deletes a Project', type: :feature do
     visit project_path(project)
     click_on 'Delete'
     expect(page).to_not have_text project.name
-    expect(page).to have_text 'Project was successfully destroyed'
+    expect(page).to have_text 'Project was successfully deleted'
   end
 
 end

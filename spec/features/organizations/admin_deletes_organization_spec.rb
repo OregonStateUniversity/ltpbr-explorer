@@ -8,7 +8,7 @@ RSpec.describe 'Admin Deletes an Organization', type: :feature do
     log_in_as(admin)
     visit organizations_path
     click_on 'Delete'
-    expect(page).to have_text 'Organization was successfully destroyed'
+    expect(page).to have_text 'Organization was successfully deleted'
     expect(page).to_not have_text organization.name
   end
 

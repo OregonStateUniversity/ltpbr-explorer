@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     redirect_to current_user
-    flash[:success] = 'Project was successfully destroyed.'
+    flash[:success] = 'Project was successfully deleted.'
   end
 
   private
