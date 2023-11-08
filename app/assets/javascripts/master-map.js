@@ -74,7 +74,7 @@ $(document).on('turbolinks:load', function () {
           </div>
           <div class='row my-1 border-bottom marker-info'>
             <div class='col-md-8 my-2'>
-              <img class='img-thumbnail shadow rounded' src='${project.cover_photo_url ? project.cover_photo_url : '/assets/missing_image_camera.png'}'>
+              <img class='img-thumbnail shadow rounded' src='${project.cover_photo_url ? project.cover_photo_url : '/missing_image_camera.png'}'>
             </div>
             <div class='col-md-4'>
               <div class='row my-1 border-bottom'>
