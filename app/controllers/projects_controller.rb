@@ -29,7 +29,6 @@ class ProjectsController < ApplicationController
     @project.longitude = @project.lonlat.x
     @project.latitude = @project.lonlat.y
     @organizations = Organization.all.order(:name)
-    gon.cover_photo_id = @project.cover_photo_id
   end
 
   def create

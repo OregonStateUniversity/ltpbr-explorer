@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_06_004244) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_09_161442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -95,7 +95,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_06_004244) do
     t.string "watershed", null: false
     t.string "url"
     t.bigint "state_id"
-    t.bigint "cover_photo_id"
     t.integer "affiliations_count", default: 0, null: false
     t.integer "project_photos_count", default: 0, null: false
     t.index ["author_id"], name: "index_projects_on_author_id"
@@ -139,7 +138,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_06_004244) do
   add_foreign_key "affiliations", "organizations"
   add_foreign_key "affiliations", "projects"
   add_foreign_key "project_photos", "projects"
-  add_foreign_key "projects", "active_storage_attachments", column: "cover_photo_id"
   add_foreign_key "projects", "states"
   add_foreign_key "projects", "users", column: "author_id"
 end
