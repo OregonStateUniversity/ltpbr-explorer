@@ -28,4 +28,13 @@ RSpec.describe Organization, type: :model do
     it { is_expected.to have_one_attached(:logo) }
   end
 
+  describe 'to_csv' do
+    it 'returns a csv string with attributes values' do
+      create(:organization, name: 'First')
+      create(:organization, name: 'Second')
+      organizations_csv = Organization.to_csv
+      expect(organizations_csv).to match /id,name.*\n.*,First,.*\n.*,Second,.*/
+    end
+  end
+
 end

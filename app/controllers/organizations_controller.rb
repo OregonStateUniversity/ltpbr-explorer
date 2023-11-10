@@ -7,6 +7,10 @@ class OrganizationsController < ApplicationController
 
   def index
     @organizations = Organization.order('affiliations_count DESC, name')
+    respond_to do |format|
+      format.html
+      format.csv { send_data @organizations.reorder(:id).to_csv, filename: 'organizations.csv' }
+    end
   end
 
   def show

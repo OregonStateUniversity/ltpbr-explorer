@@ -32,4 +32,11 @@ RSpec.describe 'User Views Organizations', type: :feature do
     expect(page).to_not have_link 'Delete'
   end
 
+  it 'provides a csv export' do
+    organization = create(:organization)
+    visit organizations_path
+    click_on 'Export CSV'
+    expect(page.text).to match /id,name,.*/
+  end
+
 end
