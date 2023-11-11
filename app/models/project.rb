@@ -11,7 +11,6 @@ class Project < ApplicationRecord
   has_many :project_photos
 
   has_one_attached :cover_photo
-  has_many_attached :photos
 
   accepts_nested_attributes_for :affiliations
 
@@ -25,10 +24,6 @@ class Project < ApplicationRecord
   validates :cover_photo,
     content_type: [:png, :jpg, :jpeg, :gif, :bmp, :avif, :webp],
     size: { less_than: 50.megabytes , message: 'must be below 50 MB in size each' }
-  validates :photos,
-    content_type: [:png, :jpg, :jpeg, :gif, :bmp, :avif, :webp],
-    size: { less_than: 50.megabytes , message: 'must be below 50 MB in size each' },
-    limit: { min: 0, max: 20, message: 'must have fewer than 20 photos'}
 
   before_save :assign_lonlat, :assign_state
 
