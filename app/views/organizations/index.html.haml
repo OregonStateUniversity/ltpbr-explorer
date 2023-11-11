@@ -4,11 +4,7 @@
     .col
       %h1 Organizations
     .col.text-right
-
-      = link_to organizations_path(format: :csv), class: 'btn btn-outline-primary' do
-        %i.fas.fa-table
-        Export CSV
       - if current_user&.admin_role?
-        = link_to 'New Organization', new_organization_path, class: 'btn btn-outline-primary ml-4'
+        = link_to 'New Organization', new_organization_path, class: 'btn btn-outline-primary'
   = render @organizations
   %hr/
