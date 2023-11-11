@@ -47,6 +47,15 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many_attached(:photos) }
   end
 
+  describe 'to_csv' do
+    it 'returns a csv string with attributes values' do
+      create(:project, name: 'First')
+      create(:project, name: 'Second')
+      projects_csv = Project.to_csv
+      expect(projects_csv).to match /id,.*,name,.*\n.*,First,.*\n.*,Second,.*/
+    end
+  end
+
   describe 'cover_photo_url' do
     context 'without a cover photo' do
       it 'is nil' do

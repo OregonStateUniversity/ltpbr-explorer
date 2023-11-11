@@ -10,6 +10,11 @@ RSpec.describe 'User Views Projects', type: :feature do
         expect(page).to have_text 'LT-PBR Projects'
         expect(page).to have_text project.name
       end
+      it 'provides a csv export' do
+        project = create(:project)
+        visit projects_path(format: :csv)
+        expect(page.text).to match /id,.*,name,.*/
+      end
     end
   end
 

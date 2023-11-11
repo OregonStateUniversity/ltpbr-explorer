@@ -6,6 +6,10 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.search(params[:query], params[:organization_id]).distinct.order(:name)
     @organizations = Organization.all.order(:name)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @projects.reorder(:id).to_csv, filename: 'projects.csv' }
+    end
   end
 
   def map

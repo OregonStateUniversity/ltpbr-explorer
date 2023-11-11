@@ -1,3 +1,5 @@
+require 'csv'
+
 class Project < ApplicationRecord
 
   attr_accessor :longitude, :latitude
@@ -30,8 +32,14 @@ class Project < ApplicationRecord
 
   before_save :assign_lonlat, :assign_state
 
-  def cover_photo_url
-    cover_photo.url if cover_photo.attached?
+  def self.to_csv
+    attributes = Project.new.attributes.keys
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      all.each do |project|
+        csv << attributes.map { |attr| project.send(attr) }
+      end
+    end
   end
 
   def self.search(query, organization_id)
@@ -54,6 +62,10 @@ class Project < ApplicationRecord
 
   def self.project_total_length_mi
     (self.project_total_length_km * 0.6214).floor(1)
+  end
+
+  def cover_photo_url
+    cover_photo.url if cover_photo.attached?
   end
 
   def authored_by?(user)
