@@ -1,38 +1,34 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.navbar-fixed-top.sticky
-  = link_to root_path, :class => 'logo', title: 'LT-PBR Explorer home' do
+%nav.navbar.navbar-expand-lg.navbar-dark.navbar-fixed-top.sticky
+  = link_to root_path, class: 'navbar-brand', title: 'LT-PBR Explorer home' do
     LT-PBR
-    %span#logo-highlight explorer
-  %button.navbar-toggler{"aria-controls": "nav", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#nav", "data-toggle": "collapse", type: "button"}
+    %span.navbar-brand-secondary explorer
+  %button.navbar-toggler{'aria-controls': 'nav', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation', 'data-target': '#nav', 'data-toggle': 'collapse', type: 'button'}
     %span.navbar-toggler-icon
-  #nav.collapse.navbar-collapse.justify-content-end
+  .collapse.navbar-collapse.justify-content-end
     %ul.navbar-nav
       %li.nav-item
-        .nav-link= link_to 'About', about_path
-        %span.sr-only (current)
+        = link_to 'About', about_path, class: 'nav-link'
       %li.nav-item
-        .nav-link= link_to 'Organizations', organizations_path
-        %span.sr-only (current)
+        = link_to 'Organizations', organizations_path, class: 'nav-link'
       %li.nav-item
-        .nav-link= link_to 'States', states_path
-        %span.sr-only (current)
+        = link_to 'States', states_path, class: 'nav-link'
       %li.nav-item.dropdown
-        %a#projects-dropdown.nav-link.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#"} Projects
-        #dropdown.dropdown-menu.dropdown-menu-right{"aria-labelledby": "dropdown"}
-          .dropdown-item= link_to 'Projects Map', map_projects_path
-          .dropdown-item= link_to 'Projects List', projects_path
+        %a.nav-link.dropdown-toggle{'aria-expanded': 'false', 'aria-haspopup': 'true', 'data-toggle': 'dropdown', href: '#'} Projects
+        .dropdown-menu.dropdown-menu-right{'aria-labelledby': 'dropdown'}
+          = link_to 'Projects Map', map_projects_path, class: 'dropdown-item'
+          = link_to 'Projects List', projects_path, class: 'dropdown-item'
         %span.sr-only (current)
-      %li= link_to 'Add a Project', new_project_path, class: 'btn btn-sm btn-primary mt-1'
+      %li= link_to 'Add a Project', new_project_path, class: 'btn btn-sm btn-secondary mt-1'
       - if user_signed_in?
         %li.nav-item.dropdown
-          %a#dropdown.nav-link.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#"}= current_user.name
-          #dropdown.dropdown-menu.dropdown-menu-right{"aria-labelledby": "dropdown"}
-            .dropdown-item= link_to 'My Projects', user_path(current_user)
-            .dropdown-item= link_to 'Edit Profile', edit_user_registration_path
+          %a.nav-link.dropdown-toggle{'aria-expanded': 'false', 'aria-haspopup': 'true', 'data-toggle': 'dropdown', href: '#'}= current_user.name
+          .dropdown-menu.dropdown-menu-right{'aria-labelledby': 'dropdown'}
+            = link_to 'My Projects', user_path(current_user), class: 'dropdown-item'
+            = link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item'
             .dropdown-divider
-            .dropdown-item= link_to 'Sign Out', destroy_user_session_path, method: :delete
+            = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
       - else
         %li.nav-item
-          .nav-link= link_to 'Sign In', new_user_session_path
-          %span.sr-only (current)
+          = link_to 'Sign In', new_user_session_path, class: 'nav-link'
         %li.nav-item
-          .nav-link= link_to 'Sign Up', new_user_registration_path
+          = link_to 'Sign Up', new_user_registration_path, class: 'nav-link'
