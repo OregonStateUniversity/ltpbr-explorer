@@ -6,7 +6,7 @@
     .col
       %h1 LT-PBR Projects
     .col.text-right
-      = link_to map_projects_path, class: 'btn btn-outline-success' do
+      = link_to map_projects_path, class: 'btn btn-outline-primary' do
         %i.fa.fa-map.mr-2
         Map View
   = form_tag projects_path, method: 'get' do
@@ -17,7 +17,7 @@
         .col-md-5
           = select_tag :organization_id, options_from_collection_for_select(@organizations, :id, :name, params[:organization_id]), class: 'select2 form-control', include_blank: true
         .col-md-3
-          = submit_tag 'Filter', class: 'btn btn-success mr-2'
+          = submit_tag 'Filter', class: 'btn btn-primary mr-2'
           = link_to 'Reset', projects_path, class: 'btn btn-outline-secondary'
       %h5.text-secondary.text-center.mt-4.mb-4= pluralize(@projects.count, 'Project')
   .projects

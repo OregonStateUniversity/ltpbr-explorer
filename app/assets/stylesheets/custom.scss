@@ -853,6 +853,11 @@ input[type="checkbox"] {
   font-weight: bold;
 }
 
+.badge-primary {
+  background-color: $rc-divider;
+}
+
+
 // Select2 Styling
 
 .select2-results__option--highlighted {
