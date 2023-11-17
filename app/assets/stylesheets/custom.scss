@@ -87,7 +87,7 @@ label {
 // Navbar
 
 nav {
-  background-image: url(<%= asset_path 'app_bar_data_exchange_background_image.jpg' %>);
+  background-image: url('app_bar_data_exchange_background_image.jpg');
   a {
     color: $rc-secondary-main;
   }
