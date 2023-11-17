@@ -1,0 +1,24 @@
+- provide(:title, 'Sign In')
+.container.pt-5
+  .row
+    .col-3
+    .col-6
+      %h2.mb-5 Sign In
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-group
+          = f.label :login, 'Username'
+          = f.text_field :login, autofocus: true, autocomplete: 'off', class: 'form-control'
+        .form-group
+          = f.label :password
+          = f.password_field :password, autocomplete: 'off', class: 'form-control'
+        - if devise_mapping.rememberable?
+          .form-group
+            = f.check_box :remember_me, class: 'form-checkbox'
+            = f.label :remember_me
+        .form-group
+          = f.submit 'Sign In', class: 'btn btn-primary w-25'
+      .row.my-5
+        .col
+          = button_to 'Sign Up', new_registration_path(resource_name), class: 'btn btn-outline-secondary', method: :get
+        .col.text-right
+          = button_to 'Forgot your password?', new_password_path(resource_name), class: 'btn btn-outline-secondary', method: :get

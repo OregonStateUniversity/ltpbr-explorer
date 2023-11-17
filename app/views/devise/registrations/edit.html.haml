@@ -1,0 +1,45 @@
+- provide(:title, 'Edit Profile')
+.container.pt-5
+  .row
+    .col-3
+    .col-6
+      %h2.mb-5 Edit Your Profile
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = devise_error_messages!
+        .form-group
+          = f.label :username
+          = f.text_field :username, autocomplete: 'off', class: 'form-control'
+        .form-group
+          = f.label :email
+          = f.email_field :email, autocomplete: 'email', class: 'form-control'
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %div
+              Currently waiting confirmation for: \#{resource.unconfirmed_email}
+        .form-group
+          = f.label :name
+          = f.text_field :name, autocomplete: 'off', class: 'form-control'
+        .form-group
+          = f.label :affiliation
+          = f.text_field :affiliation, autocomplete: 'off',class: 'form-control'
+        .form-group
+          = f.label :password, 'New Password'
+          %i ( Leave blank if you don't want to change it )
+          = f.password_field :password, autocomplete: 'off', class: 'form-control'
+        .form-group
+          = f.label :password_confirmation, 'New Password Confirmation'
+          - if @minimum_password_length
+            %em
+              (
+              \#{@minimum_password_length}
+              characters minimum )
+          = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+        .form-group
+          = f.label :current_password
+          = f.password_field :current_password, autocomplete: 'off', class: 'form-control'
+        .form-group
+          = f.submit 'Update', class: 'btn btn-primary'
+
+      %p
+        Need help?
+        = succeed('.') do
+          = mail_to 'nick.weber@anabranchsolutions.com', 'Contact us'

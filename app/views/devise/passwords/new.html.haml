@@ -1,0 +1,22 @@
+- provide(:title, 'Forgot Password')
+.container.pt-5
+  .row
+    .col-3
+    .col-6
+      %h2.mb-5 Forgot your password?
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        = devise_error_messages!
+        .form-group
+          = f.label :username
+          = f.text_field :username, autofocus: true, class: 'form-control', required: 'required'
+        .form-group
+          = f.submit 'Send me reset password instructions', class: 'btn btn-primary'
+          %p.form-text.small.mt-4.text-muted
+            Need help?
+            = succeed('.') do
+              = mail_to 'nick.weber@anabranchsolutions.com', 'Contact us'
+      .row.my-5
+        .col
+          = button_to 'Sign In', new_session_path(resource_name), class: 'btn btn-outline-secondary', method: :get
+        .col
+          = button_to 'Sign Up', new_registration_path(resource_name), class: 'btn btn-outline-secondary', method: :get

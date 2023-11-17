@@ -195,17 +195,6 @@ input[type="checkbox"] {
   float: left;
 }
 
-.remember-me {
-  margin-bottom: 10px;
-}
-
-.confirm-btn {
-  width: 200px;
-  color: white;
-  background-color: $green;
-  font-weight: 400;
-}
-
 .confirm-del-btn {
     width: 200px;
     color: white;
@@ -222,12 +211,6 @@ input[type="checkbox"] {
 
 .btn-width-md {
   width: 200px;
-}
-
-.devise-links-btn {
-  max-width: 200px;
-  color: white;
-  background-color: #B1B1B1;
 }
 
 #affiliations-index-buttons {
@@ -252,10 +235,6 @@ input[type="checkbox"] {
   img {
     height: 17px;
   }
-}
-
-#recaptcha {
-  margin-bottom: 15px;
 }
 
 #form-check,#form-check checkbox{

@@ -1,0 +1,37 @@
+- provide(:title, 'Sign Up')
+.container.pt-5
+  .row
+    .col-3
+    .col-6
+      %h2.mb-5 Sign Up
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .form-group
+          = f.label :username
+          = f.text_field :username, autofocus: true, class: 'form-control', required: 'required'
+        .form-group
+          = f.label :email
+          = f.email_field :email, autocomplete: 'email', class: 'form-control', required: 'required'
+        .form-group
+          = f.label :name
+          = f.text_field :name, class: 'form-control', required: 'required'
+        .form-group
+          = f.label :affiliation
+          = f.text_field :affiliation, class: 'form-control', required: 'required', placeholder: 'Organization, group or company name'
+        .form-group
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              = @minimum_password_length
+              characters minimum
+          = f.password_field :password, class: 'form-control', required: 'required'
+        .form-group
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, class: 'form-control'
+        .form-group
+          = flash[:recaptcha_error]
+          = recaptcha_tags
+        .form-group
+          = f.submit 'Sign up', class: 'btn btn-primary w-25'
+      .my-5
+        = button_to 'Sign In', new_session_path(resource_name), class: 'btn btn-outline-secondary', method: :get
