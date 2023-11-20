@@ -337,7 +337,7 @@ input[type="checkbox"] {
     font-size: calc(100% + 3vw + 2vh)
 }
 
-.home-stat-card .icon-card {
+.home-stat-card .icon-card, .state-stat-card .icon-card {
   background-color: $rc-divider;
 }
 
