@@ -83,6 +83,6 @@
     = f.file_field :cover_photo, accept: 'image/*', class: 'form-control-file'
     %small.form-text.text-muted Upload the main photo for the project. You'll be able to add more photos later.
   .form-group.actions
-    = f.submit class: 'btn btn-success'
+    = f.submit class: 'btn btn-primary'
 - ProjectsHelper::FORM_HELP_MODAL_ATTRIBUTES.each do |attributes|
   = render partial: 'form_help_modal', locals: { modal_attributes: attributes }
