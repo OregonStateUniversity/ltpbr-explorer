@@ -5,7 +5,7 @@
       %h1 Organization Affiliations
       %h2.text-secondary.font-weight-normal= @project.name
     .col-2.text-right
-      = link_to '« Back to Project', project_path(@project)
+      = link_to '« Back to Project', project_path(@project), class: 'btn btn-link'
 
   - @affiliations.each do |affiliation|
     .row.justify-content-between[affiliation]
