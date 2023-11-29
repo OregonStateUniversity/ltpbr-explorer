@@ -69,14 +69,6 @@ label {
   }
 }
 
-.btn-link-primary {
-  color: $green;
-
-  &:hover {
-    color: lighten($green, 20%);
-  }
-}
-
 
 // Navbar
 
@@ -380,9 +372,9 @@ input[type="checkbox"] {
 }
 
 .leaflet-control-layers-selected {
-  border: 2px solid darken($green, 10%);
-  background-color: lighten($green, 40%);
-  color: darken($green, 20%);
+  border: 2px solid darken($rc-secondary-main, 10%);
+  background-color: lighten($rc-secondary-main, 40%);
+  color: darken($rc-secondary-main, 20%);
 }
 
 .leaflet-control-layers-unselected {
@@ -642,10 +634,6 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-#navlinkbartext:hover {
-    background-color: $green;
-    color: $green;
-}
 
 // About main page adjustments
 
@@ -692,7 +680,7 @@ input[type="checkbox"] {
     float: left;
     padding: 0 14px;
     line-height: 38px;
-    color: $green;
+    color: $rc-primary-main;
     text-decoration: none;
     background-color: white;
     border: 1px solid #DDD;
@@ -702,7 +690,7 @@ input[type="checkbox"] {
 .pagination > li > a
 {
     background-color: white;
-    color: $green;
+    color: $rc-primary-main;
 }
 
 .pagination > li > a:focus,
@@ -711,14 +699,14 @@ input[type="checkbox"] {
 .pagination > li > span:hover
 {
     color: #eee;
-    background-color: $green;
+    background-color: $rc-primary-main;
     border-color: #ddd;
 }
 
 .pagination > .active > a
 {
-    color: $green;
-    background-color: $green !important;
+    color: $rc-primary-main;
+    background-color: $rc-primary-main !important;
     border: solid 1px lightgray !important;
 }
 
@@ -729,14 +717,14 @@ input[type="checkbox"] {
     border: solid 1px lightgray;
 }
 .pagination a:hover {
-    background-color: $green;
+    background-color: $rc-primary-main;
 }
 .pagination:active {
-    color: $green;
+    color: $rc-primary-main;
 }
 
 .pagination {
-    color: $green;
+    color: $rc-primary-main;
     .first{
         padding : 0;
         float: none;
@@ -803,7 +791,7 @@ input[type="checkbox"] {
 
 .select2-results__option--highlighted {
     color: white !important;
-    background-color: $green !important;
+    background-color: $rc-primary-main !important;
 }
   
 .select2-container--default .select2-results__option[aria-selected=true] {
