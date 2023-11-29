@@ -1,3 +1,8 @@
+// Typeface
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Karla:wght@400;700&display=swap');
+
+
 // Variables & Mixins
 
 $rc-primary-main: #004793;
@@ -7,18 +12,6 @@ $rc-secondary-main: #21BFD4;
 $rc-secondary-light: #4BCBDC;
 $rc-secondary-dark: #178594;
 $rc-divider: #BBCD3F;
-
-
-$green: #27ae60;
-$danger-red: #c0392b;
-$success-green: #28a745;
-$enable-shadows: true;
-
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
 
 // Layout
@@ -31,6 +24,7 @@ body {
     margin: 0;
     margin-bottom: 25px;
     height: calc(100% - 65px); /* minus navbar incl. border */
+    font-family: 'Karla', 'Arial', sans-serif;
 }
 
 html, #map {
@@ -193,20 +187,6 @@ input[type="checkbox"] {
 .form-checkbox {
   width: 25px;
   float: left;
-}
-
-.confirm-del-btn {
-    width: 200px;
-    color: white;
-    background-color: $danger-red;
-    font-weight: 400;
-  }
-
-.confirm-btn-wide {
-  width: 350px;
-  color: white;
-  background-color: $green;
-  font-weight: 400;
 }
 
 .btn-width-md {
@@ -556,14 +536,6 @@ input[type="checkbox"] {
 	display: none;
 }
 
-.image-select-delete-checked {
-	border-color: $danger-red;
-}
-
-.image-select-cover-checked {
-	border-color: $success-green;
-}
-
 .image-select .fa {
   position: absolute;
   border-color: #d6e9c6;
@@ -575,16 +547,6 @@ input[type="checkbox"] {
 
 .image-select .fa {
   display: none;
-}
-
-.image-select-delete-checked .delete-icon {
-  color: $danger-red;
-  display: block !important;
-}
-
-.image-select-cover-checked .cover-icon {
-  color: $success-green;
-  display: block !important;
 }
 
 // Icons
@@ -763,7 +725,7 @@ input[type="checkbox"] {
 .pagination > .active > a:hover
 {
     color: white;
-    background-color: $success-green !important;
+    background-color: $rc-primary-main !important;
     border: solid 1px lightgray;
 }
 .pagination a:hover {
