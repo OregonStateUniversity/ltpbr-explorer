@@ -31,19 +31,19 @@
   <p><%= @organization.description %></p>
   <hr>
   <div class="card-deck justify-content-center h-100">   
-      <%= render :partial => 'static/home_stat_card', locals: {
+      <%= render :partial => 'shared/stat_card', locals: {
       title: "Projects",
       value: @project_count, 
       text: "Process-based riverscape restoration projects",
       icon: "fas fa-map-marker"
       }%> 
-      <%= render :partial => 'static/home_stat_card', locals: {
+      <%= render :partial => 'shared/stat_card', locals: {
         title: "Length",
         value: "#{@project_total_length_mi}mi",
         text: "Total channel length of riverscape restoration implementation",
         icon: "fas fa-ruler"
       }%>
-      <%= render :partial => 'static/home_stat_card', locals: {
+      <%= render :partial => 'shared/stat_card', locals: {
         title: "Structures",
         value: @structure_sum, 
         text: "Beaver dam analog (BDA) and post-assisted log structures (PALS)",

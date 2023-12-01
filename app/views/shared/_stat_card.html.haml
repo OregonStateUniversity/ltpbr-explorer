@@ -1,0 +1,13 @@
+.home-stat-card.col-xl-4.pt-2.d-flex
+  .card.card-stats.mb-4.mb-xl-0.h-100
+    .card-body.h-100
+      .row
+        .col.h-100
+          %h4.card-title.text-uppercase.text-muted.text-left.mb-0
+            = title
+          %p.h1.font-weight-bold.text-left.mb-0= value
+        .col-auto
+          .icon-card.icon-card-shape.text-white.rounded-circle.shadow
+            %i{class: icon}
+      %p.mt-3.mb-0.text-muted.text-sm.text-left
+        %span.text-wrap= text
