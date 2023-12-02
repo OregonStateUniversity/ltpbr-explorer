@@ -1,0 +1,117 @@
+- provide(:title, @state.name)
+.container.pt-5
+  %h1.display-4= @state.name
+  %h5.text-secondary United States
+  %hr/
+  .row
+    .col-md-7
+      .projects_map
+        #state-map.rounded.border.border-secondary
+    .col-md-5
+      .card.card-stats.mb-4.mb-xl-0.state-stat-card
+        .card-body
+          .row
+            .col
+              %h4.card-title.text-uppercase.text-muted.text-left.mb-0 Projects
+              %p.h1.font-weight-bold.text-left.mb-0= @state.projects_count
+            .col-auto
+              .icon-card.icon-card-shape.text-white.rounded-circle.shadow
+                %i.fas.fa-map-marker
+          %p.mt-3.mb-0.text-muted.text-left.text-sm
+            %span.text-wrap Process-based riverscape restoration projects
+      .card.card-stats.mb-4.mb-xl-0.state-stat-card
+        .card-body
+          .row
+            .col
+              %h4.card-title.text-uppercase.text-muted.text-left.mb-0 Structures
+              %p.h1.font-weight-bold.text-left.mb-0= @state.number_of_structures
+            .col-auto
+              .icon-card.icon-card-shape.text-white.rounded-circle.shadow
+                %i.fab.fa-pagelines
+          %p.mt-3.mb-0.text-muted.text-left.text-sm
+            %span.text-wrap Beaver dam analog (BDA) and post-assisted log structures (PALS)
+      .card.card-stats.mb-4.mb-xl-0.state-stat-card
+        .card-body
+          .row
+            .col
+              %h4.card-title.text-uppercase.text-muted.text-left.mb-0 Length
+              %p.h1.font-weight-bold.text-left.mb-0
+                = @state.project_total_length_mi
+                mi
+            .col-auto
+              .icon-card.icon-card-shape.text-white.rounded-circle.shadow
+                %i.fas.fa-ruler
+          %p.mt-3.mb-0.text-muted.text-sm.text-left
+            %span.text-wrap Total channel length of riverscape restoration implementation
+%hr/
+.container.mt-5
+  %h3.lead.text-center Graphing #{@state.name}'s Projects from #{@chart_project_count.keys[0]} Onward
+  %canvas#myChart{height: '200', width: '400'}
+.container.mt-5
+  %h2 State Projects
+  = render @projects
+:javascript
+  var ctx = document.getElementById('myChart').getContext('2d');
+  
+  var nullDupes = data => data.map((x, i) => data[i - 1] === x ? null : x);
+  var data = #{@chart_project_count.keys.to_json.html_safe}
+  
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      spanGaps: true,
+      data: {
+          labels: data,
+          datasets: [{
+            label: 'Number of Projects',
+            data: nullDupes(#{@chart_project_count.values.to_json.html_safe}),
+            borderColor: [
+                'rgba(78, 255, 132, 1)',
+            ],
+            borderWidth: 2,
+            yAxisID: "y1",
+            spanGaps: true,
+            grace: '50%'
+          },
+          {
+            label: 'Number of Structures',
+            data: nullDupes(#{@chart_structure_count.values.to_json.html_safe}),
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+            ],
+            borderWidth: 2,
+            spanGaps: true,
+          },
+          {
+            label: 'Total Riverscape Length (km)',
+            data: nullDupes(#{@chart_total_length.values.to_json.html_safe}),
+            borderColor: [
+                'rgba(4, 99, 132, 1)',
+            ],
+            borderWidth: 2,
+            yAxisID: "y1",
+            spanGaps: true,
+          }]
+      },
+      options: {
+        scales: {
+          xAxis: {
+              ticks: {
+                  maxTicksLimit: 8
+              },
+          },
+          y: {
+            type: 'linear',
+            display: true,
+            beginAtZero: true,
+            grace: '50%'
+          },
+          y1: {
+            type: 'linear',
+            display: true,
+            position: 'right',
+            beginAtZero: true,
+            grace: '50%'
+          }
+        }
+      }
+  });
