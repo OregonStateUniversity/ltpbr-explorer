@@ -3,7 +3,7 @@ require 'hash'
 class StatesController < ApplicationController
 
   def index
-    @states = State.with_projects.without_geom.order(:name)
+    @states = State.with_projects.without_geom.order(:projects_count)
   end
 
   def show
