@@ -10,6 +10,7 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @organizations.reorder(:id).to_csv, filename: 'organizations.csv' }
+      format.json
     end
   end
 
