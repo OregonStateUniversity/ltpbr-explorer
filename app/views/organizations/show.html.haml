@@ -24,9 +24,9 @@
   %p= @organization.description
   %hr/
   .card-deck.justify-content-center.h-100
-    = render partial: 'shared/stat_card', locals: { title: 'Projects', value: @project_count, text: 'Process-based riverscape restoration projects', icon: 'fas fa-map-marker'}
-    = render partial: 'shared/stat_card', locals: { title: 'Length', value: "#{@project_total_length_mi}mi", text: 'Total channel length of riverscape restoration implementation', icon: 'fas fa-ruler' }
-    = render partial: 'shared/stat_card', locals: { title: 'Structures', value: @structure_sum, text: 'Beaver dam analog (BDA) and post-assisted log structures (PALS)', icon: 'fab fa-pagelines' }
+    = render partial: 'shared/stat_card', locals: { title: 'Projects', value: @project_count, text: 'Process-based riverscape restoration projects', ligature: 'construction'}
+    = render partial: 'shared/stat_card', locals: { title: 'Length', value: "#{@project_total_length_mi}mi", text: 'Total channel length of riverscape restoration implementation', ligature: 'straighten' }
+    = render partial: 'shared/stat_card', locals: { title: 'Structures', value: @structure_sum, text: 'Beaver dam analog (BDA) and post-assisted log structures (PALS)', ligature: 'tactic' }
   %h3.lead.text-center.mt-5 Graphing #{@organization.name}'s Projects from #{@chart_project_count.keys[0]} Onward
   %canvas#myChart{height: '200', width: '400'}
   .container.mt-5

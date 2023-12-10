@@ -13,11 +13,11 @@
       = link_to 'Browse the Projects List', projects_path, class: 'btn btn-primary btn-lg ml-3 mr-3'
 .container.mb-5
   .card-deck.justify-content-center
-    = render partial: 'home_stat_card', locals: { title: 'Projects', value: @project_count, text: 'Process-based riverscape restoration projects', icon: 'fas fa-map-marker'}
-    = render partial: 'home_stat_card', locals: { title: 'Organizations', value: @organization_sum, text: 'Organizations contributing to the LT-PBR Explorer', icon: 'fas fa-building' }
-    = render partial: 'home_stat_card', locals: { title: "Length", value: "#{@project_total_length_mi}mi", text: 'Total channel length of riverscape restoration implementation', icon: 'fas fa-ruler' }
-    = render partial: 'home_stat_card', locals: { title: 'Structures', value: @structure_sum, text: 'Beaver dam analog (BDA) and post-assisted log structures (PALS)', icon: 'fab fa-pagelines' }
-    = render partial: 'home_stat_card', locals: { title: 'States', value: @unique_state_count, text: 'States with LT-PBR Explorer projects', icon: 'fas fa-map' }
+    = render partial: 'home_stat_card', locals: { title: 'Projects', value: @project_count, text: 'Process-based riverscape restoration projects', ligature: 'construction'}
+    = render partial: 'home_stat_card', locals: { title: 'Organizations', value: @organization_sum, text: 'Organizations contributing to the LT-PBR Explorer', ligature: 'location_city' }
+    = render partial: 'home_stat_card', locals: { title: 'Length', value: "#{@project_total_length_mi}mi", text: 'Total channel length of riverscape restoration implementation', ligature: 'straighten' }
+    = render partial: 'home_stat_card', locals: { title: 'Structures', value: @structure_sum, text: 'Beaver dam analog (BDA) and post-assisted log structures (PALS)', ligature: 'tactic' }
+    = render partial: 'home_stat_card', locals: { title: 'States', value: @unique_state_count, text: 'States with LT-PBR Explorer projects', ligature: 'public' }
 
 .container
   .row
