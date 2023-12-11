@@ -57,7 +57,7 @@
   %hr/
   %p.lead.text-muted.text-center Project supported by:
   .row
-    - [{ name: 'Eco Logical Research', url: 'https://www.eco-logical-research.com', logo_filename: 'logo_ELR.png' }, { name: 'OWEB', url: 'https://www.oregon.gov/oweb/Pages/index.aspx', logo_filename: 'logo_OWEB.png' }, { name: 'OSU Cascades', url: 'https://osucascades.edu', logo_filename: 'logo_OSU.png' }, { name: 'OR NWC', url: 'http://www.oregonwatersheds.org', logo_filename: 'logo_WC.png' }, { name: 'Anabranch Solutions', url: 'http://www.anabranchsolutions.com', logo_filename: 'logo_AS.png' }].each do |supporter|
+    - [{ name: 'Eco Logical Research', url: 'https://www.eco-logical-research.com', logo_filename: 'logo_ELR.png' }, { name: 'OWEB', url: 'https://www.oregon.gov/oweb/Pages/index.aspx', logo_filename: 'logo_OWEB.png' }, { name: 'OSU Cascades', url: 'https://osucascades.edu', logo_filename: 'logo_OSU.png' }, { name: 'OR NWC', url: 'https://www.oregonwatersheds.org', logo_filename: 'logo_WC.png' }, { name: 'Anabranch Solutions', url: 'https://www.anabranchsolutions.com', logo_filename: 'logo_AS.png' }, { name: 'BLM Aquatic Resources Program', url: 'https://www.blm.gov/programs/aquatics/about-the-program', logo_filename: 'logo_BLM.png' }].each do |supporter|
       .col
         %a{:href => "#{supporter[:url]}"}
           = image_tag supporter[:logo_filename], class: "mx-auto d-block", height: 100
