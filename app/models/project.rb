@@ -8,7 +8,7 @@ class Project < ApplicationRecord
   belongs_to :state, optional: true, counter_cache: true
   has_many :affiliations, dependent: :delete_all
   has_many :organizations, through: :affiliations
-  has_many :project_photos
+  has_many :project_photos, dependent: :delete_all
 
   has_one_attached :cover_photo
 
