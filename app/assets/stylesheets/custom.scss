@@ -230,7 +230,8 @@ img.supporter-logo {
   font-size: 2rem;
 }
 
-// Map
+
+// Maps
 
 #project-map {
   min-width: 400px;
@@ -238,7 +239,7 @@ img.supporter-logo {
   margin: auto;
 }
 
-#form-map{
+#form-map {
   min-width: 400px;
   min-height: 400px;
   margin: auto;
@@ -309,7 +310,7 @@ img.supporter-logo {
   cursor: pointer;
 }
 
-.leaflet-control-layers-text{
+.leaflet-control-layers-text {
   text-align: center;
   font-size: 14px;
   cursor: pointer;
@@ -317,28 +318,20 @@ img.supporter-logo {
 }
 
 #list-view-button {
-    position: absolute;
-    z-index: 1000;
-    margin-top: 15px;
-    margin-right: 5%;
-    left: -70px;
-}
-
-#list-view-button-btn {
-    box-shadow: 10px 10px;
-    position: absolute;
-}
-
-#dropdown, #projects-dropdown {
-    z-index: 10000;
+  position: absolute;
+  z-index: 1000;
+  margin-top: 15px;
+  margin-right: 5%;
+  left: -70px;
 }
 
 @media only screen and (max-width: 780px) {
-    #list-view-button{
-        margin-top: 65px;
-        left: 5px;  
-    }
+  #list-view-button {
+    margin-top: 65px;
+    left: 5px;
+  }
 }
+
 
 // Projects
 
