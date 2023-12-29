@@ -22,6 +22,6 @@
   %body{class: "#{controller.action_name}"}
     = include_gon(:init => true)
     = render 'layouts/nav'
-    = render 'layouts/messages'
+    = render 'layouts/flashes'
     = yield
     = render 'layouts/footer'
