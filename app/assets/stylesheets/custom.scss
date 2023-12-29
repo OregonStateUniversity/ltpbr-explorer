@@ -21,23 +21,20 @@ html {
 }
 
 body {
-    margin: 0;
-    margin-bottom: 25px;
-    height: calc(100% - 65px); /* minus navbar incl. border */
-    font-family: 'Karla', 'Arial', sans-serif;
+  margin: 0;
+  margin-bottom: 25px;
+  height: calc(100% - 65px); /* minus navbar incl. border */
+  font-family: 'Karla', 'Arial', sans-serif;
 }
 
 html, #map {
-    height: 100%;
+  height: 100%;
 }
 
 footer {
   padding: 15px;
   text-align: center;
 }
-
-
-// Common elements
 
 a {
   color: $rc-primary-main;
@@ -187,34 +184,6 @@ nav {
 }
 
 
-// Home view
-
-#home-jumbotron.jumbotron {
-  background-image: url('ltpbr_banner.png');
-  background-size: cover;
-  height: 800px;
-}
-
-img.supporter-logo {
-  height: 100px;
-}
-
-.title {
-  padding: 2em;
-  background-color: #00000066;
-  border-radius: 12px;
-  color: white;
-  h1 {
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-weight: bold;
-    font-size: 5rem;
-  }
-  p.lead a {
-    color: $rc-divider;
-  }
-}
-
-
 // Stat cards
 
 .card-icon {
@@ -228,6 +197,108 @@ img.supporter-logo {
   align-items: center;
   justify-content: center;
   font-size: 2rem;
+}
+
+
+// Pagination
+
+.pagination a, .pagination span.current, .pagination span.gap {
+  float: left;
+  padding: 0 14px;
+  line-height: 38px;
+  color: $rc-primary-main;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+  transition: background-color .3s;
+}
+.pagination > li > a {
+  background-color: white;
+  color: $rc-primary-main;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+  color: #eee;
+  background-color: $rc-primary-main;
+  border-color: #ddd;
+}
+
+.pagination > .active > a {
+  color: $rc-primary-main;
+  background-color: $rc-primary-main !important;
+  border: solid 1px lightgray !important;
+}
+
+.pagination > .active > a:hover {
+  color: white;
+  background-color: $rc-primary-main !important;
+  border: solid 1px lightgray;
+}
+.pagination a:hover {
+  background-color: $rc-primary-main;
+}
+.pagination:active {
+  color: $rc-primary-main;
+}
+
+.pagination {
+  color: $rc-primary-main;
+  .first{
+    padding : 0;
+    float: none;
+    border: none;
+  }
+  .prev {
+    padding : 0;
+    float: none;
+    border: none;
+  }
+  .page{
+    padding : 0;
+    float: none;
+    border: none;
+  }
+  .next{
+    padding : 0;
+    float: none;
+    border: none;
+  }
+  .last{
+    padding : 0;
+    float: none;
+    border: none;
+  }
+}
+
+
+// Select2
+
+.select2-results__option--highlighted {
+  color: white !important;
+  background-color: $rc-primary-main !important;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: darkgray;
+}
+
+.select2-selection__rendered {
+  line-height: 36px !important;
+}
+.select2-container .select2-selection--single {
+  height: 38px !important;
+  margin-bottom: 0px;
+}
+.select2-selection__arrow {
+  height: 36px !important;
+}
+
+.select2-selection__clear {
+  height: 36px !important;
 }
 
 
@@ -333,6 +404,34 @@ img.supporter-logo {
 }
 
 
+// Home view
+
+#home-jumbotron.jumbotron {
+  background-image: url('ltpbr_banner.png');
+  background-size: cover;
+  height: 800px;
+}
+
+img.supporter-logo {
+  height: 100px;
+}
+
+.title {
+  padding: 2em;
+  background-color: #00000066;
+  border-radius: 12px;
+  color: white;
+  h1 {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 5rem;
+  }
+  p.lead a {
+    color: $rc-divider;
+  }
+}
+
+
 // Projects
 
 .project_row {
@@ -383,7 +482,7 @@ img.supporter-logo {
 
 .carousel-item {
   background-size: contain;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-position: 50% 50%;
   width: 100%;
   height: 100%;
@@ -392,89 +491,14 @@ img.supporter-logo {
 .carousel-item img {
   visibility: hidden;
   margin: auto;
-  height: auto; 
-  width: auto; 
-  max-width: 100%; 
+  height: auto;
+  width: auto;
+  max-width: 100%;
   max-height: 600px;
 }
 
 .carousel-indicators {
   filter: invert(100%);
-}
-
-
-// Pagination
-
-.pagination a, .pagination span.current, .pagination span.gap {
-    float: left;
-    padding: 0 14px;
-    line-height: 38px;
-    color: $rc-primary-main;
-    text-decoration: none;
-    background-color: white;
-    border: 1px solid #DDD;
-    border-left-width: 0;
-    transition: background-color .3s;
-}
-.pagination > li > a {
-    background-color: white;
-    color: $rc-primary-main;
-}
-
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover {
-    color: #eee;
-    background-color: $rc-primary-main;
-    border-color: #ddd;
-}
-
-.pagination > .active > a {
-    color: $rc-primary-main;
-    background-color: $rc-primary-main !important;
-    border: solid 1px lightgray !important;
-}
-
-.pagination > .active > a:hover {
-    color: white;
-    background-color: $rc-primary-main !important;
-    border: solid 1px lightgray;
-}
-.pagination a:hover {
-    background-color: $rc-primary-main;
-}
-.pagination:active {
-    color: $rc-primary-main;
-}
-
-.pagination {
-    color: $rc-primary-main;
-    .first{
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .prev {
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .page{
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .next{
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .last{
-        padding : 0;
-        float: none;
-        border: none;
-    }
 }
 
 
@@ -504,31 +528,4 @@ img.supporter-logo {
 
 .badge-primary {
   background-color: $rc-divider;
-}
-
-
-// Select2
-
-.select2-results__option--highlighted {
-    color: white !important;
-    background-color: $rc-primary-main !important;
-}
-  
-.select2-container--default .select2-results__option[aria-selected=true] {
-    background-color: darkgray;
-}
-
-.select2-selection__rendered {
-    line-height: 36px !important;
-}
-.select2-container .select2-selection--single {
-    height: 38px !important;
-    margin-bottom: 0px;
-}
-.select2-selection__arrow {
-    height: 36px !important;
-}
-
-.select2-selection__clear {
-    height: 36px !important;
 }
