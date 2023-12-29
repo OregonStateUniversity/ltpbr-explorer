@@ -36,9 +36,11 @@ footer {
   text-align: center;
 }
 
+
+// Common elements
+
 a {
   color: $rc-primary-main;
-
   &:hover {
     color: $rc-primary-light;
   }
@@ -51,7 +53,6 @@ label {
 .btn-primary {
   background-color: $rc-primary-main;
   border-color: $rc-primary-main;
-
   &:hover {
     background-color: $rc-primary-light;
     border-color: $rc-primary-light;
@@ -61,7 +62,6 @@ label {
 .btn-outline-primary {
   border-color: $rc-primary-main;
   color: $rc-primary-main;
-
   &:hover {
     background-color: $rc-primary-light;
     border-color: $rc-primary-light;
@@ -109,13 +109,12 @@ nav {
   margin-left: -6px;
 }
 
-.navbar-nav>li {
+.navbar-nav li {
   margin-left: 20px;
 }
 
 .nav-link {
   color: $rc-secondary-main !important;
-
   &:hover {
     color: $rc-secondary-light !important;
   }
@@ -137,47 +136,6 @@ nav {
   border-color: $rc-primary-light;
 }
 
-// Home Layout
-
-.banner {
-  img {
-    width: 100%;
-  }
-}
-
-#home-jumbotron.jumbotron {
-  background-image: url('ltpbr_banner.png');
-  background-size: cover;
-  height: 800px;
-}
-
-img.supporter-logo {
-  height: 100px;
-}
-
-.center-text {
-  text-align: center;
-
-  h1 {
-    margin: auto;
-  }
-}
-
-.col-lg-4 {
-  img {
-    height: 270px;
-    width: 360px;
-  }
-}
-
-.row-sm {
-  height: 100px;
-}
-
-.row-md {
-  padding-top: 40px;
-  height: 200px;
-}
 
 // Forms
 
@@ -295,7 +253,18 @@ input[type="checkbox"] {
   }
 }
 
-// Home screen
+
+// Home view
+
+#home-jumbotron.jumbotron {
+  background-image: url('ltpbr_banner.png');
+  background-size: cover;
+  height: 800px;
+}
+
+img.supporter-logo {
+  height: 100px;
+}
 
 .title {
   padding: 2em;
@@ -311,6 +280,7 @@ input[type="checkbox"] {
     color: $rc-divider;
   }
 }
+
 
 // Stat cards
 
