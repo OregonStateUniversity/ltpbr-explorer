@@ -403,120 +403,7 @@ img.supporter-logo {
 }
 
 
-// About
-
-#about-header-container {
-    height: 100px;
-    justify-content: space-between !important;
-    box-shadow: 2px 2px 2px gray;
-}
-
-#about-header {
-    position: absolute;
-    display: flex;
-    font-size: 45px;    
-    padding-left: 10px;
-    padding-bottom: -50px;
-    margin-top: 0px;
-}
-
-@media only screen and (max-width: 600px) {
-
-#instructional-video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 35px;
-    height: 0;
-    overflow: hidden;
-    max-width: 560px;
-    max-height: 315px !important;
-}
-
-#instructional-video-wrapper iframe, .video-container object, .video-container embed {
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-}
-// About page Sidebar
-
-.sidebar-container {
-    border-right: 1px solid rgb(219, 219, 219);
-}
-
-.sidebar {
-    position: static;
-    top: 0px;
-    width: 20vw;
-    overflow-y: auto;
-}
-
-#sidebar-wrapper {
-    min-height: 20vh;
-    height: auto;
-    min-width: 20vw;
-    position: relative;
-}
-
-#sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-}
-
-#sidebar-wrapper .list-group {
-    width: 20vw;
-    z-index: 100;
-    border-bottom: 1px solid rgb(219, 219, 219);
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    cursor: pointer;
-}
-
-
-// About main page adjustments
-
-#page-content-wrapper {
-    min-width: 100vw;
-}
-
-#page-content-wrapper {
-    padding-left: 1vw;
-    padding-right: 80px;
-}
-
-@media (min-width: 200px) {
-    #sidebar-wrapper {
-        margin-left: 0;
-    }
-
-    #page-content-wrapper {
-        min-width: 0;
-        width: 100%;
-    }
-}
-// **Remove navbar when window is too small and adjust styling for main content
-@media only screen and (max-width: 800px) {
-    #sidebar-wrapper  {
-        display: none;
-    }
-    #page-content-wrapper {
-        text-align: left;
-        padding-right: 5px;
-        padding-left: 5px;
-    }
-    #about-header{
-        font-size: 30px;   
-        }
-}
-@media only screen and (max-width: 400px) {
-#about-header{
-    font-size: 20px;    
-    }
-}
+// Pagination
 
 .pagination a, .pagination span.current, .pagination span.gap {
     float: left;
@@ -529,8 +416,7 @@ img.supporter-logo {
     border-left-width: 0;
     transition: background-color .3s;
 }
-.pagination > li > a
-{
+.pagination > li > a {
     background-color: white;
     color: $rc-primary-main;
 }
@@ -538,22 +424,19 @@ img.supporter-logo {
 .pagination > li > a:focus,
 .pagination > li > a:hover,
 .pagination > li > span:focus,
-.pagination > li > span:hover
-{
+.pagination > li > span:hover {
     color: #eee;
     background-color: $rc-primary-main;
     border-color: #ddd;
 }
 
-.pagination > .active > a
-{
+.pagination > .active > a {
     color: $rc-primary-main;
     background-color: $rc-primary-main !important;
     border: solid 1px lightgray !important;
 }
 
-.pagination > .active > a:hover
-{
+.pagination > .active > a:hover {
     color: white;
     background-color: $rc-primary-main !important;
     border: solid 1px lightgray;
@@ -594,6 +477,7 @@ img.supporter-logo {
     }
 }
 
+
 // Organizations
 
 .organization-logo {
@@ -603,6 +487,7 @@ img.supporter-logo {
 .organization-logo-sm {
   width: 40px !important;
 }
+
 
 // Affiliations
 
@@ -614,13 +499,6 @@ img.supporter-logo {
 .organization-list-display {
   padding-left: 5px;
   padding-top: 9px;
-} 
-
-#affiliation-confirm-btn {
-  margin-top: 32px;
-}
-
-.organization-list-display {
   font-weight: bold;
 }
 
@@ -629,7 +507,7 @@ img.supporter-logo {
 }
 
 
-// Select2 Styling
+// Select2
 
 .select2-results__option--highlighted {
     color: white !important;
