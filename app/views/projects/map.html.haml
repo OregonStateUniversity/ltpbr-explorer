@@ -1,3 +1,6 @@
 - provide(:title, 'Project Map')
-#list-view-button.col.text-right= link_to 'List View', projects_path, class: "btn btn-primary shadow-sm"
+#list-view-button.col.text-right
+  = link_to projects_path, class: 'btn btn-primary shadow-sm' do
+    %span.align-top.material-symbols-outlined{'aria-hidden': 'true'} lists
+    List View
 #master-map

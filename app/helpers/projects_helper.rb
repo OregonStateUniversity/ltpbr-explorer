@@ -1,8 +1,8 @@
 module ProjectsHelper
 
   def help_button(dom_id)
-    tag.div id: dom_id, class: 'btn p-0 text-muted align-top' do
-      tag.i class: 'fa fa-question-circle-o', 'aria-hidden': 'true'
+    tag.div id: dom_id, class: 'btn p-0 text-muted align-top material-symbols-outlined', 'aria-hidden': true do
+      'help'
     end
   end
 
