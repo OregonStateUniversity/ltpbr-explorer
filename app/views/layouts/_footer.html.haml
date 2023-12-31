@@ -1,8 +1,7 @@
 %footer
-  %hr/
-  © 2020 All rights reserved. Source available on
+  © 2024 Riverscapes Consortium. All rights reserved. Source available on
   = succeed '.' do
-    %a{href: "https://github.com/OregonStateUniversity/bda-explorer"} GitHub
+    = link_to 'GitHub', Rails.application.credentials.constants&.repository_url
   Questions?
   = succeed '.' do
-    = mail_to 'nick.weber@anabranchsolutions.com', 'Contact us'
+    = mail_to Rails.application.credentials.constants&.contact_email_address, 'Contact us'
