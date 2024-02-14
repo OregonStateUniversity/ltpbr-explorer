@@ -14,13 +14,14 @@
           - @project.errors.full_messages.each do |message|
             %li= message
     %h2 Current cover photo
-    - if @project.cover_photo.attached?
+    - if @project.cover_photo&.persisted?
       = image_tag(@project.cover_photo, class: 'cover-photo-medium')
     - else
       = image_tag 'missing_image_camera.png', alt: 'This project needs a nice cover photo', class: 'cover-photo-missing cover-photo-medium'
     .form-group.mt-5
       = f.label :cover_photo, 'Upload a New Cover Photo', class: 'h3'
       = f.file_field :cover_photo, class: 'form-control-file'
+      .small.form-text.text-muted Less than 50MB, please
     .form-group.actions
       = f.submit 'Upload', class: 'btn btn-primary'
       = link_to 'Cancel', project_path(@project), class: 'btn btn-outline btn-outline-secondary ml-5'

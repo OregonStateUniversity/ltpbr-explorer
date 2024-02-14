@@ -11,6 +11,7 @@ class ProjectCoverPhotosController < ApplicationController
       redirect_to @project
       flash[:success] = 'Project cover photo has been updated.'
     else
+      @project.reload
       flash[:warning] = "Please select a new cover photo to upload."
       render :edit
     end
