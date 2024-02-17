@@ -252,7 +252,7 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.5.9)
+    nio4r (2.7.0)
     nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
@@ -270,7 +270,7 @@ GEM
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.3)
-    puma (6.4.0)
+    puma (6.4.2)
       nio4r (~> 2.0)
     rabl-rails (0.6.2)
       activesupport (>= 4.2)
@@ -452,7 +452,7 @@ DEPENDENCIES
   listen (~> 3.8.0)
   pg
   possessive
-  puma (~> 6.4.0)
+  puma (~> 6.4.2)
   rabl-rails
   rails (~> 7.1.1)
   recaptcha
