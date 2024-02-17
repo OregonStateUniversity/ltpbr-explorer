@@ -89,6 +89,10 @@ nav {
       border-color: $rc-secondary-main;
     }
   }
+  .navbar-brand img {
+    height: 44px;
+    vertical-align: bottom;
+  }
 }
 
 .navbar-brand {
