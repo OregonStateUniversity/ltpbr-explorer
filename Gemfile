@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2'
+ruby file: '.ruby-version'
 
 gem 'activerecord-postgis-adapter'
 gem 'active_storage_validations'
@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.11.5'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'possessive'
-gem 'pg'
+gem 'pg', '~> 1.5.6'
 gem 'puma', '~> 6.4.0'
 gem 'rabl-rails'
 gem 'rails', '~> 7.1.1'
