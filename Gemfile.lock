@@ -433,7 +433,7 @@ DEPENDENCIES
   airbrake
   aws-sdk-s3 (~> 1.146.0)
   bootsnap (>= 1.18.3)
-  bootstrap (~> 4.6.0)
+  bootstrap (~> 4.6.2)
   bootstrap-select-rails (~> 1.13.8)
   byebug
   capybara (>= 3.40.0)

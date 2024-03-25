@@ -8,7 +8,7 @@ gem 'active_storage_validations', '~> 1.1.4'
 gem 'activerecord-postgres_enum', '~> 2.0.1'
 gem 'aws-sdk-s3', '~> 1.146.0', require: false
 gem 'bootsnap', '>= 1.18.3', require: false
-gem 'bootstrap', '~> 4.6.0'
+gem 'bootstrap', '~> 4.6.2'
 gem 'chosen-rails', '~> 1.10.0'
 gem 'bootstrap-select-rails', '~> 1.13.8'
 gem 'chartkick', '~> 5.0.6'
