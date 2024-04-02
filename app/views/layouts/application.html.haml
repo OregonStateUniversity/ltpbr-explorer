@@ -17,6 +17,13 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_importmap_tags
+  / Google tag (gtag.js) should be after head.
+  %script{ src: "https://www.googletagmanager.com/gtag/js?id=G-PTHXK9D0S0"}
+  :javascript
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PTHXK9D0S0');
   %body{class: "#{controller.action_name}"}
     = include_gon(:init => true)
     = render 'layouts/nav'
