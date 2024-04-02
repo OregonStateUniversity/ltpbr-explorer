@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :require_author_or_admin, only: [:edit, :update, :destroy]
 
   def index
-    @projects = Project.search(params[:query], params[:organization_id]).distinct.order(:name)
+    @projects = Project.search(params[:query], params[:organization_id]).includes(affiliations: :organization).distinct.order(:name)
     @organizations = Organization.all.order(:name)
     respond_to do |format|
       format.html
