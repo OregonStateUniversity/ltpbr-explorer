@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :projects, foreign_key: 'author_id', inverse_of: :author
 
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\z/, :multiline => true
   validates :name, presence: true
   validates :affiliation, presence: true
   validates :role, presence: true
