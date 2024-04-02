@@ -50,6 +50,8 @@ jobs:
         with:
           bundler-cache: true
       # Add or replace any other lints here
+      - name: Install bundler-audit
+        run: gem install bundler-audit
       - name: Security audit dependencies
         run: bundle-audit --update
       - name: Install brakeman
