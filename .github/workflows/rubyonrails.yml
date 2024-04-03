@@ -33,7 +33,7 @@ jobs:
         run: |
           sudo apt-get install software-properties-common
           sudo add-apt-repository ppa:ubuntugis/ppa
-          sudo apt-get install geos
+          sudo apt-get install geos-bin libgeos++-dev libgeos3.10.2 libgeos-c1v5 libgeos-dev
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
