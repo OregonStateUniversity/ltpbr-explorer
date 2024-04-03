@@ -1,3 +1,5 @@
+![test and lint status](https://github.com/OregonStateUniversity/ltpbr-explorer/actions/workflows/rubyonrails.yml/badge.svg)
+
 # Beaver Dam Analogue (BDA) Explorer
 
 Beaver Dam Analogues (BDAs) are one low cost, 'cheap and cheerful' technique
