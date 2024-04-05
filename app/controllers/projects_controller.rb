@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  include Pagy::Backend
+
   before_action :authenticate_user!, except: [:index, :map, :show]
   before_action :set_project, only: [:edit, :update, :destroy]
   before_action :require_author_or_admin, only: [:edit, :update, :destroy]
@@ -7,10 +9,14 @@ class ProjectsController < ApplicationController
     @projects = Project.search(params[:query], params[:organization_id]).includes(affiliations: :organization).distinct.order(:name)
     @organizations = Organization.all.order(:name)
     respond_to do |format|
-      format.html
+      format.html do
+        @pagy, @projects = pagy(@projects, params: {query: params[:query], organization_id: params[:organization_id]})
+      end
       format.csv { send_data @projects.reorder(:id).to_csv, filename: 'projects.csv' }
       format.json
     end
+  rescue Pagy::OverflowError
+    redirect_to projects_url
   end
 
   def map
