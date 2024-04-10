@@ -4,7 +4,6 @@ RSpec.describe Project, type: :model do
   let(:project) { build(:project) }
 
   describe 'attributes' do
-    it { is_expected.to respond_to(:affiliation_legacy) }
     it { is_expected.to respond_to(:stream_name) }
     it { is_expected.to respond_to(:implementation_date) }
     it { is_expected.to respond_to(:narrative) }
