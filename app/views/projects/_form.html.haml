@@ -74,7 +74,7 @@
     = f.label :structure_description, 'Description of Construction Elements'
     = help_button('structure_description-help')
     = f.text_area :structure_description, placeholder: 'Briefly describe LT-PBR design and/or construction elements.', class: 'form-control', rows: 5
-  - if @project.persisted? && @project.cover_photo.attached?
+  - if @project.persisted? && @project.cover_photo.attached? && @project.cover_photo.persisted?
     %h5 Current cover photo
     = image_tag @project.cover_photo, class: 'rounded photo-small mb-3'
   .form-group
