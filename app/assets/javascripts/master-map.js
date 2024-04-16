@@ -53,8 +53,7 @@ $(document).on('turbolinks:load', function () {
     // add scale bar
     L.control.scale().addTo(project_map);
 
-    // project points now
-    const project_markers = L.markerClusterGroup();
+    const project_markers = [];
 
     projects.forEach(project => {
       const marker = L.marker([project.latitude, project.longitude]);
@@ -110,14 +109,13 @@ $(document).on('turbolinks:load', function () {
       );
       
       marker.bindPopup(popup);
-      project_markers.addLayer(marker);
+      marker.addTo(project_map);
+      project_markers.push(marker);
     });
       
-    // add all projects to map
-    project_markers.addTo(project_map);
-
-    // fit display to points on the map
-    project_map.fitBounds(project_markers.getBounds());
+    // Fit display to points on the map
+    const marker_group = L.featureGroup(project_markers);
+    project_map.fitBounds(marker_group.getBounds());
 
     // Add search bar
     const SearchControl = window.GeoSearch.SearchControl;
