@@ -32,6 +32,13 @@
   .container.mt-5
     %h2 Affiliated Projects
     = render @organization_projects
+  .row.mb-5
+    .col.text-right
+      - if @pagy.prev
+        = link_to '&lsaquo; Previous page'.html_safe, @pagy.params.merge(page: @pagy.prev), class: 'btn btn-outline-primary', 'aria-label': 'previous'
+    .col
+      - if @pagy.next
+        = link_to 'Next page &rsaquo;'.html_safe, @pagy.params.merge(page: @pagy.next), class: 'btn btn-outline-primary', 'aria-label': 'next'
 :javascript
   var ctx = document.getElementById('myChart').getContext('2d');
 

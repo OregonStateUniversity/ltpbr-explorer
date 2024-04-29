@@ -1,6 +1,8 @@
 require 'hash'
 
 class OrganizationsController < ApplicationController
+  include Pagy::Backend
+
   before_action :authenticate_user!, except: [:show, :index]
   before_action :require_admin, except: [:show, :index]
   before_action :set_organization, only: %w[ show edit update destroy ]
@@ -23,6 +25,7 @@ class OrganizationsController < ApplicationController
     @structure_sum = @organization_projects.sum(:number_of_structures)
     @project_total_length_km = @organization_projects.project_total_length_km
     @project_total_length_mi = (@project_total_length_km* 0.6214).floor(1)
+    @pagy, @organization_projects = pagy(@organization_projects)
   end
 
   def new
