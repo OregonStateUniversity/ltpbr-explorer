@@ -1,6 +1,7 @@
 require 'hash'
 
 class StatesController < ApplicationController
+  include Pagy::Backend
 
   def index
     @states = State.with_projects.without_geom.order('projects_count DESC, name')
@@ -18,6 +19,7 @@ class StatesController < ApplicationController
         @chart_project_count = @projects.group_by_day(:implementation_date, format: "%d %b %Y").count.accumulate!
         @chart_structure_count = @projects.group_by_day(:implementation_date).sum(:number_of_structures).accumulate!
         @chart_total_length = @projects.group_by_day(:implementation_date).sum(:length).accumulate!.transform_values! { |v| v / 1000.0 }
+        @pagy, @projects = pagy(@projects)
       end
     end
   rescue ActiveRecord::RecordNotFound
