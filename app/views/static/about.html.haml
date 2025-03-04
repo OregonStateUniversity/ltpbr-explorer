@@ -14,5 +14,5 @@
     %a{href: "http://lowtechpbr.restoration.usu.edu/manual/"} Wheaton et al. 2019
   %h2 Please post your projects and the affiliated organizations!
   %h4
-    = mail_to 'nick.weber@anabranchsolutions.com', '✉️ Contact us'
+    = mail_to Rails.application.credentials.constants&.contact_email_address, '✉️ Contact us'
     for assistance.

@@ -42,4 +42,4 @@
       %p
         Need help?
         = succeed('.') do
-          = mail_to 'nick.weber@anabranchsolutions.com', 'Contact us'
+          = mail_to Rails.application.credentials.constants&.contact_email_address, 'Contact us'

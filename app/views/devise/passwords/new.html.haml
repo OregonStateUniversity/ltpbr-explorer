@@ -14,7 +14,7 @@
           %p.form-text.small.mt-4.text-muted
             Need help?
             = succeed('.') do
-              = mail_to 'nick.weber@anabranchsolutions.com', 'Contact us'
+              = mail_to Rails.application.credentials.constants&.contact_email_address, 'Contact us'
       .row.my-5
         .col
           = button_to 'Sign In', new_session_path(resource_name), class: 'btn btn-outline-secondary', method: :get
